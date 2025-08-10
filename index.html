@@ -95,6 +95,7 @@
     .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;background:var(--muted);border:1px solid var(--line);transition:transform .18s ease, box-shadow .18s ease}
     .btn:hover{transform:translateY(-1px)}
     .btn.brand{background:linear-gradient(180deg,var(--brand),var(--brand-2));color:#291a0e;border-color:#543a21;font-weight:700}
+    .icon{width:18px;height:18px;display:inline-block;vertical-align:-3px}
     .menu-icons a{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:10px;background:var(--muted);border:1px solid var(--line)}
 
     @media (max-width:860px){
@@ -165,8 +166,37 @@
     .consent .allow{background:linear-gradient(180deg,var(--brand),var(--brand-2));color:#291a0e;border:1px solid #543a21;padding:10px 14px;border-radius:12px;cursor:pointer}
     .consent .once{background:var(--muted);border:1px solid var(--line);padding:10px 14px;border-radius:12px;cursor:pointer}
 
+    /* === Discography === */
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    @media (max-width:860px){.grid-3{grid-template-columns:1fr}}
+    .release.tile{overflow:hidden}
+    .release h3{margin:0 0 6px;font-size:18px}
+    .release small{color:var(--sub);font-weight:400}
+    .art{
+      position:relative; display:block; aspect-ratio:1/1;
+      background:linear-gradient(180deg,#1b140f,#120e0a);
+      border-bottom:1px solid var(--line);
+    }
+    .art[style*="background-image"]{background-size:cover;background-position:center}
+    .art--ph::after{
+      content:attr(data-initials);
+      position:absolute; inset:0; display:grid; place-items:center;
+      font-weight:800; letter-spacing:.5px;
+      font-size:clamp(28px,9vw,72px);
+      color:rgba(246,234,213,.9);
+      text-shadow:0 2px 12px rgba(0,0,0,.55), 0 0 40px rgba(0,0,0,.35);
+    }
+    .badges{display:flex;gap:10px;flex-wrap:wrap}
+    .badge-link{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:8px 12px;border:1px solid var(--line);border-radius:999px;
+      background:var(--panel);transition:transform .18s ease, background .18s ease
+    }
+    .badge-link:hover{transform:translateY(-1px);background:linear-gradient(180deg,var(--brand),var(--brand-2));color:#291a0e}
+    .badge-link .icon{width:16px;height:16px;display:inline-block}
+
     /* Fokus-Styles */
-    .btn:focus-visible, a:focus-visible, .chip:focus-visible, .menu-btn:focus-visible, .consent .allow:focus-visible, .consent .once:focus-visible{
+    .btn:focus-visible, a:focus-visible, .chip:focus-visible, .menu-btn:focus-visible, .consent .allow:focus-visible, .consent .once:focus-visible, .badge-link:focus-visible{
       outline:2px solid var(--brand); outline-offset:2px; border-radius:12px;
     }
 
@@ -195,6 +225,7 @@
       <nav id="mainmenu" class="menu" aria-label="Hauptnavigation">
         <a class="btn" href="#listen">Hören</a>
         <a class="btn" href="#video">Video</a>
+        <a class="btn" href="#discography">Discography</a>
         <a class="btn" href="#about">Über</a>
         <a class="btn" href="#contact">Kontakt</a>
         <a class="btn brand" href="https://www.youtube.com/@elasticfieldmusic?sub_confirmation=1" target="_blank" rel="noopener">YouTube</a>
@@ -274,6 +305,75 @@
             </div>
           </div>
         </article>
+      </div>
+    </section>
+
+    <!-- Discography -->
+    <section id="discography">
+      <div class="wrap">
+        <h2 style="margin:0 0 10px">Discography (Auswahl)</h2>
+        <div class="grid-3">
+          <!-- Release 1 -->
+          <article class="tile release">
+            <!-- Platzhalter: Initialen „NSN“. Für echtes Cover: class="art" und style="background-image:url('albums/nsn.jpg')" -->
+            <a class="art art--ph" data-initials="NSN"
+               href="https://open.spotify.com/artist/2wn4Zq8AOBsX50X7fyBEoL"
+               target="_blank" rel="noopener" aria-label="Non Smokers Nightmare auf Spotify öffnen"></a>
+            <div style="padding:14px 16px">
+              <h3>Non Smokers Nightmare <small>· 2012</small></h3>
+              <div class="badges">
+                <a class="badge-link" href="https://open.spotify.com/artist/2wn4Zq8AOBsX50X7fyBEoL" target="_blank" rel="noopener">
+                  <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#1DB954"/></svg>
+                  <span>Spotify</span>
+                </a>
+                <a class="badge-link" href="https://www.youtube.com/@elasticfieldmusic" target="_blank" rel="noopener">
+                  <svg class="icon" viewBox="0 0 36 26" aria-hidden="true"><rect width="36" height="26" rx="5" fill="#FF0000"></rect><polygon points="14,7 26,13 14,19" fill="#FFFFFF"></polygon></svg>
+                  <span>YouTube</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Release 2 -->
+          <article class="tile release">
+            <a class="art art--ph" data-initials="AN"
+               href="https://open.spotify.com/artist/2wn4Zq8AOBsX50X7fyBEoL"
+               target="_blank" rel="noopener" aria-label="Another Non Smokers Nightmare auf Spotify öffnen"></a>
+            <div style="padding:14px 16px">
+              <h3>Another Non Smokers Nightmare <small>· 2013</small></h3>
+              <div class="badges">
+                <a class="badge-link" href="https://open.spotify.com/artist/2wn4Zq8AOBsX50X7fyBEoL" target="_blank" rel="noopener">
+                  <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#1DB954"/></svg>
+                  <span>Spotify</span>
+                </a>
+                <a class="badge-link" href="https://www.youtube.com/@elasticfieldmusic" target="_blank" rel="noopener">
+                  <svg class="icon" viewBox="0 0 36 26" aria-hidden="true"><rect width="36" height="26" rx="5" fill="#FF0000"></rect><polygon points="14,7 26,13 14,19" fill="#FFFFFF"></polygon></svg>
+                  <span>YouTube</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Release 3 -->
+          <article class="tile release">
+            <a class="art art--ph" data-initials="2025"
+               href="https://open.spotify.com/artist/2wn4Zq8AOBsX50X7fyBEoL"
+               target="_blank" rel="noopener" aria-label="Remixes & New Works 2025 auf Spotify öffnen"></a>
+            <div style="padding:14px 16px">
+              <h3>Remixes & New Works <small>· 2025</small></h3>
+              <div class="badges">
+                <a class="badge-link" href="https://open.spotify.com/artist/2wn4Zq8AOBsX50X7fyBEoL" target="_blank" rel="noopener">
+                  <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#1DB954"/></svg>
+                  <span>Spotify</span>
+                </a>
+                <a class="badge-link" href="https://www.youtube.com/@elasticfieldmusic" target="_blank" rel="noopener">
+                  <svg class="icon" viewBox="0 0 36 26" aria-hidden="true"><rect width="36" height="26" rx="5" fill="#FF0000"></rect><polygon points="14,7 26,13 14,19" fill="#FFFFFF"></polygon></svg>
+                  <span>YouTube</span>
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
       </div>
     </section>
 
