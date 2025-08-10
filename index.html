@@ -70,7 +70,7 @@
     a{color:var(--ink);text-decoration:none}
     .wrap{max-width:980px;margin:0 auto;padding:18px}
 
-    /* ===== Header ===== */
+    /* Header */
     header{
       position:sticky; top:0; z-index:10;
       background:linear-gradient(to bottom, rgba(18,14,10,.95), rgba(18,14,10,.75));
@@ -96,14 +96,41 @@
       #nav-toggle:checked + label + nav.menu{display:flex}
     }
 
-    /* ===== Hero mit Video ===== */
+    /* Hero (Video/Poster + dauerhafte Overlay-Schrift) */
     .hero{border-bottom:1px solid var(--line);background:
       radial-gradient(900px 340px at 85% -10%, rgba(210,161,94,.12), transparent 60%),
       radial-gradient(600px 260px at 0% 0%, rgba(180,123,51,.10), transparent 60%)}
-    .cover{position:relative;width:100%;aspect-ratio:16/9;border-radius:14px;overflow:hidden;background:#0e0a07;border:1px solid var(--line);box-shadow:var(--shadow)}
+    .cover{
+      position:relative;width:100%;aspect-ratio:16/9;border-radius:14px;
+      overflow:hidden;background:#0e0a07;border:1px solid var(--line);box-shadow:var(--shadow)
+    }
     .cover video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-    .cover .fallback{position:absolute;inset:0;display:grid;place-items:center;background:linear-gradient(135deg,#1b140f,#120e0a)}
     .cover img{width:100%;height:100%;object-fit:cover;display:block}
+    /* Lesbarkeit: dunkler Verlauf über dem Video */
+    .cover::after{
+      content:""; position:absolute; inset:0;
+      background:linear-gradient(to top, rgba(18,14,10,.65) 0%, rgba(18,14,10,.25) 40%, rgba(18,14,10,0) 70%);
+      pointer-events:none;
+    }
+    /* Der Text, der IMMER stehen bleibt */
+    .overlay{
+      position:absolute; inset:0; display:flex; align-items:flex-end;
+      padding:22px; pointer-events:none; /* Buttons unten bleiben klickbar */
+    }
+    .overlay-box{
+      max-width:min(90%, 720px);
+      background:rgba(18,14,10,.32);
+      backdrop-filter: blur(6px) saturate(110%);
+      border:1px solid rgba(59,43,31,.6);
+      border-radius:12px; padding:14px 16px;
+    }
+    .hero-title{
+      margin:0; font-size:clamp(28px,4.8vw,48px); line-height:1.05;
+      text-shadow: 0 2px 10px rgba(0,0,0,.45);
+    }
+    .hero-sub{
+      margin:6px 0 0; color:var(--sub); font-size:clamp(14px,2.6vw,18px)
+    }
 
     h1{margin:12px 0 6px;font-size:clamp(28px,4.5vw,44px)}
     .lead{color:var(--sub);margin:0 0 12px}
@@ -120,20 +147,23 @@
     .chip:hover{transform:translateY(-1px); background:linear-gradient(180deg,var(--brand),var(--brand-2)); color:#291a0e}
 
     /* Fokus-Styles */
-    .btn:focus-visible, a:focus-visible, .chip:focus-visible,
-    .menu-icons a:focus-visible{outline:2px solid var(--brand); outline-offset:2px; border-radius:12px}
+    .btn:focus-visible, a:focus-visible, .chip:focus-visible, .menu-icons a:focus-visible{
+      outline:2px solid var(--brand); outline-offset:2px; border-radius:12px
+    }
 
     @media (prefers-reduced-motion: reduce){
       .btn, .tile, .chip{transition:none}
       .btn:hover, .tile:hover, .chip:hover{transform:none}
     }
-    @media (max-width:640px){.wrap{padding:14px}}
+    @media (max-width:640px){
+      .wrap{padding:14px}
+      .overlay-box{padding:12px 14px}
+    }
   </style>
 </head>
 <body>
   <header>
     <div class="wrap bar">
-      <!-- Logo -->
       <a class="logo" href="#">
         <picture>
           <source srcset="logo.svg" type="image/svg+xml">
@@ -144,12 +174,11 @@
         <span>Elastic Field</span>
       </a>
 
-      <!-- Mobile Toggle -->
       <input id="nav-toggle" type="checkbox" aria-label="Menü umschalten">
       <label class="menu-btn" for="nav-toggle" aria-controls="mainmenu" aria-expanded="false">☰ Menü</label>
 
-      <!-- Navigation -->
       <nav id="mainmenu" class="menu" aria-label="Hauptnavigation">
+        <a class="btn" href="#listen">Hören</a>
         <a class="btn" href="#video">Video</a>
         <a class="btn" href="#about">Über</a>
         <a class="btn" href="#contact">Kontakt</a>
@@ -176,26 +205,25 @@
   <main>
     <section class="hero">
       <div class="wrap">
-        <!-- HERO: Video-Hintergrund (hero.mp4) + Fallback auf cover.jpg -->
+        <!-- HERO: Video-loop + dauerhafte Overlay-Schrift -->
         <div class="cover">
-          <video id="hero-video" autoplay muted loop playsinline preload="metadata" poster="cover.jpg">
+          <video autoplay muted loop playsinline preload="metadata" poster="cover.jpg">
             <source src="hero.mp4" type="video/mp4">
           </video>
           <img src="cover.jpg" alt="Elastic Field Cover" loading="eager" decoding="async"
                onerror="this.remove();document.getElementById('cover-fallback').style.display='grid'">
-          <div id="cover-fallback" class="fallback" style="display:none">
-            <div style="text-align:center">
-              <div style="font-size:clamp(28px,4.5vw,44px);font-weight:800;letter-spacing:.5px;color:var(--ink)">Elastic Field</div>
-              <div style="opacity:.8;margin-top:6px;color:var(--sub)">Trip-Hop · Ambient · Indie-Electronica</div>
+          <!-- Der feste Text im Bild -->
+          <div class="overlay">
+            <div class="overlay-box">
+              <h2 class="hero-title">Elastic Field</h2>
+              <p class="hero-sub">Musik für späte Stunden: warm, hypnotisch, analog-digital.</p>
             </div>
           </div>
         </div>
 
-        <h1>Elastic Field</h1>
-        <p class="lead">Musik für späte Stunden: warm, hypnotisch, analog-digital.</p>
-
-        <div style="display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 6px">
-          <a class="btn brand" href="#video">▶︎ Zum Video</a>
+        <!-- CTAs unter dem Hero -->
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px">
+          <a class="btn brand" href="#listen">▶︎ Hören</a>
           <a class="btn" href="https://www.youtube.com/@elasticfieldmusic?sub_confirmation=1" target="_blank" rel="noopener">Zum Kanal</a>
         </div>
 
@@ -204,6 +232,23 @@
           <span class="chip">#Ambient</span>
           <span class="chip">#Analog</span>
         </div>
+      </div>
+    </section>
+
+    <!-- Spotify / Listen -->
+    <section id="listen">
+      <div class="wrap">
+        <h2 style="margin:0 0 10px">Hören</h2>
+        <article class="tile" style="padding:0">
+          <div class="embed" style="place-items:stretch;padding:0; height:352px">
+            <iframe style="border:0; width:100%; height:100%" loading="lazy"
+              src="https://open.spotify.com/embed/artist/2wn4Zq8AOBsX50X7fyBEoL"
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+          </div>
+          <div style="padding:14px 16px">
+            <p style="margin:0;color:var(--sub)">Höre Elastic Field auf Spotify. (Später gern einzelne Alben oder Playlists.)</p>
+          </div>
+        </article>
       </div>
     </section>
 
@@ -235,20 +280,20 @@
     <section id="about">
       <div class="wrap">
         <h2 style="margin:0 0 10px">About Elastic Field</h2>
-        <div class="tile" style="padding:14px 16px">
-          <p style="margin:0 0 8px">
-            Elastic Field was founded in 2011 – a free-form music project rooted in ambient, lounge, trip hop, downbeat, jazz, and subtle electronic textures. The sound is reflective, immersive, and emotional – often instrumental, sometimes featuring voice fragments or spoken word passages.
-          </p>
-          <p style="margin:0 0 8px">
-            In 2012, the debut album <em>Non Smokers Nightmare</em> introduced a world of atmospheric contrasts and sonic minimalism. One year later, the follow-up <em>Another Non Smokers Nightmare</em> (2013) deepened that sound – darker, more focused, but equally open and textured.
-          </p>
-          <p style="margin:0">
-            Now, in 2025, Elastic Field returns – with a series of remixes, new compositions, and a refined sound. While remaining true to its roots, the project embraces modern sonic aesthetics and digital production. It’s a comeback without nostalgia – a new beginning in the same spirit.
-          </p>
-          <p style="margin:10px 0 0; color:var(--sub)">
-            Collabs & licensing: <a href="mailto:fraendk@hotmail.com?subject=Elastic%20Field%20Anfrage">fraendk@hotmail.com</a>
-          </p>
-        </div>
+      <div class="tile" style="padding:14px 16px">
+        <p style="margin:0 0 8px">
+          Elastic Field was founded in 2011 – a free-form music project rooted in ambient, lounge, trip hop, downbeat, jazz, and subtle electronic textures. The sound is reflective, immersive, and emotional – often instrumental, sometimes featuring voice fragments or spoken word passages.
+        </p>
+        <p style="margin:0 0 8px">
+          In 2012, the debut album <em>Non Smokers Nightmare</em> introduced a world of atmospheric contrasts and sonic minimalism. One year later, the follow-up <em>Another Non Smokers Nightmare</em> (2013) deepened that sound – darker, more focused, but equally open and textured.
+        </p>
+        <p style="margin:0">
+          Now, in 2025, Elastic Field returns – with a series of remixes, new compositions, and a refined sound. While remaining true to its roots, the project embraces modern sonic aesthetics and digital production. It’s a comeback without nostalgia – a new beginning in the same spirit.
+        </p>
+        <p style="margin:10px 0 0; color:var(--sub)">
+          Collabs & licensing: <a href="mailto:fraendk@hotmail.com?subject=Elastic%20Field%20Anfrage">fraendk@hotmail.com</a>
+        </p>
+      </div>
       </div>
     </section>
 
