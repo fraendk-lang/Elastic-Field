@@ -3,47 +3,224 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Elastic Field</title>
+  <title>Elastic Field — Official Site</title>
+  <meta name="description" content="Elastic Field — Musik für späte Stunden: warm, hypnotisch, analog-digital.">
+  <link rel="canonical" href="https://fraendk-lang.github.io/Elastic-Field/">
+  <meta name="theme-color" content="#120e0a">
+
+  <!-- Social Preview -->
+  <meta property="og:title" content="Elastic Field — Official Site">
+  <meta property="og:description" content="Trip-Hop, Ambient und Indie-Electronica.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://fraendk-lang.github.io/Elastic-Field/">
+  <meta property="og:image" content="https://fraendk-lang.github.io/Elastic-Field/cover.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+
   <style>
-    body { margin:0; font:16px/1.5 system-ui, -apple-system, Segoe UI, Roboto, Arial; background:#0b0c10; color:#e8ecf1; }
-    header { position:sticky; top:0; padding:12px 18px; background:#11131a; border-bottom:1px solid #1d2028; }
-    .wrap { max-width:980px; margin:0 auto; padding:18px; }
-    h1 { margin:0 0 8px; }
-    .tile { background:#121318; border:1px solid #1d2028; border-radius:14px; overflow:hidden; }
-    .embed { aspect-ratio:16/9; display:grid; place-items:center; background:#0f1016; }
-    .btn { display:inline-block; padding:10px 14px; border-radius:10px; background:#2a2e39; border:1px solid #1d2028; text-decoration:none; color:#e8ecf1; }
+    :root{
+      /* Warmes Braun/Gold passend zum Cover */
+      --bg:#120e0a;          /* sehr dunkles Braun */
+      --panel:#1b140f;       /* Karten/Hintergründe */
+      --ink:#f6ead5;         /* warme Schriftfarbe */
+      --sub:#d7c6a9;         /* sekundärer Text */
+      --line:#3b2b1f;        /* Linien/Borders */
+      --muted:#241c14;       /* dezente Flächen/Buttons */
+      --brand:#d2a15e;       /* Gold-Akzent */
+      --brand-2:#b47b33;     /* dunkleres Gold */
+      --radius:16px;
+      --shadow:0 10px 25px rgba(0,0,0,.35);
+    }
+
+    *{box-sizing:border-box}
+    html,body{margin:0}
+    body{
+      background:var(--bg);
+      color:var(--ink);
+      font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Arial;
+      text-rendering:optimizeLegibility;
+      -webkit-font-smoothing:antialiased;
+    }
+    a{color:var(--ink);text-decoration:none}
+    .wrap{max-width:980px;margin:0 auto;padding:18px}
+
+    header{
+      position:sticky;top:0;z-index:10;
+      background:
+        linear-gradient( to bottom, rgba(18,14,10,.95), rgba(18,14,10,.75) );
+      backdrop-filter:saturate(110%) blur(6px);
+      border-bottom:1px solid var(--line);
+    }
+    .bar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+    .logo{
+      display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.4px
+    }
+    .badge{
+      width:34px;height:34px;border-radius:10px;
+      background:conic-gradient(from 210deg, var(--brand), var(--brand-2), var(--brand));
+      display:grid;place-items:center;box-shadow:var(--shadow);color:#2a1c10;font-weight:800
+    }
+
+    .btn{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:10px 14px;border-radius:12px;
+      background:var(--muted);border:1px solid var(--line)
+    }
+    .btn:hover{transform:translateY(-1px)}
+    .btn.brand{
+      background:linear-gradient(180deg,var(--brand),var(--brand-2));
+      color:#291a0e;border-color:#543a21;font-weight:700
+    }
+
+    .hero{
+      border-bottom:1px solid var(--line);
+      background:
+        radial-gradient(900px 340px at 85% -10%, rgba(210,161,94,.12), transparent 60%),
+        radial-gradient(600px 260px at 0% 0%, rgba(180,123,51,.10), transparent 60%);
+    }
+
+    .cover{
+      width:100%;aspect-ratio:16/9;border-radius:14px;overflow:hidden;
+      background:#0e0a07;border:1px solid var(--line);box-shadow:var(--shadow)
+    }
+    h1{margin:12px 0 6px;font-size:clamp(28px,4.5vw,44px)}
+    .lead{color:var(--sub);margin:0 0 12px}
+
+    .tile{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+    .embed{aspect-ratio:16/9;background:#0e0a07;border-bottom:1px solid var(--line);display:grid;place-items:center}
+
+    section{padding:28px 0;border-top:1px solid var(--line)}
+    footer{padding:28px 0;border-top:1px solid var(--line);color:var(--sub)}
+
+    .chips{display:flex;gap:10px;flex-wrap:wrap}
+    .chip{border:1px solid var(--line);background:var(--panel);padding:8px 12px;border-radius:999px}
+
+    /* Mobile */
+    @media (max-width:640px){
+      .wrap{padding:14px}
+    }
   </style>
 </head>
 <body>
   <header>
-    <div class="wrap" style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
-      <strong>Elastic Field</strong>
-      <nav style="display:flex;gap:12px;flex-wrap:wrap">
-        <a class="btn" href="#video">Video</a>
+    <div class="wrap bar">
+      <div class="logo">
+        <div class="badge" aria-hidden="true">EF</div>
+        <span>Elastic Field</span>
+      </div>
+      <nav style="display:flex;gap:10px;flex-wrap:wrap">
+        <a class="btn brand" href="#video">Video</a>
+        <a class="btn" href="#about">Über</a>
         <a class="btn" href="https://www.youtube.com/@SilentPearls" target="_blank" rel="noopener">YouTube</a>
+        <a class="btn" href="mailto:fraendk@hotmail.com?subject=Elastic%20Field%20Anfrage">Kontakt</a>
       </nav>
     </div>
   </header>
 
-  <main class="wrap">
-    <h1>Elastic Field</h1>
-    <p>Musik für späte Stunden: warm, hypnotisch, analog-digital.</p>
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <!-- Cover: eigenes Bild als 'cover.jpg' im Repo; fällt sonst auf YouTube-Thumb zurück -->
+        <div class="cover">
+          <img
+            src="cover.jpg"
+            alt="Elastic Field Cover"
+            style="width:100%;height:100%;object-fit:cover;display:block"
+            onerror="this.src='https://img.youtube.com/vi/WiLkcPmp6oY/maxresdefault.jpg'">
+        </div>
 
-    <section id="video" class="tile" style="margin-top:16px">
-      <div class="embed">
-        <iframe
-          width="100%" height="100%"
-          src="https://www.youtube.com/embed/WiLkcPmp6oY"
-          title="Silent Pearls — Video"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen></iframe>
+        <h1>Elastic Field</h1>
+        <p class="lead">Musik für späte Stunden: warm, hypnotisch, analog-digital.</p>
+
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 6px">
+          <a class="btn brand" href="#video">▶︎ Neues Video</a>
+          <a class="btn" href="https://www.youtube.com/@SilentPearls" target="_blank" rel="noopener">Zum Kanal</a>
+        </div>
+
+        <div class="chips" style="margin-top:8px">
+          <span class="chip">#TripHop</span>
+          <span class="chip">#Ambient</span>
+          <span class="chip">#Analog</span>
+        </div>
       </div>
-      <div style="padding:14px 16px">
-        <h2 style="margin:0 0 6px">Silent Pearls — Video</h2>
-        <p style="margin:0; color:#a9b1bc">Mehr auf dem Kanal: <a href="https://www.youtube.com/@SilentPearls" target="_blank" rel="noopener">Silent Pearls</a></p>
+    </section>
+
+    <section id="video">
+      <div class="wrap">
+        <h2 style="margin:0 0 10px">Video</h2>
+        <article class="tile">
+          <div class="embed" style="place-items:stretch;padding:0;">
+            <iframe
+              width="100%" height="100%"
+              src="https://www.youtube.com/embed/WiLkcPmp6oY"
+              title="Silent Pearls — Video"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen>
+            </iframe>
+          </div>
+          <div style="padding:14px 16px">
+            <h3 style="margin:0 0 6px">Silent Pearls — Video</h3>
+            <p style="margin:0;color:var(--sub)">
+              Mehr auf dem Kanal:
+              <a href="https://www.youtube.com/@SilentPearls" target="_blank" rel="noopener">Silent Pearls</a>
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="wrap">
+        <h2 style="margin:0 0 10px">Über Elastic Field</h2>
+        <div class="tile" style="padding:14px 16px">
+          <p style="margin:0 0 8px">
+           Elastic Field was founded in 2011 – a free-form music project rooted in ambient, lounge, trip hop, downbeat, jazz, and subtle electronic textures. The sound is reflective, immersive, and emotional – often instrumental, sometimes featuring voice fragments or spoken word passages.
+
+In 2012, the debut album “Non Smokers Nightmare” introduced a world of atmospheric contrasts and sonic minimalism. One year later, the follow-up “Another Non Smokers Nightmare” (2013) deepened that sound – darker, more focused, but equally open and textured.
+
+Now, in 2025, Elastic Field returns – with a series of remixes, new compositions, and a refined sound. While remaining true to its roots, the project embraces modern sonic aesthetics and digital production. 
+          </p>
+          <div class="chips" style="margin-top:6px">
+            <span class="chip">Einflüsse: Depeche Mode</span>
+            <span class="chip">Broken Bells</span>
+            <span class="chip">Leonard Cohen</span>
+            <span class="chip">Tape-Sättigung</span>
+          </div>
+          <p style="margin:10px 0 0; color:var(--sub)">
+            Kollaborationen & Lizenzen:
+            <a href="mailto:fraendk@hotmail.com?subject=Elastic%20Field%20Anfrage">fraendk@hotmail.com</a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="wrap">
+        <h2 style="margin:0 0 10px">Kontakt</h2>
+        <div class="tile" style="padding:14px 16px">
+          <p style="margin:0 0 6px">
+            E-Mail: <a href="mailto:fraendk@hotmail.com?subject=Elastic%20Field%20Anfrage">fraendk@hotmail.com</a>
+          </p>
+          <div class="chips" style="margin-top:8px">
+            <a class="chip" href="https://www.youtube.com/@SilentPearls" target="_blank" rel="noopener">YouTube</a>
+            <a class="chip" href="#" target="_blank" rel="noopener">Bandcamp</a>
+            <a class="chip" href="#" target="_blank" rel="noopener">Spotify</a>
+            <a class="chip" href="#" target="_blank" rel="noopener">Instagram</a>
+          </div>
+          <p style="margin:10px 0 0;color:var(--sub)">Links später austauschbar.</p>
+        </div>
       </div>
     </section>
   </main>
+
+  <footer>
+    <div class="wrap" style="display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap">
+      <small>© <span id="y"></span> Elastic Field</small>
+      <small style="color:var(--sub)">Single-File · GitHub Pages</small>
+    </div>
+  </footer>
+
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
 </body>
 </html>
+
