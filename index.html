@@ -96,7 +96,7 @@
       #nav-toggle:checked + label + nav.menu{display:flex}
     }
 
-    /* ===== Hero: Video + zentrierte Headline ===== */
+    /* ===== Hero: Video + zentrierte Typewriter-Headline ===== */
     .hero{
       border-bottom:1px solid var(--line);
       background:
@@ -126,12 +126,21 @@
     .hero-title{
       margin:0; font-weight:800; letter-spacing:.4px; line-height:.95;
       font-size:clamp(46px, 8.2vw, 120px);
+      white-space:nowrap; /* eine Zeile */
       text-shadow:
         0 2px 12px rgba(0,0,0,.55),
         0 0 40px rgba(0,0,0,.45);
     }
+    /* Typewriter-Cursor */
+    .caret{
+      display:inline-block;
+      width:.6ch; margin-left:.1ch;
+      border-right:2px solid var(--ink);
+      animation:blink .9s steps(1,end) infinite;
+    }
     @keyframes vfade{ to{ opacity:1 } }
     @keyframes tfade{ to{ opacity:1 } }
+    @keyframes blink{ 50%{ border-color:transparent } }
 
     .tile{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);transition:transform .18s ease, box-shadow .18s ease}
     .tile:hover{transform:translateY(-2px); box-shadow:0 14px 28px rgba(0,0,0,.35)}
@@ -151,6 +160,7 @@
 
     @media (prefers-reduced-motion: reduce){
       .btn, .tile, .chip, .cover video, .overlay{transition:none; animation:none}
+      .caret{ animation:none }
     }
     @media (max-width:640px){
       .wrap{padding:14px}
@@ -201,13 +211,13 @@
   <main>
     <section class="hero">
       <div class="wrap">
-        <!-- HERO: Video (480p) + Poster, zentrierte Headline -->
+        <!-- HERO: Video (480p) + Poster, zentrierte Typewriter-Headline -->
         <div class="cover">
           <video autoplay muted loop playsinline preload="metadata" poster="cover.jpg">
             <source src="hero_480p.mp4" type="video/mp4">
           </video>
           <div class="overlay">
-            <h2 class="hero-title">Elastic Field</h2>
+            <h2 class="hero-title" id="ef-type" aria-label="Elastic Field"></h2>
           </div>
         </div>
 
@@ -217,7 +227,7 @@
           <a class="btn" href="https://www.youtube.com/@elasticfieldmusic?sub_confirmation=1" target="_blank" rel="noopener">Zum Kanal</a>
         </div>
 
-        <!-- Tags (aktualisiert) -->
+        <!-- Tags -->
         <div class="chips" style="margin-top:8px">
           <span class="chip">#TripHop</span>
           <span class="chip">#Ambient</span>
@@ -317,6 +327,34 @@
     </div>
   </footer>
 
-  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+  <!-- Typewriter-Effekt -->
+  <script>
+  (function(){
+    const text = "Elastic Field";
+    const el   = document.getElementById('ef-type');
+    if(!el) return;
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      el.textContent = text;
+      return;
+    }
+
+    let i = 0;
+    const caret = document.createElement('span');
+    caret.className = 'caret';
+    const speed = 75; // ms pro Buchstabe
+
+    function type() {
+      if (i <= text.length) {
+        el.textContent = text.slice(0, i);
+        el.appendChild(caret);
+        i++;
+        setTimeout(type, speed);
+      }
+    }
+    type();
+  })();
+  document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
