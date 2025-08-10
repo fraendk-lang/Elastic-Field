@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Elastic Field — Official Site</title>
+  <meta name="description" content="Elastic Field — Musik, Visuals und Stories. Trip‑Hop, Ambient und Indie‑Electronica." />
+  <style>
+    :root{
+      --bg:#0b0c10;--panel:#121318;--ink:#e8ecf1;--sub:#a9b1bc;--brand:#7ee787;--line:#1d2028;--muted:#2a2e39;
+      --shadow: 0 10px 25px rgba(0,0,0,.35);
+      --radius: 18px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;height:100%;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji"}
+    a{color:var(--ink);text-decoration:none}
+    .wrap{max-width:1100px;margin:0 auto;padding:24px}
+    header{position:sticky;top:0;z-index:20;background:linear-gradient( to bottom, rgba(11,12,16,.9), rgba(11,12,16,.6) );backdrop-filter: blur(8px);border-bottom:1px solid var(--line)}
+    .bar{display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .logo{display:flex;align-items:center;gap:12px;font-weight:700;letter-spacing:.5px}
+    .logo-badge{width:36px;height:36px;border-radius:12px;background:linear-gradient(135deg,#1fb2a5,#7ee787);display:grid;place-items:center;box-shadow:var(--shadow)}
+    .logo-badge span{font-weight:800;color:#0b0c10}
+    nav{display:flex;gap:18px;flex-wrap:wrap}
+    nav a{opacity:.85}
+    nav a:hover{opacity:1}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:12px;background:var(--muted);border:1px solid var(--line)}
+    .btn:hover{transform:translateY(-1px)}
+
+    .hero{padding:64px 0 48px;background:
+      radial-gradient(1000px 400px at 80% -20%, rgba(126,231,135,.12), transparent 60%),
+      radial-gradient(600px 250px at 0% 0%, rgba(31,178,165,.15), transparent 60%)}
+    .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:28px}
+    .pill{display:inline-block;padding:6px 10px;border-radius:999px;background:#0f1419;border:1px solid var(--line);color:var(--sub);font-size:12px}
+    h1{font-size:clamp(32px,5vw,54px);line-height:1.05;margin:10px 0 14px}
+    .lead{color:var(--sub);font-size:clamp(16px,2.4vw,18px)}
+    .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+    .card.pad{padding:22px}
+
+    .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:16px}
+    .kpis .mini{background:var(--muted);border:1px solid var(--line);border-radius:14px;padding:14px}
+    .kpis .mini b{display:block;font-size:20px}
+
+    section{padding:42px 0;border-top:1px solid var(--line)}
+    .grid{display:grid;gap:18px}
+    .grid.col-3{grid-template-columns:repeat(3,1fr)}
+    .grid.col-2{grid-template-columns:repeat(2,1fr)}
+
+    .tile{border:1px solid var(--line);border-radius:16px;background:var(--panel);overflow:hidden}
+    .tile .body{padding:18px}
+    .tag{display:inline-block;font-size:12px;color:var(--sub);border:1px solid var(--line);padding:4px 8px;border-radius:999px}
+
+    .embed{aspect-ratio:16/9;background:#0f1016;border-bottom:1px solid var(--line);display:grid;place-items:center;color:#778}
+
+    .about{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+    .about .panel{padding:18px}
+
+    footer{padding:42px 0;border-top:1px solid var(--line);color:var(--sub)}
+    .socials{display:flex;gap:12px;flex-wrap:wrap}
+    .chip{border:1px solid var(--line);background:var(--panel);padding:8px 12px;border-radius:999px}
+
+    /* Mobile */
+    @media (max-width:880px){
+      .hero-grid{grid-template-columns:1fr}
+      .about{grid-template-columns:1fr}
+      .grid.col-3{grid-template-columns:1fr}
+      .grid.col-2{grid-template-columns:1fr}
+      .kpis{grid-template-columns:repeat(3,1fr)}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap bar">
+      <div class="logo">
+        <div class="logo-badge"><span>EF</span></div>
+        <span>Elastic Field</span>
+      </div>
+      <nav>
+        <a href="#music">Musik</a>
+        <a href="#video">Video</a>
+        <a href="#gallery">Galerie</a>
+        <a href="#about">Über</a>
+        <a href="#contact">Kontakt</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div class="card pad">
+          <span class="pill">Trip‑Hop · Ambient · Indie‑Electronica</span>
+          <h1>Elastic Field</h1>
+          <p class="lead">Musik für späte Stunden: warm, hypnotisch, analog‑digital. Soundtracks zwischen Stadtlicht und Nachtluft.</p>
+          <div style="display:flex;gap:12px;margin-top:18px;flex-wrap:wrap">
+            <a class="btn" href="#music">▶︎ Jetzt hören</a>
+            <a class="btn" href="#contact">Kontakt</a>
+          </div>
+          <div class="kpis">
+            <div class="mini"><span class="tag">Neu</span><b>Singles 2025</b><small style="color:var(--sub);display:block">Silent Pearls · Night Drifter</small></div>
+            <div class="mini"><span class="tag">Projekt</span><b>Elastic Field</b><small style="color:var(--sub);display:block">Frank · AI‑assisted</small></div>
+            <div class="mini"><span class="tag">Mood</span><b>Dark & Warm</b><small style="color:var(--sub);display:block">Tape‑Noise · Vinyl‑Dust</small></div>
+          </div>
+        </div>
+        <div class="tile">
+          <div class="embed">Cover/Artwork – ersetze durch ein Bild (./cover.jpg)</div>
+          <div class="body">
+            <div style="display:flex;gap:10px;flex-wrap:wrap">
+              <span class="tag">#TripHop</span><span class="tag">#Ambient</span><span class="tag">#Analog</span>
+            </div>
+            <p style="color:var(--sub);margin:10px 0 0">Füge dein Artwork als <code>cover.jpg</code> ins Repo ein und ersetze den Platzhalter.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="music">
+      <div class="wrap">
+        <h2>Musik</h2>
+        <p class="lead">Bette deine aktuellen Releases hier ein (Spotify, YouTube, Bandcamp). Tausche die Links unten.</p>
+        <div class="grid col-3">
+          <article class="tile">
+            <div class="embed">
+              <small>Spotify/YouTube Embed</small>
+            </div>
+            <div class="body">
+              <h3>Silent Pearls</h3>
+              <p style="color:var(--sub)">Ein ruhiger, hypnotischer Track. Platzhalter — Link ersetzen.</p>
+              <div style="display:flex;gap:10px;flex-wrap:wrap">
+                <a class="btn" href="#">Anhören</a>
+                <a class="btn" href="#">Kaufen</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="tile">
+            <div class="embed"><small>YouTube Embed</small></div>
+            <div class="body">
+              <h3>Night Drifter</h3>
+              <p style="color:var(--sub)">Dunkel, warm, analog. Platzhalter — Link ersetzen.</p>
+              <div style="display:flex;gap:10px;flex-wrap:wrap">
+                <a class="btn" href="#">Anhören</a>
+                <a class="btn" href="#">Kaufen</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="tile">
+            <div class="embed"><small>Bandcamp/Audio</small></div>
+            <div class="body">
+              <h3>Full View, No Exit</h3>
+              <p style="color:var(--sub)">Score‑Vibes & Tiefe. Platzhalter — Link ersetzen.</p>
+              <div style="display:flex;gap:10px;flex-wrap:wrap">
+                <a class="btn" href="#">Anhören</a>
+                <a class="btn" href="#">Kaufen</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="video">
+      <div class="wrap">
+        <h2>Video</h2>
+        <div class="grid col-2">
+          <article class="tile">
+            <div class="embed"><small>YouTube/Vimeo einbetten</small></div>
+            <div class="body">
+              <h3>Let Him Go (Visual)</h3>
+              <p style="color:var(--sub)">Ersetze den Platzhalter mit einem echten Embed‑Code.</p>
+            </div>
+          </article>
+          <article class="tile">
+            <div class="embed"><small>Visualizer / Live</small></div>
+            <div class="body">
+              <h3>Ambient Flow</h3>
+              <p style="color:var(--sub)">Langform‑Visuals, morphende Bilder — dein Stil.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery">
+      <div class="wrap">
+        <h2>Galerie</h2>
+        <p class="lead">Ziehe Bilder in dein Repo (Ordner <code>/img</code>) und verlinke sie hier.</p>
+        <div class="grid col-3">
+          <div class="tile"><div class="embed"><small>img/shot1.jpg</small></div></div>
+          <div class="tile"><div class="embed"><small>img/shot2.jpg</small></div></div>
+          <div class="tile"><div class="embed"><small>img/shot3.jpg</small></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="wrap about">
+        <div class="card panel">
+          <h2>Über Elastic Field</h2>
+          <p>Elastic Field ist ein Musikprojekt von Frank. Trip‑Hop‑DNA, analoge Wärme, digitale Klarheit. Songs und Instrumentals, die langsam atmen — für Kopfhörer‑Nächte und leise Räume.</p>
+          <p style="color:var(--sub)">Einflüsse: Depeche Mode, Broken Bells, Cohen; dazu Tape‑Sättigung und weiche Synths.</p>
+        </div>
+        <div class="card panel">
+          <h3>Credits & Tools</h3>
+          <ul>
+            <li>Suno Prompts & Lyrics Engineering</li>
+            <li>Canvas Dreamer Visuals</li>
+            <li>Ableton, Analog FX, Tape</li>
+          </ul>
+          <p style="color:var(--sub)">Diese Seite ist leicht erweiterbar. Alles in einer Datei.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="wrap">
+        <h2>Kontakt</h2>
+        <p class="lead">Buchungen, Kollaborationen, Lizenzen.</p>
+        <div class="card pad" style="display:grid;gap:10px">
+          <div class="socials">
+            <span class="chip">E‑Mail: info@example.com</span>
+            <span class="chip">Instagram: @elasticfield</span>
+            <span class="chip">YouTube: Elastic Field</span>
+            <span class="chip">Bandcamp / Spotify Links</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap" style="display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap">
+      <small>© <span id="y"></span> Elastic Field</small>
+      <small style="color:var(--sub)">Made with ♥ — Single‑File</small>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
