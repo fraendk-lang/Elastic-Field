@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://fraendk-lang.github.io/Elastic-Field/sitemap.xml
