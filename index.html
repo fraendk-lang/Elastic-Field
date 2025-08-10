@@ -65,6 +65,7 @@
     a{color:var(--ink);text-decoration:none}
     .wrap{max-width:980px;margin:0 auto;padding:18px}
 
+    /* ===== Header (neu) ===== */
     header{
       position:sticky; top:0; z-index:10;
       background:linear-gradient(to bottom, rgba(18,14,10,.95), rgba(18,14,10,.75));
@@ -75,10 +76,32 @@
     .logo{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.4px}
     .badge{width:34px;height:34px;border-radius:10px;background:conic-gradient(from 210deg, var(--brand), var(--brand-2), var(--brand));display:grid;place-items:center;box-shadow:var(--shadow);color:#2a1c10;font-weight:800}
 
+    /* Menü */
+    #nav-toggle{display:none}
+    .menu-btn{
+      display:none; cursor:pointer; user-select:none;
+      padding:8px 12px; border-radius:12px; border:1px solid var(--line); background:var(--muted);
+    }
+    .menu{
+      display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+    }
     .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;background:var(--muted);border:1px solid var(--line);transition:transform .18s ease, box-shadow .18s ease}
     .btn:hover{transform:translateY(-1px)}
     .btn.brand{background:linear-gradient(180deg,var(--brand),var(--brand-2));color:#291a0e;border-color:#543a21;font-weight:700}
+    .icon{width:18px;height:18px;display:inline-block;vertical-align:-3px}
+    .menu-icons a{
+      display:inline-flex;align-items:center;justify-content:center;
+      width:36px;height:36px;border-radius:10px;background:var(--muted);border:1px solid var(--line)
+    }
 
+    /* Mobile Menü */
+    @media (max-width:860px){
+      .menu-btn{display:inline-block}
+      .menu{display:none; width:100%; margin-top:10px; flex-direction:column; align-items:flex-start}
+      #nav-toggle:checked + label + nav.menu{display:flex}
+    }
+
+    /* ===== Rest ===== */
     .hero{border-bottom:1px solid var(--line);background:
       radial-gradient(900px 340px at 85% -10%, rgba(210,161,94,.12), transparent 60%),
       radial-gradient(600px 260px at 0% 0%, rgba(180,123,51,.10), transparent 60%)}
@@ -100,7 +123,9 @@
     .chip{border:1px solid var(--line);background:var(--panel);padding:8px 12px;border-radius:999px;transition:background .18s ease, transform .18s ease}
     .chip:hover{transform:translateY(-1px); background:linear-gradient(180deg,var(--brand),var(--brand-2)); color:#291a0e}
 
-    .btn:focus-visible, a:focus-visible, .chip:focus-visible{
+    /* Fokus-Styles (A11y) */
+    .btn:focus-visible, a:focus-visible, .chip:focus-visible,
+    .menu-icons a:focus-visible{
       outline:2px solid var(--brand); outline-offset:2px; border-radius:12px;
     }
 
@@ -114,8 +139,8 @@
 <body>
   <header>
     <div class="wrap bar">
-      <div class="logo">
-        <!-- Logo: logo.svg/ logo.png; sonst Badge 'EF' -->
+      <!-- Logo links -->
+      <a class="logo" href="#">
         <picture>
           <source srcset="logo.svg" type="image/svg+xml">
           <img src="logo.png" alt="Elastic Field Logo" style="height:34px" loading="eager" decoding="async"
@@ -123,12 +148,37 @@
         </picture>
         <template id="ef-badge"><span class="badge" aria-hidden="true">EF</span></template>
         <span>Elastic Field</span>
-      </div>
-      <nav style="display:flex;gap:10px;flex-wrap:wrap" aria-label="Hauptnavigation">
-        <a class="btn brand" href="#video">Video</a>
+      </a>
+
+      <!-- Mobile Toggle -->
+      <input id="nav-toggle" type="checkbox" aria-label="Menü umschalten">
+      <label class="menu-btn" for="nav-toggle" aria-controls="mainmenu" aria-expanded="false">☰ Menü</label>
+
+      <!-- Navigation rechts -->
+      <nav id="mainmenu" class="menu" aria-label="Hauptnavigation">
+        <a class="btn" href="#video">Video</a>
         <a class="btn" href="#about">Über</a>
-        <a class="btn" href="https://www.youtube.com/@elasticfieldmusic?sub_confirmation=1" target="_blank" rel="noopener">YouTube</a>
-        <a class="btn" href="mailto:fraendk@hotmail.com?subject=Elastic%20Field%20Anfrage">Kontakt</a>
+        <a class="btn" href="#contact">Kontakt</a>
+        <a class="btn brand" href="https://www.youtube.com/@elasticfieldmusic?sub_confirmation=1" target="_blank" rel="noopener">
+          <!-- YouTube Icon -->
+          <svg class="icon" viewBox="0 0 36 26" aria-hidden="true"><rect width="36" height="26" rx="5" fill="#FF0000"></rect><polygon points="14,7 26,13 14,19" fill="#FFFFFF"></polygon></svg>
+          Listen on YouTube
+        </a>
+        <!-- Social Icons -->
+        <span class="menu-icons" aria-label="Soziale Links">
+          <a href="https://www.youtube.com/@elasticfieldmusic" target="_blank" rel="noopener" aria-label="YouTube">
+            <svg class="icon" viewBox="0 0 36 26" aria-hidden="true"><rect width="36" height="26" rx="5" fill="#FF0000"></rect><polygon points="14,7 26,13 14,19" fill="#FFFFFF"></polygon></svg>
+          </a>
+          <a href="#" target="_blank" rel="noopener" aria-label="Spotify">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#1DB954"/></svg>
+          </a>
+          <a href="#" target="_blank" rel="noopener" aria-label="Bandcamp">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17h9l9-10H12L3 17z" fill="#629aa9"/></svg>
+          </a>
+          <a href="#" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="4" fill="#d16b6b"/><circle cx="17.5" cy="6.5" r="1.5" fill="#fff"/><circle cx="12" cy="12" r="3.5" fill="#fff"/></svg>
+          </a>
+        </span>
       </nav>
     </div>
   </header>
@@ -171,7 +221,6 @@
         <h2 style="margin:0 0 10px">Video</h2>
         <article class="tile">
           <div class="embed" style="place-items:stretch;padding:0;">
-            <!-- Eingebettetes Video: Start bei 0:09 -->
             <iframe
               width="100%" height="100%"
               src="https://www.youtube.com/embed/6erDkiy3rFU?start=9&rel=0"
