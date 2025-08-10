@@ -13,6 +13,7 @@
   <meta property="og:description" content="Trip-Hop, Ambient und Indie-Electronica.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://fraendk-lang.github.io/Elastic-Field/">
+  <!-- Zeigt dein Cover, sonst Thumbnail des eingebetteten Videos -->
   <meta property="og:image" content="https://fraendk-lang.github.io/Elastic-Field/cover.jpg">
   <meta name="twitter:card" content="summary_large_image">
 
@@ -51,9 +52,7 @@
       border-bottom:1px solid var(--line);
     }
     .bar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
-    .logo{
-      display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.4px
-    }
+    .logo{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.4px}
     .badge{
       width:34px;height:34px;border-radius:10px;
       background:conic-gradient(from 210deg, var(--brand), var(--brand-2), var(--brand));
@@ -110,7 +109,7 @@
       <nav style="display:flex;gap:10px;flex-wrap:wrap">
         <a class="btn brand" href="#video">Video</a>
         <a class="btn" href="#about">Über</a>
-        <a class="btn" href="https://www.youtube.com/@SilentPearls" target="_blank" rel="noopener">YouTube</a>
+        <a class="btn" href="https://www.youtube.com/@elasticfieldmusic" target="_blank" rel="noopener">YouTube</a>
         <a class="btn" href="mailto:fraendk@hotmail.com?subject=Elastic%20Field%20Anfrage">Kontakt</a>
       </nav>
     </div>
@@ -119,21 +118,21 @@
   <main>
     <section class="hero">
       <div class="wrap">
-        <!-- Cover: eigenes Bild als 'cover.jpg' im Repo; fällt sonst auf YouTube-Thumb zurück -->
+        <!-- Cover: eigenes Bild als 'cover.jpg' im Repo; sonst Fallback auf Kanal-Video-Thumbnail -->
         <div class="cover">
           <img
             src="cover.jpg"
             alt="Elastic Field Cover"
             style="width:100%;height:100%;object-fit:cover;display:block"
-            onerror="this.src='https://img.youtube.com/vi/WiLkcPmp6oY/maxresdefault.jpg'">
+            onerror="this.src='https://img.youtube.com/vi/6erDkiy3rFU/maxresdefault.jpg'">
         </div>
 
         <h1>Elastic Field</h1>
         <p class="lead">Musik für späte Stunden: warm, hypnotisch, analog-digital.</p>
 
         <div style="display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 6px">
-          <a class="btn brand" href="#video">▶︎ Neues Video</a>
-          <a class="btn" href="https://www.youtube.com/@SilentPearls" target="_blank" rel="noopener">Zum Kanal</a>
+          <a class="btn brand" href="#video">▶︎ Zum Video</a>
+          <a class="btn" href="https://www.youtube.com/@elasticfieldmusic" target="_blank" rel="noopener">Zum Kanal</a>
         </div>
 
         <div class="chips" style="margin-top:8px">
@@ -149,20 +148,20 @@
         <h2 style="margin:0 0 10px">Video</h2>
         <article class="tile">
           <div class="embed" style="place-items:stretch;padding:0;">
+            <!-- Featured: Elastic Field – Smooth Trip-Hop Mix | Remixes & New Tracks -->
             <iframe
               width="100%" height="100%"
-              src="https://www.youtube.com/embed/WiLkcPmp6oY"
-              title="Silent Pearls — Video"
+              src="https://www.youtube.com/embed/6erDkiy3rFU"
+              title="Elastic Field — Smooth Trip-Hop Mix (Seamless Flow)"
               frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen>
-            </iframe>
+              allowfullscreen></iframe>
           </div>
           <div style="padding:14px 16px">
-            <h3 style="margin:0 0 6px">Silent Pearls — Video</h3>
+            <h3 style="margin:0 0 6px">Elastic Field — Smooth Trip-Hop Mix</h3>
             <p style="margin:0;color:var(--sub)">
               Mehr auf dem Kanal:
-              <a href="https://www.youtube.com/@SilentPearls" target="_blank" rel="noopener">Silent Pearls</a>
+              <a href="https://www.youtube.com/@elasticfieldmusic" target="_blank" rel="noopener">@elasticfieldmusic</a>
             </p>
           </div>
         </article>
@@ -174,11 +173,8 @@
         <h2 style="margin:0 0 10px">Über Elastic Field</h2>
         <div class="tile" style="padding:14px 16px">
           <p style="margin:0 0 8px">
-           Elastic Field was founded in 2011 – a free-form music project rooted in ambient, lounge, trip hop, downbeat, jazz, and subtle electronic textures. The sound is reflective, immersive, and emotional – often instrumental, sometimes featuring voice fragments or spoken word passages.
-
-In 2012, the debut album “Non Smokers Nightmare” introduced a world of atmospheric contrasts and sonic minimalism. One year later, the follow-up “Another Non Smokers Nightmare” (2013) deepened that sound – darker, more focused, but equally open and textured.
-
-Now, in 2025, Elastic Field returns – with a series of remixes, new compositions, and a refined sound. While remaining true to its roots, the project embraces modern sonic aesthetics and digital production. 
+            Elastic Field ist Franks Musikprojekt zwischen Trip-Hop, Ambient und Indie-Electronica –
+            warm, hypnotisch, analog-digital. Kopfhörer-Nächte, langsame Grooves, tiefe Räume.
           </p>
           <div class="chips" style="margin-top:6px">
             <span class="chip">Einflüsse: Depeche Mode</span>
@@ -202,7 +198,7 @@ Now, in 2025, Elastic Field returns – with a series of remixes, new compositio
             E-Mail: <a href="mailto:fraendk@hotmail.com?subject=Elastic%20Field%20Anfrage">fraendk@hotmail.com</a>
           </p>
           <div class="chips" style="margin-top:8px">
-            <a class="chip" href="https://www.youtube.com/@SilentPearls" target="_blank" rel="noopener">YouTube</a>
+            <a class="chip" href="https://www.youtube.com/@elasticfieldmusic" target="_blank" rel="noopener">YouTube</a>
             <a class="chip" href="#" target="_blank" rel="noopener">Bandcamp</a>
             <a class="chip" href="#" target="_blank" rel="noopener">Spotify</a>
             <a class="chip" href="#" target="_blank" rel="noopener">Instagram</a>
@@ -223,4 +219,3 @@ Now, in 2025, Elastic Field returns – with a series of remixes, new compositio
   <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
 </body>
 </html>
-
