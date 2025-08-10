@@ -10,7 +10,7 @@
   <meta property="og:description" content="Trip-Hop, Ambient und Indie-Electronica.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://fraendk-lang.github.io/Elastic-Field/">
-  <meta property="og:image" content="https://fraendk-lang.github.io/Elastic-Field/cover.jpg"><!-- optional -->
+  <meta property="og:image" content="https://img.youtube.com/vi/WiLkcPmp6oY/maxresdefault.jpg">
   <meta name="twitter:card" content="summary_large_image">
   <style>
     :root{--bg:#0b0c10;--panel:#121318;--ink:#e8ecf1;--sub:#a9b1bc;--line:#1d2028;--muted:#2a2e39;--radius:16px}
@@ -23,7 +23,7 @@
     .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;background:var(--muted);border:1px solid var(--line)}
     .btn:hover{transform:translateY(-1px)}
     .hero{border-bottom:1px solid var(--line);background:radial-gradient(700px 300px at 100% 0%, rgba(126,231,135,.12), transparent 60%)}
-    .cover{width:100%;aspect-ratio:16/9;background:#0f1016;border-bottom:1px solid var(--line);display:grid;place-items:center}
+    .cover{width:100%;aspect-ratio:16/9;background:#0f1016;border-bottom:1px solid var(--line);display:grid;place-items:center;overflow:hidden;border-radius:12px}
     h1{margin:10px 0 6px;font-size:clamp(28px,4.5vw,44px)}
     .lead{color:var(--sub);margin:0 0 12px}
     .tile{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
@@ -32,13 +32,7 @@
     footer{padding:28px 0;border-top:1px solid var(--line);color:var(--sub)}
     .chips{display:flex;gap:10px;flex-wrap:wrap}
     .chip{border:1px solid var(--line);background:var(--panel);padding:8px 12px;border-radius:999px}
-  </style<div style="width:100%;aspect-ratio:16/9;border:1px solid #1d2028;border-radius:14px;overflow:hidden;margin:12px 0;">
-  <img
-    src="https://img.youtube.com/vi/WiLkcPmp6oY/maxresdefault.jpg"
-    alt="Silent Pearls Cover"
-    style="width:100%;height:100%;object-fit:cover;display:block;">
-</div>
-
+  </style>
 </head>
 <body>
   <header>
@@ -54,10 +48,13 @@
   <main>
     <section class="hero">
       <div class="wrap">
-        <!-- Cover: lade einfach eine Datei 'cover.jpg' ins Repo; wenn nicht vorhanden, bleibt Platzhalter -->
+        <!-- Cover: nutzt das YouTube-Thumbnail (kein Upload nötig) -->
         <div class="cover">
-          <img src="cover.jpg" alt="Elastic Field Cover" style="width:100%;height:100%;object-fit:cover;display:block" onerror="this.parentElement.textContent='Optional: cover.jpg hier anzeigen'">
+          <img src="https://img.youtube.com/vi/WiLkcPmp6oY/maxresdefault.jpg"
+               alt="Silent Pearls Cover"
+               style="width:100%;height:100%;object-fit:cover;display:block">
         </div>
+
         <h1>Elastic Field</h1>
         <p class="lead">Musik für späte Stunden: warm, hypnotisch, analog-digital.</p>
         <div style="display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 6px">
