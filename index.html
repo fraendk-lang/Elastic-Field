@@ -4,22 +4,22 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Elastic Field — Official Site</title>
-  <meta name="description" content="Elastic Field — Musik für späte Stunden: warm, hypnotisch, analog-digital.">
+  <meta name="description" content="Elastic Field — Musik für späte Stunden: warm, hypnotisch, analog‑digital.">
   <link rel="canonical" href="https://fraendk-lang.github.io/Elastic-Field/">
   <meta name="theme-color" content="#120e0a">
-
+  
   <!-- Social Preview -->
   <meta property="og:title" content="Elastic Field — Official Site">
   <meta property="og:description" content="Trip-Hop, Ambient und Indie-Electronica.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://fraendk-lang.github.io/Elastic-Field/">
-  <!-- Zeigt dein Cover, sonst Thumbnail des eingebetteten Videos -->
   <meta property="og:image" content="https://fraendk-lang.github.io/Elastic-Field/cover.jpg">
   <meta name="twitter:card" content="summary_large_image">
 
   <style>
+    html{scroll-behavior:smooth}
     :root{
-      /* Warmes Braun/Gold passend zum Cover */
+      /* Warmes Braun/Gold passend zu EF */
       --bg:#120e0a;          /* sehr dunkles Braun */
       --panel:#1b140f;       /* Karten/Hintergründe */
       --ink:#f6ead5;         /* warme Schriftfarbe */
@@ -46,41 +46,25 @@
 
     header{
       position:sticky;top:0;z-index:10;
-      background:
-        linear-gradient( to bottom, rgba(18,14,10,.95), rgba(18,14,10,.75) );
+      background:linear-gradient( to bottom, rgba(18,14,10,.95), rgba(18,14,10,.75) );
       backdrop-filter:saturate(110%) blur(6px);
       border-bottom:1px solid var(--line);
     }
     .bar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
     .logo{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.4px}
-    .badge{
-      width:34px;height:34px;border-radius:10px;
-      background:conic-gradient(from 210deg, var(--brand), var(--brand-2), var(--brand));
-      display:grid;place-items:center;box-shadow:var(--shadow);color:#2a1c10;font-weight:800
-    }
+    .badge{width:34px;height:34px;border-radius:10px;background:conic-gradient(from 210deg, var(--brand), var(--brand-2), var(--brand));display:grid;place-items:center;box-shadow:var(--shadow);color:#2a1c10;font-weight:800}
 
-    .btn{
-      display:inline-flex;align-items:center;gap:8px;
-      padding:10px 14px;border-radius:12px;
-      background:var(--muted);border:1px solid var(--line)
-    }
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;background:var(--muted);border:1px solid var(--line)}
     .btn:hover{transform:translateY(-1px)}
-    .btn.brand{
-      background:linear-gradient(180deg,var(--brand),var(--brand-2));
-      color:#291a0e;border-color:#543a21;font-weight:700
-    }
+    .btn.brand{background:linear-gradient(180deg,var(--brand),var(--brand-2));color:#291a0e;border-color:#543a21;font-weight:700}
 
-    .hero{
-      border-bottom:1px solid var(--line);
-      background:
-        radial-gradient(900px 340px at 85% -10%, rgba(210,161,94,.12), transparent 60%),
-        radial-gradient(600px 260px at 0% 0%, rgba(180,123,51,.10), transparent 60%);
-    }
+    .hero{border-bottom:1px solid var(--line);background:
+      radial-gradient(900px 340px at 85% -10%, rgba(210,161,94,.12), transparent 60%),
+      radial-gradient(600px 260px at 0% 0%, rgba(180,123,51,.10), transparent 60%)}
 
-    .cover{
-      width:100%;aspect-ratio:16/9;border-radius:14px;overflow:hidden;
-      background:#0e0a07;border:1px solid var(--line);box-shadow:var(--shadow)
-    }
+    .cover{width:100%;aspect-ratio:16/9;border-radius:14px;overflow:hidden;background:#0e0a07;border:1px solid var(--line);box-shadow:var(--shadow)}
+    .cover .fallback{display:grid;place-items:center;width:100%;height:100%;background:linear-gradient(135deg,#1b140f,#120e0a)}
+
     h1{margin:12px 0 6px;font-size:clamp(28px,4.5vw,44px)}
     .lead{color:var(--sub);margin:0 0 12px}
 
@@ -94,22 +78,25 @@
     .chip{border:1px solid var(--line);background:var(--panel);padding:8px 12px;border-radius:999px}
 
     /* Mobile */
-    @media (max-width:640px){
-      .wrap{padding:14px}
-    }
+    @media (max-width:640px){.wrap{padding:14px}}
   </style>
 </head>
 <body>
   <header>
     <div class="wrap bar">
       <div class="logo">
-        <div class="badge" aria-hidden="true">EF</div>
+        <!-- Logo: nutzt logo.svg, sonst logo.png; fällt dann auf Badge 'EF' zurück -->
+        <picture>
+          <source srcset="logo.svg" type="image/svg+xml">
+          <img src="logo.png" alt="Elastic Field Logo" style="height:34px" onerror="this.replaceWith(document.getElementById('ef-badge').content.cloneNode(true))">
+        </picture>
+        <template id="ef-badge"><span class="badge" aria-hidden="true">EF</span></template>
         <span>Elastic Field</span>
       </div>
       <nav style="display:flex;gap:10px;flex-wrap:wrap">
         <a class="btn brand" href="#video">Video</a>
         <a class="btn" href="#about">Über</a>
-        <a class="btn" href="https://www.youtube.com/@elasticfieldmusic" target="_blank" rel="noopener">YouTube</a>
+        <a class="btn" href="https://www.youtube.com/@elasticfieldmusic?sub_confirmation=1" target="_blank" rel="noopener">YouTube</a>
         <a class="btn" href="mailto:fraendk@hotmail.com?subject=Elastic%20Field%20Anfrage">Kontakt</a>
       </nav>
     </div>
@@ -118,21 +105,23 @@
   <main>
     <section class="hero">
       <div class="wrap">
-        <!-- Cover: eigenes Bild als 'cover.jpg' im Repo; sonst Fallback auf Kanal-Video-Thumbnail -->
+        <!-- Hero-Cover: eigenes Bild als 'cover.jpg'; wenn nicht vorhanden, dezente Typo-Fläche -->
         <div class="cover">
-          <img
-            src="cover.jpg"
-            alt="Elastic Field Cover"
-            style="width:100%;height:100%;object-fit:cover;display:block"
-            onerror="this.src='https://img.youtube.com/vi/6erDkiy3rFU/maxresdefault.jpg'">
+          <img src="cover.jpg" alt="Elastic Field Cover" style="width:100%;height:100%;object-fit:cover;display:block" onerror="this.remove();document.getElementById('cover-fallback').style.display='grid'">
+          <div id="cover-fallback" class="fallback" style="display:none">
+            <div style="text-align:center">
+              <div style="font-size:clamp(28px,4.5vw,44px);font-weight:800;letter-spacing:.5px;color:var(--ink)">Elastic Field</div>
+              <div style="opacity:.8;margin-top:6px;color:var(--sub)">Trip-Hop · Ambient · Indie‑Electronica</div>
+            </div>
+          </div>
         </div>
 
         <h1>Elastic Field</h1>
-        <p class="lead">Musik für späte Stunden: warm, hypnotisch, analog-digital.</p>
+        <p class="lead">Musik für späte Stunden: warm, hypnotisch, analog‑digital.</p>
 
         <div style="display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 6px">
           <a class="btn brand" href="#video">▶︎ Zum Video</a>
-          <a class="btn" href="https://www.youtube.com/@elasticfieldmusic" target="_blank" rel="noopener">Zum Kanal</a>
+          <a class="btn" href="https://www.youtube.com/@elasticfieldmusic?sub_confirmation=1" target="_blank" rel="noopener">Zum Kanal</a>
         </div>
 
         <div class="chips" style="margin-top:8px">
@@ -147,22 +136,22 @@
       <div class="wrap">
         <h2 style="margin:0 0 10px">Video</h2>
         <article class="tile">
-          <div class="embed" style="place-items:stretch;padding:0;">
-            <!-- Featured: Elastic Field – Smooth Trip-Hop Mix | Remixes & New Tracks -->
-            <iframe
-              width="100%" height="100%"
-              src="https://www.youtube.com/embed/6erDkiy3rFU"
-              title="Elastic Field — Smooth Trip-Hop Mix (Seamless Flow)"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen></iframe>
+          <div class="embed" style="place-items:center;padding:0;">
+            <!-- Kein stilles Pearl-Video mehr: Call-to-Action zum Kanal -->
+            <a href="https://www.youtube.com/@elasticfieldmusic?sub_confirmation=1" target="_blank" rel="noopener" style="display:grid;place-items:center;width:100%;height:100%;text-align:center">
+              <div>
+                <svg width="72" height="52" viewBox="0 0 36 26" aria-hidden="true">
+                  <rect width="36" height="26" rx="5" fill="#FF0000"></rect>
+                  <polygon points="14,7 26,13 14,19" fill="#FFFFFF"></polygon>
+                </svg>
+                <div style="font-weight:700;margin-top:8px">Zum Elastic‑Field‑Kanal</div>
+                <div style="opacity:.8;color:var(--sub);margin-top:4px">@elasticfieldmusic</div>
+              </div>
+            </a>
           </div>
           <div style="padding:14px 16px">
-            <h3 style="margin:0 0 6px">Elastic Field — Smooth Trip-Hop Mix</h3>
-            <p style="margin:0;color:var(--sub)">
-              Mehr auf dem Kanal:
-              <a href="https://www.youtube.com/@elasticfieldmusic" target="_blank" rel="noopener">@elasticfieldmusic</a>
-            </p>
+            <h3 style="margin:0 0 6px">Aktuelle Videos & Mixes</h3>
+            <p style="margin:0;color:var(--sub)">Klicke, um direkt auf YouTube zu öffnen. Einbettung einzelner Videos können wir jederzeit ergänzen.</p>
           </div>
         </article>
       </div>
@@ -172,20 +161,14 @@
       <div class="wrap">
         <h2 style="margin:0 0 10px">Über Elastic Field</h2>
         <div class="tile" style="padding:14px 16px">
-          <p style="margin:0 0 8px">
-            Elastic Field ist Franks Musikprojekt zwischen Trip-Hop, Ambient und Indie-Electronica –
-            warm, hypnotisch, analog-digital. Kopfhörer-Nächte, langsame Grooves, tiefe Räume.
-          </p>
+          <p style="margin:0 0 8px">Elastic Field ist Franks Musikprojekt zwischen Trip‑Hop, Ambient und Indie‑Electronica – warm, hypnotisch, analog‑digital. Kopfhörer‑Nächte, langsame Grooves, tiefe Räume.</p>
           <div class="chips" style="margin-top:6px">
             <span class="chip">Einflüsse: Depeche Mode</span>
             <span class="chip">Broken Bells</span>
             <span class="chip">Leonard Cohen</span>
-            <span class="chip">Tape-Sättigung</span>
+            <span class="chip">Tape‑Sättigung</span>
           </div>
-          <p style="margin:10px 0 0; color:var(--sub)">
-            Kollaborationen & Lizenzen:
-            <a href="mailto:fraendk@hotmail.com?subject=Elastic%20Field%20Anfrage">fraendk@hotmail.com</a>
-          </p>
+          <p style="margin:10px 0 0; color:var(--sub)">Kollaborationen & Lizenzen: <a href="mailto:fraendk@hotmail.com?subject=Elastic%20Field%20Anfrage">fraendk@hotmail.com</a></p>
         </div>
       </div>
     </section>
@@ -194,9 +177,7 @@
       <div class="wrap">
         <h2 style="margin:0 0 10px">Kontakt</h2>
         <div class="tile" style="padding:14px 16px">
-          <p style="margin:0 0 6px">
-            E-Mail: <a href="mailto:fraendk@hotmail.com?subject=Elastic%20Field%20Anfrage">fraendk@hotmail.com</a>
-          </p>
+          <p style="margin:0 0 6px">E‑Mail: <a href="mailto:fraendk@hotmail.com?subject=Elastic%20Field%20Anfrage">fraendk@hotmail.com</a></p>
           <div class="chips" style="margin-top:8px">
             <a class="chip" href="https://www.youtube.com/@elasticfieldmusic" target="_blank" rel="noopener">YouTube</a>
             <a class="chip" href="#" target="_blank" rel="noopener">Bandcamp</a>
@@ -212,7 +193,7 @@
   <footer>
     <div class="wrap" style="display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap">
       <small>© <span id="y"></span> Elastic Field</small>
-      <small style="color:var(--sub)">Single-File · GitHub Pages</small>
+      <small style="color:var(--sub)">Single‑File · GitHub Pages</small>
     </div>
   </footer>
 
