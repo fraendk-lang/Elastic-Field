@@ -17,11 +17,11 @@
   <meta property="og:image" content="https://fraendk-lang.github.io/Elastic-Field/cover.jpg">
   <meta name="twitter:card" content="summary_large_image">
 
-  <!-- Favicon / Touch-Icon (optional, wird genutzt wenn vorhanden) -->
+  <!-- Favicon / Touch-Icon (nur wenn vorhanden) -->
   <link rel="icon" href="/Elastic-Field/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/Elastic-Field/cover.jpg">
 
-  <!-- Performance Hints -->
+  <!-- Performance -->
   <link rel="preconnect" href="https://www.youtube.com">
   <link rel="preconnect" href="https://i.ytimg.com">
 
@@ -51,35 +51,23 @@
   <style>
     html{scroll-behavior:smooth}
     :root{
-      /* Warmes Braun/Gold passend zu EF */
-      --bg:#120e0a;          /* sehr dunkles Braun */
-      --panel:#1b140f;       /* Karten/Hintergründe */
-      --ink:#f6ead5;         /* warme Schriftfarbe */
-      --sub:#d7c6a9;         /* sekundärer Text */
-      --line:#3b2b1f;        /* Linien/Borders */
-      --muted:#241c14;       /* dezente Flächen/Buttons */
-      --brand:#d2a15e;       /* Gold-Akzent */
-      --brand-2:#b47b33;     /* dunkleres Gold */
-      --radius:16px;
-      --shadow:0 10px 25px rgba(0,0,0,.35);
-      --header-h:84px;
+      --bg:#120e0a; --panel:#1b140f; --ink:#f6ead5; --sub:#d7c6a9;
+      --line:#3b2b1f; --muted:#241c14; --brand:#d2a15e; --brand-2:#b47b33;
+      --radius:16px; --shadow:0 10px 25px rgba(0,0,0,.35); --header-h:84px;
     }
-
     *{box-sizing:border-box}
     html,body{margin:0}
     body{
-      background:var(--bg);
-      color:var(--ink);
+      background:var(--bg); color:var(--ink);
       font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Arial;
-      text-rendering:optimizeLegibility;
-      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility; -webkit-font-smoothing:antialiased;
     }
     a{color:var(--ink);text-decoration:none}
     .wrap{max-width:980px;margin:0 auto;padding:18px}
 
     header{
-      position:sticky;top:0;z-index:10;
-      background:linear-gradient( to bottom, rgba(18,14,10,.95), rgba(18,14,10,.75) );
+      position:sticky; top:0; z-index:10;
+      background:linear-gradient(to bottom, rgba(18,14,10,.95), rgba(18,14,10,.75));
       backdrop-filter:saturate(110%) blur(6px);
       border-bottom:1px solid var(--line);
     }
@@ -112,20 +100,14 @@
     .chip{border:1px solid var(--line);background:var(--panel);padding:8px 12px;border-radius:999px;transition:background .18s ease, transform .18s ease}
     .chip:hover{transform:translateY(-1px); background:linear-gradient(180deg,var(--brand),var(--brand-2)); color:#291a0e}
 
-    /* Fokus-Styles (A11y) */
     .btn:focus-visible, a:focus-visible, .chip:focus-visible{
-      outline:2px solid var(--brand);
-      outline-offset:2px;
-      border-radius:12px;
+      outline:2px solid var(--brand); outline-offset:2px; border-radius:12px;
     }
 
-    /* Reduced Motion */
     @media (prefers-reduced-motion: reduce){
       .btn, .tile, .chip{transition:none}
       .btn:hover, .tile:hover, .chip:hover{transform:none}
     }
-
-    /* Mobile */
     @media (max-width:640px){.wrap{padding:14px}}
   </style>
 </head>
@@ -133,7 +115,7 @@
   <header>
     <div class="wrap bar">
       <div class="logo">
-        <!-- Logo: nutzt logo.svg, sonst logo.png; fällt dann auf Badge 'EF' zurück -->
+        <!-- Logo: logo.svg/ logo.png; sonst Badge 'EF' -->
         <picture>
           <source srcset="logo.svg" type="image/svg+xml">
           <img src="logo.png" alt="Elastic Field Logo" style="height:34px" loading="eager" decoding="async"
@@ -154,7 +136,7 @@
   <main>
     <section class="hero">
       <div class="wrap">
-        <!-- Hero-Cover: eigenes Bild als 'cover.jpg'; wenn nicht vorhanden, dezente Typo-Fläche -->
+        <!-- Hero-Cover: 'cover.jpg'; sonst typografischer Fallback -->
         <div class="cover">
           <img src="cover.jpg" alt="Elastic Field Cover"
                style="width:100%;height:100%;object-fit:cover;display:block"
@@ -188,23 +170,23 @@
       <div class="wrap">
         <h2 style="margin:0 0 10px">Video</h2>
         <article class="tile">
-          <div class="embed" style="place-items:center;padding:0;">
-            <!-- CTA zum Kanal (sauber & schnell). Wenn du ein spezifisches Video einbetten willst, sag mir den Link. -->
-            <a href="https://www.youtube.com/@elasticfieldmusic?sub_confirmation=1" target="_blank" rel="noopener"
-               style="display:grid;place-items:center;width:100%;height:100%;text-align:center">
-              <div>
-                <svg width="72" height="52" viewBox="0 0 36 26" aria-hidden="true">
-                  <rect width="36" height="26" rx="5" fill="#FF0000"></rect>
-                  <polygon points="14,7 26,13 14,19" fill="#FFFFFF"></polygon>
-                </svg>
-                <div style="font-weight:700;margin-top:8px">Zum Elastic-Field-Kanal</div>
-                <div style="opacity:.8;color:var(--sub);margin-top:4px">@elasticfieldmusic</div>
-              </div>
-            </a>
+          <div class="embed" style="place-items:stretch;padding:0;">
+            <!-- Eingebettetes Video: Start bei 0:09 -->
+            <iframe
+              width="100%" height="100%"
+              src="https://www.youtube.com/embed/6erDkiy3rFU?start=9&rel=0"
+              title="Elastic Field — Video"
+              frameborder="0"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen></iframe>
           </div>
           <div style="padding:14px 16px">
-            <h3 style="margin:0 0 6px">Aktuelle Videos & Mixes</h3>
-            <p style="margin:0;color:var(--sub)">Klicke, um direkt auf YouTube zu öffnen. Einbettung einzelner Videos können wir jederzeit ergänzen.</p>
+            <h3 style="margin:0 0 6px">Featured Video</h3>
+            <p style="margin:0;color:var(--sub)">
+              Mehr auf dem Kanal:
+              <a href="https://www.youtube.com/@elasticfieldmusic" target="_blank" rel="noopener">@elasticfieldmusic</a>
+            </p>
           </div>
         </article>
       </div>
@@ -256,14 +238,6 @@
     </div>
   </footer>
 
-  <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
-  </script>
-
-  <!-- Falls später Iframes/Bilder ergänzt werden: -->
-  <script>
-    // Beispiel: wenn du später Gallery-Bilder ergänzt, erhalten sie lazy-loading:
-    // document.querySelectorAll('img:not([loading])').forEach(img=>img.loading='lazy');
-  </script>
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
 </body>
 </html>
