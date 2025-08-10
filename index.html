@@ -4,28 +4,32 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Elastic Field — Official Site</title>
-  <meta name="description" content="Elastic Field — Musik für späte Stunden: warm, hypnotisch, analog-digital.">
+  <meta name="description" content="Elastic Field — Musik für späte Stunden: Ambient, Trip-Hop, Downbeat, Lounge, Jazzy & Electronic.">
+  <meta name="robots" content="index,follow">
   <link rel="canonical" href="https://fraendk-lang.github.io/Elastic-Field/">
   <meta name="theme-color" content="#120e0a">
   <meta name="color-scheme" content="dark">
 
   <!-- Social Preview -->
   <meta property="og:title" content="Elastic Field — Official Site">
-  <meta property="og:description" content="Trip-Hop, Ambient und Indie-Electronica.">
+  <meta property="og:description" content="Ambient · Trip-Hop · Downbeat · Lounge · Jazzy · Electronic">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://fraendk-lang.github.io/Elastic-Field/">
-  <meta property="og:image" content="https://fraendk-lang.github.io/Elastic-Field/cover.jpg">
+  <meta property="og:image" content="https://fraendk-lang.github.io/Elastic-Field/social-card.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
 
   <!-- Favicon / Touch-Icon (optional) -->
   <link rel="icon" href="/Elastic-Field/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/Elastic-Field/cover.jpg">
 
-  <!-- Performance -->
+  <!-- Preload poster for fast paint -->
+  <link rel="preload" as="image" href="cover.jpg" fetchpriority="high">
+
+  <!-- Perf: Preconnect targets (nur bei Consent gesetzt) -->
   <link rel="preconnect" href="https://www.youtube.com">
-  <link rel="preconnect" href="https://i.ytimg.com">
   <link rel="preconnect" href="https://open.spotify.com">
-  <link rel="preconnect" href="https://i.scdn.co">
 
   <!-- Structured Data -->
   <script type="application/ld+json">
@@ -40,15 +44,9 @@
     ],
     "genre": ["Ambient","Lounge","Trip hop","Downbeat","Jazz","Electronic"],
     "foundingDate": "2011",
-    "description": "Elastic Field was founded in 2011 – a free-form music project rooted in ambient, lounge, trip hop, downbeat, jazz, and subtle electronic textures. The sound is reflective, immersive, and emotional – often instrumental, sometimes featuring voice fragments or spoken word passages.\n\nIn 2012, the debut album “Non Smokers Nightmare” introduced a world of atmospheric contrasts and sonic minimalism. One year later, the follow-up “Another Non Smokers Nightmare” (2013) deepened that sound – darker, more focused, but equally open and textured.\n\nNow, in 2025, Elastic Field returns – with a series of remixes, new compositions, and a refined sound. While remaining true to its roots, the project embraces modern sonic aesthetics and digital production. It’s a comeback ohne Nostalgie – ein neuer Anfang im gleichen Geist.",
-    "album": [
-      {"@type":"MusicAlbum","name":"Non Smokers Nightmare","byArtist":"Elastic Field","datePublished":"2012"},
-      {"@type":"MusicAlbum","name":"Another Non Smokers Nightmare","byArtist":"Elastic Field","datePublished":"2013"}
-    ],
+    "description": "Elastic Field was founded in 2011 – a free-form music project rooted in ambient, lounge, trip hop, downbeat, jazz, and subtle electronic textures. The sound is reflective, immersive, and emotional – often instrumental, sometimes featuring voice fragments or spoken word passages. In 2012, the debut album “Non Smokers Nightmare” introduced a world of atmospheric contrasts and sonic minimalism. One year later, the follow-up “Another Non Smokers Nightmare” (2013) deepened that sound – darker, more focused, but equally open and textured. Now, in 2025, Elastic Field returns – with a series of remixes, new compositions, and a refined sound.",
     "contactPoint": [{
-      "@type":"ContactPoint",
-      "contactType":"general",
-      "email":"fraendk@hotmail.com"
+      "@type":"ContactPoint","contactType":"general","email":"fraendk@hotmail.com"
     }]
   }
   </script>
@@ -68,9 +66,19 @@
       text-rendering:optimizeLegibility; -webkit-font-smoothing:antialiased;
     }
     a{color:var(--ink);text-decoration:none}
+
+    /* Skip-Link */
+    .skip-link{
+      position:absolute; left:-999px; top:auto; width:1px; height:1px; overflow:hidden;
+    }
+    .skip-link:focus{
+      left:12px; top:12px; width:auto; height:auto; padding:10px 12px;
+      background:#fff; color:#000; border-radius:10px; z-index:9999;
+    }
+
     .wrap{max-width:980px;margin:0 auto;padding:18px}
 
-    /* ===== Header ===== */
+    /* Header */
     header{
       position:sticky; top:0; z-index:10;
       background:linear-gradient(to bottom, rgba(18,14,10,.95), rgba(18,14,10,.75));
@@ -87,7 +95,6 @@
     .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;background:var(--muted);border:1px solid var(--line);transition:transform .18s ease, box-shadow .18s ease}
     .btn:hover{transform:translateY(-1px)}
     .btn.brand{background:linear-gradient(180deg,var(--brand),var(--brand-2));color:#291a0e;border-color:#543a21;font-weight:700}
-    .icon{width:18px;height:18px;display:inline-block;vertical-align:-3px}
     .menu-icons a{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:10px;background:var(--muted);border:1px solid var(--line)}
 
     @media (max-width:860px){
@@ -96,7 +103,7 @@
       #nav-toggle:checked + label + nav.menu{display:flex}
     }
 
-    /* ===== Hero: Video + zentrierte Typewriter-Headline ===== */
+    /* Hero */
     .hero{
       border-bottom:1px solid var(--line);
       background:
@@ -126,18 +133,11 @@
     .hero-title{
       margin:0; font-weight:800; letter-spacing:.4px; line-height:.95;
       font-size:clamp(46px, 8.2vw, 120px);
-      white-space:nowrap; /* eine Zeile */
-      text-shadow:
-        0 2px 12px rgba(0,0,0,.55),
-        0 0 40px rgba(0,0,0,.45);
+      white-space:nowrap;
+      text-shadow:0 2px 12px rgba(0,0,0,.55), 0 0 40px rgba(0,0,0,.45);
     }
-    /* Typewriter-Cursor */
-    .caret{
-      display:inline-block;
-      width:.6ch; margin-left:.1ch;
-      border-right:2px solid var(--ink);
-      animation:blink .9s steps(1,end) infinite;
-    }
+    .caret{display:inline-block;width:.6ch;margin-left:.1ch;border-right:2px solid var(--ink);animation:blink .9s steps(1,end) infinite}
+
     @keyframes vfade{ to{ opacity:1 } }
     @keyframes tfade{ to{ opacity:1 } }
     @keyframes blink{ 50%{ border-color:transparent } }
@@ -153,14 +153,26 @@
     .chip{border:1px solid var(--line);background:var(--panel);padding:8px 12px;border-radius:999px;transition:background .18s ease, transform .18s ease}
     .chip:hover{transform:translateY(-1px); background:linear-gradient(180deg,var(--brand),var(--brand-2)); color:#291a0e}
 
+    /* Consent Cards (2-Klick) */
+    .consent{display:grid;place-items:center;aspect-ratio:16/9;background:linear-gradient(180deg,#1b140f,#120e0a);border-bottom:1px solid var(--line)}
+    .consent .card{
+      display:grid; gap:10px; place-items:center; text-align:center;
+      background:rgba(18,14,10,.5); border:1px solid var(--line); border-radius:12px; padding:14px 16px;
+      max-width:min(92%, 720px)
+    }
+    .consent .actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+    .consent .small{color:var(--sub);font-size:12px}
+    .consent .allow{background:linear-gradient(180deg,var(--brand),var(--brand-2));color:#291a0e;border:1px solid #543a21;padding:10px 14px;border-radius:12px;cursor:pointer}
+    .consent .once{background:var(--muted);border:1px solid var(--line);padding:10px 14px;border-radius:12px;cursor:pointer}
+
     /* Fokus-Styles */
-    .btn:focus-visible, a:focus-visible, .chip:focus-visible, .menu-icons a:focus-visible{
+    .btn:focus-visible, a:focus-visible, .chip:focus-visible, .menu-btn:focus-visible, .consent .allow:focus-visible, .consent .once:focus-visible{
       outline:2px solid var(--brand); outline-offset:2px; border-radius:12px;
     }
 
     @media (prefers-reduced-motion: reduce){
       .btn, .tile, .chip, .cover video, .overlay{transition:none; animation:none}
-      .caret{ animation:none }
+      .caret{animation:none}
     }
     @media (max-width:640px){
       .wrap{padding:14px}
@@ -168,56 +180,39 @@
   </style>
 </head>
 <body>
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
+
   <header>
     <div class="wrap bar">
       <a class="logo" href="#">
-        <picture>
-          <source src="logo.svg" type="image/svg+xml">
-          <img src="logo.png" alt="Elastic Field Logo" style="height:34px" loading="eager" decoding="async"
-               onerror="this.replaceWith(document.getElementById('ef-badge').content.cloneNode(true))">
-        </picture>
         <template id="ef-badge"><span class="badge" aria-hidden="true">EF</span></template>
         <span>Elastic Field</span>
       </a>
 
       <input id="nav-toggle" type="checkbox" aria-label="Menü umschalten">
-      <label class="menu-btn" for="nav-toggle" aria-controls="mainmenu" aria-expanded="false">☰ Menü</label>
+      <label id="nav-label" class="menu-btn" for="nav-toggle" aria-controls="mainmenu" aria-expanded="false">☰ Menü</label>
 
       <nav id="mainmenu" class="menu" aria-label="Hauptnavigation">
         <a class="btn" href="#listen">Hören</a>
         <a class="btn" href="#video">Video</a>
         <a class="btn" href="#about">Über</a>
         <a class="btn" href="#contact">Kontakt</a>
-        <a class="btn brand" href="https://www.youtube.com/@elasticfieldmusic?sub_confirmation=1" target="_blank" rel="noopener">
-          <svg class="icon" viewBox="0 0 36 26" aria-hidden="true"><rect width="36" height="26" rx="5" fill="#FF0000"></rect><polygon points="14,7 26,13 14,19" fill="#FFFFFF"></polygon></svg>
-          YouTube
-        </a>
-        <a class="btn" href="https://open.spotify.com/artist/2wn4Zq8AOBsX50X7fyBEoL" target="_blank" rel="noopener">
-          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#1DB954"/></svg>
-          Spotify
-        </a>
-        <span class="menu-icons" aria-label="Soziale Links">
-          <a href="https://www.youtube.com/@elasticfieldmusic" target="_blank" rel="noopener" aria-label="YouTube">
-            <svg class="icon" viewBox="0 0 36 26" aria-hidden="true"><rect width="36" height="26" rx="5" fill="#FF0000"></rect><polygon points="14,7 26,13 14,19" fill="#FFFFFF"></polygon></svg>
-          </a>
-          <a href="https://open.spotify.com/artist/2wn4Zq8AOBsX50X7fyBEoL" target="_blank" rel="noopener" aria-label="Spotify">
-            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#1DB954"/></svg>
-          </a>
-        </span>
+        <a class="btn brand" href="https://www.youtube.com/@elasticfieldmusic?sub_confirmation=1" target="_blank" rel="noopener">YouTube</a>
+        <a class="btn" href="https://open.spotify.com/artist/2wn4Zq8AOBsX50X7fyBEoL" target="_blank" rel="noopener">Spotify</a>
       </nav>
     </div>
   </header>
 
-  <main>
+  <main id="main">
     <section class="hero">
       <div class="wrap">
-        <!-- HERO: Video (480p) + Poster, zentrierte Typewriter-Headline -->
+        <!-- HERO: Video + Typewriter -->
         <div class="cover">
           <video autoplay muted loop playsinline preload="metadata" poster="cover.jpg">
             <source src="hero_480p.mp4" type="video/mp4">
           </video>
           <div class="overlay">
-            <h2 class="hero-title" id="ef-type" aria-label="Elastic Field"></h2>
+            <h1 class="hero-title" id="ef-type" aria-label="Elastic Field"></h1>
           </div>
         </div>
 
@@ -239,48 +234,50 @@
       </div>
     </section>
 
-    <!-- Spotify / Listen -->
+    <!-- Listen (2-Klick Spotify) -->
     <section id="listen">
       <div class="wrap">
         <h2 style="margin:0 0 10px">Hören</h2>
         <article class="tile" style="padding:0">
-          <div class="embed" style="place-items:stretch;padding:0; height:352px">
-            <iframe style="border:0; width:100%; height:100%" loading="lazy"
-              src="https://open.spotify.com/embed/artist/2wn4Zq8AOBsX50X7fyBEoL"
-              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+          <div class="consent embed" data-vendor="Spotify" data-src="https://open.spotify.com/embed/artist/2wn4Zq8AOBsX50X7fyBEoL" aria-live="polite">
+            <div class="card">
+              <strong>Spotify-Inhalt ist blockiert</strong>
+              <div class="small">Mit Klick lädst du Inhalte von Spotify. Es gelten deren Datenschutz­hinweise.</div>
+              <div class="actions">
+                <button class="allow" data-consent="always">Immer erlauben</button>
+                <button class="once">Einmal laden</button>
+              </div>
+              <div class="small"><a href="https://www.spotify.com/de/privacy/" target="_blank" rel="noopener">Datenschutz von Spotify</a></div>
+            </div>
           </div>
           <div style="padding:14px 16px">
-            <p style="margin:0;color:var(--sub)">Höre Elastic Field auf Spotify. (Später gern einzelne Alben oder Playlists.)</p>
+            <p style="margin:0;color:var(--sub)">Höre Elastic Field auf Spotify.</p>
           </div>
         </article>
       </div>
     </section>
 
+    <!-- Video (2-Klick YouTube) -->
     <section id="video">
       <div class="wrap">
         <h2 style="margin:0 0 10px">Video</h2>
-        <article class="tile">
-          <div class="embed" style="place-items:stretch;padding:0;">
-            <iframe
-              width="100%" height="100%"
-              src="https://www.youtube.com/embed/6erDkiy3rFU?start=9&rel=0"
-              title="Elastic Field — Video"
-              frameborder="0"
-              loading="lazy"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen></iframe>
-          </div>
-          <div style="padding:14px 16px">
-            <h3 style="margin:0 0 6px">Featured Video</h3>
-            <p style="margin:0;color:var(--sub)">
-              Mehr auf dem Kanal:
-              <a href="https://www.youtube.com/@elasticfieldmusic" target="_blank" rel="noopener">@elasticfieldmusic</a>
-            </p>
+        <article class="tile" style="padding:0">
+          <div class="consent embed" data-vendor="YouTube" data-src="https://www.youtube.com/embed/6erDkiy3rFU?rel=0" aria-live="polite">
+            <div class="card">
+              <strong>YouTube-Video ist blockiert</strong>
+              <div class="small">Mit Klick lädst du Inhalte von YouTube (Google). Es gelten deren Datenschutz­hinweise.</div>
+              <div class="actions">
+                <button class="allow" data-consent="always">Immer erlauben</button>
+                <button class="once">Einmal abspielen</button>
+              </div>
+              <div class="small"><a href="https://policies.google.com/privacy?hl=de" target="_blank" rel="noopener">Datenschutz von Google</a></div>
+            </div>
           </div>
         </article>
       </div>
     </section>
 
+    <!-- About -->
     <section id="about">
       <div class="wrap">
         <h2 style="margin:0 0 10px">About Elastic Field</h2>
@@ -301,6 +298,7 @@
       </div>
     </section>
 
+    <!-- Contact -->
     <section id="contact">
       <div class="wrap">
         <h2 style="margin:0 0 10px">Kontakt</h2>
@@ -323,37 +321,65 @@
   <footer>
     <div class="wrap" style="display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap">
       <small>© <span id="y"></span> Elastic Field</small>
-      <small style="color:var(--sub)">Single-File · GitHub Pages</small>
+      <small style="color:var(--sub)">2-Klick Embeds · SEO ready</small>
     </div>
   </footer>
 
-  <!-- Typewriter-Effekt -->
   <script>
+  // Header: aria-expanded sync
+  (function(){
+    const toggle = document.getElementById('nav-toggle');
+    const label  = document.getElementById('nav-label');
+    if(toggle && label){
+      const set = () => label.setAttribute('aria-expanded', String(toggle.checked));
+      toggle.addEventListener('change', set); set();
+    }
+  })();
+
+  // Typewriter
   (function(){
     const text = "Elastic Field";
     const el   = document.getElementById('ef-type');
     if(!el) return;
-
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      el.textContent = text;
-      return;
-    }
-
-    let i = 0;
-    const caret = document.createElement('span');
-    caret.className = 'caret';
-    const speed = 75; // ms pro Buchstabe
-
-    function type() {
-      if (i <= text.length) {
-        el.textContent = text.slice(0, i);
-        el.appendChild(caret);
-        i++;
-        setTimeout(type, speed);
-      }
-    }
-    type();
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { el.textContent = text; return; }
+    let i = 0; const caret = document.createElement('span'); caret.className = 'caret'; const speed = 75;
+    (function type(){ if(i<=text.length){ el.textContent = text.slice(0,i); el.appendChild(caret); i++; setTimeout(type,speed);} })();
   })();
+
+  // 2-Klick Embeds (YouTube / Spotify) mit "immer erlauben"
+  (function(){
+    const CONSENT_KEY = (v) => "consent:"+v;
+    function mountIframe(host, src, container){
+      const iframe = document.createElement('iframe');
+      iframe.width = "100%"; iframe.height = "100%"; iframe.loading = "lazy";
+      iframe.referrerPolicy = "strict-origin-when-cross-origin";
+      iframe.allowFullscreen = true;
+      if(host === "YouTube"){
+        iframe.src = src;
+        iframe.title = "YouTube Video";
+        iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+      }else if(host === "Spotify"){
+        iframe.src = src;
+        iframe.title = "Spotify Player";
+        iframe.style.border = "0";
+        iframe.allow = "autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture";
+      }
+      container.innerHTML = "";
+      container.classList.remove("consent");
+      container.appendChild(iframe);
+    }
+    document.querySelectorAll('.consent.embed').forEach(box=>{
+      const vendor = box.getAttribute('data-vendor');
+      const src    = box.getAttribute('data-src');
+      const saved  = localStorage.getItem(CONSENT_KEY(vendor));
+      if(saved === "true"){ mountIframe(vendor, src, box); return; }
+      const onceBtn   = box.querySelector('.once');
+      const allowBtn  = box.querySelector('.allow');
+      if(onceBtn){ onceBtn.addEventListener('click', ()=> mountIframe(vendor, src, box)); }
+      if(allowBtn){ allowBtn.addEventListener('click', ()=>{ localStorage.setItem(CONSENT_KEY(vendor), "true"); mountIframe(vendor, src, box); }); }
+    });
+  })();
+
   document.getElementById('y').textContent = new Date().getFullYear();
   </script>
 </body>
