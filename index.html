@@ -32,7 +32,7 @@
   <link rel="preconnect" href="https://www.youtube-nocookie.com">
   <link rel="preconnect" href="https://open.spotify.com">
 
-  <!-- Structured Data -->
+  <!-- Structured Data: MusicGroup -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -41,7 +41,8 @@
     "url": "https://fraendk-lang.github.io/Elastic-Field/",
     "sameAs": [
       "https://www.youtube.com/@elasticfieldmusic",
-      "https://open.spotify.com/artist/2wn4Zq8AOBsX50X7fyBEoL"
+      "https://open.spotify.com/artist/2wn4Zq8AOBsX50X7fyBEoL",
+      "https://music.amazon.de/artists/B008F6S0LM/elastic-field"
     ],
     "genre": ["Ambient","Lounge","Trip hop","Downbeat","Jazz","Electronic"],
     "foundingDate": "2011",
@@ -49,6 +50,45 @@
     "contactPoint": [{
       "@type":"ContactPoint","contactType":"general","email":"fraendk@hotmail.com"
     }]
+  }
+  </script>
+
+  <!-- Structured Data: Releases -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"MusicAlbum",
+    "name":"Another Non Smokers Nightmare",
+    "byArtist":{"@type":"MusicGroup","name":"Elastic Field"},
+    "url":"https://open.spotify.com/intl-de/album/2YGPf9NdDWbEMWZKs4PtSi",
+    "genre":["Ambient","Trip hop","Downbeat","Electronic"],
+    "datePublished":"2013-01-01",
+    "inLanguage":"en"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"MusicAlbum",
+    "name":"Non Smokers Nightmare",
+    "byArtist":{"@type":"MusicGroup","name":"Elastic Field"},
+    "url":"https://open.spotify.com/intl-de/album/4gNyV1XCfZY8enSJb3msCn",
+    "genre":["Ambient","Trip hop","Downbeat","Electronic"],
+    "datePublished":"2012-01-01",
+    "inLanguage":"en"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"MusicRelease",
+    "musicReleaseFormat":"DigitalFormat",
+    "name":"Lost and Found",
+    "byArtist":{"@type":"MusicGroup","name":"Elastic Field"},
+    "url":"https://open.spotify.com/intl-de/album/6CVmcZb3bQAkxU39k0falc",
+    "genre":["Ambient","Downbeat","Electronic"],
+    "datePublished":"2025-01-01",
+    "inLanguage":"en"
   }
   </script>
 
@@ -140,10 +180,7 @@
       background:radial-gradient(90% 90% at 50% 50%, rgba(0,0,0,0) 55%, rgba(0,0,0,.35) 100%);
       mix-blend-mode:multiply;
     }
-    .typo{
-      position:relative; z-index:2; display:grid; gap:6px; justify-items:center;
-      padding:8px 10px; max-width:90%;
-    }
+    .typo{position:relative; z-index:2; display:grid; gap:6px; justify-items:center; padding:8px 10px; max-width:90%}
     .typo .top{letter-spacing:.18em; text-transform:uppercase; font-weight:700; opacity:.9; font-size:12px}
     .typo .title{font-weight:800; line-height:1.1; font-size:clamp(16px,2.6vw,22px); word-break:break-word; hyphens:auto; text-wrap:balance; text-shadow:0 2px 12px rgba(0,0,0,.45)}
     .typo .badge{margin-top:2px; font-size:12px; color:#291a0e; font-weight:700; background:linear-gradient(180deg,var(--brand),var(--brand-2)); padding:6px 10px; border-radius:999px; border:1px solid #543a21}
@@ -206,7 +243,8 @@
       <div class="wrap">
         <div class="cover">
           <video autoplay muted loop playsinline preload="metadata" poster="cover.jpg">
-            <source src="hero_480p.mp4" type="video/mp4">
+            <source src="hero_480p.webm" type="video/webm">
+            <source src="hero_480p.mp4"  type="video/mp4">
           </video>
           <div class="overlay">
             <h1 class="hero-title" id="ef-type" aria-label="Elastic Field"></h1>
@@ -217,7 +255,7 @@
           <a class="btn brand" href="#listen">▶︎ Hören</a>
           <a class="btn" href="https://www.youtube.com/@elasticfieldmusic?sub_confirmation=1" target="_blank" rel="noopener">Zum Kanal</a>
 
-          <!-- Hintergrund-Mix (fix: normale Embed-URL + playlist) -->
+          <!-- Hintergrund-Mix (normale Embed-URL + playlist) -->
           <button class="btn" id="bgmix-toggle"
                   data-src="https://www.youtube-nocookie.com/embed/jc0CzEp389U?autoplay=1&rel=0&playsinline=1&modestbranding=1&playlist=pqsMGb3vhgE,0eVyU1LGz5A,jc0CzEp389U">
             ▶ Mix im Hintergrund
@@ -530,6 +568,29 @@
         </div>
       </div>
     </section>
+
+    <!-- IMPRESSUM -->
+    <section id="impressum">
+      <div class="wrap">
+        <h2>Impressum</h2>
+        <div class="tile" style="padding:14px 16px">
+          <p><strong>Elastic Field</strong><br>
+             Kontakt: <a href="mailto:fraendk@hotmail.com">fraendk@hotmail.com</a></p>
+          <p style="color:var(--sub)">Hinweis: Trage hier später Name/Anschrift bzw. dein offizielles Impressum ein (Pflichtangaben nach § 5 TMG).</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- DATENSCHUTZ -->
+    <section id="datenschutz">
+      <div class="wrap">
+        <h2>Datenschutz</h2>
+        <div class="tile" style="padding:14px 16px">
+          <p>Diese Seite lädt Inhalte von YouTube und Spotify erst nach deiner Zustimmung (2-Klick). Deine Auswahl wird lokal in deinem Browser gespeichert (localStorage) und kann jederzeit zurückgesetzt werden.</p>
+          <p><button class="btn" onclick="document.getElementById('privacy-reset').click()">Einwilligungen widerrufen</button></p>
+        </div>
+      </div>
+    </section>
   </main>
 
   <!-- Versteckter YouTube-Player + Consent-Box für den Hintergrundmix -->
@@ -547,7 +608,7 @@
 
   <footer>
     <div class="wrap" style="display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap">
-      <small>© <span id="y"></span> Elastic Field</small>
+      <small>© <span id="y"></span> Elastic Field · <a href="#impressum">Impressum</a> · <a href="#datenschutz">Datenschutz</a> · <button id="privacy-reset" class="btn" style="padding:4px 10px">Datenschutz-Einstellungen</button></small>
       <small style="color:var(--sub)">2-Klick Embeds · Shop Ready</small>
     </div>
   </footer>
@@ -674,6 +735,15 @@
       cancel && cancel.addEventListener('click', hideConsent);
     }
   })();
+
+  // Datenschutz-Einstellungen zurücksetzen (Footer-Button)
+  document.getElementById('privacy-reset')?.addEventListener('click', ()=>{
+    if(confirm('YouTube/Spotify-Einwilligungen zurücksetzen?')){
+      localStorage.removeItem('consent:YouTube');
+      localStorage.removeItem('consent:Spotify');
+      alert('Zurückgesetzt. Beim nächsten Abspielen wirst du gefragt.');
+    }
+  });
 
   document.getElementById('y').textContent = new Date().getFullYear();
   </script>
