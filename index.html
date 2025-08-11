@@ -108,13 +108,11 @@
     }
     a{color:var(--ink);text-decoration:none}
 
-    /* Skip-Link */
     .skip-link{position:absolute; left:-999px; top:auto; width:1px; height:1px; overflow:hidden}
     .skip-link:focus{left:12px; top:12px; width:auto; height:auto; padding:10px 12px; background:#fff; color:#000; border-radius:10px; z-index:9999}
 
     .wrap{max-width:980px;margin:0 auto;padding:18px}
 
-    /* Header */
     header{position:sticky; top:0; z-index:10; background:linear-gradient(to bottom, rgba(18,14,10,.95), rgba(18,14,10,.75)); backdrop-filter:saturate(110%) blur(6px); border-bottom:1px solid var(--line)}
     .bar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
     .logo{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.4px}
@@ -128,7 +126,6 @@
     .btn.brand{background:linear-gradient(180deg,var(--brand),var(--brand-2));color:#291a0e;border-color:#543a21;font-weight:700}
     @media (max-width:860px){.menu-btn{display:inline-block}.menu{display:none; width:100%; margin-top:10px; flex-direction:column; align-items:flex-start} #nav-toggle:checked + label + nav.menu{display:flex}}
 
-    /* Hero */
     .hero{border-bottom:1px solid var(--line); background:radial-gradient(900px 340px at 85% -10%, rgba(210,161,94,.12), transparent 60%), radial-gradient(600px 260px at 0% 0%, rgba(180,123,51,.10), transparent 60%)}
     .cover{position:relative; width:100%; aspect-ratio:16/9; border-radius:14px; overflow:hidden; background:#0e0a07; border:1px solid var(--line); box-shadow:var(--shadow)}
     .cover video{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:1; opacity:0; animation:vfade .8s ease-out forwards}
@@ -149,7 +146,6 @@
     .chip{border:1px solid var(--line);background:var(--panel);padding:8px 12px;border-radius:999px;transition:background .18s ease, transform .18s ease}
     .chip:hover{transform:translateY(-1px); background:linear-gradient(180deg,var(--brand),var(--brand-2)); color:#291a0e}
 
-    /* Consent Cards (2-Klick) */
     .consent{display:grid;place-items:center;aspect-ratio:16/9;background:linear-gradient(180deg,#1b140f,#120e0a);border-bottom:1px solid var(--line)}
     .consent .card{display:grid; gap:10px; place-items:center; text-align:center; background:rgba(18,14,10,.5); border:1px solid var(--line); border-radius:12px; padding:14px 16px; max-width:min(92%, 720px)}
     .consent .actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
@@ -157,11 +153,9 @@
     .consent .allow{background:linear-gradient(180deg,var(--brand),var(--brand-2));color:#291a0e;border:1px solid #543a21;padding:10px 14px;border-radius:12px;cursor:pointer}
     .consent .once{background:var(--muted);border:1px solid var(--line);padding:10px 14px;border-radius:12px;cursor:pointer}
 
-    /* Grid */
     .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
     @media (max-width:860px){.grid-3{grid-template-columns:1fr}}
 
-    /* Typo-Cover Styles */
     .release.tile{overflow:hidden}
     .release h3{margin:0 0 6px;font-size:18px}
     .release small{color:var(--sub);font-weight:400}
@@ -200,11 +194,9 @@
     .badge-link:hover{transform:translateY(-1px);background:linear-gradient(180deg,var(--brand),var(--brand-2));color:#291a0e}
     .badge-link .icon{width:16px;height:16px;display:inline-block}
 
-    /* Hintergrundplayer unsichtbar parken */
     #bgmix-holder { position:fixed; width:1px; height:1px; left:-100vw; bottom:-100vh; overflow:hidden; }
-    #bgmix-holder iframe { width:300px; height:200px; border:0; } /* Größe egal, offscreen */
+    #bgmix-holder iframe { width:300px; height:200px; border:0; }
 
-    /* Focus */
     .btn:focus-visible, a:focus-visible, .chip:focus-visible, .menu-btn:focus-visible, .consent .allow:focus-visible, .consent .once:focus-visible, .badge-link:focus-visible{outline:2px solid var(--brand); outline-offset:2px; border-radius:12px}
 
     @media (prefers-reduced-motion: reduce){.btn, .tile, .chip, .cover video, .overlay{transition:none; animation:none} .caret{animation:none}}
@@ -255,9 +247,9 @@
           <a class="btn brand" href="#listen">▶︎ Hören</a>
           <a class="btn" href="https://www.youtube.com/@elasticfieldmusic?sub_confirmation=1" target="_blank" rel="noopener">Zum Kanal</a>
 
-          <!-- Hintergrund-Mix (normale Embed-URL + playlist) -->
+          <!-- Hintergrund-Mix: Button bleibt als Stop/Start -->
           <button class="btn" id="bgmix-toggle"
-                  data-src="https://www.youtube-nocookie.com/embed/jc0CzEp389U?autoplay=1&rel=0&playsinline=1&modestbranding=1&playlist=pqsMGb3vhgE,0eVyU1LGz5A,jc0CzEp389U">
+                  data-src="https://www.youtube-nocookie.com/embed/6erDkiy3rFU?start=11&autoplay=1&rel=0&playsinline=1&modestbranding=1&loop=1&playlist=6erDkiy3rFU&enablejsapi=1">
             ▶ Mix im Hintergrund
           </button>
         </div>
@@ -273,7 +265,7 @@
       </div>
     </section>
 
-    <!-- LISTEN (Spotify 2-Klick) -->
+    <!-- LISTEN -->
     <section id="listen">
       <div class="wrap">
         <h2 style="margin:0 0 10px">Hören</h2>
@@ -294,13 +286,12 @@
       </div>
     </section>
 
-    <!-- VIDEOS (3 Kacheln, 2-Klick, Fallback) -->
+    <!-- VIDEOS -->
     <section id="video">
       <div class="wrap">
         <h2 style="margin:0 0 10px">Videos</h2>
 
         <div class="grid-3">
-          <!-- Video 1 -->
           <article class="tile" style="padding:0">
             <div class="consent embed"
               data-vendor="YouTube"
@@ -321,7 +312,6 @@
             </div>
           </article>
 
-          <!-- Video 2 -->
           <article class="tile" style="padding:0">
             <div class="consent embed"
               data-vendor="YouTube"
@@ -342,7 +332,6 @@
             </div>
           </article>
 
-          <!-- Video 3 -->
           <article class="tile" style="padding:0">
             <div class="consent embed"
               data-vendor="YouTube"
@@ -370,12 +359,11 @@
       </div>
     </section>
 
-    <!-- DISCOGRAPHY (Typo-Cover) -->
+    <!-- DISCOGRAPHY -->
     <section id="discography">
       <div class="wrap">
         <h2 style="margin:0 0 10px">Discography (Auswahl)</h2>
         <div class="grid-3">
-          <!-- NSN -> Another Non Smokers Nightmare -->
           <article class="tile release">
             <a class="art art--typo art--gold"
                href="https://open.spotify.com/intl-de/album/2YGPf9NdDWbEMWZKs4PtSi"
@@ -398,7 +386,6 @@
             </div>
           </article>
 
-          <!-- AN -> Non Smokers Nightmare -->
           <article class="tile release">
             <a class="art art--typo art--amber"
                href="https://open.spotify.com/intl-de/album/4gNyV1XCfZY8enSJb3msCn"
@@ -421,7 +408,6 @@
             </div>
           </article>
 
-          <!-- 2025 -> Lost and Found (Single) -->
           <article class="tile release">
             <a class="art art--typo art--copper"
                href="https://open.spotify.com/intl-de/album/6CVmcZb3bQAkxU39k0falc"
@@ -447,13 +433,12 @@
       </div>
     </section>
 
-    <!-- SHOP (PayPal, 0,99 € je Song) -->
+    <!-- SHOP -->
     <section id="shop">
       <div class="wrap">
         <h2 style="margin:0 0 10px">Shop</h2>
 
         <div class="grid-3">
-          <!-- Song 1 -->
           <article class="tile">
             <a class="art art--typo art--gold" href="#video" aria-label="Zum Video scrollen">
               <span class="typo">
@@ -476,7 +461,6 @@
             </div>
           </article>
 
-          <!-- Song 2 -->
           <article class="tile">
             <a class="art art--typo art--amber" href="#video" aria-label="Zum Video scrollen">
               <span class="typo">
@@ -499,7 +483,6 @@
             </div>
           </article>
 
-          <!-- Song 3 -->
           <article class="tile">
             <a class="art art--typo art--copper" href="#video" aria-label="Zum Video scrollen">
               <span class="typo">
@@ -689,7 +672,7 @@
     });
   })();
 
-  // Hintergrund-Mix (YouTube) – Play/Pause + Consent-Handling
+  // Hintergrund-Mix (YouTube) – Autostart beim Öffnen (mit Consent), Play/Pause
   (function(){
     const btn     = document.getElementById('bgmix-toggle');
     const holder  = document.getElementById('bgmix-holder');
@@ -719,6 +702,7 @@
     function showConsent(){ if(!box){ mount(btn.dataset.src); return; } box.style.display = 'block'; }
     function hideConsent(){ if(box) box.style.display = 'none'; }
 
+    // Button toggelt Play/Pause
     btn.addEventListener('click', ()=>{
       if(playing){ unmount(); return; }
       const allowed = localStorage.getItem(YT_KEY) === "true";
@@ -726,6 +710,7 @@
       else{ showConsent(); }
     });
 
+    // Consent-Box Buttons
     if(box){
       const once   = document.getElementById('bgmix-once');
       const always = document.getElementById('bgmix-always');
@@ -734,6 +719,18 @@
       always && always.addEventListener('click', ()=>{ localStorage.setItem(YT_KEY, "true"); hideConsent(); mount(btn.dataset.src); });
       cancel && cancel.addEventListener('click', hideConsent);
     }
+
+    // AUTOSTART beim Öffnen:
+    // - Wenn YouTube bereits "Immer erlauben" → sofort starten (hörbar, soweit Browser erlaubt).
+    // - Wenn noch keine Einwilligung → Consent-Box direkt anzeigen.
+    window.addEventListener('DOMContentLoaded', ()=>{
+      const allowed = localStorage.getItem(YT_KEY) === "true";
+      if(allowed){
+        mount(btn.dataset.src);
+      } else {
+        showConsent();
+      }
+    });
   })();
 
   // Datenschutz-Einstellungen zurücksetzen (Footer-Button)
