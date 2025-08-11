@@ -1,592 +1,600 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Elastic Field — Official Site</title>
-  <meta name="description" content="Elastic Field — Musik für späte Stunden: Ambient, Trip-Hop, Downbeat, Lounge, Jazzy & Electronic.">
-  <meta name="robots" content="index,follow">
-  <link rel="canonical" href="https://fraendk-lang.github.io/Elastic-Field/">
-  <meta name="theme-color" content="#120e0a">
-  <meta name="color-scheme" content="dark">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Elastic Field — Official Site</title>
+<meta name="description" content="Elastic Field — Musik für späte Stunden: Ambient, Trip-Hop, Downbeat, Lounge, Jazzy & Electronic.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://fraendk-lang.github.io/Elastic-Field/">
+<meta name="theme-color" content="#120e0a">
+<meta name="color-scheme" content="dark">
 
-  <!-- Social Preview -->
-  <meta property="og:title" content="Elastic Field — Official Site">
-  <meta property="og:description" content="Ambient · Trip-Hop · Downbeat · Lounge · Jazzy · Electronic">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://fraendk-lang.github.io/Elastic-Field/">
-  <meta property="og:image" content="https://fraendk-lang.github.io/Elastic-Field/social-card.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta name="twitter:card" content="summary_large_image">
+<!-- Social Preview -->
+<meta property="og:title" content="Elastic Field — Official Site">
+<meta property="og:description" content="Ambient · Trip-Hop · Downbeat · Lounge · Jazzy · Electronic">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://fraendk-lang.github.io/Elastic-Field/">
+<meta property="og:image" content="https://fraendk-lang.github.io/Elastic-Field/social-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 
-  <!-- Icons (optional) -->
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="cover.jpg">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="cover.jpg">
 
-  <!-- Preload poster (falls vorhanden) -->
-  <link rel="preload" as="image" href="cover.jpg" fetchpriority="high">
+<link rel="preconnect" href="https://www.youtube.com">
+<link rel="preconnect" href="https://www.youtube-nocookie.com">
+<link rel="preconnect" href="https://open.spotify.com">
 
-  <!-- Perf -->
-  <link rel="preconnect" href="https://www.youtube.com">
-  <link rel="preconnect" href="https://www.youtube-nocookie.com">
-  <link rel="preconnect" href="https://open.spotify.com">
+<style>
+  html{scroll-behavior:smooth}
+  :root{
+    --bg:#120e0a; --panel:#1b140f; --ink:#f6ead5; --sub:#d7c6a9;
+    --line:#3b2b1f; --muted:#241c14; --brand:#d2a15e; --brand-2:#b47b33;
+    --radius:16px; --shadow:0 10px 25px rgba(0,0,0,.35); --header-h:84px;
+    --ticker-speed-top:44s; --ticker-speed-bottom:38s;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{
+    background:var(--bg); color:var(--ink);
+    font:16px/1.55 system-ui,-apple-system, Segoe UI, Roboto, Arial;
+    text-rendering:optimizeLegibility; -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--ink);text-decoration:none}
+  .wrap{max-width:980px;margin:0 auto;padding:18px}
 
-  <!-- Schema.org -->
-  <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"MusicGroup","name":"Elastic Field","url":"https://fraendk-lang.github.io/Elastic-Field/","sameAs":["https://www.youtube.com/@elasticfieldmusic","https://open.spotify.com/artist/2wn4Zq8AOBsX50X7fyBEoL","https://music.amazon.de/artists/B008F6S0LM/elastic-field"],"genre":["Ambient","Lounge","Trip hop","Downbeat","Jazz","Electronic"],"foundingDate":"2011","description":"Elastic Field was founded in 2011 – a free-form music project rooted in ambient, lounge, trip hop, downbeat, jazz, and subtle electronic textures. The sound is reflective, immersive, and emotional – often instrumental, sometimes featuring voice fragments or spoken word passages. In 2012, the debut album “Non Smokers Nightmare” introduced a world of atmospheric contrasts and sonic minimalism. One year later, the follow-up “Another Non Smokers Nightmare” (2013) deepened that sound – darker, more focused, but equally open and textured. Now, in 2025, Elastic Field returns – with a series of remixes, new compositions, and a refined sound.","contactPoint":[{"@type":"ContactPoint","contactType":"general","email":"fraendk@hotmail.com"}]}
-  </script>
+  /* Header */
+  header{position:sticky; top:0; z-index:10; background:linear-gradient(to bottom, rgba(18,14,10,.95), rgba(18,14,10,.75)); backdrop-filter:saturate(110%) blur(6px); border-bottom:1px solid var(--line)}
+  .bar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.4px}
+  .badge{width:34px;height:34px;border-radius:10px;background:conic-gradient(from 210deg,var(--brand),var(--brand-2),var(--brand));display:grid;place-items:center;box-shadow:var(--shadow);color:#2a1c10;font-weight:800}
+  .brand-text{
+    font-weight:800; letter-spacing:.4px;
+    background:linear-gradient(120deg,#f6ead5 20%, #d2a15e 40%, #f6ead5 60%);
+    background-size:200% 100%;
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+    animation: shine 6.5s linear infinite;
+  }
+  @keyframes shine{0%{background-position:0% 50%}100%{background-position:200% 50%}}
 
-  <style>
-    html{scroll-behavior:smooth}
-    :root{
-      --bg:#120e0a; --panel:#1b140f; --ink:#f6ead5; --sub:#d7c6a9;
-      --line:#3b2b1f; --muted:#241c14; --brand:#d2a15e; --brand-2:#b47b33;
-      --radius:16px; --shadow:0 10px 25px rgba(0,0,0,.35); --header-h:84px;
-      --ticker-speed-top:44s; --ticker-speed-bottom:38s;
-    }
-    *{box-sizing:border-box}
-    html,body{margin:0}
-    body{
-      background:var(--bg); color:var(--ink);
-      font:16px/1.55 system-ui,-apple-system, Segoe UI, Roboto, Arial;
-      text-rendering:optimizeLegibility; -webkit-font-smoothing:antialiased;
-    }
-    a{color:var(--ink);text-decoration:none}
-    .wrap{max-width:980px;margin:0 auto;padding:18px}
+  #nav-toggle{display:none}
+  .menu-btn{display:none; cursor:pointer; padding:8px 12px; border-radius:12px; border:1px solid var(--line); background:var(--muted)}
+  .menu{display:flex; align-items:center; gap:10px; flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;background:var(--muted);border:1px solid var(--line);transition:transform .18s ease, box-shadow .18s ease}
+  .btn:hover{transform:translateY(-1px)}
+  .btn.brand{background:linear-gradient(180deg,var(--brand),var(--brand-2));color:#291a0e;border-color:#543a21;font-weight:700}
+  @media (max-width:860px){.menu-btn{display:inline-block}.menu{display:none; width:100%; margin-top:10px; flex-direction:column; align-items:flex-start} #nav-toggle:checked + label + nav.menu{display:flex}}
 
-    /* Header */
-    header{position:sticky; top:0; z-index:10; background:linear-gradient(to bottom, rgba(18,14,10,.95), rgba(18,14,10,.75)); backdrop-filter:saturate(110%) blur(6px); border-bottom:1px solid var(--line)}
-    .bar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
-    .logo{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.4px}
-    .badge{width:34px;height:34px;border-radius:10px;background:conic-gradient(from 210deg,var(--brand),var(--brand-2),var(--brand));display:grid;place-items:center;box-shadow:var(--shadow);color:#2a1c10;font-weight:800}
-    .brand-text{
-      font-weight:800; letter-spacing:.4px;
-      background:linear-gradient(120deg,#f6ead5 20%, #d2a15e 40%, #f6ead5 60%);
-      background-size:200% 100%;
-      -webkit-background-clip:text; background-clip:text; color:transparent;
-      animation: shine 6.5s linear infinite;
-    }
-    @keyframes shine{0%{background-position:0% 50%}100%{background-position:200% 50%}}
+  /* Hero */
+  .hero{border-bottom:1px solid var(--line); background:radial-gradient(900px 340px at 85% -10%, rgba(210,161,94,.12), transparent 60%), radial-gradient(600px 260px at 0% 0%, rgba(180,123,51,.10), transparent 60%)}
+  .cover{position:relative; width:100%; aspect-ratio:16/9; border-radius:14px; overflow:hidden; background:#0e0a07; border:1px solid var(--line); box-shadow:var(--shadow)}
+  .cover video{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:1; opacity:0; animation: vfade .8s ease-out forwards}
+  @keyframes vfade{to{opacity:1}}
+  .cover::after{content:""; position:absolute; inset:0; z-index:2; background:linear-gradient(to top, rgba(18,14,10,.65) 0%, rgba(18,14,10,.25) 40%, rgba(18,14,10,0) 70%); pointer-events:none}
 
-    #nav-toggle{display:none}
-    .menu-btn{display:none; cursor:pointer; padding:8px 12px; border-radius:12px; border:1px solid var(--line); background:var(--muted)}
-    .menu{display:flex; align-items:center; gap:10px; flex-wrap:wrap}
-    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;background:var(--muted);border:1px solid var(--line);transition:transform .18s ease, box-shadow .18s ease}
-    .btn:hover{transform:translateY(-1px)}
-    .btn.brand{background:linear-gradient(180deg,var(--brand),var(--brand-2));color:#291a0e;border-color:#543a21;font-weight:700}
-    @media (max-width:860px){.menu-btn{display:inline-block}.menu{display:none; width:100%; margin-top:10px; flex-direction:column; align-items:flex-start} #nav-toggle:checked + label + nav.menu{display:flex}}
+  /* sanft bewegte Headline + Parallax */
+  .overlay{position:absolute; inset:0; z-index:3; display:flex; align-items:center; justify-content:center; pointer-events:none; text-align:center; opacity:0; animation: tfade .9s .15s ease-out forwards; transform: translate3d(var(--ox,0px), var(--oy,0px), 0); transition: transform 400ms ease}
+  @keyframes tfade{to{opacity:1}}
+  .title-float{ animation: floaty 18s ease-in-out infinite alternate }
+  @keyframes floaty{ 0%{transform:translateY(0) scale(1)} 100%{transform:translateY(-6px) scale(1.005)} }
+  .hero-title{margin:0; font-weight:800; letter-spacing:.4px; line-height:.95; font-size:clamp(46px, 8.2vw, 120px); white-space:nowrap; text-shadow:0 2px 12px rgba(0,0,0,.55), 0 0 40px rgba(0,0,0,.45)}
+  .caret{display:inline-block;width:.6ch;margin-left:.1ch;border-right:2px solid var(--ink);animation:blink .9s steps(1,end) infinite}
+  @keyframes blink{50%{border-color:transparent}}
 
-    /* Hero */
-    .hero{border-bottom:1px solid var(--line); background:radial-gradient(900px 340px at 85% -10%, rgba(210,161,94,.12), transparent 60%), radial-gradient(600px 260px at 0% 0%, rgba(180,123,51,.10), transparent 60%)}
-    .cover{position:relative; width:100%; aspect-ratio:16/9; border-radius:14px; overflow:hidden; background:#0e0a07; border:1px solid var(--line); box-shadow:var(--shadow)}
-    .cover video{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:1; opacity:0; animation: vfade .8s ease-out forwards}
-    @keyframes vfade{to{opacity:1}}
-    .cover::after{content:""; position:absolute; inset:0; z-index:2; background:linear-gradient(to top, rgba(18,14,10,.65) 0%, rgba(18,14,10,.25) 40%, rgba(18,14,10,0) 70%); pointer-events:none}
-    .overlay{position:absolute; inset:0; z-index:3; display:flex; align-items:center; justify-content:center; pointer-events:none; text-align:center; opacity:0; animation: tfade .9s .15s ease-out forwards}
-    @keyframes tfade{to{opacity:1}}
-    .hero-title{margin:0; font-weight:800; letter-spacing:.4px; line-height:.95; font-size:clamp(46px, 8.2vw, 120px); white-space:nowrap; text-shadow:0 2px 12px rgba(0,0,0,.55), 0 0 40px rgba(0,0,0,.45)}
-    .caret{display:inline-block;width:.6ch;margin-left:.1ch;border-right:2px solid var(--ink);animation:blink .9s steps(1,end) infinite}
-    @keyframes blink{50%{border-color:transparent}}
+  /* Ticker */
+  .ticker{position:absolute; left:0; right:0; z-index:4; height:40px; display:flex; align-items:center; background:linear-gradient(180deg, rgba(18,14,10,.2), rgba(18,14,10,.55)); backdrop-filter:blur(4px) saturate(110%); overflow:hidden}
+  .ticker.t-top{ top:0; border-bottom:1px solid var(--line) }
+  .ticker.t-bottom{ bottom:0; border-top:1px solid var(--line) }
+  .ticker .track{display:inline-block; white-space:nowrap; will-change:transform; padding-left:100%}
+  .ticker.t-top .track{animation: marquee var(--ticker-speed-top) linear infinite}
+  .ticker.t-bottom .track{animation: marquee var(--ticker-speed-bottom) linear infinite}
+  .ticker:hover .track{animation-play-state:paused}
+  .ticker a{opacity:.96; padding:0 16px}
+  .ticker .dot{opacity:.5}
+  @keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
 
-    /* Ticker */
-    .ticker{position:absolute; left:0; right:0; z-index:4; height:40px; display:flex; align-items:center; background:linear-gradient(180deg, rgba(18,14,10,.2), rgba(18,14,10,.55)); backdrop-filter:blur(4px) saturate(110%); overflow:hidden}
-    .ticker.t-top{ top:0; border-bottom:1px solid var(--line) }
-    .ticker.t-bottom{ bottom:0; border-top:1px solid var(--line) }
-    .ticker .track{display:inline-block; white-space:nowrap; will-change:transform; padding-left:100%}
-    .ticker.t-top .track{animation: marquee var(--ticker-speed-top) linear infinite}
-    .ticker.t-bottom .track{animation: marquee var(--ticker-speed-bottom) linear infinite}
-    .ticker:hover .track{animation-play-state:paused}
-    .ticker a{opacity:.96; padding:0 16px}
-    .ticker .dot{opacity:.5}
-    @keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
+  section{padding:28px 0;border-top:1px solid var(--line);scroll-margin-top:var(--header-h)}
+  .tile{background:var(--panel);border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:var(--shadow);transition:transform .18s ease, box-shadow .18s ease}
+  .tile:hover{transform:translateY(-2px); box-shadow:0 14px 28px rgba(0,0,0,.35)}
+  .embed{aspect-ratio:16/9;background:#0e0a07;border-bottom:1px solid var(--line);display:grid;place-items:center}
 
-    section{padding:28px 0;border-top:1px solid var(--line);scroll-margin-top:var(--header-h)}
-    .tile{background:var(--panel);border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:var(--shadow);transition:transform .18s ease, box-shadow .18s ease}
-    .tile:hover{transform:translateY(-2px); box-shadow:0 14px 28px rgba(0,0,0,.35)}
-    .embed{aspect-ratio:16/9;background:#0e0a07;border-bottom:1px solid var(--line);display:grid;place-items:center}
+  .chips{display:flex;gap:10px;flex-wrap:wrap}
+  .chip{border:1px solid var(--line);background:var(--panel);padding:8px 12px;border-radius:999px;transition:background .18s ease, transform .18s ease}
+  .chip:hover{transform:translateY(-1px); background:linear-gradient(180deg,var(--brand),var(--brand-2)); color:#291a0e}
 
-    .chips{display:flex;gap:10px;flex-wrap:wrap}
-    .chip{border:1px solid var(--line);background:var(--panel);padding:8px 12px;border-radius:999px;transition:background .18s ease, transform .18s ease}
-    .chip:hover{transform:translateY(-1px); background:linear-gradient(180deg,var(--brand),var(--brand-2)); color:#291a0e}
+  /* Discography / Shop Images */
+  .art{position:relative; display:block; aspect-ratio:1/1; border-bottom:1px solid var(--line); overflow:hidden}
+  .art-img{width:100%; height:100%; object-fit:cover; display:block}
 
-    /* Discography Images */
-    .art{position:relative; display:block; aspect-ratio:1/1; border-bottom:1px solid var(--line); overflow:hidden}
-    .art-img{width:100%; height:100%; object-fit:cover; display:block}
+  /* Consent Cards */
+  .consent{display:grid;place-items:center;aspect-ratio:16/9;background:linear-gradient(180deg,#1b140f,#120e0a);border-bottom:1px solid var(--line)}
+  .consent .card{display:grid; gap:10px; place-items:center; text-align:center; background:rgba(18,14,10,.5); border:1px solid var(--line); border-radius:12px; padding:14px 16px; max-width:min(92%, 720px)}
+  .consent .actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+  .consent .small{color:var(--sub);font-size:12px}
+  .consent .allow{background:linear-gradient(180deg,var(--brand),var(--brand-2));color:#291a0e;border:1px solid #543a21;padding:10px 14px;border-radius:12px;cursor:pointer}
+  .consent .once{background:var(--muted);border:1px solid var(--line);padding:10px 14px;border-radius:12px;cursor:pointer}
 
-    /* Consent Cards */
-    .consent{display:grid;place-items:center;aspect-ratio:16/9;background:linear-gradient(180deg,#1b140f,#120e0a);border-bottom:1px solid var(--line)}
-    .consent .card{display:grid; gap:10px; place-items:center; text-align:center; background:rgba(18,14,10,.5); border:1px solid var(--line); border-radius:12px; padding:14px 16px; max-width:min(92%, 720px)}
-    .consent .actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
-    .consent .small{color:var(--sub);font-size:12px}
-    .consent .allow{background:linear-gradient(180deg,var(--brand),var(--brand-2));color:#291a0e;border:1px solid #543a21;padding:10px 14px;border-radius:12px;cursor:pointer}
-    .consent .once{background:var(--muted);border:1px solid var(--line);padding:10px 14px;border-radius:12px;cursor:pointer}
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  @media (max-width:860px){.grid-3{grid-template-columns:1fr}}
 
-    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-    @media (max-width:860px){.grid-3{grid-template-columns:1fr}}
-    footer{padding:28px 0;border-top:1px solid var(--line);color:var(--sub)}
+  footer{padding:28px 0;border-top:1px solid var(--line);color:var(--sub)}
 
-    /* Floating Kontakt-Button + Modal + Toast */
-    #contact-fab{ position:fixed; right:16px; bottom:16px; z-index:30; border-radius:999px; box-shadow:var(--shadow); border:1px solid var(--line); }
-    .modal-backdrop{ position:fixed; inset:0; background:rgba(0,0,0,.5); display:none; align-items:center; justify-content:center; z-index:50; }
-    .modal{ width:min(92vw,560px); background:var(--panel); border:1px solid var(--line); border-radius:16px; box-shadow:var(--shadow); padding:16px; }
-    .field{display:grid; gap:6px; margin:10px 0}
-    .field input,.field textarea{ background:#17110d; color:var(--ink); border:1px solid var(--line); border-radius:10px; padding:10px 12px; font:inherit; }
-    .modal-actions{display:flex; gap:10px; justify-content:flex-end; margin-top:12px}
-    .form-note{color:var(--sub); font-size:12px}
-    .toast{ position:fixed; left:50%; bottom:18px; transform:translateX(-50%); background:#20150e; border:1px solid var(--line); color:#fff; padding:10px 14px; border-radius:12px; box-shadow:var(--shadow); display:none; z-index:60}
-    .toast.show{ display:block; }
+  /* Floating Kontakt + Modal + Toast */
+  #contact-fab{ position:fixed; right:16px; bottom:16px; z-index:30; border-radius:999px; box-shadow:var(--shadow); border:1px solid var(--line); }
+  .modal-backdrop{ position:fixed; inset:0; background:rgba(0,0,0,.5); display:none; align-items:center; justify-content:center; z-index:50; }
+  .modal{ width:min(92vw,560px); background:var(--panel); border:1px solid var(--line); border-radius:16px; box-shadow:var(--shadow); padding:16px; }
+  .field{display:grid; gap:6px; margin:10px 0}
+  .field input,.field textarea{ background:#17110d; color:var(--ink); border:1px solid var(--line); border-radius:10px; padding:10px 12px; font:inherit; }
+  .modal-actions{display:flex; gap:10px; justify-content:flex-end; margin-top:12px}
+  .form-note{color:var(--sub); font-size:12px}
+  .toast{ position:fixed; left:50%; bottom:18px; transform:translateX(-50%); background:#20150e; border:1px solid var(--line); color:#fff; padding:10px 14px; border-radius:12px; box-shadow:var(--shadow); display:none; z-index:60}
+  .toast.show{ display:block; }
 
-    /* Accessibility / Motion */
-    .btn:focus-visible, a:focus-visible, .chip:focus-visible, .menu-btn:focus-visible, .consent .allow:focus-visible, .consent .once:focus-visible, .badge-link:focus-visible{outline:2px solid var(--brand); outline-offset:2px; border-radius:12px}
-    @media (prefers-reduced-motion: reduce){
-      .btn, .tile, .chip, .cover video, .overlay, .ticker .track{transition:none; animation:none}
-      .brand-text{animation:none}
-    }
-    @media (max-width:640px){.wrap{padding:14px}}
-  </style>
+  /* Motion Respect */
+  .btn:focus-visible, a:focus-visible, .chip:focus-visible, .menu-btn:focus-visible, .consent .allow:focus-visible, .consent .once:focus-visible, .badge-link:focus-visible{outline:2px solid var(--brand); outline-offset:2px; border-radius:12px}
+  @media (prefers-reduced-motion: reduce){
+    .btn, .tile, .chip, .cover video, .overlay, .ticker .track{transition:none; animation:none}
+    .brand-text{animation:none}
+  }
+  @media (max-width:640px){.wrap{padding:14px}}
+</style>
 </head>
 <body>
-  <header>
-    <div class="wrap bar">
-      <a class="logo" href="#">
-        <span class="badge" aria-hidden="true">EF</span>
-        <span class="brand-text">Elastic Field</span>
-      </a>
+<header>
+  <div class="wrap bar">
+    <a class="logo" href="#"><span class="badge" aria-hidden="true">EF</span><span class="brand-text">Elastic Field</span></a>
 
-      <input id="nav-toggle" type="checkbox" aria-label="Menü umschalten">
-      <label id="nav-label" class="menu-btn" for="nav-toggle" aria-controls="mainmenu" aria-expanded="false">☰ Menü</label>
+    <input id="nav-toggle" type="checkbox" aria-label="Menü umschalten">
+    <label id="nav-label" class="menu-btn" for="nav-toggle" aria-controls="mainmenu" aria-expanded="false">☰ Menü</label>
 
-      <nav id="mainmenu" class="menu" aria-label="Hauptnavigation">
-        <a class="btn" href="#listen">Hören</a>
-        <a class="btn" href="#video">Video</a>
-        <a class="btn" href="#discography">Discography</a>
-        <a class="btn" href="#shop">Shop</a>
-        <a class="btn" href="#about">Über</a>
-        <a class="btn" href="#contact">Kontakt</a>
-        <a class="btn brand" href="https://www.youtube.com/@elasticfieldmusic?sub_confirmation=1" target="_blank" rel="noopener">YouTube</a>
-        <a class="btn" href="https://open.spotify.com/artist/2wn4Zq8AOBsX50X7fyBEoL" target="_blank" rel="noopener">Spotify</a>
-      </nav>
-    </div>
-  </header>
+    <nav id="mainmenu" class="menu" aria-label="Hauptnavigation">
+      <a class="btn" href="#listen">Hören</a>
+      <a class="btn" href="#video">Video</a>
+      <a class="btn" href="#discography">Discography</a>
+      <a class="btn" href="#shop">Shop</a>
+      <a class="btn" href="#about">Über</a>
+      <a class="btn" href="#contact">Kontakt</a>
+      <a class="btn brand" href="https://www.youtube.com/@elasticfieldmusic?sub_confirmation=1" target="_blank" rel="noopener">YouTube</a>
+      <a class="btn" href="https://open.spotify.com/artist/2wn4Zq8AOBsX50X7fyBEoL" target="_blank" rel="noopener">Spotify</a>
+    </nav>
+  </div>
+</header>
 
-  <main id="main">
-    <!-- HERO -->
-    <section class="hero">
-      <div class="wrap">
-        <div class="cover">
-          <video autoplay muted loop playsinline preload="metadata" poster="cover.jpg">
-            <source src="hero_480p.webm" type="video/webm">
-            <source src="hero_480p.mp4"  type="video/mp4">
-          </video>
+<main id="main">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="cover">
+        <video autoplay muted loop playsinline preload="metadata" poster="cover.jpg">
+          <source src="hero_480p.webm" type="video/webm">
+          <source src="hero_480p.mp4"  type="video/mp4">
+        </video>
 
-          <!-- News-Ticker oben -->
-          <div class="ticker t-top" aria-label="Neuigkeiten">
-            <div class="track">
-              <a href="#discography">OUT NOW: Lost and Found (Single)</a><span class="dot">•</span>
-              <a href="https://open.spotify.com/artist/2wn4Zq8AOBsX50X7fyBEoL" target="_blank" rel="noopener">Follow on Spotify</a><span class="dot">•</span>
-              <a href="https://music.amazon.de/artists/B008F6S0LM/elastic-field" target="_blank" rel="noopener">Amazon Music</a><span class="dot">•</span>
-              <a href="https://www.youtube.com/@elasticfieldmusic" target="_blank" rel="noopener">YouTube Channel</a><span class="dot">•</span>
-              <a href="mailto:fraendk@hotmail.com?subject=Booking%20Elastic%20Field">Booking/Sync: E-Mail</a><span class="dot">•</span>
-            </div>
+        <!-- Top-Ticker (korrigiert) -->
+        <div class="ticker t-top" aria-label="Neuigkeiten">
+          <div class="track">
+            <a href="#discography">Last Release: Smoke Under Water (2025)</a><span class="dot">•</span>
+            <a href="https://open.spotify.com/artist/2wn4Zq8AOBsX50X7fyBEoL" target="_blank" rel="noopener">Follow on Spotify</a><span class="dot">•</span>
+            <a href="https://music.amazon.de/artists/B008F6S0LM/elastic-field" target="_blank" rel="noopener">Amazon Music</a><span class="dot">•</span>
+            <a href="https://www.youtube.com/@elasticfieldmusic" target="_blank" rel="noopener">YouTube Channel</a><span class="dot">•</span>
+            <a href="mailto:fraendk@hotmail.com?subject=Booking%20Elastic%20Field">Booking/Sync: E-Mail</a><span class="dot">•</span>
           </div>
+        </div>
 
-          <!-- Headline -->
-          <div class="overlay">
+        <!-- Headline mit sanfter Bewegung -->
+        <div class="overlay" id="hero-overlay">
+          <div class="title-float">
             <h1 class="hero-title" id="ef-type" aria-label="Elastic Field"></h1>
           </div>
+        </div>
 
-          <!-- Genres-Ticker unten -->
-          <div class="ticker t-bottom" aria-label="Genres & Schwerpunkte">
-            <div class="track">
-              <span>Ambient · Trip-Hop · Downbeat · Lounge · Jazzy · Electronic</span>
-              <span class="dot">•</span>
-              <span>since 2011 — Berlin</span>
-              <span class="dot">•</span>
-            </div>
+        <!-- Bottom-Ticker (ohne Ort) -->
+        <div class="ticker t-bottom" aria-label="Genres & Schwerpunkte">
+          <div class="track">
+            <span>Ambient · Trip-Hop · Downbeat · Lounge · Jazzy · Electronic</span>
+            <span class="dot">•</span>
+            <span>since 2011</span>
+            <span class="dot">•</span>
           </div>
         </div>
-
-        <!-- CTA + Hintergrundmix -->
-        <div style="display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px">
-          <a class="btn brand" href="#listen">▶︎ Hören</a>
-          <a class="btn" href="https://www.youtube.com/@elasticfieldmusic?sub_confirmation=1" target="_blank" rel="noopener">Zum Kanal</a>
-          <button class="btn" id="bgmix-toggle"
-                  data-src="https://www.youtube-nocookie.com/embed/6erDkiy3rFU?start=11&autoplay=1&rel=0&playsinline=1&modestbranding=1&loop=1&playlist=6erDkiy3rFU">
-            ▶ Mix im Hintergrund
-          </button>
-        </div>
-
-        <div class="chips" style="margin-top:8px">
-          <span class="chip">#TripHop</span><span class="chip">#Ambient</span><span class="chip">#Downbeat</span>
-          <span class="chip">#Lounge</span><span class="chip">#Jazzy</span><span class="chip">#Electronic</span>
-        </div>
       </div>
-    </section>
 
-    <!-- LISTEN (Spotify 2-Klick) -->
-    <section id="listen">
-      <div class="wrap">
-        <h2 style="margin:0 0 10px">Hören</h2>
+      <!-- CTA + Hintergrundmix -->
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px">
+        <a class="btn brand" href="#listen">▶︎ Hören</a>
+        <a class="btn" href="https://www.youtube.com/@elasticfieldmusic?sub_confirmation=1" target="_blank" rel="noopener">Zum Kanal</a>
+        <button class="btn" id="bgmix-toggle"
+                data-src="https://www.youtube-nocookie.com/embed/6erDkiy3rFU?start=11&autoplay=1&rel=0&playsinline=1&modestbranding=1&loop=1&playlist=6erDkiy3rFU">
+          ▶ Mix im Hintergrund
+        </button>
+      </div>
+
+      <div class="chips" style="margin-top:8px">
+        <span class="chip">#TripHop</span><span class="chip">#Ambient</span><span class="chip">#Downbeat</span>
+        <span class="chip">#Lounge</span><span class="chip">#Jazzy</span><span class="chip">#Electronic</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- LISTEN -->
+  <section id="listen">
+    <div class="wrap">
+      <h2 style="margin:0 0 10px">Hören</h2>
+      <article class="tile" style="padding:0">
+        <div class="consent embed" data-vendor="Spotify" data-src="https://open.spotify.com/embed/artist/2wn4Zq8AOBsX50X7fyBEoL" aria-live="polite">
+          <div class="card">
+            <strong>Spotify-Inhalt ist blockiert</strong>
+            <div class="small">Mit Klick lädst du Inhalte von Spotify. Es gelten deren Datenschutzhinweise.</div>
+            <div class="actions">
+              <button class="allow" data-consent="always">Immer erlauben</button>
+              <button class="once">Einmal laden</button>
+              <a class="once" href="https://open.spotify.com/artist/2wn4Zq8AOBsX50X7fyBEoL" target="_blank" rel="noopener">Auf Spotify öffnen</a>
+            </div>
+            <div class="small"><a href="https://www.spotify.com/de/privacy/" target="_blank" rel="noopener">Datenschutz von Spotify</a></div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- VIDEOS -->
+  <section id="video">
+    <div class="wrap">
+      <h2 style="margin:0 0 10px">Videos</h2>
+      <div class="grid-3">
         <article class="tile" style="padding:0">
-          <div class="consent embed" data-vendor="Spotify" data-src="https://open.spotify.com/embed/artist/2wn4Zq8AOBsX50X7fyBEoL" aria-live="polite">
-            <div class="card">
-              <strong>Spotify-Inhalt ist blockiert</strong>
-              <div class="small">Mit Klick lädst du Inhalte von Spotify. Es gelten deren Datenschutzhinweise.</div>
+          <div class="consent embed" data-vendor="YouTube"
+            data-src="https://www.youtube-nocookie.com/embed/pqsMGb3vhgE?rel=0&playsinline=1&modestbranding=1&list=OLAK5uy_nQM65_79BlJcI97MHxrqo64Kh_LX66lmg"
+            data-watch="https://www.youtube.com/watch?v=pqsMGb3vhgE"
+            style="background-image:url('https://img.youtube.com/vi/pqsMGb3vhgE/hqdefault.jpg');background-size:cover;background-position:center">
+            <div class="card"><strong>YouTube-Video ist blockiert</strong>
+              <div class="small">Mit Klick lädst du Inhalte von YouTube (Google).</div>
               <div class="actions">
                 <button class="allow" data-consent="always">Immer erlauben</button>
-                <button class="once">Einmal laden</button>
-                <a class="once" href="https://open.spotify.com/artist/2wn4Zq8AOBsX50X7fyBEoL" target="_blank" rel="noopener">Auf Spotify öffnen</a>
+                <button class="once">Einmal abspielen</button>
+                <a class="once" href="https://www.youtube.com/watch?v=pqsMGb3vhgE" target="_blank" rel="noopener">Auf YouTube ansehen</a>
               </div>
-              <div class="small"><a href="https://www.spotify.com/de/privacy/" target="_blank" rel="noopener">Datenschutz von Spotify</a></div>
+              <div class="small"><a href="https://policies.google.com/privacy?hl=de" target="_blank" rel="noopener">Datenschutz von Google</a></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="tile" style="padding:0">
+          <div class="consent embed" data-vendor="YouTube"
+            data-src="https://www.youtube-nocookie.com/embed/jc0CzEp389U?rel=0&playsinline=1&modestbranding=1&list=RDjc0CzEp389U&start_radio=1"
+            data-watch="https://www.youtube.com/watch?v=jc0CzEp389U"
+            style="background-image:url('https://img.youtube.com/vi/jc0CzEp389U/hqdefault.jpg');background-size:cover;background-position:center">
+            <div class="card"><strong>YouTube-Video ist blockiert</strong>
+              <div class="small">Mit Klick lädst du Inhalte von YouTube (Google).</div>
+              <div class="actions">
+                <button class="allow" data-consent="always">Immer erlauben</button>
+                <button class="once">Einmal abspielen</button>
+                <a class="once" href="https://www.youtube.com/watch?v=jc0CzEp389U" target="_blank" rel="noopener">Auf YouTube ansehen</a>
+              </div>
+              <div class="small"><a href="https://policies.google.com/privacy?hl=de" target="_blank" rel="noopener">Datenschutz von Google</a></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="tile" style="padding:0">
+          <div class="consent embed" data-vendor="YouTube"
+            data-src="https://www.youtube-nocookie.com/embed/0eVyU1LGz5A?rel=0&playsinline=1&modestbranding=1&list=OLAK5uy_m71AlxMIU1EM_h7AaGfmjj44GTYqDFpeQ"
+            data-watch="https://www.youtube.com/watch?v=0eVyU1LGz5A"
+            style="background-image:url('https://img.youtube.com/vi/0eVyU1LGz5A/hqdefault.jpg');background-size:cover;background-position:center">
+            <div class="card"><strong>YouTube-Video ist blockiert</strong>
+              <div class="small">Mit Klick lädst du Inhalte von YouTube (Google).</div>
+              <div class="actions">
+                <button class="allow" data-consent="always">Immer erlauben</button>
+                <button class="once">Einmal abspielen</button>
+                <a class="once" href="https://www.youtube.com/watch?v=0eVyU1LGz5A" target="_blank" rel="noopener">Auf YouTube ansehen</a>
+              </div>
+              <div class="small"><a href="https://policies.google.com/privacy?hl=de" target="_blank" rel="noopener">Datenschutz von Google</a></div>
             </div>
           </div>
         </article>
       </div>
-    </section>
-
-    <!-- VIDEOS (2-Klick) -->
-    <section id="video">
-      <div class="wrap">
-        <h2 style="margin:0 0 10px">Videos</h2>
-        <div class="grid-3">
-          <article class="tile" style="padding:0">
-            <div class="consent embed" data-vendor="YouTube"
-              data-src="https://www.youtube-nocookie.com/embed/pqsMGb3vhgE?rel=0&playsinline=1&modestbranding=1&list=OLAK5uy_nQM65_79BlJcI97MHxrqo64Kh_LX66lmg"
-              data-watch="https://www.youtube.com/watch?v=pqsMGb3vhgE"
-              style="background-image:url('https://img.youtube.com/vi/pqsMGb3vhgE/hqdefault.jpg');background-size:cover;background-position:center">
-              <div class="card"><strong>YouTube-Video ist blockiert</strong>
-                <div class="small">Mit Klick lädst du Inhalte von YouTube (Google).</div>
-                <div class="actions">
-                  <button class="allow" data-consent="always">Immer erlauben</button>
-                  <button class="once">Einmal abspielen</button>
-                  <a class="once" href="https://www.youtube.com/watch?v=pqsMGb3vhgE" target="_blank" rel="noopener">Auf YouTube ansehen</a>
-                </div>
-                <div class="small"><a href="https://policies.google.com/privacy?hl=de" target="_blank" rel="noopener">Datenschutz von Google</a></div>
-              </div>
-            </div>
-          </article>
-
-          <article class="tile" style="padding:0">
-            <div class="consent embed" data-vendor="YouTube"
-              data-src="https://www.youtube-nocookie.com/embed/jc0CzEp389U?rel=0&playsinline=1&modestbranding=1&list=RDjc0CzEp389U&start_radio=1"
-              data-watch="https://www.youtube.com/watch?v=jc0CzEp389U"
-              style="background-image:url('https://img.youtube.com/vi/jc0CzEp389U/hqdefault.jpg');background-size:cover;background-position:center">
-              <div class="card"><strong>YouTube-Video ist blockiert</strong>
-                <div class="small">Mit Klick lädst du Inhalte von YouTube (Google).</div>
-                <div class="actions">
-                  <button class="allow" data-consent="always">Immer erlauben</button>
-                  <button class="once">Einmal abspielen</button>
-                  <a class="once" href="https://www.youtube.com/watch?v=jc0CzEp389U" target="_blank" rel="noopener">Auf YouTube ansehen</a>
-                </div>
-                <div class="small"><a href="https://policies.google.com/privacy?hl=de" target="_blank" rel="noopener">Datenschutz von Google</a></div>
-              </div>
-            </div>
-          </article>
-
-          <article class="tile" style="padding:0">
-            <div class="consent embed" data-vendor="YouTube"
-              data-src="https://www.youtube-nocookie.com/embed/0eVyU1LGz5A?rel=0&playsinline=1&modestbranding=1&list=OLAK5uy_m71AlxMIU1EM_h7AaGfmjj44GTYqDFpeQ"
-              data-watch="https://www.youtube.com/watch?v=0eVyU1LGz5A"
-              style="background-image:url('https://img.youtube.com/vi/0eVyU1LGz5A/hqdefault.jpg');background-size:cover;background-position:center">
-              <div class="card"><strong>YouTube-Video ist blockiert</strong>
-                <div class="small">Mit Klick lädst du Inhalte von YouTube (Google).</div>
-                <div class="actions">
-                  <button class="allow" data-consent="always">Immer erlauben</button>
-                  <button class="once">Einmal abspielen</button>
-                  <a class="once" href="https://www.youtube.com/watch?v=0eVyU1LGz5A" target="_blank" rel="noopener">Auf YouTube ansehen</a>
-                </div>
-                <div class="small"><a href="https://policies.google.com/privacy?hl=de" target="_blank" rel="noopener">Datenschutz von Google</a></div>
-              </div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- DISCOGRAPHY (mit deinen Covern) -->
-    <section id="discography">
-      <div class="wrap">
-        <h2 style="margin:0 0 10px">Discography (Auswahl)</h2>
-        <div class="grid-3">
-          <!-- Lost and Found -->
-          <article class="tile release">
-            <a class="art" href="https://open.spotify.com/intl-de/album/6CVmcZb3bQAkxU39k0falc" target="_blank" rel="noopener" aria-label="Lost and Found (Single) auf Spotify öffnen">
-              <img class="art-img" src="covers/lost-and-found.jpg" alt="Elastic Field — Lost and Found (Cover)">
-            </a>
-            <div style="padding:14px 16px">
-              <h3>Lost and Found <small>· Single</small></h3>
-              <div class="badges">
-                <a class="btn" style="border-radius:999px" href="https://open.spotify.com/intl-de/album/6CVmcZb3bQAkxU39k0falc" target="_blank" rel="noopener">Spotify</a>
-              </div>
-            </div>
-          </article>
-
-          <!-- Non Smokers Nightmare -->
-          <article class="tile release">
-            <a class="art" href="https://open.spotify.com/intl-de/album/4gNyV1XCfZY8enSJb3msCn" target="_blank" rel="noopener" aria-label="Non Smokers Nightmare auf Spotify öffnen">
-              <img class="art-img" src="covers/non-smokers-nightmare.jpg" alt="Elastic Field — Non Smokers Nightmare (Cover)">
-            </a>
-            <div style="padding:14px 16px">
-              <h3>Non Smokers Nightmare <small>· Album</small></h3>
-              <div class="badges">
-                <a class="btn" style="border-radius:999px" href="https://open.spotify.com/intl-de/album/4gNyV1XCfZY8enSJb3msCn" target="_blank" rel="noopener">Spotify</a>
-              </div>
-            </div>
-          </article>
-
-          <!-- Another Non Smokers Nightmare -->
-          <article class="tile release">
-            <a class="art" href="https://open.spotify.com/intl-de/album/2YGPf9NdDWbEMWZKs4PtSi" target="_blank" rel="noopener" aria-label="Another Non Smokers Nightmare auf Spotify öffnen">
-              <img class="art-img" src="covers/another-non-smokers-nightmare.jpg" alt="Elastic Field — Another Non Smokers Nightmare (Cover)">
-            </a>
-            <div style="padding:14px 16px">
-              <h3>Another Non Smokers Nightmare <small>· Album</small></h3>
-              <div class="badges">
-                <a class="btn" style="border-radius:999px" href="https://open.spotify.com/intl-de/album/2YGPf9NdDWbEMWZKs4PtSi" target="_blank" rel="noopener">Spotify</a>
-              </div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- SHOP -->
-    <section id="shop">
-      <div class="wrap">
-        <h2 style="margin:0 0 10px">Shop</h2>
-        <div class="grid-3">
-          <article class="tile">
-            <a class="art" href="#video" aria-label="Zum Video scrollen"><img class="art-img" src="covers/lost-and-found.jpg" alt=""></a>
-            <div style="padding:14px 16px">
-              <h3 style="margin:0 0 6px">Featured Track 1</h3>
-              <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" style="margin:0">
-                <input type="hidden" name="cmd" value="_xclick">
-                <input type="hidden" name="business" value="fraendk@hotmail.com">
-                <input type="hidden" name="item_name" value="Elastic Field — Featured Track 1 (Digital Download)">
-                <input type="hidden" name="currency_code" value="EUR">
-                <input type="hidden" name="amount" value="0.99">
-                <input type="hidden" name="no_shipping" value="1">
-                <button class="btn brand" type="submit">Kaufen – 0,99 €</button>
-              </form>
-            </div>
-          </article>
-
-          <article class="tile">
-            <a class="art" href="#video" aria-label="Zum Video scrollen"><img class="art-img" src="covers/non-smokers-nightmare.jpg" alt=""></a>
-            <div style="padding:14px 16px">
-              <h3 style="margin:0 0 6px">Featured Track 2</h3>
-              <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" style="margin:0">
-                <input type="hidden" name="cmd" value="_xclick">
-                <input type="hidden" name="business" value="fraendk@hotmail.com">
-                <input type="hidden" name="item_name" value="Elastic Field — Featured Track 2 (Digital Download)">
-                <input type="hidden" name="currency_code" value="EUR">
-                <input type="hidden" name="amount" value="0.99">
-                <input type="hidden" name="no_shipping" value="1">
-                <button class="btn brand" type="submit">Kaufen – 0,99 €</button>
-              </form>
-            </div>
-          </article>
-
-          <article class="tile">
-            <a class="art" href="#video" aria-label="Zum Video scrollen"><img class="art-img" src="covers/another-non-smokers-nightmare.jpg" alt=""></a>
-            <div style="padding:14px 16px">
-              <h3 style="margin:0 0 6px">Featured Track 3</h3>
-              <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" style="margin:0">
-                <input type="hidden" name="cmd" value="_xclick">
-                <input type="hidden" name="business" value="fraendk@hotmail.com">
-                <input type="hidden" name="item_name" value="Elastic Field — Featured Track 3 (Digital Download)">
-                <input type="hidden" name="currency_code" value="EUR">
-                <input type="hidden" name="amount" value="0.99">
-                <input type="hidden" name="no_shipping" value="1">
-                <button class="btn brand" type="submit">Kaufen – 0,99 €</button>
-              </form>
-            </div>
-          </article>
-        </div>
-        <p style="margin:12px 0 0;color:var(--sub)">Hinweis: PayPal öffnet den Checkout. Für automatische Datei-Auslieferung (Downloadlink) richte ich dir gern Gumroad/Bandcamp/Stripe ein.</p>
-      </div>
-    </section>
-
-    <!-- ABOUT -->
-    <section id="about">
-      <div class="wrap">
-        <h2 style="margin:0 0 10px">About Elastic Field</h2>
-        <div class="tile" style="padding:14px 16px">
-          <p style="margin:0 0 8px">
-            Elastic Field was founded in 2011 – a free-form music project rooted in ambient, lounge, trip hop, downbeat, jazz, and subtle electronic textures. The sound is reflective, immersive, and emotional – often instrumental, sometimes featuring voice fragments or spoken word passages.
-          </p>
-          <p style="margin:0 0 8px">
-            In 2012, the debut album <em>Non Smokers Nightmare</em> introduced a world of atmospheric contrasts and sonic minimalism. One year later, the follow-up <em>Another Non Smokers Nightmare</em> (2013) deepened that sound – darker, more focused, but equally open and textured.
-          </p>
-          <p style="margin:0">
-            Now, in 2025, Elastic Field returns – with a series of remixes, new compositions, and a refined sound. While remaining true to its roots, the project embraces modern sonic aesthetics and digital production. It’s a comeback ohne Nostalgie – ein neuer Anfang im gleichen Geist.
-          </p>
-          <p style="margin:10px 0 0; color:var(--sub)">
-            Collabs & licensing: <a href="mailto:fraendk@hotmail.com?subject=Elastic%20Field%20Anfrage">fraendk@hotmail.com</a>
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact">
-      <div class="wrap">
-        <h2 style="margin:0 0 10px">Kontakt</h2>
-        <div class="tile" style="padding:14px 16px">
-          <p style="margin:0 0 8px">Schreib mir direkt hier — das Formular sendet über Formspree (oder fällt auf E-Mail zurück, solange keine ID hinterlegt ist).</p>
-          <form id="contact-form-inline" action="https://formspree.io/f/DEINE_ID" method="POST" accept-charset="UTF-8" novalidate>
-            <input type="hidden" name="_subject" value="Elastic Field Kontakt (Website)">
-            <div class="field"><label for="i-name">Name</label><input id="i-name" name="name" type="text" autocomplete="name" placeholder="Dein Name" required></div>
-            <div class="field"><label for="i-mail">E-Mail</label><input id="i-mail" name="email" type="email" autocomplete="email" placeholder="dein@mail.de" required></div>
-            <div class="field"><label for="i-msg">Nachricht</label><textarea id="i-msg" name="message" rows="4" placeholder="Worum geht’s?" required></textarea></div>
-            <div style="position:absolute; left:-5000px" aria-hidden="true"><label>Bitte nicht ausfüllen:<input type="text" name="_gotcha" tabindex="-1"></label></div>
-            <div class="field"><label style="display:flex; gap:8px; align-items:flex-start"><input type="checkbox" id="i-consent" required><span>Ich bin einverstanden, dass meine Angaben zur Kontaktaufnahme gespeichert werden. Versand über Formspree (<a href="https://formspree.io" target="_blank" rel="noopener">Infos</a>).</span></label></div>
-            <div class="modal-actions" style="justify-content:flex-start"><button type="submit" class="btn brand">Nachricht senden</button><a class="btn" href="mailto:fraendk@hotmail.com?subject=Elastic%20Field%20Kontakt">Oder direkt per Mail</a></div>
-            <p id="contact-status" class="form-note" role="status" aria-live="polite" style="margin-top:8px"></p>
-          </form>
-        </div>
-      </div>
-    </section>
-
-    <!-- Impressum/Datenschutz -->
-    <section id="impressum"><div class="wrap"><h2>Impressum</h2><div class="tile" style="padding:14px 16px"><p><strong>Elastic Field</strong><br>Kontakt: <a href="mailto:fraendk@hotmail.com">fraendk@hotmail.com</a></p><p style="color:var(--sub)">Hinweis: Trage hier später deine Pflichtangaben nach § 5 TMG ein.</p></div></div></section>
-    <section id="datenschutz"><div class="wrap"><h2>Datenschutz</h2><div class="tile" style="padding:14px 16px"><p>Diese Seite lädt Inhalte von YouTube und Spotify erst nach Zustimmung (2-Klick). Deine Auswahl wird lokal gespeichert und kann jederzeit zurückgesetzt werden.</p><p><button class="btn" onclick="document.getElementById('privacy-reset').click()">Einwilligungen widerrufen</button></p></div></div></section>
-  </main>
-
-  <!-- Hidden BG-Mix + Consent UI -->
-  <div id="bgmix-holder" aria-hidden="true"></div>
-  <div id="bgmix-consent" style="display:none; position:fixed; bottom:16px; left:50%; transform:translateX(-50%); background:rgba(18,14,10,.9); color:#f6ead5; border:1px solid #3b2b1f; border-radius:12px; padding:10px 12px; z-index:9999;">
-    <strong style="display:block; margin-bottom:6px;">YouTube laden?</strong>
-    <small style="color:#d7c6a9; display:block; margin-bottom:8px;">Für den Mix im Hintergrund wird YouTube eingebunden.</small>
-    <div style="display:flex; gap:8px; justify-content:flex-end">
-      <button id="bgmix-once" class="btn">Einmal</button>
-      <button id="bgmix-always" class="btn brand">Immer erlauben</button>
-      <button id="bgmix-cancel" class="btn">Abbrechen</button>
     </div>
+  </section>
+
+  <!-- DISCOGRAPHY (robuste Bild-Ladung) -->
+  <section id="discography">
+    <div class="wrap">
+      <h2 style="margin:0 0 10px">Discography (Auswahl)</h2>
+      <div class="grid-3">
+        <article class="tile release">
+          <a class="art" href="https://open.spotify.com/intl-de/album/6CVmcZb3bQAkxU39k0falc" target="_blank" rel="noopener" aria-label="Lost and Found (Single) auf Spotify öffnen">
+            <img class="art-img" data-basesrc="lost-and-found" alt="Elastic Field — Lost and Found (Cover)">
+          </a>
+          <div style="padding:14px 16px">
+            <h3>Lost and Found <small>· Single</small></h3>
+            <div class="badges"><a class="btn" style="border-radius:999px" href="https://open.spotify.com/intl-de/album/6CVmcZb3bQAkxU39k0falc" target="_blank" rel="noopener">Spotify</a></div>
+          </div>
+        </article>
+
+        <article class="tile release">
+          <a class="art" href="https://open.spotify.com/intl-de/album/4gNyV1XCfZY8enSJb3msCn" target="_blank" rel="noopener" aria-label="Non Smokers Nightmare auf Spotify öffnen">
+            <img class="art-img" data-basesrc="non-smokers-nightmare" alt="Elastic Field — Non Smokers Nightmare (Cover)">
+          </a>
+          <div style="padding:14px 16px">
+            <h3>Non Smokers Nightmare <small>· Album</small></h3>
+            <div class="badges"><a class="btn" style="border-radius:999px" href="https://open.spotify.com/intl-de/album/4gNyV1XCfZY8enSJb3msCn" target="_blank" rel="noopener">Spotify</a></div>
+          </div>
+        </article>
+
+        <article class="tile release">
+          <a class="art" href="https://open.spotify.com/intl-de/album/2YGPf9NdDWbEMWZKs4PtSi" target="_blank" rel="noopener" aria-label="Another Non Smokers Nightmare auf Spotify öffnen">
+            <img class="art-img" data-basesrc="another-non-smokers-nightmare" alt="Elastic Field — Another Non Smokers Nightmare (Cover)">
+          </a>
+          <div style="padding:14px 16px">
+            <h3>Another Non Smokers Nightmare <small>· Album</small></h3>
+            <div class="badges"><a class="btn" style="border-radius:999px" href="https://open.spotify.com/intl-de/album/2YGPf9NdDWbEMWZKs4PtSi" target="_blank" rel="noopener">Spotify</a></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- SHOP (ebenfalls robuste Bild-Ladung) -->
+  <section id="shop">
+    <div class="wrap">
+      <h2 style="margin:0 0 10px">Shop</h2>
+      <div class="grid-3">
+        <article class="tile">
+          <a class="art" href="#video" aria-label="Zum Video scrollen"><img class="art-img" data-basesrc="lost-and-found" alt=""></a>
+          <div style="padding:14px 16px">
+            <h3 style="margin:0 0 6px">Featured Track 1</h3>
+            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" style="margin:0">
+              <input type="hidden" name="cmd" value="_xclick">
+              <input type="hidden" name="business" value="fraendk@hotmail.com">
+              <input type="hidden" name="item_name" value="Elastic Field — Featured Track 1 (Digital Download)">
+              <input type="hidden" name="currency_code" value="EUR">
+              <input type="hidden" name="amount" value="0.99">
+              <input type="hidden" name="no_shipping" value="1">
+              <button class="btn brand" type="submit">Kaufen – 0,99 €</button>
+            </form>
+          </div>
+        </article>
+
+        <article class="tile">
+          <a class="art" href="#video" aria-label="Zum Video scrollen"><img class="art-img" data-basesrc="non-smokers-nightmare" alt=""></a>
+          <div style="padding:14px 16px">
+            <h3 style="margin:0 0 6px">Featured Track 2</h3>
+            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" style="margin:0">
+              <input type="hidden" name="cmd" value="_xclick">
+              <input type="hidden" name="business" value="fraendk@hotmail.com">
+              <input type="hidden" name="item_name" value="Elastic Field — Featured Track 2 (Digital Download)">
+              <input type="hidden" name="currency_code" value="EUR">
+              <input type="hidden" name="amount" value="0.99">
+              <input type="hidden" name="no_shipping" value="1">
+              <button class="btn brand" type="submit">Kaufen – 0,99 €</button>
+            </form>
+          </div>
+        </article>
+
+        <article class="tile">
+          <a class="art" href="#video" aria-label="Zum Video scrollen"><img class="art-img" data-basesrc="another-non-smokers-nightmare" alt=""></a>
+          <div style="padding:14px 16px">
+            <h3 style="margin:0 0 6px">Featured Track 3</h3>
+            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" style="margin:0">
+              <input type="hidden" name="cmd" value="_xclick">
+              <input type="hidden" name="business" value="fraendk@hotmail.com">
+              <input type="hidden" name="item_name" value="Elastic Field — Featured Track 3 (Digital Download)">
+              <input type="hidden" name="currency_code" value="EUR">
+              <input type="hidden" name="amount" value="0.99">
+              <input type="hidden" name="no_shipping" value="1">
+              <button class="btn brand" type="submit">Kaufen – 0,99 €</button>
+            </form>
+          </div>
+        </article>
+      </div>
+      <p style="margin:12px 0 0;color:var(--sub)">Hinweis: PayPal öffnet den Checkout. Für automatische Datei-Auslieferung (Downloadlink) richte ich dir gern Gumroad/Bandcamp/Stripe ein.</p>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap">
+      <h2 style="margin:0 0 10px">About Elastic Field</h2>
+      <div class="tile" style="padding:14px 16px">
+        <p style="margin:0 0 8px">Elastic Field was founded in 2011 – a free-form music project rooted in ambient, lounge, trip hop, downbeat, jazz, and subtle electronic textures. The sound is reflective, immersive, and emotional – often instrumental, sometimes featuring voice fragments or spoken word passages.</p>
+        <p style="margin:0 0 8px">In 2012, the debut album <em>Non Smokers Nightmare</em> introduced a world of atmospheric contrasts and sonic minimalism. One year later, the follow-up <em>Another Non Smokers Nightmare</em> (2013) deepened that sound – darker, more focused, but equally open and textured.</p>
+        <p style="margin:0">Now, in 2025, Elastic Field returns – with a series of remixes, new compositions, and a refined sound. While remaining true to its roots, the project embraces modern sonic aesthetics and digital production. It’s a comeback ohne Nostalgie – ein neuer Anfang im gleichen Geist.</p>
+        <p style="margin:10px 0 0; color:var(--sub)">Collabs & licensing: <a href="mailto:fraendk@hotmail.com?subject=Elastic%20Field%20Anfrage">fraendk@hotmail.com</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="wrap">
+      <h2 style="margin:0 0 10px">Kontakt</h2>
+      <div class="tile" style="padding:14px 16px">
+        <p style="margin:0 0 8px">Schreib mir direkt hier — das Formular sendet über Formspree (oder fällt auf E-Mail zurück, solange keine ID hinterlegt ist).</p>
+        <form id="contact-form-inline" action="https://formspree.io/f/DEINE_ID" method="POST" accept-charset="UTF-8" novalidate>
+          <input type="hidden" name="_subject" value="Elastic Field Kontakt (Website)">
+          <div class="field"><label for="i-name">Name</label><input id="i-name" name="name" type="text" autocomplete="name" placeholder="Dein Name" required></div>
+          <div class="field"><label for="i-mail">E-Mail</label><input id="i-mail" name="email" type="email" autocomplete="email" placeholder="dein@mail.de" required></div>
+          <div class="field"><label for="i-msg">Nachricht</label><textarea id="i-msg" name="message" rows="4" placeholder="Worum geht’s?" required></textarea></div>
+          <div style="position:absolute; left:-5000px" aria-hidden="true"><label>Bitte nicht ausfüllen:<input type="text" name="_gotcha" tabindex="-1"></label></div>
+          <div class="field"><label style="display:flex; gap:8px; align-items:flex-start"><input type="checkbox" id="i-consent" required><span>Ich bin einverstanden, dass meine Angaben zur Kontaktaufnahme gespeichert werden. Versand über Formspree (<a href="https://formspree.io" target="_blank" rel="noopener">Infos</a>).</span></label></div>
+          <div class="modal-actions" style="justify-content:flex-start"><button type="submit" class="btn brand">Nachricht senden</button><a class="btn" href="mailto:fraendk@hotmail.com?subject=Elastic%20Field%20Kontakt">Oder direkt per Mail</a></div>
+          <p id="contact-status" class="form-note" role="status" aria-live="polite" style="margin-top:8px"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Impressum/Datenschutz -->
+  <section id="impressum"><div class="wrap"><h2>Impressum</h2><div class="tile" style="padding:14px 16px"><p><strong>Elastic Field</strong><br>Kontakt: <a href="mailto:fraendk@hotmail.com">fraendk@hotmail.com</a></p><p style="color:var(--sub)">Hinweis: Trage hier später deine Pflichtangaben nach § 5 TMG ein.</p></div></div></section>
+  <section id="datenschutz"><div class="wrap"><h2>Datenschutz</h2><div class="tile" style="padding:14px 16px"><p>Diese Seite lädt Inhalte von YouTube und Spotify erst nach Zustimmung (2-Klick). Deine Auswahl wird lokal gespeichert und kann jederzeit zurückgesetzt werden.</p><p><button class="btn" onclick="document.getElementById('privacy-reset').click()">Einwilligungen widerrufen</button></p></div></div></section>
+</main>
+
+<!-- Hidden BG-Mix + Consent UI -->
+<div id="bgmix-holder" aria-hidden="true"></div>
+<div id="bgmix-consent" style="display:none; position:fixed; bottom:16px; left:50%; transform:translateX(-50%); background:rgba(18,14,10,.9); color:#f6ead5; border:1px solid #3b2b1f; border-radius:12px; padding:10px 12px; z-index:9999;">
+  <strong style="display:block; margin-bottom:6px;">YouTube laden?</strong>
+  <small style="color:#d7c6a9; display:block; margin-bottom:8px;">Für den Mix im Hintergrund wird YouTube eingebunden.</small>
+  <div style="display:flex; gap:8px; justify-content:flex-end">
+    <button id="bgmix-once" class="btn">Einmal</button>
+    <button id="bgmix-always" class="btn brand">Immer erlauben</button>
+    <button id="bgmix-cancel" class="btn">Abbrechen</button>
   </div>
+</div>
 
-  <!-- Floating Kontakt-Button + Modal -->
-  <button id="contact-fab" class="btn brand" aria-haspopup="dialog" aria-controls="contact-modal">✉️ Kontakt</button>
-  <div id="contact-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="contact-title">
-    <div class="modal">
-      <h3 id="contact-title" style="margin:0 0 8px">Schreib mir</h3>
-      <form id="contact-form" action="https://formspree.io/f/DEINE_ID" method="POST" accept-charset="UTF-8" novalidate>
-        <input type="hidden" name="_subject" value="Elastic Field Kontakt (Website)">
-        <div class="field"><label for="c-name">Name</label><input id="c-name" name="name" type="text" autocomplete="name" placeholder="Dein Name" required></div>
-        <div class="field"><label for="c-mail">E-Mail</label><input id="c-mail" name="email" type="email" autocomplete="email" placeholder="dein@mail.de" required></div>
-        <div class="field"><label for="c-msg">Nachricht</label><textarea id="c-msg" name="message" rows="4" placeholder="Worum geht’s?" required></textarea></div>
-        <div style="position:absolute; left:-5000px" aria-hidden="true"><label>Bitte nicht ausfüllen:<input type="text" name="_gotcha" tabindex="-1"></label></div>
-        <div class="field"><label style="display:flex; gap:8px; align-items:flex-start"><input type="checkbox" id="c-consent" required><span>Ich bin einverstanden, dass meine Angaben zur Kontaktaufnahme gespeichert werden. Versand über Formspree (<a href="https://formspree.io" target="_blank" rel="noopener">Infos</a>).</span></label></div>
-        <div class="modal-actions"><a class="btn" href="mailto:fraendk@hotmail.com?subject=Elastic%20Field%20Kontakt">Direkt per Mail</a><button type="button" class="btn" id="contact-cancel">Schließen</button><button type="submit" class="btn brand">Senden</button></div>
-        <p id="contact-status-modal" class="form-note" role="status" aria-live="polite" style="margin-top:8px"></p>
-      </form>
-    </div>
+<!-- Floating Kontakt-Button + Modal -->
+<button id="contact-fab" class="btn brand" aria-haspopup="dialog" aria-controls="contact-modal">✉️ Kontakt</button>
+<div id="contact-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="contact-title">
+  <div class="modal">
+    <h3 id="contact-title" style="margin:0 0 8px">Schreib mir</h3>
+    <form id="contact-form" action="https://formspree.io/f/DEINE_ID" method="POST" accept-charset="UTF-8" novalidate>
+      <input type="hidden" name="_subject" value="Elastic Field Kontakt (Website)">
+      <div class="field"><label for="c-name">Name</label><input id="c-name" name="name" type="text" autocomplete="name" placeholder="Dein Name" required></div>
+      <div class="field"><label for="c-mail">E-Mail</label><input id="c-mail" name="email" type="email" autocomplete="email" placeholder="dein@mail.de" required></div>
+      <div class="field"><label for="c-msg">Nachricht</label><textarea id="c-msg" name="message" rows="4" placeholder="Worum geht’s?" required></textarea></div>
+      <div style="position:absolute; left:-5000px" aria-hidden="true"><label>Bitte nicht ausfüllen:<input type="text" name="_gotcha" tabindex="-1"></label></div>
+      <div class="field"><label style="display:flex; gap:8px; align-items:flex-start"><input type="checkbox" id="c-consent" required><span>Ich bin einverstanden, dass meine Angaben zur Kontaktaufnahme gespeichert werden. Versand über Formspree (<a href="https://formspree.io" target="_blank" rel="noopener">Infos</a>).</span></label></div>
+      <div class="modal-actions"><a class="btn" href="mailto:fraendk@hotmail.com?subject=Elastic%20Field%20Kontakt">Direkt per Mail</a><button type="button" class="btn" id="contact-cancel">Schließen</button><button type="submit" class="btn brand">Senden</button></div>
+      <p id="contact-status-modal" class="form-note" role="status" aria-live="polite" style="margin-top:8px"></p>
+    </form>
   </div>
+</div>
 
-  <footer>
-    <div class="wrap" style="display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap">
-      <small>© <span id="y"></span> Elastic Field · <a href="#impressum">Impressum</a> · <a href="#datenschutz">Datenschutz</a> · <button id="privacy-reset" class="btn" style="padding:4px 10px">Datenschutz-Einstellungen</button></small>
-      <small style="color:var(--sub)">2-Klick Embeds · Shop Ready</small>
-    </div>
-  </footer>
+<footer>
+  <div class="wrap" style="display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap">
+    <small>© <span id="y"></span> Elastic Field · <a href="#impressum">Impressum</a> · <a href="#datenschutz">Datenschutz</a> · <button id="privacy-reset" class="btn" style="padding:4px 10px">Datenschutz-Einstellungen</button></small>
+    <small style="color:var(--sub)">2-Klick Embeds · Shop Ready</small>
+  </div>
+</footer>
 
-  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
 
-  <script>
-  // Nav aria-expanded sync
-  (function(){const t=document.getElementById('nav-toggle'),l=document.getElementById('nav-label');if(t&&l){const s=()=>l.setAttribute('aria-expanded',String(t.checked));t.addEventListener('change',s);s();}})();
+<script>
+/* Nav aria-expanded sync */
+(function(){const t=document.getElementById('nav-toggle'),l=document.getElementById('nav-label');if(t&&l){const s=()=>l.setAttribute('aria-expanded',String(t.checked));t.addEventListener('change',s);s();}})();
 
-  // Typewriter Headline
-  (function(){
-    const text="Elastic Field", el=document.getElementById('ef-type');
-    if(!el) return;
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches){ el.textContent=text; return; }
-    let i=0; const caret=document.createElement('span'); caret.className='caret'; const speed=75;
-    (function type(){ if(i<=text.length){ el.textContent=text.slice(0,i); el.appendChild(caret); i++; setTimeout(type,speed);} })();
-  })();
+/* Typewriter Headline */
+(function(){
+  const text="Elastic Field", el=document.getElementById('ef-type');
+  if(!el) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches){ el.textContent=text; return; }
+  let i=0; const caret=document.createElement('span'); caret.className='caret'; const speed=75;
+  (function type(){ if(i<=text.length){ el.textContent=text.slice(0,i); el.appendChild(caret); i++; setTimeout(type,speed);} })();
+})();
 
-  // 2-Klick Embeds + Fallback
-  (function(){
-    const CK=(v)=>"consent:"+v;
-    function fallback(container,url){
-      container.innerHTML=`<div class="card"><strong>Inhalt kann hier nicht eingebettet werden</strong><div class="small">Du kannst ihn direkt öffnen.</div><div class="actions"><a class="once" href="${url}" target="_blank" rel="noopener">Jetzt ansehen</a></div></div>`;
-      container.classList.add('consent');
-    }
-    function mountIframe(host,src,container){
-      const iframe=document.createElement('iframe'); let loaded=false; iframe.onload=()=>loaded=true;
-      setTimeout(()=>{ if(!loaded){ const watch=container.getAttribute('data-watch')||src.replace('/embed/','/watch?v='); fallback(container,watch);} }, 6000);
-      iframe.width="100%"; iframe.height="100%"; iframe.loading="lazy"; iframe.referrerPolicy="strict-origin-when-cross-origin"; iframe.allowFullscreen=true;
-      if(host==="YouTube"){ iframe.src=src; iframe.title="YouTube Video"; iframe.allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"; }
-      else if(host==="Spotify"){ iframe.src=src; iframe.title="Spotify Player"; iframe.style.border="0"; iframe.allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"; }
-      container.innerHTML=""; container.classList.remove("consent"); container.appendChild(iframe);
-    }
-    document.querySelectorAll('.consent.embed').forEach(box=>{
-      const vendor=box.getAttribute('data-vendor'), src=box.getAttribute('data-src'), saved=localStorage.getItem(CK(vendor));
-      if(saved==="true"){ mountIframe(vendor,src,box); return; }
-      box.querySelector('.once')?.addEventListener('click',()=>mountIframe(vendor,src,box));
-      box.querySelector('.allow')?.addEventListener('click',()=>{ localStorage.setItem(CK(vendor),"true"); mountIframe(vendor,src,box); });
+/* Leichter Parallax im Hero */
+(function(){
+  const cover=document.querySelector('.cover');
+  const ov=document.getElementById('hero-overlay');
+  if(!cover || !ov || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  cover.addEventListener('mousemove', (e)=>{
+    const r=cover.getBoundingClientRect();
+    const x=(e.clientX - r.left)/r.width, y=(e.clientY - r.top)/r.height;
+    const dx=(x-0.5)*12, dy=(y-0.5)*8;
+    ov.style.setProperty('--ox', dx.toFixed(1)+'px');
+    ov.style.setProperty('--oy', dy.toFixed(1)+'px');
+  });
+  cover.addEventListener('mouseleave', ()=>{ ov.style.setProperty('--ox','0px'); ov.style.setProperty('--oy','0px'); });
+})();
+
+/* 2-Klick Embeds + Fallback */
+(function(){
+  const CK=(v)=>"consent:"+v;
+  function fallback(container,url){
+    container.innerHTML=`<div class="card"><strong>Inhalt kann hier nicht eingebettet werden</strong><div class="small">Du kannst ihn direkt öffnen.</div><div class="actions"><a class="once" href="${url}" target="_blank" rel="noopener">Jetzt ansehen</a></div></div>`;
+    container.classList.add('consent');
+  }
+  function mountIframe(host,src,container){
+    const iframe=document.createElement('iframe'); let loaded=false; iframe.onload=()=>loaded=true;
+    setTimeout(()=>{ if(!loaded){ const watch=container.getAttribute('data-watch')||src.replace('/embed/','/watch?v='); fallback(container,watch);} }, 6000);
+    iframe.width="100%"; iframe.height="100%"; iframe.loading="lazy"; iframe.referrerPolicy="strict-origin-when-cross-origin"; iframe.allowFullscreen=true;
+    if(host==="YouTube"){ iframe.src=src; iframe.title="YouTube Video"; iframe.allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"; }
+    else if(host==="Spotify"){ iframe.src=src; iframe.title="Spotify Player"; iframe.style.border="0"; iframe.allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"; }
+    container.innerHTML=""; container.classList.remove("consent"); container.appendChild(iframe);
+  }
+  document.querySelectorAll('.consent.embed').forEach(box=>{
+    const vendor=box.getAttribute('data-vendor'), src=box.getAttribute('data-src'), saved=localStorage.getItem(CK(vendor));
+    if(saved==="true"){ mountIframe(vendor,src,box); return; }
+    box.querySelector('.once')?.addEventListener('click',()=>mountIframe(vendor,src,box));
+    box.querySelector('.allow')?.addEventListener('click',()=>{ localStorage.setItem(CK(vendor),"true"); mountIframe(vendor,src,box); });
+  });
+})();
+
+/* Hintergrund-Mix (YouTube) */
+(function(){
+  const btn=document.getElementById('bgmix-toggle'), holder=document.getElementById('bgmix-holder'), box=document.getElementById('bgmix-consent');
+  if(!btn||!holder) return; const CK=(v)=>"consent:"+v, YT_KEY=CK("YouTube"); let playing=false;
+  function mount(src){ holder.innerHTML=''; const i=document.createElement('iframe'); i.src=src; i.allow="autoplay; encrypted-media; picture-in-picture; web-share"; i.allowFullscreen=true; i.referrerPolicy="strict-origin-when-cross-origin"; holder.appendChild(i); playing=true; btn.textContent="⏸ Mix stoppen"; }
+  function unmount(){ holder.innerHTML=''; playing=false; btn.textContent="▶ Mix im Hintergrund"; }
+  function showConsent(){ if(!box){ mount(btn.dataset.src); return; } box.style.display='block'; }
+  function hideConsent(){ if(box) box.style.display='none'; }
+  btn.addEventListener('click',()=>{ if(playing){ unmount(); return; } const allowed=localStorage.getItem(YT_KEY)==="true"; if(allowed){ mount(btn.dataset.src); } else { showConsent(); } });
+  if(box){ document.getElementById('bgmix-once')?.addEventListener('click',()=>{ hideConsent(); mount(btn.dataset.src); }); document.getElementById('bgmix-always')?.addEventListener('click',()=>{ localStorage.setItem(YT_KEY,"true"); hideConsent(); mount(btn.dataset.src); }); document.getElementById('bgmix-cancel')?.addEventListener('click',hideConsent); }
+  window.addEventListener('DOMContentLoaded',()=>{ const allowed=localStorage.getItem(YT_KEY)==="true"; if(allowed){ mount(btn.dataset.src); } });
+})();
+
+/* Datenschutz-Reset */
+document.getElementById('privacy-reset')?.addEventListener('click',()=>{ if(confirm('YouTube/Spotify-Einwilligungen zurücksetzen?')){ localStorage.removeItem('consent:YouTube'); localStorage.removeItem('consent:Spotify'); alert('Zurückgesetzt. Beim nächsten Abspielen wirst du gefragt.'); } });
+
+/* Kontakt-Modal */
+(function(){
+  const fab=document.getElementById('contact-fab'), modal=document.getElementById('contact-modal'), cancel=document.getElementById('contact-cancel');
+  function open(){ modal.style.display='flex'; setTimeout(()=>document.getElementById('c-name')?.focus(),50); }
+  function close(){ modal.style.display='none'; }
+  fab?.addEventListener('click',open); cancel?.addEventListener('click',close); modal?.addEventListener('click',(e)=>{ if(e.target===modal) close(); });
+})();
+
+/* Formspree Submit mit Mail-Fallback */
+(function(){
+  const toast=document.getElementById('toast');
+  function showToast(msg){ if(!toast) return; toast.textContent=msg; toast.classList.add('show'); setTimeout(()=>toast.classList.remove('show'),4000); }
+  function mailFallback(form){
+    const name=encodeURIComponent(form.querySelector('[name="name"]')?.value||'');
+    const email=encodeURIComponent(form.querySelector('[name="email"]')?.value||'');
+    const msg=encodeURIComponent(form.querySelector('[name="message"]')?.value||'');
+    const body=`Name: ${name}%0AEmail: ${email}%0A%0ANachricht:%0A${msg}`;
+    window.location.href=`mailto:fraendk@hotmail.com?subject=Elastic%20Field%20Kontakt&body=${body}`;
+  }
+  function wire(formId,statusId){
+    const form=document.getElementById(formId); if(!form) return; const status=document.getElementById(statusId);
+    form.addEventListener('submit',async(e)=>{
+      e.preventDefault(); status.textContent="Senden…";
+      const endpoint=form.getAttribute('action')||"";
+      if(!endpoint || endpoint.includes('DEINE_ID')){ status.textContent="Sende über E-Mail…"; showToast("Sende per E-Mail (Formspree ID fehlt)"); mailFallback(form); return; }
+      try{
+        const data=new FormData(form);
+        const res=await fetch(endpoint,{method:'POST',body:data,headers:{'Accept':'application/json'}});
+        if(res.ok){ form.reset(); status.textContent="Danke! Ich melde mich bald."; showToast("Nachricht gesendet ✅"); }
+        else{ status.textContent="Fehler beim Senden. Sende per E-Mail…"; showToast("Formspree-Fehler – Mail-Fallback"); mailFallback(form); }
+      }catch(err){ status.textContent="Netzwerkfehler. Sende per E-Mail…"; showToast("Netzwerkfehler – Mail-Fallback"); mailFallback(form); }
     });
-  })();
+  }
+  wire('contact-form','contact-status-modal');
+  wire('contact-form-inline','contact-status');
+})();
 
-  // Hintergrund-Mix (YouTube)
-  (function(){
-    const btn=document.getElementById('bgmix-toggle'), holder=document.getElementById('bgmix-holder'), box=document.getElementById('bgmix-consent');
-    if(!btn||!holder) return; const CK=(v)=>"consent:"+v, YT_KEY=CK("YouTube"); let playing=false;
-    function mount(src){ holder.innerHTML=''; const i=document.createElement('iframe'); i.src=src; i.allow="autoplay; encrypted-media; picture-in-picture; web-share"; i.allowFullscreen=true; i.referrerPolicy="strict-origin-when-cross-origin"; holder.appendChild(i); playing=true; btn.textContent="⏸ Mix stoppen"; }
-    function unmount(){ holder.innerHTML=''; playing=false; btn.textContent="▶ Mix im Hintergrund"; }
-    function showConsent(){ if(!box){ mount(btn.dataset.src); return; } box.style.display='block'; }
-    function hideConsent(){ if(box) box.style.display='none'; }
-    btn.addEventListener('click',()=>{ if(playing){ unmount(); return; } const allowed=localStorage.getItem(YT_KEY)==="true"; if(allowed){ mount(btn.dataset.src); } else { showConsent(); } });
-    if(box){ document.getElementById('bgmix-once')?.addEventListener('click',()=>{ hideConsent(); mount(btn.dataset.src); }); document.getElementById('bgmix-always')?.addEventListener('click',()=>{ localStorage.setItem(YT_KEY,"true"); hideConsent(); mount(btn.dataset.src); }); document.getElementById('bgmix-cancel')?.addEventListener('click',hideConsent); }
-    window.addEventListener('DOMContentLoaded',()=>{ const allowed=localStorage.getItem(YT_KEY)==="true"; if(allowed){ mount(btn.dataset.src); } });
-  })();
+/* Jahr */
+document.getElementById('y').textContent=new Date().getFullYear();
 
-  // Datenschutz-Reset
-  document.getElementById('privacy-reset')?.addEventListener('click',()=>{ if(confirm('YouTube/Spotify-Einwilligungen zurücksetzen?')){ localStorage.removeItem('consent:YouTube'); localStorage.removeItem('consent:Spotify'); alert('Zurückgesetzt. Beim nächsten Abspielen wirst du gefragt.'); } });
-
-  // Kontakt-Modal
-  (function(){
-    const fab=document.getElementById('contact-fab'), modal=document.getElementById('contact-modal'), cancel=document.getElementById('contact-cancel');
-    function open(){ modal.style.display='flex'; setTimeout(()=>document.getElementById('c-name')?.focus(),50); }
-    function close(){ modal.style.display='none'; }
-    fab?.addEventListener('click',open); cancel?.addEventListener('click',close); modal?.addEventListener('click',(e)=>{ if(e.target===modal) close(); });
-  })();
-
-  // Formspree Submit (Inline & Modal) mit Mail-Fallback
-  (function(){
-    const toast=document.getElementById('toast');
-    function showToast(msg){ if(!toast) return; toast.textContent=msg; toast.classList.add('show'); setTimeout(()=>toast.classList.remove('show'),4000); }
-    function mailFallback(form){
-      const name=encodeURIComponent(form.querySelector('[name="name"]')?.value||'');
-      const email=encodeURIComponent(form.querySelector('[name="email"]')?.value||'');
-      const msg=encodeURIComponent(form.querySelector('[name="message"]')?.value||'');
-      const body=`Name: ${name}%0AEmail: ${email}%0A%0ANachricht:%0A${msg}`;
-      window.location.href=`mailto:fraendk@hotmail.com?subject=Elastic%20Field%20Kontakt&body=${body}`;
-    }
-    function wire(formId,statusId){
-      const form=document.getElementById(formId); if(!form) return; const status=document.getElementById(statusId);
-      form.addEventListener('submit',async(e)=>{
-        e.preventDefault(); status.textContent="Senden…";
-        const endpoint=form.getAttribute('action')||"";
-        if(!endpoint || endpoint.includes('DEINE_ID')){ status.textContent="Sende über E-Mail…"; showToast("Sende per E-Mail (Formspree ID fehlt)"); mailFallback(form); return; }
-        try{
-          const data=new FormData(form);
-          const res=await fetch(endpoint,{method:'POST',body:data,headers:{'Accept':'application/json'}});
-          if(res.ok){ form.reset(); status.textContent="Danke! Ich melde mich bald."; showToast("Nachricht gesendet ✅"); }
-          else{ status.textContent="Fehler beim Senden. Sende per E-Mail…"; showToast("Formspree-Fehler – Mail-Fallback"); mailFallback(form); }
-        }catch(err){ status.textContent="Netzwerkfehler. Sende per E-Mail…"; showToast("Netzwerkfehler – Mail-Fallback"); mailFallback(form); }
-      });
-    }
-    wire('contact-form','contact-status-modal');
-    wire('contact-form-inline','contact-status');
-  })();
-
-  // Jahr
-  document.getElementById('y').textContent=new Date().getFullYear();
-
-  // Update aria-expanded auf dem Menübutton
-  (function(){const t=document.getElementById('nav-toggle'),l=document.getElementById('nav-label');if(t&&l){const s=()=>l.setAttribute('aria-expanded',String(t.checked));t.addEventListener('change',s);s();}})();
-  </script>
+/* ROBUSTER Bild-Lader: nimmt covers/<base>.webp|jpg|jpeg|png */
+(function(){
+  const exts=['webp','jpg','jpeg','png'];
+  function resolve(img){
+    const base=img.dataset.basesrc; if(!base) return;
+    let i=0;
+    const test=()=>{
+      if(i>=exts.length){ img.alt += ' (Cover nicht gefunden)'; return; }
+      const src=`covers/${base}.${exts[i++]}`;
+      const probe=new Image();
+      probe.onload=()=>{ img.src=src; };
+      probe.onerror=test;
+      probe.src=src;
+    };
+    test();
+  }
+  document.querySelectorAll('img[data-basesrc]').forEach(resolve);
+})();
+</script>
 </body>
 </html>
