@@ -48,7 +48,6 @@
   .cover::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(18,14,10,.65),rgba(18,14,10,.25) 40%,rgba(18,14,10,0) 70%)}
   .hero-title{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:0 16px;z-index:2}
   .hero-title h1{margin:0;font-weight:800;letter-spacing:.4px;line-height:.95;font-size:clamp(46px,8vw,110px);text-shadow:0 2px 12px rgba(0,0,0,.55)}
-  /* Typewriter ohne Caret */
   .type{display:inline-block;overflow:hidden;white-space:nowrap;animation:typing 2.5s steps(20,end) .2s 1 both}
   @keyframes typing{from{width:0}to{width:13ch}}
 
@@ -66,8 +65,11 @@
   .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
   @media (max-width:860px){.grid-3{grid-template-columns:1fr}}
 
-  .art{display:block;position:relative;aspect-ratio:1/1;border-bottom:1px solid var(--line);overflow:hidden}
+  .art{display:block;position:relative;aspect-ratio:1/1;border-bottom:1px solid var(--line);overflow:hidden;
+        transition:transform .25s ease, box-shadow .25s ease}
   .art-img,.art-svg{width:100%;height:100%;display:block;object-fit:cover}
+  .tile:hover .art{transform:translateY(-2px);box-shadow:0 14px 30px rgba(0,0,0,.45)}
+  @media (prefers-reduced-motion:reduce){ .tile:hover .art{transform:none} }
 
   .chips{display:flex;gap:10px;flex-wrap:wrap}
   .chip{border:1px solid var(--line);background:var(--panel);padding:8px 12px;border-radius:999px}
@@ -254,9 +256,40 @@
     <div class="wrap">
       <h2 style="margin:0 0 10px">Discography (Auswahl)</h2>
       <div class="grid-3">
+        <!-- Lost and Found (Inline SVG) -->
         <article class="tile">
-          <a class="art" href="https://open.spotify.com/intl-de/album/6CVmcZb3bQAkxU39k0falc" target="_blank" rel="noopener">
-            <img class="art-img" src="5d3f596648decebede38ac2c8f7f6c1f0029746fb1411b01ef92da9d1a436998.png" alt="Elastic Field — Lost and Found (Cover)">
+          <a class="art" href="https://open.spotify.com/intl-de/album/6CVmcZb3bQAkxU39k0falc" target="_blank" rel="noopener" aria-label="Lost and Found (Single)">
+            <svg class="art-svg" viewBox="0 0 1600 1600" preserveAspectRatio="xMidYMid slice" role="img">
+              <title>Elastic Field — Lost and Found</title>
+              <defs>
+                <linearGradient id="bg-laf" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#120e0a"/>
+                  <stop offset="1" stop-color="#1b140f"/>
+                </linearGradient>
+                <radialGradient id="flare-laf" cx="22%" cy="82%" r="65%">
+                  <stop offset="0" stop-color="#b47b33" stop-opacity="0.35"/>
+                  <stop offset="1" stop-color="#b47b33" stop-opacity="0"/>
+                </radialGradient>
+                <filter id="grain-laf">
+                  <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" stitchTiles="stitch" result="t"/>
+                  <feColorMatrix in="t" type="saturate" values="0"/>
+                  <feComponentTransfer><feFuncA type="linear" slope="0.05"/></feComponentTransfer>
+                </filter>
+              </defs>
+              <rect width="1600" height="1600" fill="url(#bg-laf)"/>
+              <rect width="1600" height="1600" fill="url(#flare-laf)"/>
+              <rect width="1600" height="1600" filter="url(#grain-laf)"/>
+              <rect x="32" y="32" width="1536" height="1536" rx="28" ry="28" fill="none" stroke="#3b2b1f" stroke-width="2"/>
+              <g fill="#f6ead5" font-family="Helvetica, Arial, system-ui, -apple-system, Segoe UI, Roboto, sans-serif"
+                 text-anchor="middle" letter-spacing="0.8px">
+                <text x="800" y="760" font-size="172" font-weight="800">Lost and</text>
+                <text x="800" y="970" font-size="172" font-weight="800">Found</text>
+              </g>
+              <g fill="#d7c6a9" font-family="Helvetica, Arial, system-ui, -apple-system, Segoe UI, Roboto, sans-serif"
+                 text-anchor="middle" letter-spacing="3px">
+                <text x="800" y="1240" font-size="42" style="text-transform:uppercase">Elastic Field</text>
+              </g>
+            </svg>
           </a>
           <div style="padding:14px 16px">
             <h3 style="margin:0 0 6px">Lost and Found <small>· Single</small></h3>
@@ -264,9 +297,40 @@
           </div>
         </article>
 
+        <!-- Non Smokers Nightmare (Inline SVG) -->
         <article class="tile">
-          <a class="art" href="https://open.spotify.com/intl-de/album/4gNyV1XCfZY8enSJb3msCn" target="_blank" rel="noopener">
-            <img class="art-img" src="962f4f6bb3e4c4a64cd8e9e602d89eefa6270670fa34a6bdc120b3a38029f09f.png" alt="Elastic Field — Non Smokers Nightmare (Cover)">
+          <a class="art" href="https://open.spotify.com/intl-de/album/4gNyV1XCfZY8enSJb3msCn" target="_blank" rel="noopener" aria-label="Non Smokers Nightmare (Album)">
+            <svg class="art-svg" viewBox="0 0 1600 1600" preserveAspectRatio="xMidYMid slice" role="img">
+              <title>Elastic Field — Non Smokers Nightmare</title>
+              <defs>
+                <linearGradient id="bg-nsn" x1="1" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#120e0a"/>
+                  <stop offset="1" stop-color="#1b140f"/>
+                </linearGradient>
+                <radialGradient id="flare-nsn" cx="78%" cy="18%" r="60%">
+                  <stop offset="0" stop-color="#d2a15e" stop-opacity="0.28"/>
+                  <stop offset="1" stop-color="#d2a15e" stop-opacity="0"/>
+                </radialGradient>
+                <filter id="grain-nsn">
+                  <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch" result="t"/>
+                  <feColorMatrix in="t" type="saturate" values="0"/>
+                  <feComponentTransfer><feFuncA type="linear" slope="0.05"/></feComponentTransfer>
+                </filter>
+              </defs>
+              <rect width="1600" height="1600" fill="url(#bg-nsn)"/>
+              <rect width="1600" height="1600" fill="url(#flare-nsn)"/>
+              <rect width="1600" height="1600" filter="url(#grain-nsn)"/>
+              <rect x="32" y="32" width="1536" height="1536" rx="28" ry="28" fill="none" stroke="#3b2b1f" stroke-width="2"/>
+              <g fill="#f6ead5" font-family="Helvetica, Arial, system-ui, -apple-system, Segoe UI, Roboto, sans-serif"
+                 text-anchor="middle" letter-spacing="0.8px">
+                <text x="800" y="760" font-size="140" font-weight="700">Non Smokers</text>
+                <text x="800" y="940" font-size="140" font-weight="700">Nightmare</text>
+              </g>
+              <g fill="#d7c6a9" font-family="Helvetica, Arial, system-ui, -apple-system, Segoe UI, Roboto, sans-serif"
+                 text-anchor="middle" letter-spacing="3px">
+                <text x="800" y="1240" font-size="42" style="text-transform:uppercase">Elastic Field</text>
+              </g>
+            </svg>
           </a>
           <div style="padding:14px 16px">
             <h3 style="margin:0 0 6px">Non Smokers Nightmare <small>· Album</small></h3>
@@ -274,28 +338,29 @@
           </div>
         </article>
 
+        <!-- Another Non Smokers Nightmare (Inline SVG – bereits vorhanden) -->
         <article class="tile">
           <a class="art" href="https://open.spotify.com/intl-de/album/2YGPf9NdDWbEMWZKs4PtSi" target="_blank" rel="noopener" aria-label="Another Non Smokers Nightmare (Album)">
-            <!-- Inline SVG Cover (korrigierte Schreibweise) -->
-            <svg class="art-svg" viewBox="0 0 1600 1600" preserveAspectRatio="xMidYMid slice">
+            <svg class="art-svg" viewBox="0 0 1600 1600" preserveAspectRatio="xMidYMid slice" role="img">
+              <title>Elastic Field — Another Non Smokers Nightmare</title>
               <defs>
-                <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+                <linearGradient id="bg-ansn" x1="0" y1="0" x2="1" y2="1">
                   <stop offset="0" stop-color="#120e0a"/>
                   <stop offset="1" stop-color="#1b140f"/>
                 </linearGradient>
-                <radialGradient id="flare" cx="78%" cy="18%" r="60%">
+                <radialGradient id="flare-ansn" cx="78%" cy="18%" r="60%">
                   <stop offset="0" stop-color="#d2a15e" stop-opacity="0.28"/>
                   <stop offset="1" stop-color="#d2a15e" stop-opacity="0"/>
                 </radialGradient>
-                <filter id="grain">
+                <filter id="grain-ansn">
                   <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch" result="t"/>
                   <feColorMatrix in="t" type="saturate" values="0"/>
                   <feComponentTransfer><feFuncA type="linear" slope="0.05"/></feComponentTransfer>
                 </filter>
               </defs>
-              <rect width="1600" height="1600" fill="url(#bg)"/>
-              <rect width="1600" height="1600" fill="url(#flare)"/>
-              <rect width="1600" height="1600" filter="url(#grain)"/>
+              <rect width="1600" height="1600" fill="url(#bg-ansn)"/>
+              <rect width="1600" height="1600" fill="url(#flare-ansn)"/>
+              <rect width="1600" height="1600" filter="url(#grain-ansn)"/>
               <rect x="32" y="32" width="1536" height="1536" rx="28" ry="28" fill="none" stroke="#3b2b1f" stroke-width="2"/>
               <g fill="#f6ead5" font-family="Helvetica, Arial, system-ui, -apple-system, Segoe UI, Roboto, sans-serif"
                  text-anchor="middle" letter-spacing="0.8px">
@@ -356,10 +421,7 @@
         </article>
 
         <article class="tile">
-          <a class="art" href="#listen">
-            <!-- Optional: gleiches Inline-SVG-Design wäre hier auch möglich -->
-            <img class="art-img" src="4fe1088832b0766732a2a95bde27bba9b31100cb99dc4cc0d6aa693b835f1fac.png" alt="">
-          </a>
+          <a class="art" href="#listen"><img class="art-img" src="4fe1088832b0766732a2a95bde27bba9b31100cb99dc4cc0d6aa693b835f1fac.png" alt=""></a>
           <div style="padding:14px 16px">
             <h3 style="margin:0 0 6px">Featured Track 3</h3>
             <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" style="margin:0">
