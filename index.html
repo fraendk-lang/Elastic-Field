@@ -93,6 +93,7 @@
   .ticker:hover .track{animation-play-state:paused}
   .ticker a{opacity:.96; padding:0 16px}
   .ticker .dot{opacity:.5}
+  .ticker .nowplaying{ color: var(--brand); font-weight: 700 }
   @keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
 
   section{padding:28px 0;border-top:1px solid var(--line);scroll-margin-top:var(--header-h)}
@@ -172,7 +173,7 @@
           <source src="hero_480p.mp4"  type="video/mp4">
         </video>
 
-        <!-- Top-Ticker (korrigiert) -->
+        <!-- Top-Ticker -->
         <div class="ticker t-top" aria-label="Neuigkeiten">
           <div class="track">
             <a href="#discography">Last Release: Smoke Under Water (2025)</a><span class="dot">•</span>
@@ -183,21 +184,16 @@
           </div>
         </div>
 
-        <!-- Headline mit sanfter Bewegung -->
+        <!-- Headline -->
         <div class="overlay" id="hero-overlay">
           <div class="title-float">
             <h1 class="hero-title" id="ef-type" aria-label="Elastic Field"></h1>
           </div>
         </div>
 
-        <!-- Bottom-Ticker (ohne Ort) -->
-        <div class="ticker t-bottom" aria-label="Genres & Schwerpunkte">
-          <div class="track">
-            <span>Ambient · Trip-Hop · Downbeat · Lounge · Jazzy · Electronic</span>
-            <span class="dot">•</span>
-            <span>since 2011</span>
-            <span class="dot">•</span>
-          </div>
+        <!-- Bottom-Ticker (rotierende CTAs + Now playing) -->
+        <div class="ticker t-bottom" aria-label="Genres, CTAs & Status">
+          <div class="track" id="ticker-bottom-track"></div>
         </div>
       </div>
 
@@ -298,7 +294,7 @@
     </div>
   </section>
 
-  <!-- DISCOGRAPHY (robuste Bild-Ladung) -->
+  <!-- DISCOGRAPHY -->
   <section id="discography">
     <div class="wrap">
       <h2 style="margin:0 0 10px">Discography (Auswahl)</h2>
@@ -336,7 +332,7 @@
     </div>
   </section>
 
-  <!-- SHOP (ebenfalls robuste Bild-Ladung) -->
+  <!-- SHOP -->
   <section id="shop">
     <div class="wrap">
       <h2 style="margin:0 0 10px">Shop</h2>
@@ -594,6 +590,42 @@ document.getElementById('y').textContent=new Date().getFullYear();
     test();
   }
   document.querySelectorAll('img[data-basesrc]').forEach(resolve);
+})();
+
+/* Bottom-Ticker: Genres + rotierende CTAs + "Now playing" */
+(function(){
+  const track = document.getElementById('ticker-bottom-track');
+  if(!track) return;
+
+  const ctas = [
+    {label:'Subscribe on YouTube', href:'https://www.youtube.com/@elasticfieldmusic?sub_confirmation=1'},
+    {label:'Buy downloads 0,99 €', href:'#shop'},
+    {label:'Follow on Spotify',  href:'https://open.spotify.com/artist/2wn4Zq8AOBsX50X7fyBEoL'},
+    {label:'Amazon Music',       href:'https://music.amazon.de/artists/B008F6S0LM/elastic-field'}
+  ];
+  const genres = ['Ambient','Trip-Hop','Downbeat','Lounge','Jazzy','Electronic','since 2011'];
+
+  let ctaIndex = 0;
+  const holder = document.getElementById('bgmix-holder');
+  const isPlaying = () => holder && holder.children.length > 0;
+
+  function currentCTA(){ return ctas[ctaIndex % ctas.length]; }
+
+  function render(){
+    const left = genres.map(t=>`<span>${t}</span>`).join('<span class="dot">•</span>');
+    const status = isPlaying() ? `<span class="nowplaying">Now playing: Elastic Field Mix</span><span class="dot">•</span>` : '';
+    const cta = currentCTA();
+    const right = `<a href="${cta.href}" target="_blank" rel="noopener">${cta.label}</a>`;
+    track.innerHTML = `${left}<span class="dot">•</span>${status}${right}`;
+  }
+
+  render();
+
+  if(holder){
+    const obs = new MutationObserver(render);
+    obs.observe(holder, {childList:true});
+  }
+  setInterval(()=>{ ctaIndex++; render(); }, 20000);
 })();
 </script>
 </body>
