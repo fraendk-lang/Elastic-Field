@@ -44,11 +44,11 @@
   .cover::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(18,14,10,.65),rgba(18,14,10,.25) 40%,rgba(18,14,10,0) 70%)}
   .hero-title{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:0 16px;z-index:2}
   .hero-title h1{margin:0;font-weight:800;letter-spacing:.4px;line-height:.95;font-size:clamp(46px,8vw,110px);text-shadow:0 2px 12px rgba(0,0,0,.55)}
-  /* CSS typewriter (kein JS) */
-  .type{display:inline-block;overflow:hidden;white-space:nowrap;border-right:2px solid var(--ink);animation:typing 2.5s steps(20,end) .2s 1 both, blink .9s step-end infinite}
-  @keyframes typing{from{width:0}to{width:12ch}} @keyframes blink{50%{border-color:transparent}}
+  /* Typewriter ohne weißen Strich (Caret entfernt) */
+  .type{display:inline-block;overflow:hidden;white-space:nowrap;animation:typing 2.5s steps(20,end) .2s 1 both}
+  @keyframes typing{from{width:0}to{width:12ch}}
 
-  /* Ticker (leichtgewichtig) */
+  /* Ticker */
   .ticker{position:absolute;left:0;right:0;height:36px;display:flex;align-items:center;overflow:hidden;z-index:3;background:linear-gradient(180deg,rgba(18,14,10,.2),rgba(18,14,10,.5))}
   .t-top{top:0;border-bottom:1px solid var(--line)}
   .t-bottom{bottom:0;border-top:1px solid var(--line)}
@@ -84,7 +84,9 @@
       <a class="btn" href="#discography">Discography</a>
       <a class="btn" href="#shop">Shop</a>
       <a class="btn" href="#about">Über</a>
+      <a class="btn" href="#impressum">Impressum</a>
       <a class="btn" href="#contact">Kontakt</a>
+      <a class="btn" href="mailto:fraendk@hotmail.com">E-Mail</a>
       <a class="btn" href="https://www.youtube.com/@elasticfieldmusic" target="_blank" rel="noopener">YouTube</a>
       <a class="btn" href="https://open.spotify.com/artist/2wn4Zq8AOBsX50X7fyBEoL" target="_blank" rel="noopener">Spotify</a>
     </nav>
@@ -145,7 +147,7 @@
     </div>
   </section>
 
-  <!-- LISTEN (Links – schlank) -->
+  <!-- LISTEN -->
   <section id="listen">
     <div class="wrap">
       <h2 style="margin:0 0 10px">Hören</h2>
@@ -165,8 +167,6 @@
     <div class="wrap">
       <h2 style="margin:0 0 10px">Videos</h2>
       <div class="grid-3">
-
-        <!-- Mix -->
         <article class="tile">
           <div class="embed consent" data-src="https://www.youtube-nocookie.com/embed/6erDkiy3rFU?start=11&rel=0&playsinline=1&modestbranding=1" data-watch="https://www.youtube.com/watch?v=6erDkiy3rFU">
             <div class="consent-card">
@@ -181,7 +181,6 @@
           </div>
         </article>
 
-        <!-- Video 2 -->
         <article class="tile">
           <div class="embed consent" data-src="https://www.youtube-nocookie.com/embed/pqsMGb3vhgE?rel=0&playsinline=1&modestbranding=1" data-watch="https://www.youtube.com/watch?v=pqsMGb3vhgE">
             <div class="consent-card">
@@ -196,7 +195,6 @@
           </div>
         </article>
 
-        <!-- Video 3 -->
         <article class="tile">
           <div class="embed consent" data-src="https://www.youtube-nocookie.com/embed/jc0CzEp389U?rel=0&playsinline=1&modestbranding=1" data-watch="https://www.youtube.com/watch?v=jc0CzEp389U">
             <div class="consent-card">
@@ -210,7 +208,6 @@
             </div>
           </div>
         </article>
-
       </div>
     </div>
   </section>
@@ -323,6 +320,18 @@
     </div>
   </section>
 
+  <!-- IMPRESSUM -->
+  <section id="impressum">
+    <div class="wrap">
+      <h2 style="margin:0 0 10px">Impressum</h2>
+      <div class="tile" style="padding:14px 16px">
+        <p style="margin:0 0 8px"><strong>Elastic Field</strong><br>Köln, Deutschland</p>
+        <p style="margin:0 0 8px">Kontakt: <a href="mailto:fraendk@hotmail.com">fraendk@hotmail.com</a></p>
+        <p style="margin:0;color:var(--sub)">Hinweis: Trage hier später deine vollständigen Pflichtangaben nach § 5 TMG ein (Name/Anschrift). Für reine Künstlerseiten reicht oft eine E-Mail, aber prüfe die Anforderungen.</p>
+      </div>
+    </div>
+  </section>
+
   <!-- CONTACT -->
   <section id="contact">
     <div class="wrap">
@@ -337,7 +346,7 @@
 
 <footer>
   <div class="wrap" style="display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap">
-    <small>© <span id="y"></span> Elastic Field</small>
+    <small>© <span id="y"></span> Elastic Field · <a href="#impressum">Impressum</a> · <a href="#contact">Kontakt</a></small>
     <small style="color:var(--sub)">Single-file · GitHub Pages</small>
   </div>
 </footer>
@@ -373,4 +382,4 @@
   })();
 </script>
 </body>
-</html
+</html>
