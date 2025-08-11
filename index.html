@@ -29,6 +29,7 @@
 
   <!-- Perf: Preconnect -->
   <link rel="preconnect" href="https://www.youtube.com">
+  <link rel="preconnect" href="https://www.youtube-nocookie.com">
   <link rel="preconnect" href="https://open.spotify.com">
 
   <!-- Structured Data -->
@@ -119,11 +120,11 @@
     /* Grid */
     .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
     @media (max-width:860px){.grid-3{grid-template-columns:1fr}}
+
+    /* Typo-Cover Styles */
     .release.tile{overflow:hidden}
     .release h3{margin:0 0 6px;font-size:18px}
     .release small{color:var(--sub);font-weight:400}
-
-    /* Typo-Cover Styles */
     .art{position:relative; display:block; aspect-ratio:1/1; border-bottom:1px solid var(--line); overflow:hidden}
     .art--typo{display:grid; place-items:center; text-align:center; padding:12px}
     .art--typo::before{
@@ -132,8 +133,7 @@
         radial-gradient(120% 70% at 80% 10%, rgba(210,161,94,.25), transparent 50%),
         radial-gradient(80% 60% at 0% 100%, rgba(180,123,51,.22), transparent 55%),
         linear-gradient(180deg,#1b140f,#120e0a);
-      filter:saturate(110%);
-      z-index:0;
+      filter:saturate(110%); z-index:0;
     }
     .art--typo::after{
       content:""; position:absolute; inset:0; z-index:1;
@@ -144,34 +144,28 @@
       position:relative; z-index:2; display:grid; gap:6px; justify-items:center;
       padding:8px 10px; max-width:90%;
     }
-    .typo .top{
-      letter-spacing:.18em; text-transform:uppercase; font-weight:700; opacity:.9; font-size:12px;
-    }
-    .typo .title{
-      font-weight:800; line-height:1.1;
-      font-size:clamp(16px,2.6vw,22px);
-      word-break:break-word; hyphens:auto; text-wrap:balance;
-      text-shadow:0 2px 12px rgba(0,0,0,.45);
-    }
-    .typo .badge{
-      margin-top:2px; font-size:12px; color:#291a0e; font-weight:700;
-      background:linear-gradient(180deg,var(--brand),var(--brand-2));
-      padding:6px 10px; border-radius:999px; border:1px solid #543a21;
-    }
-    /* leichte Farbvarianz je Kachel */
+    .typo .top{letter-spacing:.18em; text-transform:uppercase; font-weight:700; opacity:.9; font-size:12px}
+    .typo .title{font-weight:800; line-height:1.1; font-size:clamp(16px,2.6vw,22px); word-break:break-word; hyphens:auto; text-wrap:balance; text-shadow:0 2px 12px rgba(0,0,0,.45)}
+    .typo .badge{margin-top:2px; font-size:12px; color:#291a0e; font-weight:700; background:linear-gradient(180deg,var(--brand),var(--brand-2)); padding:6px 10px; border-radius:999px; border:1px solid #543a21}
     .art--gold::before{background:
       radial-gradient(120% 70% at 80% 10%, rgba(210,161,94,.28), transparent 50%),
       radial-gradient(80% 60% at 0% 100%, rgba(180,123,51,.24), transparent 55%),
-      linear-gradient(180deg,#1c130e,#100c09);}
+      linear-gradient(180deg,#1c130e,#100c09)}
     .art--amber::before{background:
       radial-gradient(120% 70% at 20% 15%, rgba(205,150,70,.26), transparent 50%),
       radial-gradient(80% 60% at 100% 85%, rgba(170,110,40,.22), transparent 55%),
-      linear-gradient(180deg,#1a120d,#0f0b08);}
+      linear-gradient(180deg,#1a120d,#0f0b08)}
     .art--copper::before{background:
       radial-gradient(120% 70% at 70% 90%, rgba(215,140,70,.26), transparent 50%),
       radial-gradient(80% 60% at 5% 5%, rgba(155,95,35,.20), transparent 55%),
-      linear-gradient(180deg,#1a120d,#0f0b08);}
+      linear-gradient(180deg,#1a120d,#0f0b08)}
+    .badge-link{display:inline-flex;align-items:center;gap:8px; padding:8px 12px;border:1px solid var(--line);border-radius:999px; background:var(--panel);transition:transform .18s ease, background .18s ease}
+    .badge-link:hover{transform:translateY(-1px);background:linear-gradient(180deg,var(--brand),var(--brand-2));color:#291a0e}
     .badge-link .icon{width:16px;height:16px;display:inline-block}
+
+    /* Hintergrundplayer unsichtbar parken */
+    #bgmix-holder { position:fixed; width:1px; height:1px; left:-100vw; bottom:-100vh; overflow:hidden; }
+    #bgmix-holder iframe { width:300px; height:200px; border:0; } /* Größe egal, offscreen */
 
     /* Focus */
     .btn:focus-visible, a:focus-visible, .chip:focus-visible, .menu-btn:focus-visible, .consent .allow:focus-visible, .consent .once:focus-visible, .badge-link:focus-visible{outline:2px solid var(--brand); outline-offset:2px; border-radius:12px}
@@ -222,6 +216,12 @@
         <div style="display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px">
           <a class="btn brand" href="#listen">▶︎ Hören</a>
           <a class="btn" href="https://www.youtube.com/@elasticfieldmusic?sub_confirmation=1" target="_blank" rel="noopener">Zum Kanal</a>
+
+          <!-- Neuer Button: Hintergrund-Mix -->
+          <button class="btn" id="bgmix-toggle"
+                  data-src="https://www.youtube-nocookie.com/embed/videoseries?list=RDjc0CzEp389U&autoplay=1&rel=0&playsinline=1&modestbranding=1">
+            ▶ Mix im Hintergrund
+          </button>
         </div>
 
         <div class="chips" style="margin-top:8px">
@@ -332,7 +332,7 @@
       </div>
     </section>
 
-    <!-- DISCOGRAPHY mit Typo-Covern -->
+    <!-- DISCOGRAPHY (Typo-Cover) -->
     <section id="discography">
       <div class="wrap">
         <h2 style="margin:0 0 10px">Discography (Auswahl)</h2>
@@ -523,14 +523,27 @@
           <div class="chips" style="margin-top:8px">
             <a class="chip" href="https://www.youtube.com/@elasticfieldmusic" target="_blank" rel="noopener">YouTube</a>
             <a class="chip" href="https://open.spotify.com/artist/2wn4Zq8AOBsX50X7fyBEoL" target="_blank" rel="noopener">Spotify</a>
-            <a class="chip" href="#" target="_blank" rel="noopener">Bandcamp</a>
-            <a class="chip" href="#" target="_blank" rel="noopener">Instagram</a>
+            <a class="chip" href="https://music.amazon.de/artists/B008F6S0LM/elastic-field" target="_blank" rel="noopener">Amazon Music</a>
+            <a class="chip" href="#" target="_blank" rel="noopener" title="Link folgt">Apple Music</a>
           </div>
-          <p style="margin:10px 0 0;color:var(--sub)">Links später austauschbar.</p>
+          <p style="margin:10px 0 0;color:var(--sub)">Links jederzeit austauschbar.</p>
         </div>
       </div>
     </section>
   </main>
+
+  <!-- Versteckter YouTube-Player + Consent-Box für den Hintergrundmix -->
+  <div id="bgmix-holder" aria-hidden="true"></div>
+  <div id="bgmix-consent" style="display:none; position:fixed; bottom:16px; left:50%; transform:translateX(-50%);
+    background:rgba(18,14,10,.9); color:#f6ead5; border:1px solid #3b2b1f; border-radius:12px; padding:10px 12px; z-index:9999;">
+    <strong style="display:block; margin-bottom:6px;">YouTube laden?</strong>
+    <small style="color:#d7c6a9; display:block; margin-bottom:8px;">Für den Mix im Hintergrund wird YouTube eingebunden.</small>
+    <div style="display:flex; gap:8px; justify-content:flex-end">
+      <button id="bgmix-once" class="btn">Einmal</button>
+      <button id="bgmix-always" class="btn brand">Immer erlauben</button>
+      <button id="bgmix-cancel" class="btn">Abbrechen</button>
+    </div>
+  </div>
 
   <footer>
     <div class="wrap" style="display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap">
@@ -578,7 +591,6 @@
       let loaded = false;
       iframe.onload = ()=> loaded = true;
 
-      // 6s-Timeout → Fallbacklink
       setTimeout(()=>{ if(!loaded){
         const watch = container.getAttribute('data-watch') || src.replace('/embed/','/watch?v=');
         fallback(container, watch);
@@ -614,6 +626,53 @@
       if(onceBtn){ onceBtn.addEventListener('click', ()=> mountIframe(vendor, src, box)); }
       if(allowBtn){ allowBtn.addEventListener('click', ()=>{ localStorage.setItem(CONSENT_KEY(vendor), "true"); mountIframe(vendor, src, box); }); }
     });
+  })();
+
+  // Hintergrund-Mix (YouTube) – Play/Pause + Consent-Handling
+  (function(){
+    const btn     = document.getElementById('bgmix-toggle');
+    const holder  = document.getElementById('bgmix-holder');
+    const box     = document.getElementById('bgmix-consent');
+    if(!btn || !holder) return;
+
+    const CONSENT_KEY = (v) => "consent:"+v;
+    const YT_KEY = CONSENT_KEY("YouTube");
+    let playing = false;
+
+    function mount(src){
+      holder.innerHTML = '';
+      const iframe = document.createElement('iframe');
+      iframe.src = src;
+      iframe.allow = "autoplay; encrypted-media; picture-in-picture; web-share";
+      iframe.allowFullscreen = true;
+      iframe.referrerPolicy = "strict-origin-when-cross-origin";
+      holder.appendChild(iframe);
+      playing = true;
+      btn.textContent = "⏸ Mix stoppen";
+    }
+    function unmount(){
+      holder.innerHTML = '';
+      playing = false;
+      btn.textContent = "▶ Mix im Hintergrund";
+    }
+    function showConsent(){ if(!box){ mount(btn.dataset.src); return; } box.style.display = 'block'; }
+    function hideConsent(){ if(box) box.style.display = 'none'; }
+
+    btn.addEventListener('click', ()=>{
+      if(playing){ unmount(); return; }
+      const allowed = localStorage.getItem(YT_KEY) === "true";
+      if(allowed){ mount(btn.dataset.src); }
+      else{ showConsent(); }
+    });
+
+    if(box){
+      const once   = document.getElementById('bgmix-once');
+      const always = document.getElementById('bgmix-always');
+      const cancel = document.getElementById('bgmix-cancel');
+      once   && once.addEventListener('click', ()=>{ hideConsent(); mount(btn.dataset.src); });
+      always && always.addEventListener('click', ()=>{ localStorage.setItem(YT_KEY, "true"); hideConsent(); mount(btn.dataset.src); });
+      cancel && cancel.addEventListener('click', hideConsent);
+    }
   })();
 
   document.getElementById('y').textContent = new Date().getFullYear();
