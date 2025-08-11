@@ -37,6 +37,10 @@
   .btn:hover{transform:translateY(-1px)}
   .btn.brand{background:linear-gradient(180deg,var(--brand),var(--brand2));color:#291a0e;border-color:#543a21;font-weight:700}
 
+  /* Logo */
+  .logo{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.4px}
+  .badge{width:34px;height:34px;border-radius:10px;background:conic-gradient(from 210deg,var(--brand),var(--brand2),var(--brand));display:grid;place-items:center;box-shadow:var(--shadow);color:#2a1c10;font-weight:800}
+
   /* Hero */
   .hero{border-bottom:1px solid var(--line);background:radial-gradient(700px 280px at 85% -10%,rgba(210,161,94,.12),transparent 60%)}
   .cover{position:relative;width:100%;aspect-ratio:16/9;border-radius:14px;overflow:hidden;background:#0e0a07;border:1px solid var(--line);box-shadow:var(--shadow)}
@@ -44,9 +48,9 @@
   .cover::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(18,14,10,.65),rgba(18,14,10,.25) 40%,rgba(18,14,10,0) 70%)}
   .hero-title{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:0 16px;z-index:2}
   .hero-title h1{margin:0;font-weight:800;letter-spacing:.4px;line-height:.95;font-size:clamp(46px,8vw,110px);text-shadow:0 2px 12px rgba(0,0,0,.55)}
-  /* Typewriter ohne weißen Strich (Caret entfernt) */
+  /* Typewriter ohne Caret */
   .type{display:inline-block;overflow:hidden;white-space:nowrap;animation:typing 2.5s steps(20,end) .2s 1 both}
-  @keyframes typing{from{width:0}to{width:12ch}}
+  @keyframes typing{from{width:0}to{width:13ch}}
 
   /* Ticker */
   .ticker{position:absolute;left:0;right:0;height:36px;display:flex;align-items:center;overflow:hidden;z-index:3;background:linear-gradient(180deg,rgba(18,14,10,.2),rgba(18,14,10,.5))}
@@ -72,12 +76,30 @@
   /* Consent-Karten */
   .embed{aspect-ratio:16/9;background:#0e0a07;display:grid;place-items:center}
   .consent-card{display:grid;gap:10px;place-items:center;text-align:center;background:rgba(18,14,10,.55);border:1px solid var(--line);border-radius:12px;padding:14px 16px;max-width:min(92%,720px);margin:12px}
+
+  /* Floating Mail Button */
+  .fab{
+    position:fixed; right:16px; bottom:16px; z-index:999;
+    width:56px; height:56px; border-radius:999px;
+    display:grid; place-items:center;
+    background:linear-gradient(180deg,var(--brand),var(--brand2));
+    color:#291a0e; border:1px solid #543a21; box-shadow:var(--shadow);
+    font-weight:700; font-size:22px; text-decoration:none;
+    transition:transform .18s ease, box-shadow .18s ease;
+  }
+  .fab:hover{ transform:translateY(-1px); }
+  .fab:focus-visible{ outline:2px solid var(--ink); outline-offset:2px; }
+  @media (max-width:480px){ .fab{ width:52px; height:52px; right:12px; bottom:12px; } }
+  @media (prefers-reduced-motion:reduce){ .fab{ transition:none; } }
 </style>
 </head>
 <body>
 <header>
   <div class="wrap bar">
-    <strong>Elastic Field</strong>
+    <a class="logo" href="#">
+      <span class="badge" aria-hidden="true">EF</span>
+      <span>Elastic Field</span>
+    </a>
     <nav style="display:flex;gap:10px;flex-wrap:wrap">
       <a class="btn" href="#listen">Hören</a>
       <a class="btn" href="#video">Videos</a>
@@ -147,12 +169,26 @@
     </div>
   </section>
 
-  <!-- LISTEN -->
+  <!-- LISTEN (mit 2-Klick Spotify) -->
   <section id="listen">
     <div class="wrap">
       <h2 style="margin:0 0 10px">Hören</h2>
+      <article class="tile" style="padding:0">
+        <div class="embed consent" data-vendor="Spotify" data-src="https://open.spotify.com/embed/artist/2wn4Zq8AOBsX50X7fyBEoL">
+          <div class="consent-card">
+            <strong>Spotify ist blockiert</strong>
+            <div style="color:var(--sub)">Mit Klick lädst du Inhalte von Spotify.</div>
+            <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
+              <button class="btn brand allow">Immer erlauben</button>
+              <button class="btn once">Einmal laden</button>
+              <a class="btn" href="https://open.spotify.com/artist/2wn4Zq8AOBsX50X7fyBEoL" target="_blank" rel="noopener">Auf Spotify öffnen</a>
+            </div>
+          </div>
+        </div>
+      </article>
+      <div style="height:10px"></div>
       <div class="tile" style="padding:14px 16px">
-        <p style="margin:0 0 8px">Hör rein auf deinen Plattformen:</p>
+        <p style="margin:0 0 8px">Oder direkt auf Plattformen:</p>
         <div class="chips">
           <a class="chip" href="https://open.spotify.com/artist/2wn4Zq8AOBsX50X7fyBEoL" target="_blank" rel="noopener">Spotify Artist</a>
           <a class="chip" href="https://music.amazon.de/artists/B008F6S0LM/elastic-field" target="_blank" rel="noopener">Amazon Music</a>
@@ -168,7 +204,7 @@
       <h2 style="margin:0 0 10px">Videos</h2>
       <div class="grid-3">
         <article class="tile">
-          <div class="embed consent" data-src="https://www.youtube-nocookie.com/embed/6erDkiy3rFU?start=11&rel=0&playsinline=1&modestbranding=1" data-watch="https://www.youtube.com/watch?v=6erDkiy3rFU">
+          <div class="embed consent" data-vendor="YouTube" data-src="https://www.youtube-nocookie.com/embed/6erDkiy3rFU?start=11&rel=0&playsinline=1&modestbranding=1">
             <div class="consent-card">
               <strong>YouTube-Video ist blockiert</strong>
               <div style="color:var(--sub)">Mit Klick lädst du Inhalte von YouTube.</div>
@@ -182,7 +218,7 @@
         </article>
 
         <article class="tile">
-          <div class="embed consent" data-src="https://www.youtube-nocookie.com/embed/pqsMGb3vhgE?rel=0&playsinline=1&modestbranding=1" data-watch="https://www.youtube.com/watch?v=pqsMGb3vhgE">
+          <div class="embed consent" data-vendor="YouTube" data-src="https://www.youtube-nocookie.com/embed/pqsMGb3vhgE?rel=0&playsinline=1&modestbranding=1">
             <div class="consent-card">
               <strong>YouTube-Video ist blockiert</strong>
               <div style="color:var(--sub)">Mit Klick lädst du Inhalte von YouTube.</div>
@@ -196,7 +232,7 @@
         </article>
 
         <article class="tile">
-          <div class="embed consent" data-src="https://www.youtube-nocookie.com/embed/jc0CzEp389U?rel=0&playsinline=1&modestbranding=1" data-watch="https://www.youtube.com/watch?v=jc0CzEp389U">
+          <div class="embed consent" data-vendor="YouTube" data-src="https://www.youtube-nocookie.com/embed/jc0CzEp389U?rel=0&playsinline=1&modestbranding=1">
             <div class="consent-card">
               <strong>YouTube-Video ist blockiert</strong>
               <div style="color:var(--sub)">Mit Klick lädst du Inhalte von YouTube.</div>
@@ -327,7 +363,7 @@
       <div class="tile" style="padding:14px 16px">
         <p style="margin:0 0 8px"><strong>Elastic Field</strong><br>Köln, Deutschland</p>
         <p style="margin:0 0 8px">Kontakt: <a href="mailto:fraendk@hotmail.com">fraendk@hotmail.com</a></p>
-        <p style="margin:0;color:var(--sub)">Hinweis: Trage hier später deine vollständigen Pflichtangaben nach § 5 TMG ein (Name/Anschrift). Für reine Künstlerseiten reicht oft eine E-Mail, aber prüfe die Anforderungen.</p>
+        <p style="margin:0;color:var(--sub)">Hinweis: Trage hier später deine vollständigen Pflichtangaben nach § 5 TMG ein (Name/Anschrift).</p>
       </div>
     </div>
   </section>
@@ -351,33 +387,42 @@
   </div>
 </footer>
 
+<!-- Floating Mail Button -->
+<a id="contact-fab" class="fab"
+   href="mailto:fraendk@hotmail.com?subject=Kontakt%20Elastic%20Field"
+   aria-label="E-Mail an Elastic Field">✉️</a>
+
 <script>
   // Jahr
   document.getElementById('y').textContent = new Date().getFullYear();
 
-  // Minimaler 2-Klick-Loader für YouTube
+  // 2-Klick-Loader für YouTube & Spotify
   (function(){
-    const KEY = 'consent:YouTube';
-    const boxes = document.querySelectorAll('.embed.consent');
-    function mount(box){
+    const map = { YouTube:'consent:YouTube', Spotify:'consent:Spotify' };
+    document.querySelectorAll('.embed.consent').forEach(box=>{
+      const vendor = box.getAttribute('data-vendor') || 'YouTube';
+      const KEY = map[vendor] || 'consent:External';
       const src = box.getAttribute('data-src');
-      const iframe = document.createElement('iframe');
-      iframe.width = "100%"; iframe.height = "100%";
-      iframe.src = src;
-      iframe.title = "YouTube Video";
-      iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
-      iframe.allowFullscreen = true;
-      iframe.style.border = "0";
-      iframe.loading = "lazy";
-      box.innerHTML = '';
-      box.appendChild(iframe);
-    }
-    boxes.forEach(box=>{
-      const alwaysBtn = box.querySelector('.allow');
-      const onceBtn   = box.querySelector('.once');
-      if(localStorage.getItem(KEY)==="true"){ mount(box); return; }
-      alwaysBtn?.addEventListener('click', ()=>{ localStorage.setItem(KEY,'true'); mount(box); });
-      onceBtn?.addEventListener('click', ()=> mount(box));
+      const allow = box.querySelector('.allow');
+      const once  = box.querySelector('.once');
+
+      function mount(){
+        const iframe = document.createElement('iframe');
+        iframe.width="100%"; iframe.height="100%"; iframe.src=src;
+        iframe.style.border="0"; iframe.loading="lazy"; iframe.allowFullscreen=true;
+        if(vendor==='YouTube'){
+          iframe.title="YouTube Video";
+          iframe.allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+        }else if(vendor==='Spotify'){
+          iframe.title="Spotify Player";
+          iframe.allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture";
+        }
+        box.innerHTML=''; box.appendChild(iframe);
+      }
+
+      if(localStorage.getItem(KEY)==="true"){ mount(); return; }
+      allow?.addEventListener('click', ()=>{ localStorage.setItem(KEY,'true'); mount(); });
+      once ?.addEventListener('click', mount);
     });
   })();
 </script>
