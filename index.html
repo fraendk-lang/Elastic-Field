@@ -20,14 +20,14 @@
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
 
-  <!-- Favicon / Touch-Icon (optional) -->
-  <link rel="icon" href="/Elastic-Field/favicon.svg" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="/Elastic-Field/cover.jpg">
+  <!-- Favicon / Touch-Icon -->
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="cover.jpg">
 
-  <!-- Preload poster for fast paint -->
+  <!-- Preload poster -->
   <link rel="preload" as="image" href="cover.jpg" fetchpriority="high">
 
-  <!-- Perf: Preconnect targets -->
+  <!-- Perf: Preconnect -->
   <link rel="preconnect" href="https://www.youtube.com">
   <link rel="preconnect" href="https://open.spotify.com">
 
@@ -116,7 +116,7 @@
     .consent .allow{background:linear-gradient(180deg,var(--brand),var(--brand-2));color:#291a0e;border:1px solid #543a21;padding:10px 14px;border-radius:12px;cursor:pointer}
     .consent .once{background:var(--muted);border:1px solid var(--line);padding:10px 14px;border-radius:12px;cursor:pointer}
 
-    /* Discography */
+    /* Discography / Grid */
     .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
     @media (max-width:860px){.grid-3{grid-template-columns:1fr}}
     .release.tile{overflow:hidden}
@@ -133,10 +133,7 @@
     /* Focus */
     .btn:focus-visible, a:focus-visible, .chip:focus-visible, .menu-btn:focus-visible, .consent .allow:focus-visible, .consent .once:focus-visible, .badge-link:focus-visible{outline:2px solid var(--brand); outline-offset:2px; border-radius:12px}
 
-    @media (prefers-reduced-motion: reduce){
-      .btn, .tile, .chip, .cover video, .overlay{transition:none; animation:none}
-      .caret{animation:none}
-    }
+    @media (prefers-reduced-motion: reduce){.btn, .tile, .chip, .cover video, .overlay{transition:none; animation:none} .caret{animation:none}}
     @media (max-width:640px){.wrap{padding:14px}}
   </style>
 </head>
@@ -157,6 +154,7 @@
         <a class="btn" href="#listen">Hören</a>
         <a class="btn" href="#video">Video</a>
         <a class="btn" href="#discography">Discography</a>
+        <a class="btn" href="#shop">Shop</a>
         <a class="btn" href="#about">Über</a>
         <a class="btn" href="#contact">Kontakt</a>
         <a class="btn brand" href="https://www.youtube.com/@elasticfieldmusic?sub_confirmation=1" target="_blank" rel="noopener">YouTube</a>
@@ -166,9 +164,9 @@
   </header>
 
   <main id="main">
+    <!-- HERO -->
     <section class="hero">
       <div class="wrap">
-        <!-- HERO: Video + Typewriter -->
         <div class="cover">
           <video autoplay muted loop playsinline preload="metadata" poster="cover.jpg">
             <source src="hero_480p.mp4" type="video/mp4">
@@ -178,13 +176,11 @@
           </div>
         </div>
 
-        <!-- CTAs -->
         <div style="display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px">
           <a class="btn brand" href="#listen">▶︎ Hören</a>
           <a class="btn" href="https://www.youtube.com/@elasticfieldmusic?sub_confirmation=1" target="_blank" rel="noopener">Zum Kanal</a>
         </div>
 
-        <!-- Tags -->
         <div class="chips" style="margin-top:8px">
           <span class="chip">#TripHop</span>
           <span class="chip">#Ambient</span>
@@ -196,7 +192,7 @@
       </div>
     </section>
 
-    <!-- Listen (2-Klick Spotify) -->
+    <!-- LISTEN (Spotify 2-Klick) -->
     <section id="listen">
       <div class="wrap">
         <h2 style="margin:0 0 10px">Hören</h2>
@@ -208,18 +204,16 @@
               <div class="actions">
                 <button class="allow" data-consent="always">Immer erlauben</button>
                 <button class="once">Einmal laden</button>
+                <a class="once" href="https://open.spotify.com/artist/2wn4Zq8AOBsX50X7fyBEoL" target="_blank" rel="noopener">Auf Spotify öffnen</a>
               </div>
               <div class="small"><a href="https://www.spotify.com/de/privacy/" target="_blank" rel="noopener">Datenschutz von Spotify</a></div>
             </div>
-          </div>
-          <div style="padding:14px 16px">
-            <p style="margin:0;color:var(--sub)">Höre Elastic Field auf Spotify.</p>
           </div>
         </article>
       </div>
     </section>
 
-    <!-- Videos (3 Kacheln, 2-Klick YouTube; ohne Autoplay/Mute, nocookie) -->
+    <!-- VIDEOS (3 Kacheln, 2-Klick, Fallback) -->
     <section id="video">
       <div class="wrap">
         <h2 style="margin:0 0 10px">Videos</h2>
@@ -227,10 +221,10 @@
         <div class="grid-3">
           <!-- Video 1 -->
           <article class="tile" style="padding:0">
-            <div
-              class="consent embed"
+            <div class="consent embed"
               data-vendor="YouTube"
               data-src="https://www.youtube-nocookie.com/embed/pqsMGb3vhgE?rel=0&playsinline=1&modestbranding=1&list=OLAK5uy_nQM65_79BlJcI97MHxrqo64Kh_LX66lmg"
+              data-watch="https://www.youtube.com/watch?v=pqsMGb3vhgE"
               aria-live="polite"
               style="background-image:url('https://img.youtube.com/vi/pqsMGb3vhgE/hqdefault.jpg');background-size:cover;background-position:center">
               <div class="card">
@@ -239,6 +233,7 @@
                 <div class="actions">
                   <button class="allow" data-consent="always">Immer erlauben</button>
                   <button class="once">Einmal abspielen</button>
+                  <a class="once" href="https://www.youtube.com/watch?v=pqsMGb3vhgE" target="_blank" rel="noopener">Auf YouTube ansehen</a>
                 </div>
                 <div class="small"><a href="https://policies.google.com/privacy?hl=de" target="_blank" rel="noopener">Datenschutz von Google</a></div>
               </div>
@@ -247,10 +242,10 @@
 
           <!-- Video 2 -->
           <article class="tile" style="padding:0">
-            <div
-              class="consent embed"
+            <div class="consent embed"
               data-vendor="YouTube"
               data-src="https://www.youtube-nocookie.com/embed/jc0CzEp389U?rel=0&playsinline=1&modestbranding=1&list=RDjc0CzEp389U&start_radio=1"
+              data-watch="https://www.youtube.com/watch?v=jc0CzEp389U"
               aria-live="polite"
               style="background-image:url('https://img.youtube.com/vi/jc0CzEp389U/hqdefault.jpg');background-size:cover;background-position:center">
               <div class="card">
@@ -259,6 +254,7 @@
                 <div class="actions">
                   <button class="allow" data-consent="always">Immer erlauben</button>
                   <button class="once">Einmal abspielen</button>
+                  <a class="once" href="https://www.youtube.com/watch?v=jc0CzEp389U" target="_blank" rel="noopener">Auf YouTube ansehen</a>
                 </div>
                 <div class="small"><a href="https://policies.google.com/privacy?hl=de" target="_blank" rel="noopener">Datenschutz von Google</a></div>
               </div>
@@ -267,10 +263,10 @@
 
           <!-- Video 3 -->
           <article class="tile" style="padding:0">
-            <div
-              class="consent embed"
+            <div class="consent embed"
               data-vendor="YouTube"
               data-src="https://www.youtube-nocookie.com/embed/0eVyU1LGz5A?rel=0&playsinline=1&modestbranding=1&list=OLAK5uy_m71AlxMIU1EM_h7AaGfmjj44GTYqDFpeQ"
+              data-watch="https://www.youtube.com/watch?v=0eVyU1LGz5A"
               aria-live="polite"
               style="background-image:url('https://img.youtube.com/vi/0eVyU1LGz5A/hqdefault.jpg');background-size:cover;background-position:center">
               <div class="card">
@@ -279,6 +275,7 @@
                 <div class="actions">
                   <button class="allow" data-consent="always">Immer erlauben</button>
                   <button class="once">Einmal abspielen</button>
+                  <a class="once" href="https://www.youtube.com/watch?v=0eVyU1LGz5A" target="_blank" rel="noopener">Auf YouTube ansehen</a>
                 </div>
                 <div class="small"><a href="https://policies.google.com/privacy?hl=de" target="_blank" rel="noopener">Datenschutz von Google</a></div>
               </div>
@@ -292,67 +289,40 @@
       </div>
     </section>
 
-    <!-- Discography -->
+    <!-- DISCOGRAPHY -->
     <section id="discography">
       <div class="wrap">
         <h2 style="margin:0 0 10px">Discography (Auswahl)</h2>
         <div class="grid-3">
-          <!-- Release 1 -->
           <article class="tile release">
-            <a class="art art--ph" data-initials="NSN"
-               href="https://open.spotify.com/artist/2wn4Zq8AOBsX50X7fyBEoL"
-               target="_blank" rel="noopener" aria-label="Non Smokers Nightmare auf Spotify öffnen"></a>
+            <a class="art art--ph" data-initials="NSN" href="https://open.spotify.com/artist/2wn4Zq8AOBsX50X7fyBEoL" target="_blank" rel="noopener" aria-label="Non Smokers Nightmare auf Spotify öffnen"></a>
             <div style="padding:14px 16px">
               <h3>Non Smokers Nightmare <small>· 2012</small></h3>
               <div class="badges">
-                <a class="badge-link" href="https://open.spotify.com/artist/2wn4Zq8AOBsX50X7fyBEoL" target="_blank" rel="noopener">
-                  <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#1DB954"/></svg>
-                  <span>Spotify</span>
-                </a>
-                <a class="badge-link" href="https://www.youtube.com/@elasticfieldmusic" target="_blank" rel="noopener">
-                  <svg class="icon" viewBox="0 0 36 26" aria-hidden="true"><rect width="36" height="26" rx="5" fill="#FF0000"></rect><polygon points="14,7 26,13 14,19" fill="#FFFFFF"></polygon></svg>
-                  <span>YouTube</span>
-                </a>
+                <a class="badge-link" href="https://open.spotify.com/artist/2wn4Zq8AOBsX50X7fyBEoL" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#1DB954"/></svg><span>Spotify</span></a>
+                <a class="badge-link" href="https://www.youtube.com/@elasticfieldmusic" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 36 26" aria-hidden="true"><rect width="36" height="26" rx="5" fill="#FF0000"></rect><polygon points="14,7 26,13 14,19" fill="#FFFFFF"></polygon></svg><span>YouTube</span></a>
               </div>
             </div>
           </article>
 
-          <!-- Release 2 -->
           <article class="tile release">
-            <a class="art art--ph" data-initials="AN"
-               href="https://open.spotify.com/artist/2wn4Zq8AOBsX50X7fyBEoL"
-               target="_blank" rel="noopener" aria-label="Another Non Smokers Nightmare auf Spotify öffnen"></a>
+            <a class="art art--ph" data-initials="AN" href="https://open.spotify.com/artist/2wn4Zq8AOBsX50X7fyBEoL" target="_blank" rel="noopener" aria-label="Another Non Smokers Nightmare auf Spotify öffnen"></a>
             <div style="padding:14px 16px">
               <h3>Another Non Smokers Nightmare <small>· 2013</small></h3>
               <div class="badges">
-                <a class="badge-link" href="https://open.spotify.com/artist/2wn4Zq8AOBsX50X7fyBEoL" target="_blank" rel="noopener">
-                  <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#1DB954"/></svg>
-                  <span>Spotify</span>
-                </a>
-                <a class="badge-link" href="https://www.youtube.com/@elasticfieldmusic" target="_blank" rel="noopener">
-                  <svg class="icon" viewBox="0 0 36 26" aria-hidden="true"><rect width="36" height="26" rx="5" fill="#FF0000"></rect><polygon points="14,7 26,13 14,19" fill="#FFFFFF"></polygon></svg>
-                  <span>YouTube</span>
-                </a>
+                <a class="badge-link" href="https://open.spotify.com/artist/2wn4Zq8AOBsX50X7fyBEoL" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#1DB954"/></svg><span>Spotify</span></a>
+                <a class="badge-link" href="https://www.youtube.com/@elasticfieldmusic" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 36 26" aria-hidden="true"><rect width="36" height="26" rx="5" fill="#FF0000"></rect><polygon points="14,7 26,13 14,19" fill="#FFFFFF"></polygon></svg><span>YouTube</span></a>
               </div>
             </div>
           </article>
 
-          <!-- Release 3 -->
           <article class="tile release">
-            <a class="art art--ph" data-initials="2025"
-               href="https://open.spotify.com/artist/2wn4Zq8AOBsX50X7fyBEoL"
-               target="_blank" rel="noopener" aria-label="Remixes & New Works 2025 auf Spotify öffnen"></a>
+            <a class="art art--ph" data-initials="2025" href="https://open.spotify.com/artist/2wn4Zq8AOBsX50X7fyBEoL" target="_blank" rel="noopener" aria-label="Remixes & New Works 2025 auf Spotify öffnen"></a>
             <div style="padding:14px 16px">
               <h3>Remixes & New Works <small>· 2025</small></h3>
               <div class="badges">
-                <a class="badge-link" href="https://open.spotify.com/artist/2wn4Zq8AOBsX50X7fyBEoL" target="_blank" rel="noopener">
-                  <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#1DB954"/></svg>
-                  <span>Spotify</span>
-                </a>
-                <a class="badge-link" href="https://www.youtube.com/@elasticfieldmusic" target="_blank" rel="noopener">
-                  <svg class="icon" viewBox="0 0 36 26" aria-hidden="true"><rect width="36" height="26" rx="5" fill="#FF0000"></rect><polygon points="14,7 26,13 14,19" fill="#FFFFFF"></polygon></svg>
-                  <span>YouTube</span>
-                </a>
+                <a class="badge-link" href="https://open.spotify.com/artist/2wn4Zq8AOBsX50X7fyBEoL" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#1DB954"/></svg><span>Spotify</span></a>
+                <a class="badge-link" href="https://www.youtube.com/@elasticfieldmusic" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 36 26" aria-hidden="true"><rect width="36" height="26" rx="5" fill="#FF0000"></rect><polygon points="14,7 26,13 14,19" fill="#FFFFFF"></polygon></svg><span>YouTube</span></a>
               </div>
             </div>
           </article>
@@ -360,7 +330,29 @@
       </div>
     </section>
 
-    <!-- About -->
+    <!-- SHOP (PayPal) -->
+    <section id="shop">
+      <div class="wrap">
+        <h2 style="margin:0 0 10px">Shop</h2>
+        <article class="tile" style="padding:14px 16px">
+          <h3 style="margin:0 0 8px">Digital Album – Elastic Field</h3>
+          <p class="lead" style="margin:0 0 12px;color:var(--sub)">Download (MP3/FLAC) – inkl. Artwork</p>
+
+          <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+            <input type="hidden" name="cmd" value="_xclick">
+            <input type="hidden" name="business" value="DEINE-PAYPAL-EMAIL">
+            <input type="hidden" name="item_name" value="Elastic Field — Digital Album">
+            <input type="hidden" name="currency_code" value="EUR">
+            <input type="hidden" name="amount" value="7.00">
+            <button class="btn brand" type="submit">Jetzt kaufen – 7,00 €</button>
+          </form>
+
+          <p style="margin:10px 0 0;color:var(--sub)">Nach Kauf erhältst du den Download-Link per E-Mail (manuell/automatisiert, je nach Setup).</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
     <section id="about">
       <div class="wrap">
         <h2 style="margin:0 0 10px">About Elastic Field</h2>
@@ -381,7 +373,7 @@
       </div>
     </section>
 
-    <!-- Contact -->
+    <!-- CONTACT -->
     <section id="contact">
       <div class="wrap">
         <h2 style="margin:0 0 10px">Kontakt</h2>
@@ -404,7 +396,7 @@
   <footer>
     <div class="wrap" style="display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap">
       <small>© <span id="y"></span> Elastic Field</small>
-      <small style="color:var(--sub)">2-Klick Embeds · SEO ready</small>
+      <small style="color:var(--sub)">2-Klick Embeds · Shop Ready</small>
     </div>
   </footer>
 
@@ -413,10 +405,7 @@
   (function(){
     const toggle = document.getElementById('nav-toggle');
     const label  = document.getElementById('nav-label');
-    if(toggle && label){
-      const set = () => label.setAttribute('aria-expanded', String(toggle.checked));
-      toggle.addEventListener('change', set); set();
-    }
+    if(toggle && label){ const set = () => label.setAttribute('aria-expanded', String(toggle.checked)); toggle.addEventListener('change', set); set(); }
   })();
 
   // Typewriter
@@ -429,28 +418,53 @@
     (function type(){ if(i<=text.length){ el.textContent = text.slice(0,i); el.appendChild(caret); i++; setTimeout(type,speed);} })();
   })();
 
-  // 2-Klick Embeds (YouTube / Spotify) mit "immer erlauben"
+  // 2-Klick Embeds (YouTube / Spotify) mit Fallback
   (function(){
     const CONSENT_KEY = (v) => "consent:"+v;
+
+    function fallback(container, url){
+      container.innerHTML =
+        `<div class="card">
+           <strong>Inhalt kann hier nicht eingebettet werden</strong>
+           <div class="small">Du kannst ihn direkt öffnen.</div>
+           <div class="actions">
+             <a class="once" href="${url}" target="_blank" rel="noopener">Jetzt ansehen</a>
+           </div>
+         </div>`;
+      container.classList.add('consent');
+    }
+
     function mountIframe(host, src, container){
       const iframe = document.createElement('iframe');
+      let loaded = false;
+      iframe.onload = ()=> loaded = true;
+
+      // 6s-Timeout → Fallbacklink
+      setTimeout(()=>{ if(!loaded){
+        const watch = container.getAttribute('data-watch') || src.replace('/embed/','/watch?v=');
+        fallback(container, watch);
+      }}, 6000);
+
       iframe.width = "100%"; iframe.height = "100%"; iframe.loading = "lazy";
       iframe.referrerPolicy = "strict-origin-when-cross-origin";
       iframe.allowFullscreen = true;
+
       if(host === "YouTube"){
         iframe.src = src;
         iframe.title = "YouTube Video";
-        iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
-      }else if(host === "Spotify"){
+        iframe.allow = "accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+      } else if(host === "Spotify"){
         iframe.src = src;
         iframe.title = "Spotify Player";
         iframe.style.border = "0";
         iframe.allow = "autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture";
       }
+
       container.innerHTML = "";
       container.classList.remove("consent");
       container.appendChild(iframe);
     }
+
     document.querySelectorAll('.consent.embed').forEach(box=>{
       const vendor = box.getAttribute('data-vendor');
       const src    = box.getAttribute('data-src');
