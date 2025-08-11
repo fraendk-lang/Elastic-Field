@@ -202,7 +202,7 @@
   <section id="video">
     <div class="wrap">
       <h2 style="margin:0 0 10px">Videos</h2>
-    <div class="grid-3">
+      <div class="grid-3">
         <article class="tile">
           <div class="embed consent" data-vendor="YouTube" data-src="https://www.youtube-nocookie.com/embed/6erDkiy3rFU?start=11&rel=0&playsinline=1&modestbranding=1">
             <div class="consent-card">
@@ -275,7 +275,11 @@
 
         <article class="tile">
           <a class="art" href="https://open.spotify.com/intl-de/album/2YGPf9NdDWbEMWZKs4PtSi" target="_blank" rel="noopener">
-            <img class="art-img" src="4fe1088832b0766732a2a95bde27bba9b31100cb99dc4cc0d6aa693b835f1fac.png" alt="Elastic Field — Another Non Smokers Nightmare (Cover)">
+            <picture>
+              <source type="image/svg+xml" srcset="4fe1088832b0766732a2a95bde27bba9b31100cb99dc4cc0d6aa693b835f1fac.svg">
+              <img class="art-img" src="4fe1088832b0766732a2a95bde27bba9b31100cb99dc4cc0d6aa693b835f1fac.png"
+                   alt="Elastic Field — Another Non Smokers Nightmare (Cover)">
+            </picture>
           </a>
           <div style="padding:14px 16px">
             <h3 style="margin:0 0 6px">Another Non Smokers Nightmare <small>· Album</small></h3>
@@ -360,7 +364,7 @@
   <section id="impressum">
     <div class="wrap">
       <h2 style="margin:0 0 10px">Impressum</h2>
-    <div class="tile" style="padding:14px 16px">
+      <div class="tile" style="padding:14px 16px">
         <p style="margin:0 0 8px"><strong>Elastic Field</strong><br>Köln, Deutschland</p>
         <p style="margin:0 0 8px">Kontakt: <a href="mailto:fraendk@hotmail.com">fraendk@hotmail.com</a></p>
         <p style="margin:0;color:var(--sub)">Hinweis: Trage hier später deine vollständigen Pflichtangaben nach § 5 TMG ein (Name/Anschrift).</p>
@@ -390,9 +394,7 @@
             <textarea id="c-msg" name="message" rows="4" placeholder="Worum geht’s?" required
                       style="background:#17110d;color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:10px 12px;font:inherit"></textarea>
           </div>
-          <div style="position:absolute;left:-5000px" aria-hidden="true">
-            <input type="text" name="_gotcha" tabindex="-1">
-          </div>
+          <div style="position:absolute;left:-5000px" aria-hidden="true"><input type="text" name="_gotcha" tabindex="-1"></div>
           <label style="display:flex;gap:8px;align-items:flex-start;margin:8px 0">
             <input type="checkbox" id="c-consent" required>
             <span>Einverstanden, dass meine Angaben zur Kontaktaufnahme gespeichert werden.</span>
