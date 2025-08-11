@@ -202,7 +202,7 @@
   <section id="video">
     <div class="wrap">
       <h2 style="margin:0 0 10px">Videos</h2>
-      <div class="grid-3">
+    <div class="grid-3">
         <article class="tile">
           <div class="embed consent" data-vendor="YouTube" data-src="https://www.youtube-nocookie.com/embed/6erDkiy3rFU?start=11&rel=0&playsinline=1&modestbranding=1">
             <div class="consent-card">
@@ -360,7 +360,7 @@
   <section id="impressum">
     <div class="wrap">
       <h2 style="margin:0 0 10px">Impressum</h2>
-      <div class="tile" style="padding:14px 16px">
+    <div class="tile" style="padding:14px 16px">
         <p style="margin:0 0 8px"><strong>Elastic Field</strong><br>Köln, Deutschland</p>
         <p style="margin:0 0 8px">Kontakt: <a href="mailto:fraendk@hotmail.com">fraendk@hotmail.com</a></p>
         <p style="margin:0;color:var(--sub)">Hinweis: Trage hier später deine vollständigen Pflichtangaben nach § 5 TMG ein (Name/Anschrift).</p>
@@ -368,13 +368,41 @@
     </div>
   </section>
 
-  <!-- CONTACT -->
+  <!-- CONTACT (Formular mit Mail-Fallback) -->
   <section id="contact">
     <div class="wrap">
       <h2 style="margin:0 0 10px">Kontakt</h2>
       <div class="tile" style="padding:14px 16px">
-        <p style="margin:0 0 6px">E-Mail: <a href="mailto:fraendk@hotmail.com">fraendk@hotmail.com</a></p>
-        <p style="margin:0;color:var(--sub)">Später richten wir ein Formular ein.</p>
+        <form id="contact-form" action="https://formspree.io/f/DEINE_ID" method="POST" accept-charset="UTF-8" novalidate>
+          <input type="hidden" name="_subject" value="Elastic Field Kontakt (Website)">
+          <div class="field" style="display:grid;gap:6px;margin:10px 0">
+            <label for="c-name">Name</label>
+            <input id="c-name" name="name" type="text" autocomplete="name" placeholder="Dein Name" required
+                   style="background:#17110d;color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:10px 12px;font:inherit">
+          </div>
+          <div class="field" style="display:grid;gap:6px;margin:10px 0">
+            <label for="c-mail">E-Mail</label>
+            <input id="c-mail" name="email" type="email" autocomplete="email" placeholder="dein@mail.de" required
+                   style="background:#17110d;color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:10px 12px;font:inherit">
+          </div>
+          <div class="field" style="display:grid;gap:6px;margin:10px 0">
+            <label for="c-msg">Nachricht</label>
+            <textarea id="c-msg" name="message" rows="4" placeholder="Worum geht’s?" required
+                      style="background:#17110d;color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:10px 12px;font:inherit"></textarea>
+          </div>
+          <div style="position:absolute;left:-5000px" aria-hidden="true">
+            <input type="text" name="_gotcha" tabindex="-1">
+          </div>
+          <label style="display:flex;gap:8px;align-items:flex-start;margin:8px 0">
+            <input type="checkbox" id="c-consent" required>
+            <span>Einverstanden, dass meine Angaben zur Kontaktaufnahme gespeichert werden.</span>
+          </label>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:8px">
+            <button type="submit" class="btn brand">Nachricht senden</button>
+            <a class="btn" href="mailto:fraendk@hotmail.com?subject=Elastic%20Field%20Kontakt">Oder direkt per Mail</a>
+            <small id="contact-status" style="color:var(--sub)"></small>
+          </div>
+        </form>
       </div>
     </div>
   </section>
@@ -423,6 +451,36 @@
       if(localStorage.getItem(KEY)==="true"){ mount(); return; }
       allow?.addEventListener('click', ()=>{ localStorage.setItem(KEY,'true'); mount(); });
       once ?.addEventListener('click', mount);
+    });
+  })();
+
+  // Kontaktformular: Formspree-Submit + Mail-Fallback
+  (function(){
+    const form = document.getElementById('contact-form');
+    const status = document.getElementById('contact-status');
+    if(!form) return;
+
+    function show(msg){ if(status){ status.textContent = msg; } }
+    function mailFallback(){
+      const name = encodeURIComponent(document.getElementById('c-name').value || '');
+      const email= encodeURIComponent(document.getElementById('c-mail').value || '');
+      const msg  = encodeURIComponent(document.getElementById('c-msg').value  || '');
+      const body = `Name: ${name}%0AEmail: ${email}%0A%0ANachricht:%0A${msg}`;
+      window.location.href=`mailto:fraendk@hotmail.com?subject=Elastic%20Field%20Kontakt&body=${body}`;
+    }
+
+    form.addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      if(!document.getElementById('c-consent').checked){ show('Bitte Häkchen bei Einwilligung setzen.'); return; }
+      show('Senden…');
+      const endpoint = form.getAttribute('action') || '';
+      if(!endpoint || endpoint.includes('DEINE_ID')){ show('Sende per E-Mail…'); mailFallback(); return; }
+      try{
+        const data = new FormData(form);
+        const res = await fetch(endpoint, { method:'POST', body:data, headers:{'Accept':'application/json'} });
+        if(res.ok){ form.reset(); show('Danke! Ich melde mich bald.'); }
+        else{ show('Fehler beim Senden. Sende per E-Mail…'); mailFallback(); }
+      }catch(err){ show('Netzwerkfehler. Sende per E-Mail…'); mailFallback(); }
     });
   })();
 </script>
