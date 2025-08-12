@@ -9,10 +9,10 @@
 <meta name="robots" content="index,follow">
 <meta name="color-scheme" content="dark">
 
-<!-- Favicons & App Icons -->
-<link rel="icon" type="image/svg+xml" href="ef-favicon.svg?v=3">
-<link rel="icon" type="image/png" sizes="32x32" href="ef-favicon-32.png?v=3">
-<link rel="apple-touch-icon" href="apple-touch-icon.png?v=3">
+<!-- Favicons & App Icons (optional, falls noch nicht im Repo, einfach weglassen oder später ergänzen) -->
+<link rel="icon" type="image/svg+xml" href="ef-favicon.svg?v=4">
+<link rel="icon" type="image/png" sizes="32x32" href="ef-favicon-32.png?v=4">
+<link rel="apple-touch-icon" href="apple-touch-icon.png?v=4">
 <meta name="apple-mobile-web-app-title" content="Elastic Field">
 <meta name="theme-color" content="#120e0a">
 
@@ -24,13 +24,13 @@
 <meta property="og:description" content="Ambient · Trip-Hop · Downbeat · Lounge · Jazzy · Electronic">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://fraendk-lang.github.io/Elastic-Field/">
-<meta property="og:image" content="https://fraendk-lang.github.io/Elastic-Field/og-elastic-field.jpg?v=3">
+<meta property="og:image" content="https://fraendk-lang.github.io/Elastic-Field/og-elastic-field.jpg?v=4">
 <meta property="og:image:alt" content="Elastic Field — Official Preview">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Elastic Field — Official Site">
 <meta name="twitter:description" content="Ambient · Trip-Hop · Downbeat · Lounge · Jazzy · Electronic">
-<meta name="twitter:image" content="https://fraendk-lang.github.io/Elastic-Field/og-elastic-field.jpg?v=3">
+<meta name="twitter:image" content="https://fraendk-lang.github.io/Elastic-Field/og-elastic-field.jpg?v=4">
 <meta name="googlebot" content="max-image-preview:large">
 
 <style>
@@ -49,6 +49,7 @@
   .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;background:var(--muted);border:1px solid var(--line)}
   .btn:hover{transform:translateY(-1px)}
   .btn.brand{background:linear-gradient(180deg,var(--brand),var(--brand2));color:#291a0e;border-color:#543a21;font-weight:700}
+  .btn.round{border-radius:999px}
 
   .logo{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.4px}
   .logo-img{width:34px;height:34px;border-radius:10px;display:block}
@@ -60,7 +61,7 @@
   .hero-title{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:0 16px;z-index:2}
   .hero-title h1{margin:0;font-weight:800;letter-spacing:.4px;line-height:.95;font-size:clamp(46px,8vw,110px);text-shadow:0 2px 12px rgba(0,0,0,.55)}
   .type{display:inline-block;overflow:hidden;white-space:nowrap;animation:typing 2.5s steps(20,end) .2s 1 both}
-  @keyframes typing{from{width:0}to{width:13ch}}
+  @keyframes typing{from{width:0}to{width:13ch}} /* "Elastic Field" = 13 Zeichen inkl. Leerzeichen */
 
   .ticker{position:absolute;left:0;right:0;height:36px;display:flex;align-items:center;overflow:hidden;z-index:3;background:linear-gradient(180deg,rgba(18,14,10,.2),rgba(18,14,10,.5))}
   .t-top{top:0;border-bottom:1px solid var(--line)}
@@ -75,11 +76,17 @@
   .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
   @media (max-width:860px){.grid-3{grid-template-columns:1fr}}
 
-  .art{display:block;position:relative;aspect-ratio:1/1;border-bottom:1px solid var(--line);overflow:hidden;
-        transition:transform .25s ease, box-shadow .25s ease}
-  .art-img{width:100%;height:100%;display:block;object-fit:cover}
-  .tile:hover .art{transform:translateY(-2px);box-shadow:0 14px 30px rgba(0,0,0,.45)}
-  @media (prefers-reduced-motion:reduce){ .tile:hover .art{transform:none} }
+  /* ==== Discography polish ==== */
+  .art{aspect-ratio:1/1}
+  .art-img{width:100%;height:100%;object-fit:cover;object-position:50% 50%}
+  .tile .meta{
+    padding:14px 16px;display:flex;flex-direction:column;gap:10px;min-height:120px
+  }
+  .tile h3{
+    margin:0;display:flex;align-items:baseline;gap:8px;text-wrap:balance
+  }
+  .tile h3 small{white-space:nowrap;opacity:.85;font-weight:600;font-size:.9em}
+  .tile .actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
 
   .chips{display:flex;gap:10px;flex-wrap:wrap}
   .chip{border:1px solid var(--line);background:var(--panel);padding:8px 12px;border-radius:999px}
@@ -102,12 +109,12 @@
   @media (max-width:480px){ .fab{ width:52px; height:52px; right:12px; bottom:12px; } }
   @media (prefers-reduced-motion:reduce){ .fab{ transition:none; } }
 
-  /* Status Toast */
+  /* Toast */
   .toast{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#20160f;border:1px solid var(--line);box-shadow:var(--shadow);color:var(--ink);padding:10px 14px;border-radius:10px;z-index:1000;display:none}
   .toast.show{display:block}
 </style>
 
-<!-- schema.org (kurz) -->
+<!-- schema.org -->
 <script type="application/ld+json">
 {
   "@context":"https://schema.org",
@@ -129,7 +136,7 @@
 <header>
   <div class="wrap bar">
     <a class="logo" href="#">
-      <img class="logo-img" src="ef-favicon.svg?v=3" alt="Elastic Field Logo" width="34" height="34">
+      <img class="logo-img" src="ef-favicon.svg?v=4" alt="Elastic Field Logo" width="34" height="34">
       <span>Elastic Field</span>
     </a>
     <nav style="display:flex;gap:10px;flex-wrap:wrap">
@@ -166,7 +173,7 @@
           </div>
         </div>
 
-        <video autoplay muted loop playsinline preload="metadata" poster="A_collection_of_six_abstract_textured_digital_art_-1.png?v=3">
+        <video autoplay muted loop playsinline preload="metadata" poster="A_collection_of_six_abstract_textured_digital_art_-1.png?v=4">
           <source src="20250810_2204_Dreamy Bokeh Nightscape_simple_compose_01k2asb5brejkabp1vnxar2pdg.mp4" type="video/mp4">
         </video>
 
@@ -202,7 +209,7 @@
     </div>
   </section>
 
-  <!-- LISTEN (2-Klick Spotify) -->
+  <!-- LISTEN -->
   <section id="listen">
     <div class="wrap">
       <h2 style="margin:0 0 10px">Hören</h2>
@@ -222,7 +229,7 @@
     </div>
   </section>
 
-  <!-- VIDEOS (2-Klick YouTube) -->
+  <!-- VIDEOS -->
   <section id="video">
     <div class="wrap">
       <h2 style="margin:0 0 10px">Videos</h2>
@@ -272,20 +279,21 @@
     </div>
   </section>
 
-  <!-- DISCOGRAPHY (mit deinen neuen Bildern) -->
+  <!-- DISCOGRAPHY -->
   <section id="discography">
     <div class="wrap">
       <h2 style="margin:0 0 10px">Discography (Auswahl)</h2>
       <div class="grid-3">
+
         <!-- Lost and Found -->
         <article class="tile">
           <a class="art" href="https://open.spotify.com/intl-de/album/6CVmcZb3bQAkxU39k0falc" target="_blank" rel="noopener">
-            <img class="art-img" src="A_collection_of_six_abstract_textured_digital_art_-1.png?v=3" alt="Elastic Field — Lost and Found (Cover)" loading="lazy" width="1200" height="1200">
+            <img class="art-img" src="A_collection_of_six_abstract_textured_digital_art_-1.png?v=4" alt="Elastic Field — Lost and Found (Cover)" loading="lazy" width="1200" height="1200">
           </a>
-          <div style="padding:14px 16px">
-            <h3 style="margin:0 0 6px">Lost and Found <small>· Single</small></h3>
-            <div style="display:flex;gap:10px;flex-wrap:wrap">
-              <a class="btn" style="border-radius:999px" href="https://open.spotify.com/intl-de/album/6CVmcZb3bQAkxU39k0falc" target="_blank" rel="noopener">Spotify</a>
+          <div class="meta">
+            <h3>Lost and Found <small>· Single</small></h3>
+            <div class="actions">
+              <a class="btn round" href="https://open.spotify.com/intl-de/album/6CVmcZb3bQAkxU39k0falc" target="_blank" rel="noopener">Spotify</a>
               <button class="btn brand buy" data-item="laf">Kaufen – 0,99 €</button>
             </div>
           </div>
@@ -294,12 +302,12 @@
         <!-- Non Smokers Nightmare -->
         <article class="tile">
           <a class="art" href="https://open.spotify.com/intl-de/album/4gNyV1XCfZY8enSJb3msCn" target="_blank" rel="noopener">
-            <img class="art-img" src="A_collection_of_six_abstract_textured_digital_art_-4.png?v=3" alt="Elastic Field — Non Smokers Nightmare (Cover)" loading="lazy" width="1200" height="1200">
+            <img class="art-img" src="A_collection_of_six_abstract_textured_digital_art_-4.png?v=4" alt="Elastic Field — Non Smokers Nightmare (Cover)" loading="lazy" width="1200" height="1200">
           </a>
-          <div style="padding:14px 16px">
-            <h3 style="margin:0 0 6px">Non Smokers Nightmare <small>· Album</small></h3>
-            <div style="display:flex;gap:10px;flex-wrap:wrap">
-              <a class="btn" style="border-radius:999px" href="https://open.spotify.com/intl-de/album/4gNyV1XCfZY8enSJb3msCn" target="_blank" rel="noopener">Spotify</a>
+          <div class="meta">
+            <h3>Non Smokers Nightmare <small>· Album</small></h3>
+            <div class="actions">
+              <a class="btn round" href="https://open.spotify.com/intl-de/album/4gNyV1XCfZY8enSJb3msCn" target="_blank" rel="noopener">Spotify</a>
               <button class="btn brand buy" data-item="nsn">Kaufen – 0,99 €</button>
             </div>
           </div>
@@ -308,50 +316,51 @@
         <!-- Another Non Smokers Nightmare -->
         <article class="tile">
           <a class="art" href="https://open.spotify.com/intl-de/album/2YGPf9NdDWbEMWZKs4PtSi" target="_blank" rel="noopener">
-            <img class="art-img" src="A_collection_of_six_abstract_textured_digital_art_-2.png?v=3" alt="Elastic Field — Another Non Smokers Nightmare (Cover)" loading="lazy" width="1200" height="1200">
+            <img class="art-img" src="A_collection_of_six_abstract_textured_digital_art_-2.png?v=4" alt="Elastic Field — Another Non Smokers Nightmare (Cover)" loading="lazy" width="1200" height="1200">
           </a>
-          <div style="padding:14px 16px">
-            <h3 style="margin:0 0 6px">Another Non Smokers Nightmare <small>· Album</small></h3>
-            <div style="display:flex;gap:10px;flex-wrap:wrap">
-              <a class="btn" style="border-radius:999px" href="https://open.spotify.com/intl-de/album/2YGPf9NdDWbEMWZKs4PtSi" target="_blank" rel="noopener">Spotify</a>
+          <div class="meta">
+            <h3>Another Non Smokers Nightmare <small>· Album</small></h3>
+            <div class="actions">
+              <a class="btn round" href="https://open.spotify.com/intl-de/album/2YGPf9NdDWbEMWZKs4PtSi" target="_blank" rel="noopener">Spotify</a>
               <button class="btn brand buy" data-item="ansn">Kaufen – 0,99 €</button>
             </div>
           </div>
         </article>
+
       </div>
     </div>
   </section>
 
-  <!-- SHOP (gleiche Stripe-Buttons) -->
+  <!-- SHOP (zusätzliche Buttons) -->
   <section id="shop">
     <div class="wrap">
       <h2 style="margin:0 0 10px">Shop</h2>
       <div class="grid-3">
         <article class="tile">
-          <a class="art" href="#listen"><img class="art-img" src="A_collection_of_six_abstract_textured_digital_art_-1.png?v=3" alt=""></a>
-          <div style="padding:14px 16px">
-            <h3 style="margin:0 0 6px">Featured Track 1</h3>
-            <button class="btn brand buy" data-item="laf">Kaufen – 0,99 €</button>
+          <a class="art" href="#listen"><img class="art-img" src="A_collection_of_six_abstract_textured_digital_art_-1.png?v=4" alt=""></a>
+          <div class="meta">
+            <h3>Featured Track 1</h3>
+            <div class="actions"><button class="btn brand buy" data-item="laf">Kaufen – 0,99 €</button></div>
           </div>
         </article>
 
         <article class="tile">
-          <a class="art" href="#listen"><img class="art-img" src="A_collection_of_six_abstract_textured_digital_art_-4.png?v=3" alt=""></a>
-          <div style="padding:14px 16px">
-            <h3 style="margin:0 0 6px">Featured Track 2</h3>
-            <button class="btn brand buy" data-item="nsn">Kaufen – 0,99 €</button>
+          <a class="art" href="#listen"><img class="art-img" src="A_collection_of_six_abstract_textured_digital_art_-4.png?v=4" alt=""></a>
+          <div class="meta">
+            <h3>Featured Track 2</h3>
+            <div class="actions"><button class="btn brand buy" data-item="nsn">Kaufen – 0,99 €</button></div>
           </div>
         </article>
 
         <article class="tile">
-          <a class="art" href="#listen"><img class="art-img" src="A_collection_of_six_abstract_textured_digital_art_-2.png?v=3" alt=""></a>
-          <div style="padding:14px 16px">
-            <h3 style="margin:0 0 6px">Featured Track 3</h3>
-            <button class="btn brand buy" data-item="ansn">Kaufen – 0,99 €</button>
+          <a class="art" href="#listen"><img class="art-img" src="A_collection_of_six_abstract_textured_digital_art_-2.png?v=4" alt=""></a>
+          <div class="meta">
+            <h3>Featured Track 3</h3>
+            <div class="actions"><button class="btn brand buy" data-item="ansn">Kaufen – 0,99 €</button></div>
           </div>
         </article>
       </div>
-      <p style="margin:12px 0 0;color:var(--sub)">Stripe Checkout öffnet eine sichere Bezahlseite. Nach erfolgreicher Zahlung erhältst du einen zeitlich begrenzten Download-Link (wird vom Backend erzeugt).</p>
+      <p style="margin:12px 0 0;color:var(--sub)">Stripe Checkout öffnet eine sichere Bezahlseite. Nach erfolgreicher Zahlung erhältst du einen zeitlich begrenzten Download-Link (vom Backend generiert).</p>
     </div>
   </section>
 
@@ -425,32 +434,26 @@
   </div>
 </footer>
 
-<a id="contact-fab" class="fab"
-   href="mailto:fraendk@hotmail.com?subject=Kontakt%20Elastic%20Field"
-   aria-label="E-Mail an Elastic Field">✉️</a>
-
+<a id="contact-fab" class="fab" href="mailto:fraendk@hotmail.com?subject=Kontakt%20Elastic%20Field" aria-label="E-Mail an Elastic Field">✉️</a>
 <div id="toast" class="toast" role="status" aria-live="polite"></div>
 
 <!-- Stripe JS -->
 <script src="https://js.stripe.com/v3"></script>
 
 <script>
-  // === SETUP (Bitte ersetzen) ==========================
-  // 1) Stripe Publishable Key (TEST oder LIVE)
-  const STRIPE_PK  = 'pk_test_REPLACE_ME';
-  // 2) Dein Serverless-Endpoint, der die Checkout-Session erstellt
-  const CHECKOUT_EP = 'https://YOUR-BACKEND.example.com/api/checkout';
-  // 3) Deine Stripe Price-IDs (im Dashboard anlegen)
+  // === STRIPE KONFIG (Platzhalter ersetzen) ==========================
+  const STRIPE_PK  = 'pk_test_REPLACE_ME';                             // Publishable Key
+  const CHECKOUT_EP = 'https://YOUR-BACKEND.example.com/api/checkout'; // Serverless-Endpoint
   const PRICE_IDS = {
     laf:  'price_REPLACE_1',   // Lost and Found
     nsn:  'price_REPLACE_2',   // Non Smokers Nightmare
     ansn: 'price_REPLACE_3'    // Another Non Smokers Nightmare
   };
-  // =====================================================
+  // ================================================================
 
   document.getElementById('y').textContent = new Date().getFullYear();
 
-  // 2-Klick-Loader (YouTube/Spotify)
+  // 2-Klick Loader (YouTube/Spotify)
   (function(){
     const map = { YouTube:'consent:YouTube', Spotify:'consent:Spotify' };
     document.querySelectorAll('.embed.consent').forEach(box=>{
@@ -496,7 +499,7 @@
         body: JSON.stringify({ priceId, success_url: success, cancel_url: cancel, metadata })
       });
       if(!res.ok) throw new Error('Checkout-Endpoint antwortet nicht');
-      return res.json(); // { id: 'cs_test_...' }
+      return res.json(); // { id: 'cs_...' }
     }
 
     function parseFlags(){
@@ -518,7 +521,7 @@
           if(result.error){ toast(result.error.message || 'Stripe Fehler'); }
         }catch(err){
           console.error(err);
-          toast('Konnte Checkout nicht starten.'); 
+          toast('Konnte Checkout nicht starten.');
         }finally{
           btn.disabled = false; btn.textContent = 'Kaufen – 0,99 €';
         }
@@ -526,7 +529,7 @@
     });
   })();
 
-  // Kontaktformular: Formspree + Mail-Fallback
+  // Kontaktformular (Formspree + Mail-Fallback)
   (function(){
     const form = document.getElementById('contact-form');
     const status = document.getElementById('contact-status');
