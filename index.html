@@ -3,7 +3,6 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
 <title>Elastic Field — Official Site</title>
 <meta name="description" content="Elastic Field — Ambient · Trip-Hop · Downbeat · Lounge · Jazzy · Electronic.">
 <meta name="robots" content="index,follow">
@@ -11,8 +10,8 @@
 
 <!-- Favicons & App Icons -->
 <link rel="icon" type="image/svg+xml" href="ef-favicon.svg">
-<link rel="icon" type="image/png" sizes="32x32" href="ef-favicon-32.png"><!-- optional fallback -->
-<link rel="apple-touch-icon" href="apple-touch-icon.png"><!-- 180×180; optional, falls vorhanden -->
+<link rel="icon" type="image/png" sizes="32x32" href="ef-favicon-32.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png"><!-- 180×180 -->
 <meta name="apple-mobile-web-app-title" content="Elastic Field">
 <meta name="theme-color" content="#120e0a">
 
@@ -24,7 +23,6 @@
 <meta property="og:description" content="Ambient · Trip-Hop · Downbeat · Lounge · Jazzy · Electronic">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://fraendk-lang.github.io/Elastic-Field/">
-<!-- Wenn du og-elastic-field.jpg hochgeladen hast, bleibt die erste Zeile stehen. Die zweite ist Fallback -->
 <meta property="og:image" content="https://fraendk-lang.github.io/Elastic-Field/og-elastic-field.jpg">
 <meta property="og:image:alt" content="Elastic Field — Official Preview">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
@@ -54,11 +52,9 @@
   .btn:hover{transform:translateY(-1px)}
   .btn.brand{background:linear-gradient(180deg,var(--brand),var(--brand2));color:#291a0e;border-color:#543a21;font-weight:700}
 
-  /* Logo */
   .logo{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.4px}
   .badge{width:34px;height:34px;border-radius:10px;background:conic-gradient(from 210deg,var(--brand),var(--brand2),var(--brand));display:grid;place-items:center;box-shadow:var(--shadow);color:#2a1c10;font-weight:800}
 
-  /* Hero */
   .hero{border-bottom:1px solid var(--line);background:radial-gradient(700px 280px at 85% -10%,rgba(210,161,94,.12),transparent 60%)}
   .cover{position:relative;width:100%;aspect-ratio:16/9;border-radius:14px;overflow:hidden;background:#0e0a07;border:1px solid var(--line);box-shadow:var(--shadow)}
   .cover video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
@@ -68,7 +64,6 @@
   .type{display:inline-block;overflow:hidden;white-space:nowrap;animation:typing 2.5s steps(20,end) .2s 1 both}
   @keyframes typing{from{width:0}to{width:13ch}}
 
-  /* Ticker */
   .ticker{position:absolute;left:0;right:0;height:36px;display:flex;align-items:center;overflow:hidden;z-index:3;background:linear-gradient(180deg,rgba(18,14,10,.2),rgba(18,14,10,.5))}
   .t-top{top:0;border-bottom:1px solid var(--line)}
   .t-bottom{bottom:0;border-top:1px solid var(--line)}
@@ -92,11 +87,9 @@
   .chip{border:1px solid var(--line);background:var(--panel);padding:8px 12px;border-radius:999px}
   footer{padding:28px 0;border-top:1px solid var(--line);color:var(--sub)}
 
-  /* Consent-Karten */
   .embed{aspect-ratio:16/9;background:#0e0a07;display:grid;place-items:center}
   .consent-card{display:grid;gap:10px;place-items:center;text-align:center;background:rgba(18,14,10,.55);border:1px solid var(--line);border-radius:12px;padding:14px 16px;max-width:min(92%,720px);margin:12px}
 
-  /* Floating Mail Button */
   .fab{
     position:fixed; right:16px; bottom:16px; z-index:999;
     width:56px; height:56px; border-radius:999px;
@@ -195,11 +188,9 @@
 </header>
 
 <main>
-  <!-- HERO -->
   <section class="hero">
     <div class="wrap">
       <div class="cover">
-        <!-- Ticker oben -->
         <div class="ticker t-top">
           <div class="track">
             <a href="https://open.spotify.com/intl-de/album/7AS9NnBeJiZmG3518MUA44" target="_blank" rel="noopener">Last Release: Smoke Under Water (2025)</a>
@@ -221,7 +212,6 @@
           <h1><span class="type">Elastic Field</span></h1>
         </div>
 
-        <!-- Ticker unten -->
         <div class="ticker t-bottom">
           <div class="track">
             <span>Ambient</span><span class="dot">•</span>
@@ -249,7 +239,6 @@
     </div>
   </section>
 
-  <!-- LISTEN (mit 2-Klick Spotify) -->
   <section id="listen">
     <div class="wrap">
       <h2 style="margin:0 0 10px">Hören</h2>
@@ -278,7 +267,6 @@
     </div>
   </section>
 
-  <!-- VIDEOS (2-Klick YouTube) -->
   <section id="video">
     <div class="wrap">
       <h2 style="margin:0 0 10px">Videos</h2>
@@ -328,34 +316,13 @@
     </div>
   </section>
 
-  <!-- DISCOGRAPHY -->
   <section id="discography">
     <div class="wrap">
       <h2 style="margin:0 0 10px">Discography (Auswahl)</h2>
       <div class="grid-3">
-        <!-- Lost and Found (Inline SVG) -->
         <article class="tile">
-          <a class="art" href="https://open.spotify.com/intl-de/album/6CVmcZb3bQAkxU39k0falc" target="_blank" rel="noopener" aria-label="Lost and Found (Single)">
-            <svg class="art-svg" viewBox="0 0 1600 1600" preserveAspectRatio="xMidYMid slice" role="img">
-              <title>Elastic Field — Lost and Found</title>
-              <defs>
-                <linearGradient id="bg-laf" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0" stop-color="#120e0a"/><stop offset="1" stop-color="#1b140f"/>
-                </linearGradient>
-                <radialGradient id="flare-laf" cx="22%" cy="82%" r="65%">
-                  <stop offset="0" stop-color="#b47b33" stop-opacity="0.35"/><stop offset="1" stop-color="#b47b33" stop-opacity="0"/>
-                </radialGradient>
-                <filter id="grain-laf"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" stitchTiles="stitch" result="t"/><feColorMatrix in="t" type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope="0.05"/></feComponentTransfer></filter>
-              </defs>
-              <rect width="1600" height="1600" fill="url(#bg-laf)"/><rect width="1600" height="1600" fill="url(#flare-laf)"/><rect width="1600" height="1600" filter="url(#grain-laf)"/>
-              <rect x="32" y="32" width="1536" height="1536" rx="28" ry="28" fill="none" stroke="#3b2b1f" stroke-width="2"/>
-              <g fill="#f6ead5" font-family="Helvetica, Arial, system-ui, -apple-system, Segoe UI, Roboto, sans-serif" text-anchor="middle" letter-spacing="0.8px">
-                <text x="800" y="760" font-size="172" font-weight="800">Lost and</text><text x="800" y="970" font-size="172" font-weight="800">Found</text>
-              </g>
-              <g fill="#d7c6a9" font-family="Helvetica, Arial, system-ui, -apple-system, Segoe UI, Roboto, sans-serif" text-anchor="middle" letter-spacing="3px">
-                <text x="800" y="1240" font-size="42" style="text-transform:uppercase">Elastic Field</text>
-              </g>
-            </svg>
+          <a class="art" href="https://open.spotify.com/intl-de/album/6CVmcZb3bQAkxU39k0falc" target="_blank" rel="noopener">
+            <img class="art-img" src="5d3f596648decebede38ac2c8f7f6c1f0029746fb1411b01ef92da9d1a436998.png" alt="Elastic Field — Lost and Found (Cover)">
           </a>
           <div style="padding:14px 16px">
             <h3 style="margin:0 0 6px">Lost and Found <small>· Single</small></h3>
@@ -363,27 +330,9 @@
           </div>
         </article>
 
-        <!-- Non Smokers Nightmare (Inline SVG) -->
         <article class="tile">
-          <a class="art" href="https://open.spotify.com/intl-de/album/4gNyV1XCfZY8enSJb3msCn" target="_blank" rel="noopener" aria-label="Non Smokers Nightmare (Album)">
-            <svg class="art-svg" viewBox="0 0 1600 1600" preserveAspectRatio="xMidYMid slice" role="img">
-              <title>Elastic Field — Non Smokers Nightmare</title>
-              <defs>
-                <linearGradient id="bg-nsn" x1="1" y1="0" x2="0" y2="1">
-                  <stop offset="0" stop-color="#120e0a"/><stop offset="1" stop-color="#1b140f"/>
-                </linearGradient>
-                <radialGradient id="flare-nsn" cx="78%" cy="18%" r="60%"><stop offset="0" stop-color="#d2a15e" stop-opacity="0.28"/><stop offset="1" stop-color="#d2a15e" stop-opacity="0"/></radialGradient>
-                <filter id="grain-nsn"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch" result="t"/><feColorMatrix in="t" type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope="0.05"/></feComponentTransfer></filter>
-              </defs>
-              <rect width="1600" height="1600" fill="url(#bg-nsn)"/><rect width="1600" height="1600" fill="url(#flare-nsn)"/><rect width="1600" height="1600" filter="url(#grain-nsn)"/>
-              <rect x="32" y="32" width="1536" height="1536" rx="28" ry="28" fill="none" stroke="#3b2b1f" stroke-width="2"/>
-              <g fill="#f6ead5" font-family="Helvetica, Arial, system-ui, -apple-system, Segoe UI, Roboto, sans-serif" text-anchor="middle" letter-spacing="0.8px">
-                <text x="800" y="760" font-size="140" font-weight="700">Non Smokers</text><text x="800" y="940" font-size="140" font-weight="700">Nightmare</text>
-              </g>
-              <g fill="#d7c6a9" font-family="Helvetica, Arial, system-ui, -apple-system, Segoe UI, Roboto, sans-serif" text-anchor="middle" letter-spacing="3px">
-                <text x="800" y="1240" font-size="42" style="text-transform:uppercase">Elastic Field</text>
-              </g>
-            </svg>
+          <a class="art" href="https://open.spotify.com/intl-de/album/4gNyV1XCfZY8enSJb3msCn" target="_blank" rel="noopener">
+            <img class="art-img" src="962f4f6bb3e4c4a64cd8e9e602d89eefa6270670fa34a6bdc120b3a38029f09f.png" alt="Elastic Field — Non Smokers Nightmare (Cover)">
           </a>
           <div style="padding:14px 16px">
             <h3 style="margin:0 0 6px">Non Smokers Nightmare <small>· Album</small></h3>
@@ -391,26 +340,37 @@
           </div>
         </article>
 
-        <!-- Another Non Smokers Nightmare (Inline SVG) -->
         <article class="tile">
           <a class="art" href="https://open.spotify.com/intl-de/album/2YGPf9NdDWbEMWZKs4PtSi" target="_blank" rel="noopener" aria-label="Another Non Smokers Nightmare (Album)">
-            <svg class="art-svg" viewBox="0 0 1600 1600" preserveAspectRatio="xMidYMid slice" role="img">
-              <title>Elastic Field — Another Non Smokers Nightmare</title>
+            <!-- Inline SVG Cover (korrigierte Schreibweise) -->
+            <svg class="art-svg" viewBox="0 0 1600 1600" preserveAspectRatio="xMidYMid slice">
               <defs>
                 <linearGradient id="bg-ansn" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0" stop-color="#120e0a"/><stop offset="1" stop-color="#1b140f"/>
+                  <stop offset="0" stop-color="#120e0a"/>
+                  <stop offset="1" stop-color="#1b140f"/>
                 </linearGradient>
-                <radialGradient id="flare-ansn" cx="78%" cy="18%" r="60%"><stop offset="0" stop-color="#d2a15e" stop-opacity="0.28"/><stop offset="1" stop-color="#d2a15e" stop-opacity="0"/></radialGradient>
-                <filter id="grain-ansn"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch" result="t"/><feColorMatrix in="t" type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope="0.05"/></feComponentTransfer></filter>
+                <radialGradient id="flare-ansn" cx="78%" cy="18%" r="60%">
+                  <stop offset="0" stop-color="#d2a15e" stop-opacity="0.28"/>
+                  <stop offset="1" stop-color="#d2a15e" stop-opacity="0"/>
+                </radialGradient>
+                <filter id="grain-ansn">
+                  <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch" result="t"/>
+                  <feColorMatrix in="t" type="saturate" values="0"/>
+                  <feComponentTransfer><feFuncA type="linear" slope="0.05"/></feComponentTransfer>
+                </filter>
               </defs>
-              <rect width="1600" height="1600" fill="url(#bg-ansn)"/><rect width="1600" height="1600" fill="url(#flare-ansn)"/><rect width="1600" height="1600" filter="url(#grain-ansn)"/>
+              <rect width="1600" height="1600" fill="url(#bg-ansn)"/>
+              <rect width="1600" height="1600" fill="url(#flare-ansn)"/>
+              <rect width="1600" height="1600" filter="url(#grain-ansn)"/>
               <rect x="32" y="32" width="1536" height="1536" rx="28" ry="28" fill="none" stroke="#3b2b1f" stroke-width="2"/>
-              <g fill="#f6ead5" font-family="Helvetica, Arial, system-ui, -apple-system, Segoe UI, Roboto, sans-serif" text-anchor="middle" letter-spacing="0.8px">
+              <g fill="#f6ead5" font-family="Helvetica, Arial, system-ui, -apple-system, Segoe UI, Roboto, sans-serif"
+                 text-anchor="middle" letter-spacing="0.8px">
                 <text x="800" y="660" font-size="144" font-weight="700">Another</text>
                 <text x="800" y="820" font-size="144" font-weight="700">Non Smokers</text>
                 <text x="800" y="980" font-size="144" font-weight="700">Nightmare</text>
               </g>
-              <g fill="#d7c6a9" font-family="Helvetica, Arial, system-ui, -apple-system, Segoe UI, Roboto, sans-serif" text-anchor="middle" letter-spacing="3px">
+              <g fill="#d7c6a9" font-family="Helvetica, Arial, system-ui, -apple-system, Segoe UI, Roboto, sans-serif"
+                 text-anchor="middle" letter-spacing="3px">
                 <text x="800" y="1240" font-size="42" style="text-transform:uppercase">Elastic Field</text>
               </g>
             </svg>
@@ -424,7 +384,6 @@
     </div>
   </section>
 
-  <!-- SHOP (PayPal 0,99 €) -->
   <section id="shop">
     <div class="wrap">
       <h2 style="margin:0 0 10px">Shop</h2>
@@ -481,7 +440,6 @@
     </div>
   </section>
 
-  <!-- ABOUT -->
   <section id="about">
     <div class="wrap">
       <h2 style="margin:0 0 10px">About Elastic Field</h2>
@@ -494,7 +452,6 @@
     </div>
   </section>
 
-  <!-- IMPRESSUM -->
   <section id="impressum">
     <div class="wrap">
       <h2 style="margin:0 0 10px">Impressum</h2>
@@ -506,7 +463,6 @@
     </div>
   </section>
 
-  <!-- CONTACT (Formular mit Mail-Fallback) -->
   <section id="contact">
     <div class="wrap">
       <h2 style="margin:0 0 10px">Kontakt</h2>
@@ -551,16 +507,13 @@
   </div>
 </footer>
 
-<!-- Floating Mail Button -->
 <a id="contact-fab" class="fab"
    href="mailto:fraendk@hotmail.com?subject=Kontakt%20Elastic%20Field"
    aria-label="E-Mail an Elastic Field">✉️</a>
 
 <script>
-  // Jahr
   document.getElementById('y').textContent = new Date().getFullYear();
 
-  // 2-Klick-Loader für YouTube & Spotify
   (function(){
     const map = { YouTube:'consent:YouTube', Spotify:'consent:Spotify' };
     document.querySelectorAll('.embed.consent').forEach(box=>{
@@ -590,7 +543,6 @@
     });
   })();
 
-  // Kontaktformular: Formspree-Submit + Mail-Fallback
   (function(){
     const form = document.getElementById('contact-form');
     const status = document.getElementById('contact-status');
