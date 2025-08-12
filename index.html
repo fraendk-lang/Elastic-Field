@@ -3,15 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
 <title>Elastic Field — Official Site</title>
 <meta name="description" content="Elastic Field — Ambient · Trip-Hop · Downbeat · Lounge · Jazzy · Electronic.">
 <meta name="robots" content="index,follow">
 <meta name="color-scheme" content="dark">
 
 <!-- Favicons & App Icons -->
-<link rel="icon" type="image/svg+xml" href="ef-favicon.svg?v=2">
-<link rel="icon" type="image/png" sizes="32x32" href="ef-favicon-32.png?v=2">
-<link rel="apple-touch-icon" href="apple-touch-icon.png?v=2">
+<link rel="icon" type="image/svg+xml" href="ef-favicon.svg?v=3">
+<link rel="icon" type="image/png" sizes="32x32" href="ef-favicon-32.png?v=3">
+<link rel="apple-touch-icon" href="apple-touch-icon.png?v=3">
 <meta name="apple-mobile-web-app-title" content="Elastic Field">
 <meta name="theme-color" content="#120e0a">
 
@@ -23,14 +24,13 @@
 <meta property="og:description" content="Ambient · Trip-Hop · Downbeat · Lounge · Jazzy · Electronic">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://fraendk-lang.github.io/Elastic-Field/">
-<meta property="og:image" content="https://fraendk-lang.github.io/Elastic-Field/og-elastic-field.jpg?v=2">
+<meta property="og:image" content="https://fraendk-lang.github.io/Elastic-Field/og-elastic-field.jpg?v=3">
 <meta property="og:image:alt" content="Elastic Field — Official Preview">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Elastic Field — Official Site">
 <meta name="twitter:description" content="Ambient · Trip-Hop · Downbeat · Lounge · Jazzy · Electronic">
-<meta name="twitter:image" content="https://fraendk-lang.github.io/Elastic-Field/og-elastic-field.jpg?v=2">
-
+<meta name="twitter:image" content="https://fraendk-lang.github.io/Elastic-Field/og-elastic-field.jpg?v=3">
 <meta name="googlebot" content="max-image-preview:large">
 
 <style>
@@ -101,64 +101,26 @@
   .fab:focus-visible{ outline:2px solid var(--ink); outline-offset:2px; }
   @media (max-width:480px){ .fab{ width:52px; height:52px; right:12px; bottom:12px; } }
   @media (prefers-reduced-motion:reduce){ .fab{ transition:none; } }
+
+  /* Status Toast */
+  .toast{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#20160f;border:1px solid var(--line);box-shadow:var(--shadow);color:var(--ink);padding:10px 14px;border-radius:10px;z-index:1000;display:none}
+  .toast.show{display:block}
 </style>
 
-<!-- Structured Data (schema.org JSON-LD) -->
+<!-- schema.org (kurz) -->
 <script type="application/ld+json">
 {
   "@context":"https://schema.org",
-  "@graph":[
-    {
-      "@type":"MusicGroup",
-      "@id":"https://fraendk-lang.github.io/Elastic-Field/#artist",
-      "name":"Elastic Field",
-      "url":"https://fraendk-lang.github.io/Elastic-Field/",
-      "foundingDate":"2011",
-      "foundingLocation":{"@type":"Place","name":"Cologne, Germany"},
-      "genre":["Ambient","Trip-Hop","Downbeat","Lounge","Jazz","Electronic"],
-      "image":"https://fraendk-lang.github.io/Elastic-Field/og-elastic-field.jpg?v=2",
-      "sameAs":[
-        "https://www.youtube.com/@elasticfieldmusic",
-        "https://open.spotify.com/artist/2wn4Zq8AOBsX50X7fyBEoL",
-        "https://music.amazon.de/artists/B008F6S0LM/elastic-field"
-      ]
-    },
-    {
-      "@type":"MusicAlbum",
-      "@id":"https://fraendk-lang.github.io/Elastic-Field/#album-laf",
-      "name":"Lost and Found",
-      "albumReleaseType":"Single",
-      "datePublished":"2025",
-      "byArtist":{"@id":"https://fraendk-lang.github.io/Elastic-Field/#artist"},
-      "url":"https://open.spotify.com/intl-de/album/6CVmcZb3bQAkxU39k0falc",
-      "image":"https://fraendk-lang.github.io/Elastic-Field/cover-lost-and-found.png?v=2"
-    },
-    {
-      "@type":"MusicAlbum",
-      "@id":"https://fraendk-lang.github.io/Elastic-Field/#album-nsn",
-      "name":"Non Smokers Nightmare",
-      "albumReleaseType":"Album",
-      "datePublished":"2012",
-      "byArtist":{"@id":"https://fraendk-lang.github.io/Elastic-Field/#artist"},
-      "url":"https://open.spotify.com/intl-de/album/4gNyV1XCfZY8enSJb3msCn",
-      "image":"https://fraendk-lang.github.io/Elastic-Field/cover-non-smokers-nightmare.png?v=2"
-    },
-    {
-      "@type":"MusicAlbum",
-      "@id":"https://fraendk-lang.github.io/Elastic-Field/#album-ansn",
-      "name":"Another Non Smokers Nightmare",
-      "albumReleaseType":"Album",
-      "datePublished":"2013",
-      "byArtist":{"@id":"https://fraendk-lang.github.io/Elastic-Field/#artist"},
-      "url":"https://open.spotify.com/intl-de/album/2YGPf9NdDWbEMWZKs4PtSi",
-      "image":"https://fraendk-lang.github.io/Elastic-Field/cover-another-non-smokers-nightmare.png?v=2"
-    },
-    {
-      "@type":"MusicRecording",
-      "name":"Elastic Field — Mix",
-      "url":"https://www.youtube.com/watch?v=6erDkiy3rFU",
-      "byArtist":{"@id":"https://fraendk-lang.github.io/Elastic-Field/#artist"}
-    }
+  "@type":"MusicGroup",
+  "name":"Elastic Field",
+  "url":"https://fraendk-lang.github.io/Elastic-Field/",
+  "foundingDate":"2011",
+  "foundingLocation":{"@type":"Place","name":"Cologne, Germany"},
+  "genre":["Ambient","Trip-Hop","Downbeat","Lounge","Jazz","Electronic"],
+  "sameAs":[
+    "https://www.youtube.com/@elasticfieldmusic",
+    "https://open.spotify.com/artist/2wn4Zq8AOBsX50X7fyBEoL",
+    "https://music.amazon.de/artists/B008F6S0LM/elastic-field"
   ]
 }
 </script>
@@ -167,7 +129,7 @@
 <header>
   <div class="wrap bar">
     <a class="logo" href="#">
-      <img class="logo-img" src="ef-favicon.svg?v=2" alt="Elastic Field Logo" width="34" height="34">
+      <img class="logo-img" src="ef-favicon.svg?v=3" alt="Elastic Field Logo" width="34" height="34">
       <span>Elastic Field</span>
     </a>
     <nav style="display:flex;gap:10px;flex-wrap:wrap">
@@ -190,6 +152,7 @@
   <section class="hero">
     <div class="wrap">
       <div class="cover">
+        <!-- Ticker oben -->
         <div class="ticker t-top">
           <div class="track">
             <a href="https://open.spotify.com/intl-de/album/7AS9NnBeJiZmG3518MUA44" target="_blank" rel="noopener">Last Release: Smoke Under Water (2025)</a>
@@ -203,7 +166,7 @@
           </div>
         </div>
 
-        <video autoplay muted loop playsinline preload="metadata" poster="cover-lost-and-found.png?v=2">
+        <video autoplay muted loop playsinline preload="metadata" poster="A_collection_of_six_abstract_textured_digital_art_-1.png?v=3">
           <source src="20250810_2204_Dreamy Bokeh Nightscape_simple_compose_01k2asb5brejkabp1vnxar2pdg.mp4" type="video/mp4">
         </video>
 
@@ -211,6 +174,7 @@
           <h1><span class="type">Elastic Field</span></h1>
         </div>
 
+        <!-- Ticker unten -->
         <div class="ticker t-bottom">
           <div class="track">
             <span>Ambient</span><span class="dot">•</span>
@@ -238,7 +202,7 @@
     </div>
   </section>
 
-  <!-- LISTEN -->
+  <!-- LISTEN (2-Klick Spotify) -->
   <section id="listen">
     <div class="wrap">
       <h2 style="margin:0 0 10px">Hören</h2>
@@ -255,19 +219,10 @@
           </div>
         </div>
       </article>
-      <div style="height:10px"></div>
-      <div class="tile" style="padding:14px 16px">
-        <p style="margin:0 0 8px">Oder direkt auf Plattformen:</p>
-        <div class="chips">
-          <a class="chip" href="https://open.spotify.com/artist/2wn4Zq8AOBsX50X7fyBEoL" target="_blank" rel="noopener">Spotify Artist</a>
-          <a class="chip" href="https://music.amazon.de/artists/B008F6S0LM/elastic-field" target="_blank" rel="noopener">Amazon Music</a>
-          <a class="chip" href="https://www.youtube.com/@elasticfieldmusic" target="_blank" rel="noopener">YouTube</a>
-        </div>
-      </div>
     </div>
   </section>
 
-  <!-- VIDEOS -->
+  <!-- VIDEOS (2-Klick YouTube) -->
   <section id="video">
     <div class="wrap">
       <h2 style="margin:0 0 10px">Videos</h2>
@@ -317,98 +272,86 @@
     </div>
   </section>
 
-  <!-- DISCOGRAPHY (PNG + Cache-Buster) -->
+  <!-- DISCOGRAPHY (mit deinen neuen Bildern) -->
   <section id="discography">
     <div class="wrap">
       <h2 style="margin:0 0 10px">Discography (Auswahl)</h2>
       <div class="grid-3">
+        <!-- Lost and Found -->
         <article class="tile">
           <a class="art" href="https://open.spotify.com/intl-de/album/6CVmcZb3bQAkxU39k0falc" target="_blank" rel="noopener">
-            <img class="art-img" src="cover-lost-and-found.png?v=2" alt="Elastic Field — Lost and Found (Cover)" loading="lazy" width="1200" height="1200">
+            <img class="art-img" src="A_collection_of_six_abstract_textured_digital_art_-1.png?v=3" alt="Elastic Field — Lost and Found (Cover)" loading="lazy" width="1200" height="1200">
           </a>
           <div style="padding:14px 16px">
             <h3 style="margin:0 0 6px">Lost and Found <small>· Single</small></h3>
-            <a class="btn" style="border-radius:999px" href="https://open.spotify.com/intl-de/album/6CVmcZb3bQAkxU39k0falc" target="_blank" rel="noopener">Spotify</a>
+            <div style="display:flex;gap:10px;flex-wrap:wrap">
+              <a class="btn" style="border-radius:999px" href="https://open.spotify.com/intl-de/album/6CVmcZb3bQAkxU39k0falc" target="_blank" rel="noopener">Spotify</a>
+              <button class="btn brand buy" data-item="laf">Kaufen – 0,99 €</button>
+            </div>
           </div>
         </article>
 
+        <!-- Non Smokers Nightmare -->
         <article class="tile">
           <a class="art" href="https://open.spotify.com/intl-de/album/4gNyV1XCfZY8enSJb3msCn" target="_blank" rel="noopener">
-            <img class="art-img" src="cover-non-smokers-nightmare.png?v=2" alt="Elastic Field — Non Smokers Nightmare (Cover)" loading="lazy" width="1200" height="1200">
+            <img class="art-img" src="A_collection_of_six_abstract_textured_digital_art_-4.png?v=3" alt="Elastic Field — Non Smokers Nightmare (Cover)" loading="lazy" width="1200" height="1200">
           </a>
           <div style="padding:14px 16px">
             <h3 style="margin:0 0 6px">Non Smokers Nightmare <small>· Album</small></h3>
-            <a class="btn" style="border-radius:999px" href="https://open.spotify.com/intl-de/album/4gNyV1XCfZY8enSJb3msCn" target="_blank" rel="noopener">Spotify</a>
+            <div style="display:flex;gap:10px;flex-wrap:wrap">
+              <a class="btn" style="border-radius:999px" href="https://open.spotify.com/intl-de/album/4gNyV1XCfZY8enSJb3msCn" target="_blank" rel="noopener">Spotify</a>
+              <button class="btn brand buy" data-item="nsn">Kaufen – 0,99 €</button>
+            </div>
           </div>
         </article>
 
+        <!-- Another Non Smokers Nightmare -->
         <article class="tile">
           <a class="art" href="https://open.spotify.com/intl-de/album/2YGPf9NdDWbEMWZKs4PtSi" target="_blank" rel="noopener">
-            <img class="art-img" src="cover-another-non-smokers-nightmare.png?v=2" alt="Elastic Field — Another Non Smokers Nightmare (Cover)" loading="lazy" width="1200" height="1200">
+            <img class="art-img" src="A_collection_of_six_abstract_textured_digital_art_-2.png?v=3" alt="Elastic Field — Another Non Smokers Nightmare (Cover)" loading="lazy" width="1200" height="1200">
           </a>
           <div style="padding:14px 16px">
             <h3 style="margin:0 0 6px">Another Non Smokers Nightmare <small>· Album</small></h3>
-            <a class="btn" style="border-radius:999px" href="https://open.spotify.com/intl-de/album/2YGPf9NdDWbEMWZKs4PtSi" target="_blank" rel="noopener">Spotify</a>
+            <div style="display:flex;gap:10px;flex-wrap:wrap">
+              <a class="btn" style="border-radius:999px" href="https://open.spotify.com/intl-de/album/2YGPf9NdDWbEMWZKs4PtSi" target="_blank" rel="noopener">Spotify</a>
+              <button class="btn brand buy" data-item="ansn">Kaufen – 0,99 €</button>
+            </div>
           </div>
         </article>
       </div>
     </div>
   </section>
 
-  <!-- SHOP -->
+  <!-- SHOP (gleiche Stripe-Buttons) -->
   <section id="shop">
     <div class="wrap">
       <h2 style="margin:0 0 10px">Shop</h2>
       <div class="grid-3">
         <article class="tile">
-          <a class="art" href="#listen"><img class="art-img" src="cover-lost-and-found.png?v=2" alt=""></a>
+          <a class="art" href="#listen"><img class="art-img" src="A_collection_of_six_abstract_textured_digital_art_-1.png?v=3" alt=""></a>
           <div style="padding:14px 16px">
             <h3 style="margin:0 0 6px">Featured Track 1</h3>
-            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" style="margin:0">
-              <input type="hidden" name="cmd" value="_xclick">
-              <input type="hidden" name="business" value="fraendk@hotmail.com">
-              <input type="hidden" name="item_name" value="Elastic Field — Featured Track 1 (Digital Download)">
-              <input type="hidden" name="currency_code" value="EUR">
-              <input type="hidden" name="amount" value="0.99">
-              <input type="hidden" name="no_shipping" value="1">
-              <button class="btn brand" type="submit">Kaufen – 0,99 €</button>
-            </form>
+            <button class="btn brand buy" data-item="laf">Kaufen – 0,99 €</button>
           </div>
         </article>
 
         <article class="tile">
-          <a class="art" href="#listen"><img class="art-img" src="cover-non-smokers-nightmare.png?v=2" alt=""></a>
+          <a class="art" href="#listen"><img class="art-img" src="A_collection_of_six_abstract_textured_digital_art_-4.png?v=3" alt=""></a>
           <div style="padding:14px 16px">
             <h3 style="margin:0 0 6px">Featured Track 2</h3>
-            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" style="margin:0">
-              <input type="hidden" name="cmd" value="_xclick">
-              <input type="hidden" name="business" value="fraendk@hotmail.com">
-              <input type="hidden" name="item_name" value="Elastic Field — Featured Track 2 (Digital Download)">
-              <input type="hidden" name="currency_code" value="EUR">
-              <input type="hidden" name="amount" value="0.99">
-              <input type="hidden" name="no_shipping" value="1">
-              <button class="btn brand" type="submit">Kaufen – 0,99 €</button>
-            </form>
+            <button class="btn brand buy" data-item="nsn">Kaufen – 0,99 €</button>
           </div>
         </article>
 
         <article class="tile">
-          <a class="art" href="#listen"><img class="art-img" src="cover-another-non-smokers-nightmare.png?v=2" alt=""></a>
+          <a class="art" href="#listen"><img class="art-img" src="A_collection_of_six_abstract_textured_digital_art_-2.png?v=3" alt=""></a>
           <div style="padding:14px 16px">
             <h3 style="margin:0 0 6px">Featured Track 3</h3>
-            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" style="margin:0">
-              <input type="hidden" name="cmd" value="_xclick">
-              <input type="hidden" name="business" value="fraendk@hotmail.com">
-              <input type="hidden" name="item_name" value="Elastic Field — Featured Track 3 (Digital Download)">
-              <input type="hidden" name="currency_code" value="EUR">
-              <input type="hidden" name="amount" value="0.99">
-              <input type="hidden" name="no_shipping" value="1">
-              <button class="btn brand" type="submit">Kaufen – 0,99 €</button>
-            </form>
+            <button class="btn brand buy" data-item="ansn">Kaufen – 0,99 €</button>
           </div>
         </article>
       </div>
-      <p style="margin:12px 0 0;color:var(--sub)">Hinweis: PayPal öffnet den Checkout. Für automatische Datei-Auslieferung (Downloadlink) können wir später Gumroad/Bandcamp/Stripe anbinden.</p>
+      <p style="margin:12px 0 0;color:var(--sub)">Stripe Checkout öffnet eine sichere Bezahlseite. Nach erfolgreicher Zahlung erhältst du einen zeitlich begrenzten Download-Link (wird vom Backend erzeugt).</p>
     </div>
   </section>
 
@@ -486,9 +429,28 @@
    href="mailto:fraendk@hotmail.com?subject=Kontakt%20Elastic%20Field"
    aria-label="E-Mail an Elastic Field">✉️</a>
 
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+<!-- Stripe JS -->
+<script src="https://js.stripe.com/v3"></script>
+
 <script>
+  // === SETUP (Bitte ersetzen) ==========================
+  // 1) Stripe Publishable Key (TEST oder LIVE)
+  const STRIPE_PK  = 'pk_test_REPLACE_ME';
+  // 2) Dein Serverless-Endpoint, der die Checkout-Session erstellt
+  const CHECKOUT_EP = 'https://YOUR-BACKEND.example.com/api/checkout';
+  // 3) Deine Stripe Price-IDs (im Dashboard anlegen)
+  const PRICE_IDS = {
+    laf:  'price_REPLACE_1',   // Lost and Found
+    nsn:  'price_REPLACE_2',   // Non Smokers Nightmare
+    ansn: 'price_REPLACE_3'    // Another Non Smokers Nightmare
+  };
+  // =====================================================
+
   document.getElementById('y').textContent = new Date().getFullYear();
 
+  // 2-Klick-Loader (YouTube/Spotify)
   (function(){
     const map = { YouTube:'consent:YouTube', Spotify:'consent:Spotify' };
     document.querySelectorAll('.embed.consent').forEach(box=>{
@@ -518,6 +480,53 @@
     });
   })();
 
+  // Toast helper
+  const toast = (msg)=>{ const t=document.getElementById('toast'); t.textContent=msg; t.classList.add('show'); setTimeout(()=>t.classList.remove('show'), 4000); };
+
+  // Stripe Checkout
+  (async function(){
+    const stripe = Stripe(STRIPE_PK);
+
+    async function createSession(priceId, metadata){
+      const success = window.location.origin + window.location.pathname + '?success=true';
+      const cancel  = window.location.origin + window.location.pathname + '?canceled=true';
+      const res = await fetch(CHECKOUT_EP, {
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({ priceId, success_url: success, cancel_url: cancel, metadata })
+      });
+      if(!res.ok) throw new Error('Checkout-Endpoint antwortet nicht');
+      return res.json(); // { id: 'cs_test_...' }
+    }
+
+    function parseFlags(){
+      const p = new URLSearchParams(window.location.search);
+      if(p.get('success')) toast('Danke! Wenn die E-Mail mit dem Download-Link nicht ankommt, schreib kurz: fraendk@hotmail.com');
+      if(p.get('canceled')) toast('Bestellung abgebrochen.');
+    }
+    parseFlags();
+
+    document.querySelectorAll('.buy').forEach(btn=>{
+      btn.addEventListener('click', async ()=>{
+        const key = btn.getAttribute('data-item');
+        const priceId = PRICE_IDS[key];
+        if(!priceId){ toast('Preis-ID fehlt. Bitte später erneut versuchen.'); return; }
+        btn.disabled = true; btn.textContent = 'Weiter zur Kasse…';
+        try{
+          const session = await createSession(priceId, { item: key });
+          const result = await stripe.redirectToCheckout({ sessionId: session.id });
+          if(result.error){ toast(result.error.message || 'Stripe Fehler'); }
+        }catch(err){
+          console.error(err);
+          toast('Konnte Checkout nicht starten.'); 
+        }finally{
+          btn.disabled = false; btn.textContent = 'Kaufen – 0,99 €';
+        }
+      });
+    });
+  })();
+
+  // Kontaktformular: Formspree + Mail-Fallback
   (function(){
     const form = document.getElementById('contact-form');
     const status = document.getElementById('contact-status');
