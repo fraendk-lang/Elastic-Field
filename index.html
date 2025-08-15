@@ -82,7 +82,7 @@
   .toast{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#20160f;border:1px solid var(--line);box-shadow:var(--shadow);color:var(--ink);padding:10px 14px;border-radius:10px;z-index:1000;display:none}
   .toast.show{display:block}
 
-  /* ==== Patch: Shop-Kachel kompakter (nur Shop, nur Desktop) ==== */
+  /* ==== Shop-Kachel kompakter (nur Shop, nur Desktop) ==== */
   @media (min-width: 960px){
     #shop .grid-3{ grid-template-columns: repeat(4, 1fr); }
     #shop .art-img{
@@ -316,7 +316,7 @@
             <h3>Fortune’s Bent Smile <small>· Single</small></h3>
             <div class="actions">
               <a class="btn brand" href="https://fraendk.gumroad.com/l/oqggse" target="_blank" rel="noopener">Kaufen – 0,99 €</a>
-            </div>
+          </div>
           </div>
         </article>
 
@@ -349,14 +349,13 @@
     </div>
   </section>
 
-  <!-- PREVIEW -->
+  <!-- PREVIEW (nutzt deinen Dateinamen, URL-kodiert) -->
   <section id="preview">
     <div class="wrap">
       <h2 style="margin:0 0 10px">Preview — Fortune’s Bent Smile</h2>
       <article class="tile" style="padding:14px 16px">
-        <audio controls preload="none" style="width:100%">
-          <source src="fortunes-bent-smile_preview.m4a" type="audio/mp4">
-          <source src="fortunes-bent-smile_preview.mp3" type="audio/mpeg">
+        <audio controls preload="metadata" style="width:100%">
+          <source src="LANDR-1%29%20Fortune%E2%80%99s%20Bent%20Smile-Balanced-Medium.mp3?v=2" type="audio/mpeg">
           Dein Browser unterstützt das Audio-Element nicht.
         </audio>
         <p style="margin:10px 0 0;color:var(--sub)">Vollversion nach dem Kauf auf Gumroad.</p>
