@@ -20,7 +20,7 @@
 <meta property="og:description" content="Ambient · Trip-Hop · Downbeat · Lounge · Jazzy · Electronic">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://fraendk-lang.github.io/Elastic-Field/">
-<meta property="og:image" content="https://fraendk-lang.github.io/Elastic-Field/og-elastic-field.jpg?v=14">
+<meta property="og:image" content="https://fraendk-lang.github.io/Elastic-Field/og-elastic-field.jpg?v=15">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
@@ -73,6 +73,7 @@
   .tile{display:flex;flex-direction:column;background:var(--panel);border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:var(--shadow)}
   .art{position:relative;aspect-ratio:1/1;border-radius:12px;overflow:hidden;margin:12px 12px 0;isolation:isolate}
   .art-img{width:100%;height:100%;object-fit:cover}
+  .art.contain .art-img{object-fit:contain;background:#0e0a07} /* volle Sicht fürs Cover */
   .meta{padding:14px 16px;display:flex;flex-direction:column;gap:10px}
   .tile h3{margin:0;text-wrap:balance}
   .badge{position:absolute;left:10px;top:10px;font-size:12px;font-weight:700;letter-spacing:.4px;background:rgba(18,14,10,.7);border:1px solid var(--line);border-radius:999px;padding:4px 8px}
@@ -247,14 +248,14 @@
     <div class="wrap">
       <h2 style="margin:0 0 10px">Discography (Auswahl)</h2>
       <div class="grid-3">
-        <!-- Lost and Found — EP -->
+        <!-- Lost and Found — EP (mit contain, damit nichts abgeschnitten wird) -->
         <article class="tile">
-          <a class="art" data-fallback="Lost and Found — EP (Cover)" href="https://open.spotify.com/intl-de/album/6CVmcZb3bQAkxU39k0falc" target="_blank" rel="noopener">
+          <a class="art contain" data-fallback="Lost and Found — EP (Cover)"
+             href="https://open.spotify.com/intl-de/album/6CVmcZb3bQAkxU39k0falc" target="_blank" rel="noopener">
             <span class="badge">EP</span>
             <img class="art-img"
-                 src="cover-lost-and-found.png?v=4"
-                 alt="Elastic Field — Lost and Found (Cover)"
-                 width="1200" height="1200" style="object-position:50% 55%"
+                 src="https://fraendk-lang.github.io/Elastic-Field/cover-lost-and-found.png?v=5"
+                 alt="Elastic Field — Lost and Found (Cover)" width="1200" height="1200"
                  onerror="this.closest('.art').classList.add('noimg'); this.remove();">
           </a>
           <div class="meta">
@@ -267,12 +268,12 @@
 
         <!-- Non Smokers Nightmare — Album -->
         <article class="tile">
-          <a class="art" data-fallback="Non Smokers Nightmare — Album (Cover)" href="https://open.spotify.com/intl-de/album/4gNyV1XCfZY8enSJb3msCn" target="_blank" rel="noopener">
+          <a class="art" data-fallback="Non Smokers Nightmare — Album (Cover)"
+             href="https://open.spotify.com/intl-de/album/4gNyV1XCfZY8enSJb3msCn" target="_blank" rel="noopener">
             <span class="badge">Album</span>
             <img class="art-img"
-                 src="cover-non-smokers-nightmare.png?v=4"
-                 alt="Elastic Field — Non Smokers Nightmare (Cover)"
-                 width="1200" height="1200" style="object-position:48% 50%"
+                 src="https://fraendk-lang.github.io/Elastic-Field/cover-non-smokers-nightmare.png?v=5"
+                 alt="Elastic Field — Non Smokers Nightmare (Cover)" width="1200" height="1200"
                  onerror="this.closest('.art').classList.add('noimg'); this.remove();">
           </a>
           <div class="meta">
@@ -285,12 +286,12 @@
 
         <!-- Another Non Smokers Nightmare — Album -->
         <article class="tile">
-          <a class="art" data-fallback="Another Non Smokers Nightmare — Album (Cover)" href="https://open.spotify.com/intl-de/album/2YGPf9NdDWbEMWZKs4PtSi" target="_blank" rel="noopener">
+          <a class="art" data-fallback="Another Non Smokers Nightmare — Album (Cover)"
+             href="https://open.spotify.com/intl-de/album/2YGPf9NdDWbEMWZKs4PtSi" target="_blank" rel="noopener">
             <span class="badge">Album</span>
             <img class="art-img"
-                 src="cover-another-non-smokers-nightmare.png?v=4"
-                 alt="Elastic Field — Another Non Smokers Nightmare (Cover)"
-                 width="1200" height="1200" style="object-position:50% 50%"
+                 src="https://fraendk-lang.github.io/Elastic-Field/cover-another-non-smokers-nightmare.png?v=5"
+                 alt="Elastic Field — Another Non Smokers Nightmare (Cover)" width="1200" height="1200"
                  onerror="this.closest('.art').classList.add('noimg'); this.remove();">
           </a>
           <div class="meta">
@@ -391,11 +392,11 @@
   <section id="impressum">
     <div class="wrap">
       <h2 style="margin:0 0 10px">Impressum</h2>
-    <div class="tile" style="padding:14px 16px">
-      <p style="margin:0 0 8px"><strong>Elastic Field</strong><br>Köln, Deutschland</p>
-      <p style="margin:0 0 8px">Kontakt: <a href="mailto:fraendk@hotmail.com">fraendk@hotmail.com</a></p>
-      <p style="margin:0;color:var(--sub)">Hinweis: Trage hier später deine vollständigen Pflichtangaben nach § 5 TMG ein (Name/Anschrift).</p>
-    </div>
+      <div class="tile" style="padding:14px 16px">
+        <p style="margin:0 0 8px"><strong>Elastic Field</strong><br>Köln, Deutschland</p>
+        <p style="margin:0 0 8px">Kontakt: <a href="mailto:fraendk@hotmail.com">fraendk@hotmail.com</a></p>
+        <p style="margin:0;color:var(--sub)">Hinweis: Trage hier später deine vollständigen Pflichtangaben nach § 5 TMG ein (Name/Anschrift).</p>
+      </div>
     </div>
   </section>
 
