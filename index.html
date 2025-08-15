@@ -81,17 +81,21 @@
   .toast{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#20160f;border:1px solid var(--line);box-shadow:var(--shadow);color:var(--ink);padding:10px 14px;border-radius:10px;z-index:1000;display:none}
   .toast.show{display:block}
 
-  /* === Discography: ruhiger Look ============================= */
+  /* === Discography: deutlich ruhiger ========================= */
   #discography .art{ position:relative; overflow:hidden; border-radius:12px; box-shadow: inset 0 0 0 1px var(--line); }
-  #discography .art-img{ filter: saturate(.85) contrast(.92) brightness(.95); transition: filter .3s ease, transform .3s ease; object-position:50% 50%; }
-  #discography .art::after{
-    content:""; position:absolute; inset:0;
-    background:
-      radial-gradient(55% 40% at 80% 12%, rgba(210,161,94,.10), transparent 60%),
-      linear-gradient(to bottom, rgba(0,0,0,.08), transparent 22%, rgba(0,0,0,.10));
-    mix-blend-mode: soft-light; pointer-events:none; opacity:.8;
+  #discography .art-img{
+    filter: saturate(.68) contrast(.9) brightness(.9) !important;
+    transform: none !important;
+    transition: none !important;
+    object-position: 50% 50%;
   }
-  #discography .art:hover .art-img{ filter:none; transform:scale(1.01); }
+  #discography .art::before{
+    content:""; position:absolute; inset:0;
+    background: rgba(18,14,10,.18);
+    mix-blend-mode: multiply; pointer-events:none;
+  }
+  #discography .art::after{ display:none !important; } /* alte Vignette aus */
+  #discography .art:hover .art-img{ filter: saturate(.85) contrast(.95) brightness(.98); transform: scale(1.005); }
 
   /* === Shop: kleinere Cover-Kacheln (nur Desktop) ============ */
   @media (min-width: 960px){
@@ -166,7 +170,7 @@
           </div>
         </div>
 
-        <!-- Poster entfernt: kein Cover-Flash mehr -->
+        <!-- kein Poster → kein Cover-Flash -->
         <video autoplay muted loop playsinline preload="metadata">
           <source src="20250810_2204_Dreamy Bokeh Nightscape_simple_compose_01k2asb5brejkabp1vnxar2pdg.mp4" type="video/mp4">
         </video>
@@ -357,18 +361,18 @@
   <section id="track">
     <div class="wrap">
       <h2 style="margin:0 0 10px">Fortune’s Bent Smile — Full Track</h2>
-      <article class="tile" style="padding:14px 16px">
-        <audio controls preload="metadata" style="width:100%"
-               controlsList="nodownload noplaybackrate"
-               oncontextmenu="return false;">
-          <source src="LANDR-1%29%20Fortune%E2%80%99s%20Bent%20Smile-Balanced-Medium.mp3?v=3" type="audio/mpeg">
-          Dein Browser unterstützt das Audio-Element nicht.
-        </audio>
-        <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:10px">
-          <a class="btn brand" href="https://fraendk.gumroad.com/l/oqggse" target="_blank" rel="noopener">Kaufen · 0,99 €</a>
-          <small style="color:var(--sub)">Streaming in 192–320 kbps · Download auf Gumroad</small>
-        </div>
-      </article>
+    <article class="tile" style="padding:14px 16px">
+      <audio controls preload="metadata" style="width:100%"
+             controlsList="nodownload noplaybackrate"
+             oncontextmenu="return false;">
+        <source src="LANDR-1%29%20Fortune%E2%80%99s%20Bent%20Smile-Balanced-Medium.mp3?v=3" type="audio/mpeg">
+        Dein Browser unterstützt das Audio-Element nicht.
+      </audio>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:10px">
+        <a class="btn brand" href="https://fraendk.gumroad.com/l/oqggse" target="_blank" rel="noopener">Kaufen · 0,99 €</a>
+        <small style="color:var(--sub)">Streaming in 192–320 kbps · Download auf Gumroad</small>
+      </div>
+    </article>
     </div>
   </section>
 
