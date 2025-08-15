@@ -48,7 +48,21 @@
   .cover::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(18,14,10,.65),rgba(18,14,10,.25) 40%,rgba(18,14,10,0) 70%)}
   .hero-title{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:0 16px;z-index:2}
   .hero-title h1{margin:0;font-weight:800;letter-spacing:.4px;line-height:.95;font-size:clamp(44px,7.5vw,108px);text-shadow:0 2px 12px rgba(0,0,0,.55)}
-  .type{display:inline-block;overflow:hidden;white-space:nowrap;animation:typing 2.5s steps(20,end) .2s 1 both}
+
+  /* Typewriter nur zum Start, danach volle Breite */
+  .type{
+    display:inline-block;
+    overflow:hidden;
+    white-space:nowrap;
+    animation:typing 2.2s steps(20,end) .2s 1 both;
+    will-change: width;
+  }
+  .type-done{
+    white-space:normal;
+    overflow:visible;
+    width:auto;
+    animation:none !important;
+  }
   @keyframes typing{from{width:0}to{width:19ch}}
 
   .ticker{position:absolute;left:0;right:0;height:36px;display:flex;align-items:center;overflow:hidden;z-index:3;background:linear-gradient(180deg,rgba(18,14,10,.2),rgba(18,14,10,.5))}
@@ -94,7 +108,7 @@
     background: rgba(18,14,10,.18);
     mix-blend-mode: multiply; pointer-events:none;
   }
-  #discography .art::after{ display:none !important; } /* alte Vignette aus */
+  #discography .art::after{ display:none !important; }
   #discography .art:hover .art-img{ filter: saturate(.85) contrast(.95) brightness(.98); transform: scale(1.005); }
 
   /* === Shop: kleinere Cover-Kacheln (nur Desktop) ============ */
@@ -361,18 +375,18 @@
   <section id="track">
     <div class="wrap">
       <h2 style="margin:0 0 10px">Fortune’s Bent Smile — Full Track</h2>
-    <article class="tile" style="padding:14px 16px">
-      <audio controls preload="metadata" style="width:100%"
-             controlsList="nodownload noplaybackrate"
-             oncontextmenu="return false;">
-        <source src="LANDR-1%29%20Fortune%E2%80%99s%20Bent%20Smile-Balanced-Medium.mp3?v=3" type="audio/mpeg">
-        Dein Browser unterstützt das Audio-Element nicht.
-      </audio>
-      <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:10px">
-        <a class="btn brand" href="https://fraendk.gumroad.com/l/oqggse" target="_blank" rel="noopener">Kaufen · 0,99 €</a>
-        <small style="color:var(--sub)">Streaming in 192–320 kbps · Download auf Gumroad</small>
-      </div>
-    </article>
+      <article class="tile" style="padding:14px 16px">
+        <audio controls preload="metadata" style="width:100%"
+               controlsList="nodownload noplaybackrate"
+               oncontextmenu="return false;">
+          <source src="LANDR-1%29%20Fortune%E2%80%99s%20Bent%20Smile-Balanced-Medium.mp3?v=3" type="audio/mpeg">
+          Dein Browser unterstützt das Audio-Element nicht.
+        </audio>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:10px">
+          <a class="btn brand" href="https://fraendk.gumroad.com/l/oqggse" target="_blank" rel="noopener">Kaufen · 0,99 €</a>
+          <small style="color:var(--sub)">Streaming in 192–320 kbps · Download auf Gumroad</small>
+        </div>
+      </article>
     </div>
   </section>
 
@@ -448,6 +462,14 @@
 
 <script>
   document.getElementById('y').textContent = new Date().getFullYear();
+
+  // Nach der Typewriter-Animation auf volle Breite umschalten
+  (function(){
+    const t = document.querySelector('.type');
+    if(!t) return;
+    const done = () => t.classList.add('type-done');
+    t.addEventListener('animationend', done, { once:true });
+  })();
 
   // 2-Klick Consent (YouTube/Spotify)
   (function(){
