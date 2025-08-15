@@ -49,21 +49,21 @@
   .hero-title{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:0 16px;z-index:2}
   .hero-title h1{margin:0;font-weight:800;letter-spacing:.4px;line-height:.95;font-size:clamp(44px,7.5vw,108px);text-shadow:0 2px 12px rgba(0,0,0,.55)}
 
-  /* Typewriter nur zum Start, danach volle Breite */
-  .type{
-    display:inline-block;
-    overflow:hidden;
-    white-space:nowrap;
-    animation:typing 2.2s steps(20,end) .2s 1 both;
-    will-change: width;
+  /* Soft Reveal statt Typewriter */
+  .reveal{
+    opacity:0;
+    transform:translateY(6px) scale(.985);
+    filter:blur(1.2px);
+    animation:reveal .9s cubic-bezier(.22,.61,.36,1) .15s forwards;
+    will-change:opacity,transform,filter;
   }
-  .type-done{
-    white-space:normal;
-    overflow:visible;
-    width:auto;
-    animation:none !important;
+  @keyframes reveal{
+    to{opacity:1;transform:none;filter:blur(0)}
   }
-  @keyframes typing{from{width:0}to{width:19ch}}
+  @media (prefers-reduced-motion: reduce){
+    .reveal{opacity:1;transform:none;filter:none;animation:none}
+    *{animation-duration:0.001ms !important;animation-iteration-count:1 !important;transition-duration:0.001ms !important;}
+  }
 
   .ticker{position:absolute;left:0;right:0;height:36px;display:flex;align-items:center;overflow:hidden;z-index:3;background:linear-gradient(180deg,rgba(18,14,10,.2),rgba(18,14,10,.5))}
   .t-top{top:0;border-bottom:1px solid var(--line)}
@@ -190,7 +190,7 @@
         </video>
 
         <div class="hero-title">
-          <h1><span class="type">Elastic Field Music</span></h1>
+          <h1 class="reveal">Elastic Field Music</h1>
         </div>
 
         <div class="ticker t-bottom">
@@ -289,12 +289,11 @@
     </div>
   </section>
 
-  <!-- DISCOGRAPHY (Platzhalter) -->
+  <!-- DISCOGRAPHY -->
   <section id="discography">
     <div class="wrap">
       <h2 style="margin:0 0 10px">Discography (Auswahl)</h2>
       <div class="grid-3">
-        <!-- Lost and Found -->
         <article class="tile">
           <a class="art" href="https://open.spotify.com/intl-de/album/6CVmcZb3bQAkxU39k0falc" target="_blank" rel="noopener">
             <img class="art-img" src="A_collection_of_six_abstract_textured_digital_art_-1.png?v=7" alt="Elastic Field — Lost and Found (Cover)" loading="lazy" width="1200" height="1200">
@@ -305,7 +304,6 @@
           </div>
         </article>
 
-        <!-- Non Smokers Nightmare -->
         <article class="tile">
           <a class="art" href="https://open.spotify.com/intl-de/album/4gNyV1XCfZY8enSJb3msCn" target="_blank" rel="noopener">
             <img class="art-img" src="A_collection_of_six_abstract_textured_digital_art_-4.png?v=7" alt="Elastic Field — Non Smokers Nightmare (Cover)" loading="lazy" width="1200" height="1200">
@@ -316,7 +314,6 @@
           </div>
         </article>
 
-        <!-- Another Non Smokers Nightmare -->
         <article class="tile">
           <a class="art" href="https://open.spotify.com/intl-de/album/2YGPf9NdDWbEMWZKs4PtSi" target="_blank" rel="noopener">
             <img class="art-img" src="A_collection_of_six_abstract_textured_digital_art_-2.png?v=7" alt="Elastic Field — Another Non Smokers Nightmare (Cover)" loading="lazy" width="1200" height="1200">
@@ -335,7 +332,6 @@
     <div class="wrap">
       <h2 style="margin:0 0 10px">Shop</h2>
       <div class="grid-3">
-        <!-- Single — Fortune’s Bent Smile -->
         <article class="tile">
           <a class="art" href="#" onclick="return false;">
             <img class="art-img" src="ef-single-fortunes-bent-smile.png?v=1" alt="Elastic Field — Fortune’s Bent Smile (Single Cover)">
@@ -346,7 +342,6 @@
           </div>
         </article>
 
-        <!-- Platzhalter -->
         <article class="tile">
           <div class="art" style="display:grid;place-items:center;background:#0e0a07">
             <span style="opacity:.7;color:var(--sub)">Bald verfügbar</span>
@@ -462,14 +457,6 @@
 
 <script>
   document.getElementById('y').textContent = new Date().getFullYear();
-
-  // Nach der Typewriter-Animation auf volle Breite umschalten
-  (function(){
-    const t = document.querySelector('.type');
-    if(!t) return;
-    const done = () => t.classList.add('type-done');
-    t.addEventListener('animationend', done, { once:true });
-  })();
 
   // 2-Klick Consent (YouTube/Spotify)
   (function(){
