@@ -16,7 +16,7 @@
 <meta property="og:description" content="Ambient · Trip-Hop · Downbeat · Lounge · Jazzy · Electronic">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://fraendk-lang.github.io/Elastic-Field/">
-<meta property="og:image" content="https://fraendk-lang.github.io/Elastic-Field/og-elastic-field.jpg?v=10">
+<meta property="og:image" content="https://fraendk-lang.github.io/Elastic-Field/og-elastic-field.jpg?v=11">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#120e0a">
 
@@ -63,23 +63,37 @@
   .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
   @media (max-width:860px){.grid-3{grid-template-columns:1fr}}
 
-  /* Kartenlayout robust */
+  /* Kartenlayout */
   .tile{display:flex;flex-direction:column;background:var(--panel);border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:var(--shadow)}
-  .art{position:relative;aspect-ratio:1/1;border-radius:12px;overflow:hidden;margin:12px 12px 0}
+  .art{position:relative;aspect-ratio:1/1;border-radius:12px;overflow:hidden;margin:12px 12px 0;isolation:isolate}
   .art-img{width:100%;height:100%;object-fit:cover}
   .meta{padding:14px 16px;display:flex;flex-direction:column;gap:10px}
   .tile h3{margin:0;text-wrap:balance}
   .badge{position:absolute;left:10px;top:10px;font-size:12px;font-weight:700;letter-spacing:.4px;background:rgba(18,14,10,.7);border:1px solid var(--line);border-radius:999px;padding:4px 8px}
 
-  /* Discography: ruhiger Look */
-  #discography .art-img{filter:saturate(.7) contrast(.9) brightness(.92)}
-  #discography .art:hover .art-img{filter:saturate(.85) contrast(.95) brightness(.98);transform:scale(1.005)}
+  /* Discography ruhiger + EINHEITLICHER LOOK */
+  #discography .art-img{filter:contrast(.92) saturate(.85) sepia(.12) brightness(.96)}
+  #discography .art::after{
+    content:"";position:absolute;inset:0;
+    background:
+      radial-gradient(120% 100% at 90% -10%, rgba(210,161,94,.18), transparent 60%),
+      linear-gradient(to bottom, rgba(18,14,10,0) 45%, rgba(18,14,10,.42) 100%);
+    mix-blend-mode:soft-light;pointer-events:none
+  }
+  #discography .art:hover .art-img{filter:contrast(.96) saturate(.9) sepia(.12) brightness(.99);transform:scale(1.003)}
 
   /* Shop: kleinere Cover + 4 Spalten auf Desktop */
   #shop .grid-3{gap:16px}
   @media (min-width:960px){#shop .grid-3{grid-template-columns:repeat(4,minmax(0,1fr))}}
   #shop .art{max-width:180px;margin:12px auto 0;border:1px solid var(--line)}
-  #shop .art-img{transform:none}
+  #shop .art-img{filter:contrast(.92) saturate(.85) sepia(.12) brightness(.96)}
+  #shop .art::after{
+    content:"";position:absolute;inset:0;
+    background:
+      radial-gradient(120% 100% at 90% -10%, rgba(210,161,94,.18), transparent 60%),
+      linear-gradient(to bottom, rgba(18,14,10,0) 45%, rgba(18,14,10,.42) 100%);
+    mix-blend-mode:soft-light;pointer-events:none
+  }
   .placeholder{width:100%;height:100%;display:block}
 
   .chips{display:flex;gap:10px;flex-wrap:wrap}
@@ -223,11 +237,10 @@
     <div class="wrap">
       <h2 style="margin:0 0 10px">Discography (Auswahl)</h2>
       <div class="grid-3">
-        <!-- Lost and Found -->
         <article class="tile">
           <a class="art" href="https://open.spotify.com/intl-de/album/6CVmcZb3bQAkxU39k0falc" target="_blank" rel="noopener">
             <span class="badge">Single</span>
-            <img class="art-img" src="A_collection_of_six_abstract_textured_digital_art_-1.png?v=10" alt="Elastic Field — Lost and Found (Cover)" loading="lazy" width="1200" height="1200">
+            <img class="art-img" src="ef-cover-laf.png?v=1" alt="Elastic Field — Lost and Found (Cover)" loading="lazy" width="1200" height="1200" style="object-position:50% 55%">
           </a>
           <div class="meta">
             <h3>Lost and Found <small>· Single</small></h3>
@@ -235,11 +248,10 @@
           </div>
         </article>
 
-        <!-- Non Smokers Nightmare -->
         <article class="tile">
           <a class="art" href="https://open.spotify.com/intl-de/album/4gNyV1XCfZY8enSJb3msCn" target="_blank" rel="noopener">
             <span class="badge">Album</span>
-            <img class="art-img" src="A_collection_of_six_abstract_textured_digital_art_-4.png?v=10" alt="Elastic Field — Non Smokers Nightmare (Cover)" loading="lazy" width="1200" height="1200">
+            <img class="art-img" src="ef-cover-nsn.png?v=1" alt="Elastic Field — Non Smokers Nightmare (Cover)" loading="lazy" width="1200" height="1200" style="object-position:48% 50%">
           </a>
           <div class="meta">
             <h3>Non Smokers Nightmare <small>· Album</small></h3>
@@ -247,12 +259,10 @@
           </div>
         </article>
 
-        <!-- Another Non Smokers Nightmare -->
         <article class="tile">
           <a class="art" href="https://open.spotify.com/intl-de/album/2YGPf9NdDWbEMWZKs4PtSi" target="_blank" rel="noopener">
             <span class="badge">Album</span>
-            <!-- Bildausschnitt leicht nach rechts verschoben, um die „Doppelhälfte“ zu entschärfen -->
-            <img class="art-img" src="A_collection_of_six_abstract_textured_digital_art_-2.png?v=10" alt="Elastic Field — Another Non Smokers Nightmare (Cover)" loading="lazy" width="1200" height="1200" style="object-position:60% 50%">
+            <img class="art-img" src="ef-cover-ansn.png?v=1" alt="Elastic Field — Another Non Smokers Nightmare (Cover)" loading="lazy" width="1200" height="1200" style="object-position:50% 50%">
           </a>
           <div class="meta">
             <h3>Another Non Smokers Nightmare <small>· Album</small></h3>
@@ -268,7 +278,6 @@
     <div class="wrap">
       <h2 style="margin:0 0 10px">Shop</h2>
       <div class="grid-3">
-        <!-- Single — Fortune’s Bent Smile -->
         <article class="tile">
           <a class="art" href="https://fraendk.gumroad.com/l/oqggse" target="_blank" rel="noopener">
             <img class="art-img" src="ef-single-fortunes-bent-smile.png?v=3" alt="Elastic Field — Fortune’s Bent Smile (Single Cover)">
@@ -281,7 +290,6 @@
           </div>
         </article>
 
-        <!-- Platzhalter 1 -->
         <article class="tile">
           <a class="art" href="#" onclick="return false" aria-label="Bald verfügbar">
             <svg class="placeholder" viewBox="0 0 1200 1200" role="img" aria-label="Coming Soon Cover">
@@ -297,7 +305,6 @@
           </div>
         </article>
 
-        <!-- Platzhalter 2 -->
         <article class="tile">
           <a class="art" href="#" onclick="return false" aria-label="Bald verfügbar">
             <svg class="placeholder" viewBox="0 0 1200 1200" role="img" aria-label="Coming Soon Cover">
@@ -365,36 +372,36 @@
   <section id="contact">
     <div class="wrap">
       <h2 style="margin:0 0 10px">Kontakt</h2>
-      <div class="tile" style="padding:14px 16px">
-        <form id="contact-form" action="https://formspree.io/f/DEINE_ID" method="POST" accept-charset="UTF-8" novalidate>
-          <input type="hidden" name="_subject" value="Elastic Field Kontakt (Website)">
-          <div class="field" style="display:grid;gap:6px;margin:10px 0">
-            <label for="c-name">Name</label>
-            <input id="c-name" name="name" type="text" autocomplete="name" placeholder="Dein Name" required
-                   style="background:#17110d;color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:10px 12px;font:inherit">
-          </div>
-          <div class="field" style="display:grid;gap:6px;margin:10px 0">
-            <label for="c-mail">E-Mail</label>
-            <input id="c-mail" name="email" type="email" autocomplete="email" placeholder="dein@mail.de" required
-                   style="background:#17110d;color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:10px 12px;font:inherit">
-          </div>
-          <div class="field" style="display:grid;gap:6px;margin:10px 0">
-            <label for="c-msg">Nachricht</label>
-            <textarea id="c-msg" name="message" rows="4" placeholder="Worum geht’s?" required
-                      style="background:#17110d;color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:10px 12px;font:inherit"></textarea>
-          </div>
-          <div style="position:absolute;left:-5000px" aria-hidden="true"><input type="text" name="_gotcha" tabindex="-1"></div>
-          <label style="display:flex;gap:8px;align-items:flex-start;margin:8px 0">
-            <input type="checkbox" id="c-consent" required>
-            <span>Einverstanden, dass meine Angaben zur Kontaktaufnahme gespeichert werden.</span>
-          </label>
-          <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:8px">
-            <button type="submit" class="btn brand">Nachricht senden</button>
-            <a class="btn" href="mailto:fraendk@hotmail.com?subject=Elastic%20Field%20Kontakt">Oder direkt per Mail</a>
-            <small id="contact-status" style="color:var(--sub)"></small>
-          </div>
-        </form>
-      </div>
+    <div class="tile" style="padding:14px 16px">
+      <form id="contact-form" action="https://formspree.io/f/DEINE_ID" method="POST" accept-charset="UTF-8" novalidate>
+        <input type="hidden" name="_subject" value="Elastic Field Kontakt (Website)">
+        <div class="field" style="display:grid;gap:6px;margin:10px 0">
+          <label for="c-name">Name</label>
+          <input id="c-name" name="name" type="text" autocomplete="name" placeholder="Dein Name" required
+                 style="background:#17110d;color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:10px 12px;font:inherit">
+        </div>
+        <div class="field" style="display:grid;gap:6px;margin:10px 0">
+          <label for="c-mail">E-Mail</label>
+          <input id="c-mail" name="email" type="email" autocomplete="email" placeholder="dein@mail.de" required
+                 style="background:#17110d;color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:10px 12px;font:inherit">
+        </div>
+        <div class="field" style="display:grid;gap:6px;margin:10px 0">
+          <label for="c-msg">Nachricht</label>
+          <textarea id="c-msg" name="message" rows="4" placeholder="Worum geht’s?" required
+                    style="background:#17110d;color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:10px 12px;font:inherit"></textarea>
+        </div>
+        <div style="position:absolute;left:-5000px" aria-hidden="true"><input type="text" name="_gotcha" tabindex="-1"></div>
+        <label style="display:flex;gap:8px;align-items:flex-start;margin:8px 0">
+          <input type="checkbox" id="c-consent" required>
+          <span>Einverstanden, dass meine Angaben zur Kontaktaufnahme gespeichert werden.</span>
+        </label>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:8px">
+          <button type="submit" class="btn brand">Nachricht senden</button>
+          <a class="btn" href="mailto:fraendk@hotmail.com?subject=Elastic%20Field%20Kontakt">Oder direkt per Mail</a>
+          <small id="contact-status" style="color:var(--sub)"></small>
+        </div>
+      </form>
+    </div>
     </div>
   </section>
 </main>
