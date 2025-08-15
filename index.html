@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>Elastic Field Music — Official Site</title>
-<meta name="description" content="Elastic Field Music — Ambient · Trip-Hop · Downbeat · Lounge · Jazzy · Electronic.">
+<meta name="description" content="Elastic Field — Ambient · Trip-Hop · Downbeat · Lounge · Jazzy · Electronic.">
 <meta name="robots" content="index,follow">
 <meta name="color-scheme" content="dark">
 <link rel="canonical" href="https://fraendk-lang.github.io/Elastic-Field/">
@@ -17,10 +17,10 @@
 <!-- Open Graph / Twitter -->
 <meta property="og:site_name" content="Elastic Field Music">
 <meta property="og:title" content="Elastic Field Music — Official Site">
-<meta property="og:description" content="Ambient · Trip-Hop · Downbeat · Lounge · Jazzy · Electronic">
+<meta property="og:description" content="Ambient · Trip-Hop · Downbeat · Lounge · Jazzy · Electronic.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://fraendk-lang.github.io/Elastic-Field/">
-<meta property="og:image" content="https://fraendk-lang.github.io/Elastic-Field/og-elastic-field.jpg?v=16">
+<meta property="og:image" content="https://fraendk-lang.github.io/Elastic-Field/og-elastic-field.jpg?v=17">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
@@ -52,11 +52,7 @@
   .cover video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
   .cover::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(18,14,10,.65),rgba(18,14,10,.25) 40%,rgba(18,14,10,0) 70%)}
   .hero-title{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:0 16px;z-index:2}
-  .hero-title h1{margin:0;font-weight:800;letter-spacing:.4px;line-height:.95;
-                 /* größer gemacht */
-                 font-size:clamp(50px,8.5vw,128px);
-                 text-shadow:0 2px 12px rgba(0,0,0,.55)}
-  /* Soft reveal */
+  .hero-title h1{margin:0;font-weight:800;letter-spacing:.4px;line-height:.95;font-size:clamp(50px,8.5vw,128px);text-shadow:0 2px 12px rgba(0,0,0,.55)}
   .reveal{opacity:0;transform:translateY(6px) scale(.985);filter:blur(1.2px);animation:reveal .9s cubic-bezier(.22,.61,.36,1) .15s forwards}
   @keyframes reveal{to{opacity:1;transform:none;filter:blur(0)}}
   @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;filter:none;animation:none}}
@@ -69,19 +65,18 @@
   @keyframes marq{0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
 
   section{padding:28px 0;border-top:1px solid var(--line)}
-  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;align-items:stretch}
   @media (max-width:860px){.grid-3{grid-template-columns:1fr}}
 
-  /* Kartenlayout */
-  .tile{display:flex;flex-direction:column;background:var(--panel);border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:var(--shadow)}
+  .tile{display:flex;flex-direction:column;background:var(--panel);border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:var(--shadow);height:100%}
   .art{position:relative;aspect-ratio:1/1;border-radius:12px;overflow:hidden;margin:12px 12px 0;isolation:isolate}
   .art-img{width:100%;height:100%;object-fit:cover}
-  .art.contain .art-img{object-fit:contain;background:#0e0a07} /* volle Sicht fürs Cover */
-  .meta{padding:14px 16px;display:flex;flex-direction:column;gap:10px}
-  .tile h3{margin:0;text-wrap:balance}
+  .art.contain .art-img{object-fit:contain;background:#0e0a07}
+  .meta{padding:14px 16px;display:grid;gap:10px;grid-template-rows:auto 1fr auto;min-height:180px}
+  .tile h3{margin:0;line-height:1.2;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:calc(1.2em*2)}
   .badge{position:absolute;left:10px;top:10px;font-size:12px;font-weight:700;letter-spacing:.4px;background:rgba(18,14,10,.7);border:1px solid var(--line);border-radius:999px;padding:4px 8px}
+  .actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
 
-  /* Discography Look */
   #discography .art-img{filter:contrast(.92) saturate(.85) sepia(.12) brightness(.96)}
   #discography .art::after{
     content:"";position:absolute;inset:0;
@@ -92,11 +87,9 @@
   }
   #discography .art:hover .art-img{filter:contrast(.96) saturate(.9) sepia(.12) brightness(.99);transform:scale(1.003)}
 
-  /* Fallback, falls Bild fehlt */
   #discography .art.noimg{display:grid;place-items:center;min-height:0;background:linear-gradient(135deg,#1b140f,#2a1e15);border:1px dashed var(--line)}
   #discography .art.noimg::before{content:attr(data-fallback);color:var(--sub);font-weight:600;text-align:center;padding:0 10px}
 
-  /* Shop: kleinere Cover + 4 Spalten auf Desktop + Buttons auf einer Linie */
   #shop .grid-3{gap:16px}
   @media (min-width:960px){#shop .grid-3{grid-template-columns:repeat(4,minmax(0,1fr))}}
   #shop .art{max-width:180px;margin:12px auto 0;border:1px solid var(--line)}
@@ -108,10 +101,6 @@
       linear-gradient(to bottom, rgba(18,14,10,0) 45%, rgba(18,14,10,.42) 100%);
     mix-blend-mode:soft-light;pointer-events:none
   }
-  #shop .tile .meta{display:grid;gap:10px;grid-template-rows:auto 1fr auto;min-height:140px}
-  .actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
-
-  .placeholder{width:100%;height:100%;display:block}
 
   .chips{display:flex;gap:10px;flex-wrap:wrap}
   .chip{border:1px solid var(--line);background:var(--panel);padding:8px 12px;border-radius:999px}
@@ -132,14 +121,14 @@
   <div class="wrap bar">
     <a class="logo" href="#"><img class="logo-img" src="ef-favicon.svg" alt="Elastic Field Logo" width="34" height="34"><span>Elastic Field Music</span></a>
     <nav style="display:flex;gap:10px;flex-wrap:wrap">
-      <a class="btn" href="#listen">Hören</a>
+      <a class="btn" href="#listen">Listen</a>
       <a class="btn" href="#video">Videos</a>
       <a class="btn" href="#discography">Discography</a>
       <a class="btn" href="#shop">Shop</a>
       <a class="btn" href="#track">Track</a>
-      <a class="btn" href="#about">Über</a>
-      <a class="btn" href="#impressum">Impressum</a>
-      <a class="btn" href="#contact">Kontakt</a>
+      <a class="btn" href="#about">About</a>
+      <a class="btn" href="#legal">Legal</a>
+      <a class="btn" href="#contact">Contact</a>
     </nav>
   </div>
 </header>
@@ -154,7 +143,7 @@
             <a href="https://fraendk.gumroad.com/l/oqggse" target="_blank" rel="noopener">New: Fortune’s Bent Smile — Single</a><span class="dot">•</span>
             <a href="https://www.youtube.com/@elasticfieldmusic?sub_confirmation=1" target="_blank" rel="noopener">Subscribe on YouTube</a><span class="dot">•</span>
             <a href="https://open.spotify.com/artist/2wn4Zq8AOBsX50X7fyBEoL" target="_blank" rel="noopener">Follow on Spotify</a><span class="dot">•</span>
-            <a href="mailto:fraendk@hotmail.com?subject=Booking%20Elastic%20Field">Booking/Sync</a><span class="dot">•</span>
+            <a href="mailto:fraendk@hotmail.com?subject=Booking%20Elastic%20Field">Booking / Sync</a><span class="dot">•</span>
           </div>
         </div>
 
@@ -169,14 +158,14 @@
             <span>Ambient</span><span class="dot">•</span><span>Trip-Hop</span><span class="dot">•</span>
             <span>Downbeat</span><span class="dot">•</span><span>Lounge</span><span class="dot">•</span>
             <span>Jazzy</span><span class="dot">•</span><span>Electronic</span><span class="dot">•</span>
-            <a href="#shop">Kaufen</a><span class="dot">•</span>
+            <a href="#shop">Shop</a><span class="dot">•</span>
           </div>
         </div>
       </div>
 
       <div style="display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px">
-        <a class="btn brand" href="#shop">▶︎ Neue Single</a>
-        <a class="btn" href="https://fraendk.gumroad.com/l/oqggse" target="_blank" rel="noopener">Direkt kaufen · 0,99 €</a>
+        <a class="btn brand" href="#shop">▶︎ New Single</a>
+        <a class="btn" href="https://fraendk.gumroad.com/l/oqggse" target="_blank" rel="noopener">Buy · €0.99</a>
       </div>
 
       <div class="chips" style="margin-top:8px">
@@ -190,16 +179,16 @@
   <!-- LISTEN -->
   <section id="listen">
     <div class="wrap">
-      <h2 style="margin:0 0 10px">Hören</h2>
+      <h2 style="margin:0 0 10px">Listen</h2>
       <article class="tile" style="padding:0">
         <div class="embed consent" data-vendor="Spotify" data-src="https://open.spotify.com/embed/artist/2wn4Zq8AOBsX50X7fyBEoL">
           <div class="consent-card">
-            <strong>Spotify ist blockiert</strong>
-            <div style="color:var(--sub)">Mit Klick lädst du Inhalte von Spotify.</div>
-            <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
-              <button class="btn brand allow">Immer erlauben</button>
-              <button class="btn once">Einmal laden</button>
-              <a class="btn" href="https://open.spotify.com/artist/2wn4Zq8AOBsX50X7fyBEoL" target="_blank" rel="noopener">Auf Spotify öffnen</a>
+            <strong>Spotify is blocked</strong>
+            <div style="color:var(--sub)">Click to load content from Spotify.</div>
+            <div class="actions">
+              <button class="btn brand allow">Always allow</button>
+              <button class="btn once">Load once</button>
+              <a class="btn" href="https://open.spotify.com/artist/2wn4Zq8AOBsX50X7fyBEoL" target="_blank" rel="noopener">Open on Spotify</a>
             </div>
           </div>
         </div>
@@ -211,50 +200,49 @@
   <section id="video">
     <div class="wrap">
       <h2 style="margin:0 0 10px">Videos</h2>
-    <div class="grid-3">
-      <article class="tile">
-        <div class="embed consent" data-vendor="YouTube" data-src="https://www.youtube-nocookie.com/embed/6erDkiy3rFU?start=11&rel=0&playsinline=1&modestbranding=1">
-          <div class="consent-card">
-            <strong>YouTube-Video ist blockiert</strong>
-            <div style="color:var(--sub)">Mit Klick lädst du Inhalte von YouTube.</div>
-            <div class="actions">
-              <button class="btn brand allow">Immer erlauben</button>
-              <button class="btn once">Einmal abspielen</button>
-              <a class="btn" href="https://www.youtube.com/watch?v=6erDkiy3rFU" target="_blank" rel="noopener">Auf YouTube ansehen</a>
+      <div class="grid-3">
+        <article class="tile">
+          <div class="embed consent" data-vendor="YouTube" data-src="https://www.youtube-nocookie.com/embed/6erDkiy3rFU?start=11&rel=0&playsinline=1&modestbranding=1">
+            <div class="consent-card">
+              <strong>YouTube is blocked</strong>
+              <div style="color:var(--sub)">Click to load content from YouTube.</div>
+              <div class="actions">
+                <button class="btn brand allow">Always allow</button>
+                <button class="btn once">Play once</button>
+                <a class="btn" href="https://www.youtube.com/watch?v=6erDkiy3rFU" target="_blank" rel="noopener">Watch on YouTube</a>
+              </div>
             </div>
           </div>
-        </div>
-      </article>
-      <article class="tile">
-        <div class="embed consent" data-vendor="YouTube" data-src="https://www.youtube-nocookie.com/embed/pqsMGb3vhgE?rel=0&playsinline=1&modestbranding=1">
-          <div class="consent-card"><strong>YouTube-Video ist blockiert</strong><div style="color:var(--sub)">Mit Klick lädst du Inhalte von YouTube.</div>
-            <div class="actions">
-              <button class="btn brand allow">Immer erlauben</button><button class="btn once">Einmal abspielen</button>
-              <a class="btn" href="https://www.youtube.com/watch?v=pqsMGb3vhgE" target="_blank" rel="noopener">Auf YouTube ansehen</a>
+        </article>
+        <article class="tile">
+          <div class="embed consent" data-vendor="YouTube" data-src="https://www.youtube-nocookie.com/embed/pqsMGb3vhgE?rel=0&playsinline=1&modestbranding=1">
+            <div class="consent-card"><strong>YouTube is blocked</strong><div style="color:var(--sub)">Click to load content from YouTube.</div>
+              <div class="actions">
+                <button class="btn brand allow">Always allow</button><button class="btn once">Play once</button>
+                <a class="btn" href="https://www.youtube.com/watch?v=pqsMGb3vhgE" target="_blank" rel="noopener">Watch on YouTube</a>
+              </div>
             </div>
           </div>
-        </div>
-      </article>
-      <article class="tile">
-        <div class="embed consent" data-vendor="YouTube" data-src="https://www.youtube-nocookie.com/embed/jc0CzEp389U?rel=0&playsinline=1&modestbranding=1">
-          <div class="consent-card"><strong>YouTube-Video ist blockiert</strong><div style="color:var(--sub)">Mit Klick lädst du Inhalte von YouTube.</div>
-            <div class="actions">
-              <button class="btn brand allow">Immer erlauben</button><button class="btn once">Einmal abspielen</button>
-              <a class="btn" href="https://www.youtube.com/watch?v=jc0CzEp389U" target="_blank" rel="noopener">Auf YouTube ansehen</a>
+        </article>
+        <article class="tile">
+          <div class="embed consent" data-vendor="YouTube" data-src="https://www.youtube-nocookie.com/embed/jc0CzEp389U?rel=0&playsinline=1&modestbranding=1">
+            <div class="consent-card"><strong>YouTube is blocked</strong><div style="color:var(--sub)">Click to load content from YouTube.</div>
+              <div class="actions">
+                <button class="btn brand allow">Always allow</button><button class="btn once">Play once</button>
+                <a class="btn" href="https://www.youtube.com/watch?v=jc0CzEp389U" target="_blank" rel="noopener">Watch on YouTube</a>
+              </div>
             </div>
           </div>
-        </div>
-      </article>
-    </div>
+        </article>
+      </div>
     </div>
   </section>
 
   <!-- DISCOGRAPHY -->
   <section id="discography">
     <div class="wrap">
-      <h2 style="margin:0 0 10px">Discography (Auswahl)</h2>
+      <h2 style="margin:0 0 10px">Discography (Selected)</h2>
       <div class="grid-3">
-        <!-- Lost and Found — EP -->
         <article class="tile">
           <a class="art contain" data-fallback="Lost and Found — EP (Cover)"
              href="https://open.spotify.com/intl-de/album/6CVmcZb3bQAkxU39k0falc" target="_blank" rel="noopener">
@@ -272,7 +260,6 @@
           </div>
         </article>
 
-        <!-- Non Smokers Nightmare — Album -->
         <article class="tile">
           <a class="art" data-fallback="Non Smokers Nightmare — Album (Cover)"
              href="https://open.spotify.com/intl-de/album/4gNyV1XCfZY8enSJb3msCn" target="_blank" rel="noopener">
@@ -290,7 +277,6 @@
           </div>
         </article>
 
-        <!-- Another Non Smokers Nightmare — Album -->
         <article class="tile">
           <a class="art" data-fallback="Another Non Smokers Nightmare — Album (Cover)"
              href="https://open.spotify.com/intl-de/album/2YGPf9NdDWbEMWZKs4PtSi" target="_blank" rel="noopener">
@@ -323,7 +309,7 @@
           <div class="meta">
             <h3>Fortune’s Bent Smile <small>· Single</small></h3>
             <div class="actions">
-              <a class="btn brand" href="https://fraendk.gumroad.com/l/oqggse" target="_blank" rel="noopener">Kaufen – 0,99 €</a>
+              <a class="btn brand" href="https://fraendk.gumroad.com/l/oqggse" target="_blank" rel="noopener">Buy · €0.99</a>
             </div>
           </div>
         </article>
@@ -362,7 +348,7 @@
           </div>
         </article>
       </div>
-      <p style="margin:12px 0 0;color:var(--sub)">Kauf öffnet eine sichere Gumroad-Seite mit Download nach Zahlung.</p>
+      <p style="margin:12px 0 0;color:var(--sub)">Purchases open a secure Gumroad page with download after payment.</p>
     </div>
   </section>
 
@@ -375,12 +361,12 @@
       <article class="tile" style="padding:14px 16px">
         <audio controls preload="metadata" style="width:100%" controlsList="nodownload noplaybackrate" oncontextmenu="return false;">
           <source src="LANDR-1%29%20Fortune%E2%80%99s%20Bent%20Smile-Balanced-Medium.mp3?v=4" type="audio/mpeg">
-          Dein Browser unterstützt das Audio-Element nicht.
+          Your browser does not support the audio element.
         </audio>
         <div class="actions" style="margin-top:10px">
-          <a class="btn brand" href="https://fraendk.gumroad.com/l/oqggse" target="_blank" rel="noopener">Kaufen · 0,99 €</a>
+          <a class="btn brand" href="https://fraendk.gumroad.com/l/oqggse" target="_blank" rel="noopener">Buy · €0.99</a>
         </div>
-        <small style="color:var(--sub);display:block;margin-top:8px">Streaming 192–320 kbps · Download auf Gumroad</small>
+        <small style="color:var(--sub);display:block;margin-top:8px">Streaming 192–320 kbps · Download on Gumroad</small>
       </article>
     </div>
   </section>
@@ -393,19 +379,19 @@
         <p style="margin:0 0 8px">Elastic Field was founded in 2011 – a free-form music project rooted in ambient, lounge, trip hop, downbeat, jazz, and subtle electronic textures. The sound is reflective, immersive, and emotional – often instrumental, sometimes featuring voice fragments or spoken word passages.</p>
         <p style="margin:0 0 8px">In 2012, the debut album <em>Non Smokers Nightmare</em> introduced a world of atmospheric contrasts and sonic minimalism. One year later, the follow-up <em>Another Non Smokers Nightmare</em> (2013) deepened that sound – darker, more focused, but equally open and textured.</p>
         <p style="margin:0">Now, in 2025, Elastic Field returns – with a series of remixes, new compositions, and a refined sound. While remaining true to its roots, the project embraces modern sonic aesthetics and digital production. It’s a comeback without nostalgia – a new beginning in the same spirit.</p>
-        <p style="margin:10px 0 0;color:var(--sub)">Collabs & licensing: <a href="mailto:fraendk@hotmail.com?subject=Elastic%20Field%20Anfrage">fraendk@hotmail.com</a></p>
+        <p style="margin:10px 0 0;color:var(--sub)">Collabs & licensing: <a href="mailto:fraendk@hotmail.com?subject=Elastic%20Field%20Inquiry">fraendk@hotmail.com</a></p>
       </div>
     </div>
   </section>
 
-  <!-- IMPRESSUM -->
-  <section id="impressum">
+  <!-- LEGAL -->
+  <section id="legal">
     <div class="wrap">
-      <h2 style="margin:0 0 10px">Impressum</h2>
+      <h2 style="margin:0 0 10px">Legal / Imprint</h2>
       <div class="tile" style="padding:14px 16px">
-        <p style="margin:0 0 8px"><strong>Elastic Field</strong><br>Köln, Deutschland</p>
-        <p style="margin:0 0 8px">Kontakt: <a href="mailto:fraendk@hotmail.com">fraendk@hotmail.com</a></p>
-        <p style="margin:0;color:var(--sub)">Hinweis: Trage hier später deine vollständigen Pflichtangaben nach § 5 TMG ein (Name/Anschrift).</p>
+        <p style="margin:0 0 8px"><strong>Elastic Field</strong><br>Cologne, Germany</p>
+        <p style="margin:0 0 8px">Contact: <a href="mailto:fraendk@hotmail.com">fraendk@hotmail.com</a></p>
+        <p style="margin:0;color:var(--sub)">Add your full legal details required by your jurisdiction when ready.</p>
       </div>
     </div>
   </section>
@@ -413,33 +399,33 @@
   <!-- CONTACT -->
   <section id="contact">
     <div class="wrap">
-      <h2 style="margin:0 0 10px">Kontakt</h2>
+      <h2 style="margin:0 0 10px">Contact</h2>
       <div class="tile" style="padding:14px 16px">
         <form id="contact-form" action="https://formspree.io/f/DEINE_ID" method="POST" accept-charset="UTF-8" novalidate>
-          <input type="hidden" name="_subject" value="Elastic Field Kontakt (Website)">
+          <input type="hidden" name="_subject" value="Elastic Field — Website Contact">
           <div class="field" style="display:grid;gap:6px;margin:10px 0">
             <label for="c-name">Name</label>
-            <input id="c-name" name="name" type="text" autocomplete="name" placeholder="Dein Name" required
+            <input id="c-name" name="name" type="text" autocomplete="name" placeholder="Your name" required
               style="background:#17110d;color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:10px 12px;font:inherit">
           </div>
           <div class="field" style="display:grid;gap:6px;margin:10px 0">
-            <label for="c-mail">E-Mail</label>
-            <input id="c-mail" name="email" type="email" autocomplete="email" placeholder="dein@mail.de" required
+            <label for="c-mail">Email</label>
+            <input id="c-mail" name="email" type="email" autocomplete="email" placeholder="you@mail.com" required
               style="background:#17110d;color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:10px 12px;font:inherit">
           </div>
           <div class="field" style="display:grid;gap:6px;margin:10px 0">
-            <label for="c-msg">Nachricht</label>
-            <textarea id="c-msg" name="message" rows="4" placeholder="Worum geht’s?" required
+            <label for="c-msg">Message</label>
+            <textarea id="c-msg" name="message" rows="4" placeholder="How can I help?" required
               style="background:#17110d;color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:10px 12px;font:inherit"></textarea>
           </div>
           <div style="position:absolute;left:-5000px" aria-hidden="true"><input type="text" name="_gotcha" tabindex="-1"></div>
           <label style="display:flex;gap:8px;align-items:flex-start;margin:8px 0">
             <input type="checkbox" id="c-consent" required>
-            <span>Einverstanden, dass meine Angaben zur Kontaktaufnahme gespeichert werden.</span>
+            <span>I agree that my details will be stored to handle my request.</span>
           </label>
           <div class="actions" style="margin-top:8px">
-            <button type="submit" class="btn brand">Nachricht senden</button>
-            <a class="btn" href="mailto:fraendk@hotmail.com?subject=Elastic%20Field%20Kontakt">Oder direkt per Mail</a>
+            <button type="submit" class="btn brand">Send message</button>
+            <a class="btn" href="mailto:fraendk@hotmail.com?subject=Elastic%20Field%20Contact">Or email directly</a>
             <small id="contact-status" style="color:var(--sub)"></small>
           </div>
         </form>
@@ -450,7 +436,7 @@
 
 <footer>
   <div class="wrap" style="display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap">
-    <small>© <span id="y"></span> Elastic Field · <a href="#impressum">Impressum</a> · <a href="#contact">Kontakt</a></small>
+    <small>© <span id="y"></span> Elastic Field · <a href="#legal">Legal</a> · <a href="#contact">Contact</a></small>
     <small style="color:var(--sub)">Single-file · GitHub Pages</small>
   </div>
 </footer>
@@ -458,7 +444,7 @@
 <script>
   document.getElementById('y').textContent = new Date().getFullYear();
 
-  // 2-Klick-Consent
+  // 2-click consent for embeds
   (function(){
     const map = { YouTube:'consent:YouTube', Spotify:'consent:Spotify' };
     document.querySelectorAll('.embed.consent').forEach(box=>{
@@ -486,7 +472,7 @@
     });
   })();
 
-  // Kontakt (Formspree) – Fallback E-Mail
+  // Contact (Formspree) — email fallback
   (function(){
     const form = document.getElementById('contact-form');
     const status = document.getElementById('contact-status');
@@ -496,21 +482,21 @@
       const name = encodeURIComponent(document.getElementById('c-name').value || '');
       const email= encodeURIComponent(document.getElementById('c-mail').value || '');
       const msg  = encodeURIComponent(document.getElementById('c-msg').value  || '');
-      const body = `Name: ${name}%0AEmail: ${email}%0A%0ANachricht:%0A${msg}`;
-      window.location.href=`mailto:fraendk@hotmail.com?subject=Elastic%20Field%20Kontakt&body=${body}`;
+      const body = `Name: ${name}%0AEmail: ${email}%0A%0AMessage:%0A${msg}`;
+      window.location.href=`mailto:fraendk@hotmail.com?subject=Elastic%20Field%20Contact&body=${body}`;
     }
     form.addEventListener('submit', async (e)=>{
       e.preventDefault();
-      if(!document.getElementById('c-consent').checked){ show('Bitte Häkchen bei Einwilligung setzen.'); return; }
-      show('Senden…');
+      if(!document.getElementById('c-consent').checked){ show('Please tick the consent box.'); return; }
+      show('Sending…');
       const endpoint = form.getAttribute('action') || '';
-      if(!endpoint || endpoint.includes('DEINE_ID')){ show('Sende per E-Mail…'); mailFallback(); return; }
+      if(!endpoint || endpoint.includes('DEINE_ID')){ show('Opening email client…'); mailFallback(); return; }
       try{
         const data = new FormData(form);
         const res = await fetch(endpoint, { method:'POST', body:data, headers:{'Accept':'application/json'} });
-        if(res.ok){ form.reset(); show('Danke! Ich melde mich bald.'); }
-        else{ show('Fehler beim Senden. Sende per E-Mail…'); mailFallback(); }
-      }catch{ show('Netzwerkfehler. Sende per E-Mail…'); mailFallback(); }
+        if(res.ok){ form.reset(); show('Thanks! I will get back to you.'); }
+        else{ show('Error sending. Using email fallback…'); mailFallback(); }
+      }catch{ show('Network error. Using email fallback…'); mailFallback(); }
     });
   })();
 </script>
