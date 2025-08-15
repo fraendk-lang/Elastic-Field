@@ -9,6 +9,7 @@
 <meta name="robots" content="index,follow">
 <meta name="color-scheme" content="dark">
 <link rel="canonical" href="https://fraendk-lang.github.io/Elastic-Field/">
+<link rel="preload" as="image" href="ef-single-fortunes-bent-smile.png">
 
 <!-- Open Graph / Twitter -->
 <meta property="og:site_name" content="Elastic Field Music">
@@ -80,6 +81,18 @@
 
   .toast{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#20160f;border:1px solid var(--line);box-shadow:var(--shadow);color:var(--ink);padding:10px 14px;border-radius:10px;z-index:1000;display:none}
   .toast.show{display:block}
+
+  /* ==== Patch: Shop-Kachel kompakter (nur Shop, nur Desktop) ==== */
+  @media (min-width: 960px){
+    #shop .grid-3{ grid-template-columns: repeat(4, 1fr); }
+    #shop .art-img{
+      transform: scale(.92);
+      transform-origin: 50% 50%;
+      object-position:50% 45%;
+      border-radius:12px;
+    }
+    #shop .tile .meta{ min-height:92px; }
+  }
 </style>
 
 <!-- schema.org -->
@@ -196,53 +209,53 @@
   <section id="video">
     <div class="wrap">
       <h2 style="margin:0 0 10px">Videos</h2>
-      <div class="grid-3">
-        <article class="tile">
-          <div class="embed consent" data-vendor="YouTube" data-src="https://www.youtube-nocookie.com/embed/6erDkiy3rFU?start=11&rel=0&playsinline=1&modestbranding=1">
-            <div class="consent-card">
-              <strong>YouTube-Video ist blockiert</strong>
-              <div style="color:var(--sub)">Mit Klick lädst du Inhalte von YouTube.</div>
-              <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
-                <button class="btn brand allow">Immer erlauben</button>
-                <button class="btn once">Einmal abspielen</button>
-                <a class="btn" href="https://www.youtube.com/watch?v=6erDkiy3rFU" target="_blank" rel="noopener">Auf YouTube ansehen</a>
-              </div>
+    <div class="grid-3">
+      <article class="tile">
+        <div class="embed consent" data-vendor="YouTube" data-src="https://www.youtube-nocookie.com/embed/6erDkiy3rFU?start=11&rel=0&playsinline=1&modestbranding=1">
+          <div class="consent-card">
+            <strong>YouTube-Video ist blockiert</strong>
+            <div style="color:var(--sub)">Mit Klick lädst du Inhalte von YouTube.</div>
+            <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
+              <button class="btn brand allow">Immer erlauben</button>
+              <button class="btn once">Einmal abspielen</button>
+              <a class="btn" href="https://www.youtube.com/watch?v=6erDkiy3rFU" target="_blank" rel="noopener">Auf YouTube ansehen</a>
             </div>
           </div>
-        </article>
+        </div>
+      </article>
 
-        <article class="tile">
-          <div class="embed consent" data-vendor="YouTube" data-src="https://www.youtube-nocookie.com/embed/pqsMGb3vhgE?rel=0&playsinline=1&modestbranding=1">
-            <div class="consent-card">
-              <strong>YouTube-Video ist blockiert</strong>
-              <div style="color:var(--sub)">Mit Klick lädst du Inhalte von YouTube.</div>
-              <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
-                <button class="btn brand allow">Immer erlauben</button>
-                <button class="btn once">Einmal abspielen</button>
-                <a class="btn" href="https://www.youtube.com/watch?v=pqsMGb3vhgE" target="_blank" rel="noopener">Auf YouTube ansehen</a>
-              </div>
+      <article class="tile">
+        <div class="embed consent" data-vendor="YouTube" data-src="https://www.youtube-nocookie.com/embed/pqsMGb3vhgE?rel=0&playsinline=1&modestbranding=1">
+          <div class="consent-card">
+            <strong>YouTube-Video ist blockiert</strong>
+            <div style="color:var(--sub)">Mit Klick lädst du Inhalte von YouTube.</div>
+            <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
+              <button class="btn brand allow">Immer erlauben</button>
+              <button class="btn once">Einmal abspielen</button>
+              <a class="btn" href="https://www.youtube.com/watch?v=pqsMGb3vhgE" target="_blank" rel="noopener">Auf YouTube ansehen</a>
             </div>
           </div>
-        </article>
+        </div>
+      </article>
 
-        <article class="tile">
-          <div class="embed consent" data-vendor="YouTube" data-src="https://www.youtube-nocookie.com/embed/jc0CzEp389U?rel=0&playsinline=1&modestbranding=1">
-            <div class="consent-card">
-              <strong>YouTube-Video ist blockiert</strong>
-              <div style="color:var(--sub)">Mit Klick lädst du Inhalte von YouTube.</div>
-              <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
-                <button class="btn brand allow">Immer erlauben</button>
-                <button class="btn once">Einmal abspielen</button>
-                <a class="btn" href="https://www.youtube.com/watch?v=jc0CzEp389U" target="_blank" rel="noopener">Auf YouTube ansehen</a>
-              </div>
+      <article class="tile">
+        <div class="embed consent" data-vendor="YouTube" data-src="https://www.youtube-nocookie.com/embed/jc0CzEp389U?rel=0&playsinline=1&modestbranding=1">
+          <div class="consent-card">
+            <strong>YouTube-Video ist blockiert</strong>
+            <div style="color:var(--sub)">Mit Klick lädst du Inhalte von YouTube.</div>
+            <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
+              <button class="btn brand allow">Immer erlauben</button>
+              <button class="btn once">Einmal abspielen</button>
+              <a class="btn" href="https://www.youtube.com/watch?v=jc0CzEp389U" target="_blank" rel="noopener">Auf YouTube ansehen</a>
             </div>
           </div>
-        </article>
-      </div>
+        </div>
+      </article>
+    </div>
     </div>
   </section>
 
-  <!-- DISCOGRAPHY (bestehende Releases) -->
+  <!-- DISCOGRAPHY (Auswahl) -->
   <section id="discography">
     <div class="wrap">
       <h2 style="margin:0 0 10px">Discography (Auswahl)</h2>
@@ -289,7 +302,7 @@
     </div>
   </section>
 
-  <!-- SHOP: Neue Single -->
+  <!-- SHOP -->
   <section id="shop">
     <div class="wrap">
       <h2 style="margin:0 0 10px">Shop</h2>
@@ -302,12 +315,12 @@
           <div class="meta">
             <h3>Fortune’s Bent Smile <small>· Single</small></h3>
             <div class="actions">
-              <a class="btn brand buy" href="https://fraendk.gumroad.com/l/oqggse" target="_blank" rel="noopener">Kaufen – 0,99 €</a>
+              <a class="btn brand" href="https://fraendk.gumroad.com/l/oqggse" target="_blank" rel="noopener">Kaufen – 0,99 €</a>
             </div>
           </div>
         </article>
 
-        <!-- Platzhalter für kommende Releases -->
+        <!-- Platzhalter -->
         <article class="tile">
           <div class="art" style="display:grid;place-items:center;background:#0e0a07">
             <span style="opacity:.7;color:var(--sub)">Bald verfügbar</span>
@@ -336,12 +349,13 @@
     </div>
   </section>
 
-  <!-- PREVIEW: 60s Audio -->
+  <!-- PREVIEW -->
   <section id="preview">
     <div class="wrap">
       <h2 style="margin:0 0 10px">Preview — Fortune’s Bent Smile</h2>
       <article class="tile" style="padding:14px 16px">
         <audio controls preload="none" style="width:100%">
+          <source src="fortunes-bent-smile_preview.m4a" type="audio/mp4">
           <source src="fortunes-bent-smile_preview.mp3" type="audio/mpeg">
           Dein Browser unterstützt das Audio-Element nicht.
         </audio>
