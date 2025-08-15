@@ -16,7 +16,7 @@
 <meta property="og:description" content="Ambient · Trip-Hop · Downbeat · Lounge · Jazzy · Electronic">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://fraendk-lang.github.io/Elastic-Field/">
-<meta property="og:image" content="https://fraendk-lang.github.io/Elastic-Field/og-elastic-field.jpg?v=7">
+<meta property="og:image" content="https://fraendk-lang.github.io/Elastic-Field/og-elastic-field.jpg?v=8">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#120e0a">
 
@@ -49,20 +49,16 @@
   .hero-title{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:0 16px;z-index:2}
   .hero-title h1{margin:0;font-weight:800;letter-spacing:.4px;line-height:.95;font-size:clamp(44px,7.5vw,108px);text-shadow:0 2px 12px rgba(0,0,0,.55)}
 
-  /* Soft Reveal statt Typewriter */
+  /* Soft Reveal (statt Typewriter) */
   .reveal{
-    opacity:0;
-    transform:translateY(6px) scale(.985);
-    filter:blur(1.2px);
+    opacity:0; transform:translateY(6px) scale(.985); filter:blur(1.2px);
     animation:reveal .9s cubic-bezier(.22,.61,.36,1) .15s forwards;
     will-change:opacity,transform,filter;
   }
-  @keyframes reveal{
-    to{opacity:1;transform:none;filter:blur(0)}
-  }
+  @keyframes reveal{ to{opacity:1;transform:none;filter:blur(0)} }
   @media (prefers-reduced-motion: reduce){
     .reveal{opacity:1;transform:none;filter:none;animation:none}
-    *{animation-duration:0.001ms !important;animation-iteration-count:1 !important;transition-duration:0.001ms !important;}
+    *{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
   }
 
   .ticker{position:absolute;left:0;right:0;height:36px;display:flex;align-items:center;overflow:hidden;z-index:3;background:linear-gradient(180deg,rgba(18,14,10,.2),rgba(18,14,10,.5))}
@@ -78,8 +74,12 @@
   .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
   @media (max-width:860px){.grid-3{grid-template-columns:1fr}}
 
-  .art{aspect-ratio:1/1}
+  .art{aspect-ratio:1/1; position:relative; border-radius:12px; overflow:hidden}
   .art-img{width:100%;height:100%;object-fit:cover;object-position:50% 50%}
+  .badge{
+    position:absolute;left:8px;top:8px;font-size:12px;font-weight:700;letter-spacing:.4px;
+    background:rgba(18,14,10,.7);border:1px solid var(--line);border-radius:999px;padding:4px 8px
+  }
   .tile .meta{padding:14px 16px;display:flex;flex-direction:column;gap:10px;min-height:120px}
   .tile h3{margin:0;display:flex;align-items:baseline;gap:8px;text-wrap:balance}
   .tile h3 small{white-space:nowrap;opacity:.85;font-weight:600;font-size:.9em}
@@ -95,37 +95,27 @@
   .toast{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#20160f;border:1px solid var(--line);box-shadow:var(--shadow);color:var(--ink);padding:10px 14px;border-radius:10px;z-index:1000;display:none}
   .toast.show{display:block}
 
-  /* === Discography: deutlich ruhiger ========================= */
-  #discography .art{ position:relative; overflow:hidden; border-radius:12px; box-shadow: inset 0 0 0 1px var(--line); }
-  #discography .art-img{
-    filter: saturate(.68) contrast(.9) brightness(.9) !important;
-    transform: none !important;
-    transition: none !important;
-    object-position: 50% 50%;
-  }
-  #discography .art::before{
-    content:""; position:absolute; inset:0;
-    background: rgba(18,14,10,.18);
-    mix-blend-mode: multiply; pointer-events:none;
-  }
-  #discography .art::after{ display:none !important; }
+  /* === Discography: ruhiger Look ============================= */
+  #discography .art{ box-shadow: inset 0 0 0 1px var(--line); }
+  #discography .art-img{ filter: saturate(.68) contrast(.9) brightness(.9) !important; }
+  #discography .art::before{ content:""; position:absolute; inset:0; background: rgba(18,14,10,.18); mix-blend-mode: multiply; }
   #discography .art:hover .art-img{ filter: saturate(.85) contrast(.95) brightness(.98); transform: scale(1.005); }
 
-  /* === Shop: kleinere Cover-Kacheln (nur Desktop) ============ */
+  /* === Shop: viel kleinere Cover + 4 Spalten auf Desktop ===== */
+  #shop .grid-3{ gap:16px; }
   @media (min-width: 960px){
-    #shop .grid-3{ grid-template-columns: repeat(4, 1fr); }
-    #shop .art{ position:relative; overflow:hidden; border-radius:12px; }
-    #shop .art-img{
-      transform: scale(.84);
-      transform-origin: 50% 50%;
-      object-position:50% 45%;
-      border-radius:12px;
-    }
-    #shop .tile .meta{ min-height:84px; padding-top:8px; }
+    #shop .grid-3{ grid-template-columns: repeat(4, minmax(0,1fr)); }
   }
-  @media (min-width: 720px) and (max-width: 959px){
-    #shop .art-img{ transform: scale(.90); }
+  /* Kachel-Content kompakter */
+  #shop .tile .meta{ min-height:auto; padding-top:10px; }
+  /* Cover wirklich kleiner halten */
+  #shop .art{ max-width: 220px; margin: 10px auto 0; border:1px solid var(--line); }
+  @media (min-width:1200px){
+    #shop .art{ max-width: 200px; }
   }
+  #shop .art-img{ transform:none !important; } /* kein Zoom mehr */
+  /* Platzhalter-SVG responsive in die Kachel einpassen */
+  .placeholder{width:100%;height:100%;display:block}
 </style>
 
 <!-- schema.org -->
@@ -294,9 +284,11 @@
     <div class="wrap">
       <h2 style="margin:0 0 10px">Discography (Auswahl)</h2>
       <div class="grid-3">
+        <!-- Lost and Found -->
         <article class="tile">
           <a class="art" href="https://open.spotify.com/intl-de/album/6CVmcZb3bQAkxU39k0falc" target="_blank" rel="noopener">
-            <img class="art-img" src="A_collection_of_six_abstract_textured_digital_art_-1.png?v=7" alt="Elastic Field — Lost and Found (Cover)" loading="lazy" width="1200" height="1200">
+            <span class="badge">Single</span>
+            <img class="art-img" src="A_collection_of_six_abstract_textured_digital_art_-1.png?v=8" alt="Elastic Field — Lost and Found (Cover)" loading="lazy" width="1200" height="1200">
           </a>
           <div class="meta">
             <h3>Lost and Found <small>· Single</small></h3>
@@ -304,9 +296,11 @@
           </div>
         </article>
 
+        <!-- Non Smokers Nightmare -->
         <article class="tile">
           <a class="art" href="https://open.spotify.com/intl-de/album/4gNyV1XCfZY8enSJb3msCn" target="_blank" rel="noopener">
-            <img class="art-img" src="A_collection_of_six_abstract_textured_digital_art_-4.png?v=7" alt="Elastic Field — Non Smokers Nightmare (Cover)" loading="lazy" width="1200" height="1200">
+            <span class="badge">Album</span>
+            <img class="art-img" src="A_collection_of_six_abstract_textured_digital_art_-4.png?v=8" alt="Elastic Field — Non Smokers Nightmare (Cover)" loading="lazy" width="1200" height="1200">
           </a>
           <div class="meta">
             <h3>Non Smokers Nightmare <small>· Album</small></h3>
@@ -314,9 +308,11 @@
           </div>
         </article>
 
+        <!-- Another Non Smokers Nightmare -->
         <article class="tile">
           <a class="art" href="https://open.spotify.com/intl-de/album/2YGPf9NdDWbEMWZKs4PtSi" target="_blank" rel="noopener">
-            <img class="art-img" src="A_collection_of_six_abstract_textured_digital_art_-2.png?v=7" alt="Elastic Field — Another Non Smokers Nightmare (Cover)" loading="lazy" width="1200" height="1200">
+            <span class="badge">Album</span>
+            <img class="art-img" src="A_collection_of_six_abstract_textured_digital_art_-2.png?v=8" alt="Elastic Field — Another Non Smokers Nightmare (Cover)" loading="lazy" width="1200" height="1200">
           </a>
           <div class="meta">
             <h3>Another Non Smokers Nightmare <small>· Album</small></h3>
@@ -332,30 +328,57 @@
     <div class="wrap">
       <h2 style="margin:0 0 10px">Shop</h2>
       <div class="grid-3">
+        <!-- Single — Fortune’s Bent Smile -->
         <article class="tile">
-          <a class="art" href="#" onclick="return false;">
-            <img class="art-img" src="ef-single-fortunes-bent-smile.png?v=1" alt="Elastic Field — Fortune’s Bent Smile (Single Cover)">
+          <a class="art" href="https://fraendk.gumroad.com/l/oqggse" target="_blank" rel="noopener">
+            <img class="art-img" src="ef-single-fortunes-bent-smile.png?v=2" alt="Elastic Field — Fortune’s Bent Smile (Single Cover)">
           </a>
           <div class="meta">
             <h3>Fortune’s Bent Smile <small>· Single</small></h3>
-            <div class="actions"><a class="btn brand" href="https://fraendk.gumroad.com/l/oqggse" target="_blank" rel="noopener">Kaufen – 0,99 €</a></div>
+            <div class="actions">
+              <a class="btn brand" href="https://fraendk.gumroad.com/l/oqggse" target="_blank" rel="noopener">Kaufen – 0,99 €</a>
+            </div>
           </div>
         </article>
 
+        <!-- Platzhalter 1 -->
         <article class="tile">
-          <div class="art" style="display:grid;place-items:center;background:#0e0a07">
-            <span style="opacity:.7;color:var(--sub)">Bald verfügbar</span>
-          </div>
+          <a class="art" href="#" onclick="return false" aria-label="Bald verfügbar">
+            <svg class="placeholder" viewBox="0 0 1200 1200" role="img" aria-label="Coming Soon Cover">
+              <defs>
+                <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#1b140f"/>
+                  <stop offset="1" stop-color="#2a1e15"/>
+                </linearGradient>
+              </defs>
+              <rect width="1200" height="1200" fill="url(#g1)"/>
+              <g opacity=".08"><circle cx="300" cy="320" r="260" fill="#d2a15e"/><circle cx="980" cy="880" r="300" fill="#b47b33"/></g>
+              <text x="50%" y="50%" text-anchor="middle" fill="#f6ead5" font-size="120" font-weight="800" letter-spacing="2" dy="-20">COMING</text>
+              <text x="50%" y="50%" text-anchor="middle" fill="#d7c6a9" font-size="68" font-weight="600" dy="70">SOON</text>
+            </svg>
+          </a>
           <div class="meta">
             <h3>Nächste Single</h3>
             <div class="actions"><a class="btn" href="https://gumroad.com/fraendk/follow" target="_blank" rel="noopener">Benachrichtige mich</a></div>
           </div>
         </article>
 
+        <!-- Platzhalter 2 -->
         <article class="tile">
-          <div class="art" style="display:grid;place-items:center;background:#0e0a07">
-            <span style="opacity:.7;color:var(--sub)">Bald verfügbar</span>
-          </div>
+          <a class="art" href="#" onclick="return false" aria-label="Bald verfügbar">
+            <svg class="placeholder" viewBox="0 0 1200 1200" role="img" aria-label="Coming Soon Cover">
+              <defs>
+                <linearGradient id="g2" x1="0" y1="1" x2="1" y2="0">
+                  <stop offset="0" stop-color="#1b140f"/>
+                  <stop offset="1" stop-color="#2a1e15"/>
+                </linearGradient>
+              </defs>
+              <rect width="1200" height="1200" fill="url(#g2)"/>
+              <g opacity=".08"><circle cx="350" cy="850" r="260" fill="#d2a15e"/><circle cx="900" cy="340" r="220" fill="#b47b33"/></g>
+              <text x="50%" y="50%" text-anchor="middle" fill="#f6ead5" font-size="120" font-weight="800" letter-spacing="2" dy="-20">COMING</text>
+              <text x="50%" y="50%" text-anchor="middle" fill="#d7c6a9" font-size="68" font-weight="600" dy="70">SOON</text>
+            </svg>
+          </a>
           <div class="meta">
             <h3>Gates of Stillness — EP</h3>
             <div class="actions"><a class="btn" href="https://gumroad.com/fraendk/follow" target="_blank" rel="noopener">Benachrichtige mich</a></div>
@@ -374,7 +397,7 @@
         <audio controls preload="metadata" style="width:100%"
                controlsList="nodownload noplaybackrate"
                oncontextmenu="return false;">
-          <source src="LANDR-1%29%20Fortune%E2%80%99s%20Bent%20Smile-Balanced-Medium.mp3?v=3" type="audio/mpeg">
+          <source src="LANDR-1%29%20Fortune%E2%80%99s%20Bent%20Smile-Balanced-Medium.mp3?v=4" type="audio/mpeg">
           Dein Browser unterstützt das Audio-Element nicht.
         </audio>
         <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:10px">
