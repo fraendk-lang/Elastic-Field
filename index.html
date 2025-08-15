@@ -16,7 +16,7 @@
 <meta property="og:description" content="Ambient · Trip-Hop · Downbeat · Lounge · Jazzy · Electronic">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://fraendk-lang.github.io/Elastic-Field/">
-<meta property="og:image" content="https://fraendk-lang.github.io/Elastic-Field/og-elastic-field.jpg?v=8">
+<meta property="og:image" content="https://fraendk-lang.github.io/Elastic-Field/og-elastic-field.jpg?v=9">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#120e0a">
 
@@ -40,7 +40,6 @@
 
   .logo{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.4px}
   .logo-img{width:34px;height:34px;border-radius:10px;display:block}
-  .logo-img[onerror]{display:none}
 
   .hero{border-bottom:1px solid var(--line);background:radial-gradient(700px 280px at 85% -10%,rgba(210,161,94,.12),transparent 60%)}
   .cover{position:relative;width:100%;aspect-ratio:16/9;border-radius:14px;overflow:hidden;background:#0e0a07;border:1px solid var(--line);box-shadow:var(--shadow)}
@@ -48,101 +47,65 @@
   .cover::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(18,14,10,.65),rgba(18,14,10,.25) 40%,rgba(18,14,10,0) 70%)}
   .hero-title{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:0 16px;z-index:2}
   .hero-title h1{margin:0;font-weight:800;letter-spacing:.4px;line-height:.95;font-size:clamp(44px,7.5vw,108px);text-shadow:0 2px 12px rgba(0,0,0,.55)}
-
-  /* Soft Reveal (statt Typewriter) */
-  .reveal{
-    opacity:0; transform:translateY(6px) scale(.985); filter:blur(1.2px);
-    animation:reveal .9s cubic-bezier(.22,.61,.36,1) .15s forwards;
-    will-change:opacity,transform,filter;
-  }
-  @keyframes reveal{ to{opacity:1;transform:none;filter:blur(0)} }
-  @media (prefers-reduced-motion: reduce){
-    .reveal{opacity:1;transform:none;filter:none;animation:none}
-    *{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
-  }
+  /* Soft reveal */
+  .reveal{opacity:0;transform:translateY(6px) scale(.985);filter:blur(1.2px);animation:reveal .9s cubic-bezier(.22,.61,.36,1) .15s forwards}
+  @keyframes reveal{to{opacity:1;transform:none;filter:blur(0)}}
+  @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;filter:none;animation:none}*{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}}
 
   .ticker{position:absolute;left:0;right:0;height:36px;display:flex;align-items:center;overflow:hidden;z-index:3;background:linear-gradient(180deg,rgba(18,14,10,.2),rgba(18,14,10,.5))}
-  .t-top{top:0;border-bottom:1px solid var(--line)}
-  .t-bottom{bottom:0;border-top:1px solid var(--line)}
+  .t-top{top:0;border-bottom:1px solid var(--line)} .t-bottom{bottom:0;border-top:1px solid var(--line)}
   .ticker .track{display:inline-block;white-space:nowrap;animation:marq 40s linear infinite;padding-left:100%}
   .ticker:hover .track{animation-play-state:paused}
   .ticker a{padding:0 16px} .dot{opacity:.5}
   @keyframes marq{0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
 
   section{padding:28px 0;border-top:1px solid var(--line)}
-  .tile{background:var(--panel);border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:var(--shadow)}
   .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
   @media (max-width:860px){.grid-3{grid-template-columns:1fr}}
 
-  .art{aspect-ratio:1/1; position:relative; border-radius:12px; overflow:hidden}
-  .art-img{width:100%;height:100%;object-fit:cover;object-position:50% 50%}
-  .badge{
-    position:absolute;left:8px;top:8px;font-size:12px;font-weight:700;letter-spacing:.4px;
-    background:rgba(18,14,10,.7);border:1px solid var(--line);border-radius:999px;padding:4px 8px
+  /* Kartenlayout robust */
+  .tile{display:flex;flex-direction:column;background:var(--panel);border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:var(--shadow)}
+  .art{position:relative;aspect-ratio:1/1;border-radius:12px;overflow:hidden;margin:12px 12px 0}
+  .art-img{width:100%;height:100%;object-fit:cover}
+  .meta{padding:14px 16px;display:flex;flex-direction:column;gap:10px}
+  .tile h3{margin:0;text-wrap:balance}
+  .badge{position:absolute;left:10px;top:10px;font-size:12px;font-weight:700;letter-spacing:.4px;background:rgba(18,14,10,.7);border:1px solid var(--line);border-radius:999px;padding:4px 8px}
+  /* sichtbare Titel AUF dem Cover */
+  .caption{
+    position:absolute;left:0;right:0;bottom:0;
+    padding:10px 12px;background:linear-gradient(to top,rgba(18,14,10,.75),rgba(18,14,10,0));
+    font-weight:800;letter-spacing:.4px;text-shadow:0 1px 6px rgba(0,0,0,.4)
   }
-  .tile .meta{padding:14px 16px;display:flex;flex-direction:column;gap:10px;min-height:120px}
-  .tile h3{margin:0;display:flex;align-items:baseline;gap:8px;text-wrap:balance}
-  .tile h3 small{white-space:nowrap;opacity:.85;font-weight:600;font-size:.9em}
-  .tile .actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+
+  /* Discography: ruhiger Look */
+  #discography .art-img{filter:saturate(.7) contrast(.9) brightness(.92)}
+  #discography .art:hover .art-img{filter:saturate(.85) contrast(.95) brightness(.98);transform:scale(1.005)}
+
+  /* Shop: kleinere Cover + 4 Spalten auf Desktop */
+  #shop .grid-3{gap:16px}
+  @media (min-width:960px){#shop .grid-3{grid-template-columns:repeat(4,minmax(0,1fr))}}
+  #shop .art{max-width:180px;margin:12px auto 0;border:1px solid var(--line)}
+  #shop .art-img{transform:none}
+  .placeholder{width:100%;height:100%;display:block}
 
   .chips{display:flex;gap:10px;flex-wrap:wrap}
   .chip{border:1px solid var(--line);background:var(--panel);padding:8px 12px;border-radius:999px}
-  footer{padding:28px 0;border-top:1px solid var(--line);color:var(--sub)}
 
   .embed{aspect-ratio:16/9;background:#0e0a07;display:grid;place-items:center}
   .consent-card{display:grid;gap:10px;place-items:center;text-align:center;background:rgba(18,14,10,.55);border:1px solid var(--line);border-radius:12px;padding:14px 16px;max-width:min(92%,720px);margin:12px}
 
-  .toast{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#20160f;border:1px solid var(--line);box-shadow:var(--shadow);color:var(--ink);padding:10px 14px;border-radius:10px;z-index:1000;display:none}
-  .toast.show{display:block}
-
-  /* === Discography: ruhiger Look ============================= */
-  #discography .art{ box-shadow: inset 0 0 0 1px var(--line); }
-  #discography .art-img{ filter: saturate(.68) contrast(.9) brightness(.9) !important; }
-  #discography .art::before{ content:""; position:absolute; inset:0; background: rgba(18,14,10,.18); mix-blend-mode: multiply; }
-  #discography .art:hover .art-img{ filter: saturate(.85) contrast(.95) brightness(.98); transform: scale(1.005); }
-
-  /* === Shop: viel kleinere Cover + 4 Spalten auf Desktop ===== */
-  #shop .grid-3{ gap:16px; }
-  @media (min-width: 960px){
-    #shop .grid-3{ grid-template-columns: repeat(4, minmax(0,1fr)); }
-  }
-  /* Kachel-Content kompakter */
-  #shop .tile .meta{ min-height:auto; padding-top:10px; }
-  /* Cover wirklich kleiner halten */
-  #shop .art{ max-width: 220px; margin: 10px auto 0; border:1px solid var(--line); }
-  @media (min-width:1200px){
-    #shop .art{ max-width: 200px; }
-  }
-  #shop .art-img{ transform:none !important; } /* kein Zoom mehr */
-  /* Platzhalter-SVG responsive in die Kachel einpassen */
-  .placeholder{width:100%;height:100%;display:block}
+  footer{padding:28px 0;border-top:1px solid var(--line);color:var(--sub)}
 </style>
 
 <!-- schema.org -->
 <script type="application/ld+json">
-{
-  "@context":"https://schema.org",
-  "@type":"MusicGroup",
-  "name":"Elastic Field",
-  "url":"https://fraendk-lang.github.io/Elastic-Field/",
-  "foundingDate":"2011",
-  "foundingLocation":{"@type":"Place","name":"Cologne, Germany"},
-  "genre":["Ambient","Trip-Hop","Downbeat","Lounge","Jazz","Electronic"],
-  "sameAs":[
-    "https://www.youtube.com/@elasticfieldmusic",
-    "https://open.spotify.com/artist/2wn4Zq8AOBsX50X7fyBEoL",
-    "https://music.amazon.de/artists/B008F6S0LM/elastic-field"
-  ]
-}
+{"@context":"https://schema.org","@type":"MusicGroup","name":"Elastic Field","url":"https://fraendk-lang.github.io/Elastic-Field/","foundingDate":"2011","foundingLocation":{"@type":"Place","name":"Cologne, Germany"},"genre":["Ambient","Trip-Hop","Downbeat","Lounge","Jazz","Electronic"],"sameAs":["https://www.youtube.com/@elasticfieldmusic","https://open.spotify.com/artist/2wn4Zq8AOBsX50X7fyBEoL","https://music.amazon.de/artists/B008F6S0LM/elastic-field"]}
 </script>
 </head>
 <body>
 <header>
   <div class="wrap bar">
-    <a class="logo" href="#">
-      <img class="logo-img" src="ef-favicon.svg" alt="Elastic Field Logo" width="34" height="34" onerror="this.style.display='none'">
-      <span>Elastic Field Music</span>
-    </a>
+    <a class="logo" href="#"><img class="logo-img" src="ef-favicon.svg" alt="Elastic Field Logo" width="34" height="34"><span>Elastic Field Music</span></a>
     <nav style="display:flex;gap:10px;flex-wrap:wrap">
       <a class="btn" href="#listen">Hören</a>
       <a class="btn" href="#video">Videos</a>
@@ -163,34 +126,24 @@
       <div class="cover">
         <div class="ticker t-top">
           <div class="track">
-            <a href="https://fraendk.gumroad.com/l/oqggse" target="_blank" rel="noopener">New: Fortune’s Bent Smile — Single</a>
-            <span class="dot">•</span>
-            <a href="https://www.youtube.com/@elasticfieldmusic?sub_confirmation=1" target="_blank" rel="noopener">Subscribe on YouTube</a>
-            <span class="dot">•</span>
-            <a href="https://open.spotify.com/artist/2wn4Zq8AOBsX50X7fyBEoL" target="_blank" rel="noopener">Follow on Spotify</a>
-            <span class="dot">•</span>
-            <a href="mailto:fraendk@hotmail.com?subject=Booking%20Elastic%20Field">Booking/Sync</a>
-            <span class="dot">•</span>
+            <a href="https://fraendk.gumroad.com/l/oqggse" target="_blank" rel="noopener">New: Fortune’s Bent Smile — Single</a><span class="dot">•</span>
+            <a href="https://www.youtube.com/@elasticfieldmusic?sub_confirmation=1" target="_blank" rel="noopener">Subscribe on YouTube</a><span class="dot">•</span>
+            <a href="https://open.spotify.com/artist/2wn4Zq8AOBsX50X7fyBEoL" target="_blank" rel="noopener">Follow on Spotify</a><span class="dot">•</span>
+            <a href="mailto:fraendk@hotmail.com?subject=Booking%20Elastic%20Field">Booking/Sync</a><span class="dot">•</span>
           </div>
         </div>
 
-        <!-- kein Poster → kein Cover-Flash -->
         <video autoplay muted loop playsinline preload="metadata">
           <source src="20250810_2204_Dreamy Bokeh Nightscape_simple_compose_01k2asb5brejkabp1vnxar2pdg.mp4" type="video/mp4">
         </video>
 
-        <div class="hero-title">
-          <h1 class="reveal">Elastic Field Music</h1>
-        </div>
+        <div class="hero-title"><h1 class="reveal">Elastic Field Music</h1></div>
 
         <div class="ticker t-bottom">
           <div class="track">
-            <span>Ambient</span><span class="dot">•</span>
-            <span>Trip-Hop</span><span class="dot">•</span>
-            <span>Downbeat</span><span class="dot">•</span>
-            <span>Lounge</span><span class="dot">•</span>
-            <span>Jazzy</span><span class="dot">•</span>
-            <span>Electronic</span><span class="dot">•</span>
+            <span>Ambient</span><span class="dot">•</span><span>Trip-Hop</span><span class="dot">•</span>
+            <span>Downbeat</span><span class="dot">•</span><span>Lounge</span><span class="dot">•</span>
+            <span>Jazzy</span><span class="dot">•</span><span>Electronic</span><span class="dot">•</span>
             <a href="#shop">Kaufen</a><span class="dot">•</span>
           </div>
         </div>
@@ -247,29 +200,21 @@
             </div>
           </div>
         </article>
-
         <article class="tile">
           <div class="embed consent" data-vendor="YouTube" data-src="https://www.youtube-nocookie.com/embed/pqsMGb3vhgE?rel=0&playsinline=1&modestbranding=1">
-            <div class="consent-card">
-              <strong>YouTube-Video ist blockiert</strong>
-              <div style="color:var(--sub)">Mit Klick lädst du Inhalte von YouTube.</div>
+            <div class="consent-card"><strong>YouTube-Video ist blockiert</strong><div style="color:var(--sub)">Mit Klick lädst du Inhalte von YouTube.</div>
               <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
-                <button class="btn brand allow">Immer erlauben</button>
-                <button class="btn once">Einmal abspielen</button>
+                <button class="btn brand allow">Immer erlauben</button><button class="btn once">Einmal abspielen</button>
                 <a class="btn" href="https://www.youtube.com/watch?v=pqsMGb3vhgE" target="_blank" rel="noopener">Auf YouTube ansehen</a>
               </div>
             </div>
           </div>
         </article>
-
         <article class="tile">
           <div class="embed consent" data-vendor="YouTube" data-src="https://www.youtube-nocookie.com/embed/jc0CzEp389U?rel=0&playsinline=1&modestbranding=1">
-            <div class="consent-card">
-              <strong>YouTube-Video ist blockiert</strong>
-              <div style="color:var(--sub)">Mit Klick lädst du Inhalte von YouTube.</div>
+            <div class="consent-card"><strong>YouTube-Video ist blockiert</strong><div style="color:var(--sub)">Mit Klick lädst du Inhalte von YouTube.</div>
               <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
-                <button class="btn brand allow">Immer erlauben</button>
-                <button class="btn once">Einmal abspielen</button>
+                <button class="btn brand allow">Immer erlauben</button><button class="btn once">Einmal abspielen</button>
                 <a class="btn" href="https://www.youtube.com/watch?v=jc0CzEp389U" target="_blank" rel="noopener">Auf YouTube ansehen</a>
               </div>
             </div>
@@ -288,11 +233,12 @@
         <article class="tile">
           <a class="art" href="https://open.spotify.com/intl-de/album/6CVmcZb3bQAkxU39k0falc" target="_blank" rel="noopener">
             <span class="badge">Single</span>
-            <img class="art-img" src="A_collection_of_six_abstract_textured_digital_art_-1.png?v=8" alt="Elastic Field — Lost and Found (Cover)" loading="lazy" width="1200" height="1200">
+            <img class="art-img" src="A_collection_of_six_abstract_textured_digital_art_-1.png?v=9" alt="Elastic Field — Lost and Found (Cover)" loading="lazy" width="1200" height="1200">
+            <div class="caption">Lost and Found</div>
           </a>
           <div class="meta">
             <h3>Lost and Found <small>· Single</small></h3>
-            <div class="actions"><a class="btn round" href="https://open.spotify.com/intl-de/album/6CVmcZb3bQAkxU39k0falc" target="_blank" rel="noopener">Spotify</a></div>
+            <div style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn round" href="https://open.spotify.com/intl-de/album/6CVmcZb3bQAkxU39k0falc" target="_blank" rel="noopener">Spotify</a></div>
           </div>
         </article>
 
@@ -300,11 +246,12 @@
         <article class="tile">
           <a class="art" href="https://open.spotify.com/intl-de/album/4gNyV1XCfZY8enSJb3msCn" target="_blank" rel="noopener">
             <span class="badge">Album</span>
-            <img class="art-img" src="A_collection_of_six_abstract_textured_digital_art_-4.png?v=8" alt="Elastic Field — Non Smokers Nightmare (Cover)" loading="lazy" width="1200" height="1200">
+            <img class="art-img" src="A_collection_of_six_abstract_textured_digital_art_-4.png?v=9" alt="Elastic Field — Non Smokers Nightmare (Cover)" loading="lazy" width="1200" height="1200">
+            <div class="caption">Non Smokers Nightmare</div>
           </a>
           <div class="meta">
             <h3>Non Smokers Nightmare <small>· Album</small></h3>
-            <div class="actions"><a class="btn round" href="https://open.spotify.com/intl-de/album/4gNyV1XCfZY8enSJb3msCn" target="_blank" rel="noopener">Spotify</a></div>
+            <div style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn round" href="https://open.spotify.com/intl-de/album/4gNyV1XCfZY8enSJb3msCn" target="_blank" rel="noopener">Spotify</a></div>
           </div>
         </article>
 
@@ -312,11 +259,12 @@
         <article class="tile">
           <a class="art" href="https://open.spotify.com/intl-de/album/2YGPf9NdDWbEMWZKs4PtSi" target="_blank" rel="noopener">
             <span class="badge">Album</span>
-            <img class="art-img" src="A_collection_of_six_abstract_textured_digital_art_-2.png?v=8" alt="Elastic Field — Another Non Smokers Nightmare (Cover)" loading="lazy" width="1200" height="1200">
+            <img class="art-img" src="A_collection_of_six_abstract_textured_digital_art_-2.png?v=9" alt="Elastic Field — Another Non Smokers Nightmare (Cover)" loading="lazy" width="1200" height="1200">
+            <div class="caption">Another Non Smokers Nightmare</div>
           </a>
           <div class="meta">
             <h3>Another Non Smokers Nightmare <small>· Album</small></h3>
-            <div class="actions"><a class="btn round" href="https://open.spotify.com/intl-de/album/2YGPf9NdDWbEMWZKs4PtSi" target="_blank" rel="noopener">Spotify</a></div>
+            <div style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn round" href="https://open.spotify.com/intl-de/album/2YGPf9NdDWbEMWZKs4PtSi" target="_blank" rel="noopener">Spotify</a></div>
           </div>
         </article>
       </div>
@@ -331,11 +279,11 @@
         <!-- Single — Fortune’s Bent Smile -->
         <article class="tile">
           <a class="art" href="https://fraendk.gumroad.com/l/oqggse" target="_blank" rel="noopener">
-            <img class="art-img" src="ef-single-fortunes-bent-smile.png?v=2" alt="Elastic Field — Fortune’s Bent Smile (Single Cover)">
+            <img class="art-img" src="ef-single-fortunes-bent-smile.png?v=3" alt="Elastic Field — Fortune’s Bent Smile (Single Cover)">
           </a>
           <div class="meta">
             <h3>Fortune’s Bent Smile <small>· Single</small></h3>
-            <div class="actions">
+            <div style="display:flex;gap:10px;flex-wrap:wrap">
               <a class="btn brand" href="https://fraendk.gumroad.com/l/oqggse" target="_blank" rel="noopener">Kaufen – 0,99 €</a>
             </div>
           </div>
@@ -345,21 +293,15 @@
         <article class="tile">
           <a class="art" href="#" onclick="return false" aria-label="Bald verfügbar">
             <svg class="placeholder" viewBox="0 0 1200 1200" role="img" aria-label="Coming Soon Cover">
-              <defs>
-                <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0" stop-color="#1b140f"/>
-                  <stop offset="1" stop-color="#2a1e15"/>
-                </linearGradient>
-              </defs>
-              <rect width="1200" height="1200" fill="url(#g1)"/>
-              <g opacity=".08"><circle cx="300" cy="320" r="260" fill="#d2a15e"/><circle cx="980" cy="880" r="300" fill="#b47b33"/></g>
+              <defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1b140f"/><stop offset="1" stop-color="#2a1e15"/></linearGradient></defs>
+              <rect width="1200" height="1200" fill="url(#g1)"/><g opacity=".08"><circle cx="300" cy="320" r="260" fill="#d2a15e"/><circle cx="980" cy="880" r="300" fill="#b47b33"/></g>
               <text x="50%" y="50%" text-anchor="middle" fill="#f6ead5" font-size="120" font-weight="800" letter-spacing="2" dy="-20">COMING</text>
               <text x="50%" y="50%" text-anchor="middle" fill="#d7c6a9" font-size="68" font-weight="600" dy="70">SOON</text>
             </svg>
           </a>
           <div class="meta">
             <h3>Nächste Single</h3>
-            <div class="actions"><a class="btn" href="https://gumroad.com/fraendk/follow" target="_blank" rel="noopener">Benachrichtige mich</a></div>
+            <div style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn" href="https://gumroad.com/fraendk/follow" target="_blank" rel="noopener">Benachrichtige mich</a></div>
           </div>
         </article>
 
@@ -367,21 +309,15 @@
         <article class="tile">
           <a class="art" href="#" onclick="return false" aria-label="Bald verfügbar">
             <svg class="placeholder" viewBox="0 0 1200 1200" role="img" aria-label="Coming Soon Cover">
-              <defs>
-                <linearGradient id="g2" x1="0" y1="1" x2="1" y2="0">
-                  <stop offset="0" stop-color="#1b140f"/>
-                  <stop offset="1" stop-color="#2a1e15"/>
-                </linearGradient>
-              </defs>
-              <rect width="1200" height="1200" fill="url(#g2)"/>
-              <g opacity=".08"><circle cx="350" cy="850" r="260" fill="#d2a15e"/><circle cx="900" cy="340" r="220" fill="#b47b33"/></g>
+              <defs><linearGradient id="g2" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#1b140f"/><stop offset="1" stop-color="#2a1e15"/></linearGradient></defs>
+              <rect width="1200" height="1200" fill="url(#g2)"/><g opacity=".08"><circle cx="350" cy="850" r="260" fill="#d2a15e"/><circle cx="900" cy="340" r="220" fill="#b47b33"/></g>
               <text x="50%" y="50%" text-anchor="middle" fill="#f6ead5" font-size="120" font-weight="800" letter-spacing="2" dy="-20">COMING</text>
               <text x="50%" y="50%" text-anchor="middle" fill="#d7c6a9" font-size="68" font-weight="600" dy="70">SOON</text>
             </svg>
           </a>
           <div class="meta">
             <h3>Gates of Stillness — EP</h3>
-            <div class="actions"><a class="btn" href="https://gumroad.com/fraendk/follow" target="_blank" rel="noopener">Benachrichtige mich</a></div>
+            <div style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn" href="https://gumroad.com/fraendk/follow" target="_blank" rel="noopener">Benachrichtige mich</a></div>
           </div>
         </article>
       </div>
@@ -389,20 +325,20 @@
     </div>
   </section>
 
-  <!-- TRACK: Voller Song -->
+  <!-- TRACK -->
   <section id="track">
     <div class="wrap">
       <h2 style="margin:0 0 10px">Fortune’s Bent Smile — Full Track</h2>
+    </div>
+    <div class="wrap">
       <article class="tile" style="padding:14px 16px">
-        <audio controls preload="metadata" style="width:100%"
-               controlsList="nodownload noplaybackrate"
-               oncontextmenu="return false;">
+        <audio controls preload="metadata" style="width:100%" controlsList="nodownload noplaybackrate" oncontextmenu="return false;">
           <source src="LANDR-1%29%20Fortune%E2%80%99s%20Bent%20Smile-Balanced-Medium.mp3?v=4" type="audio/mpeg">
           Dein Browser unterstützt das Audio-Element nicht.
         </audio>
         <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:10px">
           <a class="btn brand" href="https://fraendk.gumroad.com/l/oqggse" target="_blank" rel="noopener">Kaufen · 0,99 €</a>
-          <small style="color:var(--sub)">Streaming in 192–320 kbps · Download auf Gumroad</small>
+          <small style="color:var(--sub)">Streaming 192–320 kbps · Download auf Gumroad</small>
         </div>
       </article>
     </div>
@@ -481,7 +417,7 @@
 <script>
   document.getElementById('y').textContent = new Date().getFullYear();
 
-  // 2-Klick Consent (YouTube/Spotify)
+  // 2-Klick-Consent (YouTube/Spotify)
   (function(){
     const map = { YouTube:'consent:YouTube', Spotify:'consent:Spotify' };
     document.querySelectorAll('.embed.consent').forEach(box=>{
