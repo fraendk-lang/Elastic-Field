@@ -109,29 +109,24 @@
     }
     .video-thumb:focus-visible{outline:3px solid #fff;outline-offset:3px}
 
-    /* Coming soon: abstrakter, textfreier Hintergrund (keine Cover) */
+    /* Coming soon – dezente Farb-Backdrops (sichtbar, aber soft) */
+    .card .media.art-bg { background: none; } /* dunkle Basis überschreiben nur hier */
     .art-bg{
       position:relative;display:grid;place-items:center;aspect-ratio:1/1;overflow:hidden;
-      /* Mehrlagige Textur: Vignette + Akzent + feine Linien + Grundverlauf */
-      background-image:
-        linear-gradient(180deg, rgba(0,0,0,.38), rgba(0,0,0,.22)),
-        radial-gradient(120% 100% at 100% 0%, var(--accent, rgba(242,179,92,.16)), transparent 60%),
-        repeating-linear-gradient(45deg, rgba(255,255,255,.022) 0 2px, rgba(0,0,0,0) 2px 4px),
-        linear-gradient(180deg, #181b22, #0f1116);
-      filter:saturate(1.05) contrast(1.04);
+      border-bottom:1px solid var(--line);
+      background:
+        radial-gradient(80% 70% at 85% 15%, var(--c1, rgba(242,179,92,.38)), transparent 60%),
+        radial-gradient(70% 60% at 15% 85%, var(--c2, rgba(255,111,60,.22)), transparent 60%),
+        linear-gradient(180deg, rgba(0,0,0,.28), rgba(0,0,0,.18)),
+        repeating-linear-gradient(45deg, rgba(255,255,255,.03) 0 2px, rgba(0,0,0,0) 2px 5px),
+        linear-gradient(180deg, #1a1e27, #0f1116);
+      filter:saturate(1.06) contrast(1.04);
     }
-    .art-bg[data-v="2"]{ --accent: rgba(138,167,242,.16); } /* zweite Karte leicht bläulicher Akzent */
-    .art-bg .soon{position:relative;z-index:1}
-    .art-bg .soon .note{opacity:.92}
-
-    /* Inline notify form */
-    .notify-form{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
-    .notify-form input[type="email"]{
-      width:190px;max-width:100%;
-      padding:8px 10px;border-radius:10px;border:1px solid var(--line);
-      background:#0f1116;color:var(--ink);font:inherit
+    .art-bg[data-v="2"]{
+      --c1: rgba(138,167,242,.34); /* soft blue */
+      --c2: rgba(94,217,204,.22);  /* soft teal */
     }
-    .notify-form .btn{padding:8px 12px}
+    .art-bg .soon .note{opacity:.95}
 
     /* Footer */
     footer{padding:28px 0;border-top:1px solid var(--line);color:var(--sub)}
@@ -267,7 +262,7 @@
             </div>
           </article>
 
-          <!-- Coming soon — abstrakte, textfreie Backdrops (keine Cover) -->
+          <!-- Coming soon — dezente farbige Backdrops (ohne Cover/Text) -->
           <article class="card">
             <div class="media art-bg" data-v="1">
               <div class="soon"><span class="note">Coming soon</span></div>
