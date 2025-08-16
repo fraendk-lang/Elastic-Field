@@ -82,16 +82,22 @@
     .meta{color:var(--sub);font-size:14px}
     .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
 
-    /* Videos thumb & play button */
+    /* Videos thumb & brighter play button */
     .video-thumb{position:relative;aspect-ratio:16/9;overflow:hidden;background:#0f1016;border-bottom:1px solid var(--line)}
     .video-thumb img{width:100%;height:100%;object-fit:cover;filter:brightness(.82) contrast(1.05);transition:transform .4s ease}
     .video-thumb:hover img{transform:scale(1.03)}
     .play-btn{
-      position:absolute;inset:auto auto 16px 16px;
+      position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
       display:inline-flex;align-items:center;gap:10px;
-      padding:10px 14px;border-radius:12px;border:1px solid var(--line);
-      background:var(--panel);font-weight:700
+      padding:12px 18px;border-radius:999px;
+      border:1px solid rgba(255,255,255,.9);
+      background:linear-gradient(180deg,#ffffff,#f2f2f2);
+      color:#111;font-weight:800;letter-spacing:.2px;
+      box-shadow:0 12px 30px rgba(0,0,0,.45), 0 0 0 1px rgba(0,0,0,.05) inset;
+      cursor:pointer;
     }
+    .play-btn:hover{transform:translate(-50%,-50%) scale(1.03)}
+    .play-btn:focus-visible{outline:3px solid #fff;outline-offset:2px}
 
     /* Footer */
     footer{padding:28px 0;border-top:1px solid var(--line);color:var(--sub)}
@@ -162,7 +168,7 @@
             <img src="https://img.youtube.com/vi/6erDkiy3rFU/maxresdefault.jpg"
                  alt="Elastic Field — Mix (YouTube)"
                  onerror="this.src='https://img.youtube.com/vi/6erDkiy3rFU/hqdefault.jpg'">
-            <button class="play-btn" id="load-yt">▶︎ Play</button>
+            <button class="play-btn" id="load-yt" aria-label="Play video">▶︎ Play</button>
           </div>
           <div class="body">
             <p class="meta">More on <a href="https://www.youtube.com/@elasticfieldmusic" target="_blank" rel="noopener">youtube.com/@elasticfieldmusic</a></p>
