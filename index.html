@@ -109,8 +109,8 @@
     }
     .video-thumb:focus-visible{outline:3px solid #fff;outline-offset:3px}
 
-    /* Coming soon – dezente Farb-Backdrops (sichtbar, aber soft) */
-    .card .media.art-bg { background: none; } /* dunkle Basis überschreiben nur hier */
+    /* Coming soon – dezente Farb-Backdrops (sichtbar, aber soft; keine Cover) */
+    .card .media.art-bg { background: none; }
     .art-bg{
       position:relative;display:grid;place-items:center;aspect-ratio:1/1;overflow:hidden;
       border-bottom:1px solid var(--line);
@@ -172,17 +172,18 @@
       </div>
     </section>
 
-    <!-- Listen (Spotify embed) -->
+    <!-- Listen (Spotify → 1-Klick laden) -->
     <section id="listen">
       <div class="wrap">
         <h2>Listen</h2>
-        <p class="note">Listen here or open in the Spotify app.</p>
-        <div style="border-radius:16px;overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow)">
-          <iframe style="width:100%;height:420px;max-height:560px;background:#121318"
-                  src="https://open.spotify.com/embed/artist/2wn4Zq8AOBsX50X7fyBEoL?utm_source=generator&theme=0"
-                  frameborder="0"
-                  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                  loading="lazy"></iframe>
+        <p class="note">Click to load the Spotify player (content from Spotify may set cookies).</p>
+        <div class="card" style="overflow:hidden;border-radius:16px">
+          <div class="media video-thumb spotify" role="button" tabindex="0"
+               aria-label="Load Spotify player"
+               data-src="https://open.spotify.com/embed/artist/2wn4Zq8AOBsX50X7fyBEoL?utm_source=generator&theme=0">
+            <img src="spotify-placeholder.jpg" alt="Spotify preview" onerror="this.remove()" />
+            <span class="play-btn">▶︎ Load Spotify</span>
+          </div>
         </div>
       </div>
     </section>
@@ -342,6 +343,27 @@
       </div>
     </section>
 
+    <!-- Privacy / DSGVO -->
+    <section id="privacy">
+      <div class="wrap">
+        <h2>Privacy Policy (Datenschutzerklärung)</h2>
+        <div class="card"><div class="body">
+          <p><strong>Controller (Verantwortlicher):</strong><br>
+          F. Krumsdorf, Cologne (Köln), Germany · E-Mail: <a href="mailto:fraendk@hotmail.com">fraendk@hotmail.com</a></p>
+
+          <p><strong>Hosting:</strong> This website is hosted via GitHub Pages and delivered through Cloudflare. When you visit the site, technical data (incl. IP address) is processed for delivery and security.</p>
+
+          <p><strong>Contact form (Formspree):</strong> When you send a message via the form, your details are processed to handle the request. Legal basis: Art. 6(1)(a) GDPR (consent) and Art. 6(1)(b) (pre-contractual communication). Recipient: Formspree (USA). We keep messages only as long as necessary. You may withdraw consent at any time with effect for the future.</p>
+
+          <p><strong>External media:</strong> We load YouTube and Spotify only after your click (“click to load”). When loaded, these providers may set cookies and process personal data (e.g., IP address). Legal basis: Art. 6(1)(a) GDPR (consent).</p>
+
+          <p><strong>Your rights:</strong> Access, rectification, erasure, restriction, data portability, objection, and the right to lodge a complaint with a supervisory authority. Contact us at <a href="mailto:fraendk@hotmail.com">fraendk@hotmail.com</a>.</p>
+
+          <p><strong>Last updated:</strong> <span id="privacy-date"></span></p>
+        </div></div>
+      </div>
+    </section>
+
   </main>
 
   <footer>
@@ -354,8 +376,10 @@
   <script>
     // Year
     document.getElementById('y').textContent = new Date().getFullYear();
+    // Privacy date
+    document.getElementById('privacy-date').textContent = new Date().toISOString().split('T')[0];
 
-    // Videos: 1-click anywhere on thumbnail → load YT with autoplay
+    // YouTube: 1-click anywhere on thumbnail → load with autoplay
     (function initYouTubeOneClick(){
       const thumbs = document.querySelectorAll('.video-thumb.yt');
       thumbs.forEach(el => {
@@ -370,28 +394,24 @@
             'allowfullscreen></iframe>';
         };
         el.addEventListener('click', play);
-        el.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); play(); }});
+        el.addEventListener('keydown', e => { if (e.key==='Enter' || e.key===' ') { e.preventDefault(); play(); }});
       });
     })();
 
-    // Inline "Notify me" forms → AJAX submit with thank-you
-    document.querySelectorAll('.notify-form').forEach(form => {
-      form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const data = new FormData(form);
-        if (data.get('_honeypot')) return; // simple anti-bot
-        try {
-          const res = await fetch(form.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' }});
-          if (res.ok) {
-            form.innerHTML = '<span class="note ok">Thanks — we will notify you.</span>';
-          } else {
-            form.insertAdjacentHTML('beforeend', '<span class="note">Sorry, please try the contact form below.</span>');
-          }
-        } catch {
-          form.insertAdjacentHTML('beforeend', '<span class="note">Network error — please try again later.</span>');
-        }
+    // Spotify: 1-click load
+    (function initSpotifyOneClick(){
+      document.querySelectorAll('.video-thumb.spotify').forEach(el => {
+        const src = el.dataset.src;
+        if (!src) return;
+        const load = () => {
+          el.outerHTML =
+            '<iframe style="width:100%;height:420px;max-height:560px;background:#121318;border:0" ' +
+            'src="'+ src +'" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>';
+        };
+        el.addEventListener('click', load);
+        el.addEventListener('keydown', e => { if (e.key==='Enter' || e.key===' ') { e.preventDefault(); load(); } });
       });
-    });
+    })();
   </script>
 </body>
 </html>
