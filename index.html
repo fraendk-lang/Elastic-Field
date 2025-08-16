@@ -240,6 +240,7 @@
         <h2>Shop</h2>
         <p class="note">Secure checkout via Gumroad. After purchase you’ll receive a download link by e-mail.</p>
         <div class="grid cols-3">
+          <!-- Existing single -->
           <article class="card">
             <div class="media"><img src="ef-single-fortunes-bent-smile.png" alt="Elastic Field — Fortune’s Bent Smile (Single)"></div>
             <div class="body">
@@ -251,9 +252,14 @@
             </div>
           </article>
 
-          <!-- Coming soon — Notify me (inline Formspree) -->
+          <!-- Coming soon with Discography-style background (no title overlay) -->
           <article class="card">
-            <div class="media" style="background:linear-gradient(180deg,#191c21,#0f1116)"><span class="note" style="opacity:.85">Coming soon</span></div>
+            <div class="media"
+                 style="background:
+                   linear-gradient(180deg, rgba(0,0,0,.42), rgba(0,0,0,.18)),
+                   url('cover-lost-and-found.png') center/cover no-repeat;">
+              <span class="note" style="opacity:.9">Coming soon</span>
+            </div>
             <div class="body">
               <h3 style="margin:0 0 6px 0">Next Single</h3>
               <form class="notify-form" action="https://formspree.io/f/xldlvqbj" method="POST">
@@ -267,7 +273,12 @@
           </article>
 
           <article class="card">
-            <div class="media" style="background:linear-gradient(180deg,#191c21,#0f1116)"><span class="note" style="opacity:.85">Coming soon</span></div>
+            <div class="media"
+                 style="background:
+                   linear-gradient(180deg, rgba(0,0,0,.42), rgba(0,0,0,.18)),
+                   url('cover-another-non-smokers-nightmare.png') center/cover no-repeat;">
+              <span class="note" style="opacity:.9">Coming soon</span>
+            </div>
             <div class="body">
               <h3 style="margin:0 0 6px 0">Gates of Stillness — EP</h3>
               <form class="notify-form" action="https://formspree.io/f/xldlvqbj" method="POST">
