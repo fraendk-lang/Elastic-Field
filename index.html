@@ -63,7 +63,7 @@
       position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
       filter:brightness(.62) contrast(1.05);
       transform:scale(1.02);animation:slowZoom 22s ease-in-out infinite alternate;
-      pointer-events:none;
+      pointer-events:none; /* Links im Hero bleiben klickbar */
     }
     @keyframes slowZoom{from{transform:scale(1.02)}to{transform:scale(1.07)}}
     .hero::after{content:"";position:absolute;inset:0;background:radial-gradient(1100px 520px at 110% 0%, rgba(242,179,92,.12), transparent 60%);pointer-events:none}
@@ -93,7 +93,7 @@
     .note{color:var(--sub);font-size:14px}
     .ok{color:#8ae99b}
 
-    /* Videos thumb & play */
+    /* Videos thumb & play (1-Klick) */
     .video-thumb{position:relative;aspect-ratio:16/9;overflow:hidden;background:#0f1016;border-bottom:1px solid var(--line);cursor:pointer}
     .video-thumb img{width:100%;height:100%;object-fit:cover;filter:brightness(.82) contrast(1.05);transition:transform .4s ease}
     .video-thumb:hover img{transform:scale(1.03)}
@@ -108,6 +108,17 @@
       pointer-events:none;
     }
     .video-thumb:focus-visible{outline:3px solid #fff;outline-offset:3px}
+
+    /* "Coming soon" mit textfreiem Bild (geblurter Backdrop) */
+    .art-bg{position:relative;overflow:hidden}
+    .art-bg .img{
+      position:absolute;inset:0;background-position:center;background-size:cover;background-repeat:no-repeat;
+      transform:scale(1.15);
+      filter:blur(2px) brightness(.78) contrast(1.04) saturate(1.05);
+    }
+    .art-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,.42), rgba(0,0,0,.22))}
+    .art-bg > .label{position:relative;z-index:1}
+    .art-bg .label .note{opacity:.92}
 
     /* Inline notify form */
     .notify-form{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
@@ -252,13 +263,11 @@
             </div>
           </article>
 
-          <!-- Coming soon with Discography-style background (no title overlay) -->
+          <!-- Coming soon — textfreier Bild-Backdrop -->
           <article class="card">
-            <div class="media"
-                 style="background:
-                   linear-gradient(180deg, rgba(0,0,0,.42), rgba(0,0,0,.18)),
-                   url('cover-lost-and-found.png') center/cover no-repeat;">
-              <span class="note" style="opacity:.9">Coming soon</span>
+            <div class="media art-bg">
+              <div class="img" style="background-image:url('cover-lost-and-found.png')"></div>
+              <div class="label"><span class="note">Coming soon</span></div>
             </div>
             <div class="body">
               <h3 style="margin:0 0 6px 0">Next Single</h3>
@@ -273,11 +282,9 @@
           </article>
 
           <article class="card">
-            <div class="media"
-                 style="background:
-                   linear-gradient(180deg, rgba(0,0,0,.42), rgba(0,0,0,.18)),
-                   url('cover-another-non-smokers-nightmare.png') center/cover no-repeat;">
-              <span class="note" style="opacity:.9">Coming soon</span>
+            <div class="media art-bg">
+              <div class="img" style="background-image:url('cover-another-non-smokers-nightmare.png')"></div>
+              <div class="label"><span class="note">Coming soon</span></div>
             </div>
             <div class="body">
               <h3 style="margin:0 0 6px 0">Gates of Stillness — EP</h3>
@@ -366,9 +373,7 @@
             'allowfullscreen></iframe>';
         };
         el.addEventListener('click', play);
-        el.addEventListener('keydown', e => {
-          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); play(); }
-        });
+        el.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); play(); }});
       });
     })();
 
