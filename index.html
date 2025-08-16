@@ -31,20 +31,24 @@
     :root{
       --bg:#0b0c10;--panel:#121318;--ink:#e8ecf1;--sub:#a9b1bc;
       --line:#1d2028;--muted:#2a2e39;--brand:#f2b35c;
-      --radius:16px;--shadow:0 10px 25px rgba(0,0,0,.35)
+      --radius:16px;--shadow:0 10px 25px rgba(0,0,0,.35);
+      --headerH:64px;
     }
     *{box-sizing:border-box}
     html,body{margin:0;height:100%;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Arial}
+    html{scroll-behavior:smooth}
+    :target{scroll-margin-top:calc(var(--headerH) + 12px)}
     a{color:var(--ink);text-decoration:none}
     img{max-width:100%;display:block}
     .wrap{max-width:1120px;margin:0 auto;padding:0 20px}
 
     /* Header */
     header{
-      position:sticky;top:0;z-index:50;
+      position:sticky;top:0;z-index:100;
       background:linear-gradient(to bottom, rgba(11,12,16,.95), rgba(11,12,16,.65));
       backdrop-filter:saturate(140%) blur(8px);
-      border-bottom:1px solid var(--line)
+      border-bottom:1px solid var(--line);
+      height:var(--headerH);
     }
     .bar{display:flex;align-items:center;justify-content:space-between;padding:12px 0;gap:12px}
     .brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.4px}
@@ -55,10 +59,15 @@
 
     /* Hero */
     .hero{position:relative;min-height:58svh;border-bottom:1px solid var(--line);overflow:hidden}
-    .hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.62) contrast(1.05);transform:scale(1.02);animation:slowZoom 22s ease-in-out infinite alternate}
+    .hero video{
+      position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+      filter:brightness(.62) contrast(1.05);
+      transform:scale(1.02);animation:slowZoom 22s ease-in-out infinite alternate;
+      pointer-events:none; /* <<< fix: Video fängt keine Klicks mehr ab */
+    }
     @keyframes slowZoom{from{transform:scale(1.02)}to{transform:scale(1.07)}}
-    .hero::after{content:"";position:absolute;inset:0;background:radial-gradient(1100px 520px at 110% 0%, rgba(242,179,92,.12), transparent 60%)}
-    .hero-content{position:relative;display:grid;place-items:center;height:100%;padding:56px 0}
+    .hero::after{content:"";position:absolute;inset:0;background:radial-gradient(1100px 520px at 110% 0%, rgba(242,179,92,.12), transparent 60%);pointer-events:none}
+    .hero-content{position:relative;display:grid;place-items:center;height:100%;padding:56px 0;z-index:2}
     .title{
       text-align:center;max-width:min(860px,92%);padding:18px 22px 16px;
       background:rgba(18,19,24,.74);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);
@@ -96,7 +105,7 @@
       background:linear-gradient(180deg,#ffffff,#f2f2f2);
       color:#111;font-weight:800;letter-spacing:.2px;
       box-shadow:0 12px 30px rgba(0,0,0,.45), 0 0 0 1px rgba(0,0,0,.05) inset;
-      pointer-events:none; /* damit der Klick die ganze Fläche triggert */
+      pointer-events:none;
     }
     .video-thumb:focus-visible{outline:3px solid #fff;outline-offset:3px}
 
@@ -173,7 +182,7 @@
       <div class="wrap">
         <h2>Videos</h2>
         <div class="card">
-          <div class="media video-thumb" id="yt-thumb" role="button" tabindex="0" aria-label="Play Elastic Field Mix video">
+          <div class="media video-thumb yt" data-yt="6erDkiy3rFU" role="button" tabindex="0" aria-label="Play Elastic Field Mix video">
             <img src="https://img.youtube.com/vi/6erDkiy3rFU/maxresdefault.jpg"
                  alt="Elastic Field — Mix (YouTube thumbnail)"
                  onerror="this.src='https://img.youtube.com/vi/6erDkiy3rFU/hqdefault.jpg'">
@@ -331,19 +340,24 @@
     document.getElementById('y').textContent = new Date().getFullYear();
 
     // Videos: 1-click anywhere on thumbnail → load YT with autoplay
-    (function(){
-      const thumb = document.getElementById('yt-thumb');
-      if(!thumb) return;
-      const load = () => {
-        thumb.innerHTML =
-          '<iframe width="100%" height="100%" style="aspect-ratio:16/9;border:0" ' +
-          'src="https://www.youtube-nocookie.com/embed/6erDkiy3rFU?rel=0&modestbranding=1&autoplay=1&playsinline=1" ' +
-          'title="Elastic Field — Mix" ' +
-          'allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" ' +
-          'allowfullscreen></iframe>';
-      };
-      thumb.addEventListener('click', load);
-      thumb.addEventListener('keydown', (e)=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); load(); }});
+    (function initYouTubeOneClick(){
+      const thumbs = document.querySelectorAll('.video-thumb.yt');
+      thumbs.forEach(el => {
+        const id = el.dataset.yt;
+        if (!id) return;
+        const play = () => {
+          el.innerHTML =
+            '<iframe width="100%" height="100%" style="aspect-ratio:16/9;border:0" ' +
+            'src="https://www.youtube-nocookie.com/embed/' + id + '?rel=0&modestbranding=1&autoplay=1&playsinline=1" ' +
+            'title="Elastic Field — Video" ' +
+            'allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" ' +
+            'allowfullscreen></iframe>';
+        };
+        el.addEventListener('click', play);
+        el.addEventListener('keydown', e => {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); play(); }
+        });
+      });
     })();
 
     // Inline "Notify me" forms → AJAX submit with thank-you
