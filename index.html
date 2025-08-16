@@ -63,7 +63,7 @@
       position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
       filter:brightness(.62) contrast(1.05);
       transform:scale(1.02);animation:slowZoom 22s ease-in-out infinite alternate;
-      pointer-events:none; /* <<< fix: Video fängt keine Klicks mehr ab */
+      pointer-events:none;
     }
     @keyframes slowZoom{from{transform:scale(1.02)}to{transform:scale(1.07)}}
     .hero::after{content:"";position:absolute;inset:0;background:radial-gradient(1100px 520px at 110% 0%, rgba(242,179,92,.12), transparent 60%);pointer-events:none}
@@ -299,7 +299,8 @@
         <h2>Imprint</h2>
         <div class="card"><div class="body">
           <p><strong>Responsible according to §5 TMG</strong><br>
-             <em>Please add full legal name & postal address here</em></p>
+             F. Krumsdorf<br>
+             Cologne (Köln), Germany</p>
           <p>E-mail: <a href="mailto:fraendk@hotmail.com">fraendk@hotmail.com</a></p>
         </div></div>
       </div>
