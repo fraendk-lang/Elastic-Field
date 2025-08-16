@@ -84,8 +84,8 @@
     .note{color:var(--sub);font-size:14px}
     .ok{color:#8ae99b}
 
-    /* Videos thumb & brighter play button */
-    .video-thumb{position:relative;aspect-ratio:16/9;overflow:hidden;background:#0f1016;border-bottom:1px solid var(--line)}
+    /* Videos thumb & play */
+    .video-thumb{position:relative;aspect-ratio:16/9;overflow:hidden;background:#0f1016;border-bottom:1px solid var(--line);cursor:pointer}
     .video-thumb img{width:100%;height:100%;object-fit:cover;filter:brightness(.82) contrast(1.05);transition:transform .4s ease}
     .video-thumb:hover img{transform:scale(1.03)}
     .play-btn{
@@ -96,10 +96,9 @@
       background:linear-gradient(180deg,#ffffff,#f2f2f2);
       color:#111;font-weight:800;letter-spacing:.2px;
       box-shadow:0 12px 30px rgba(0,0,0,.45), 0 0 0 1px rgba(0,0,0,.05) inset;
-      cursor:pointer;
+      pointer-events:none; /* damit der Klick die ganze Fläche triggert */
     }
-    .play-btn:hover{transform:translate(-50%,-50%) scale(1.03)}
-    .play-btn:focus-visible{outline:3px solid #fff;outline-offset:2px}
+    .video-thumb:focus-visible{outline:3px solid #fff;outline-offset:3px}
 
     /* Inline notify form */
     .notify-form{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
@@ -169,16 +168,16 @@
       </div>
     </section>
 
-    <!-- Videos (thumbnail + 2-click) -->
+    <!-- Videos (thumbnail → 1-click autoplay) -->
     <section id="videos">
       <div class="wrap">
         <h2>Videos</h2>
         <div class="card">
-          <div class="media video-thumb" id="yt-thumb">
+          <div class="media video-thumb" id="yt-thumb" role="button" tabindex="0" aria-label="Play Elastic Field Mix video">
             <img src="https://img.youtube.com/vi/6erDkiy3rFU/maxresdefault.jpg"
-                 alt="Elastic Field — Mix (YouTube)"
+                 alt="Elastic Field — Mix (YouTube thumbnail)"
                  onerror="this.src='https://img.youtube.com/vi/6erDkiy3rFU/hqdefault.jpg'">
-            <button class="play-btn" id="load-yt" aria-label="Play video">▶︎ Play</button>
+            <span class="play-btn">▶︎ Play</span>
           </div>
           <div class="body">
             <p class="meta">More on <a href="https://www.youtube.com/@elasticfieldmusic" target="_blank" rel="noopener">youtube.com/@elasticfieldmusic</a></p>
@@ -331,21 +330,23 @@
     // Year
     document.getElementById('y').textContent = new Date().getFullYear();
 
-    // YouTube 2-click (thumbnail → real player on click)
-    const btn = document.getElementById('load-yt');
-    const thumb = document.getElementById('yt-thumb');
-    if (btn && thumb) {
-      btn.addEventListener('click', () => {
+    // Videos: 1-click anywhere on thumbnail → load YT with autoplay
+    (function(){
+      const thumb = document.getElementById('yt-thumb');
+      if(!thumb) return;
+      const load = () => {
         thumb.innerHTML =
           '<iframe width="100%" height="100%" style="aspect-ratio:16/9;border:0" ' +
-          'src="https://www.youtube-nocookie.com/embed/6erDkiy3rFU?rel=0" ' +
+          'src="https://www.youtube-nocookie.com/embed/6erDkiy3rFU?rel=0&modestbranding=1&autoplay=1&playsinline=1" ' +
           'title="Elastic Field — Mix" ' +
           'allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" ' +
           'allowfullscreen></iframe>';
-      });
-    }
+      };
+      thumb.addEventListener('click', load);
+      thumb.addEventListener('keydown', (e)=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); load(); }});
+    })();
 
-    // Inline "Notify me" forms → AJAX submit to Formspree with thank-you message
+    // Inline "Notify me" forms → AJAX submit with thank-you
     document.querySelectorAll('.notify-form').forEach(form => {
       form.addEventListener('submit', async (e) => {
         e.preventDefault();
