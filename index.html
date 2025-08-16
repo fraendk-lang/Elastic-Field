@@ -1,22 +1,31 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <title>Elastic Field — Official Site</title>
-  <meta name="description" content="Elastic Field — Trip-Hop, Downbeat, Lounge, Jazzy, Ambient & subtle electronics.">
-  <meta name="theme-color" content="#0b0c10">
+  <meta name="description" content="Elastic Field — Trip-Hop, Downbeat, Lounge, Jazzy, Ambient & subtle electronics." />
+  <meta name="theme-color" content="#0b0c10" />
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="Elastic Field — Official Site">
-  <meta property="og:description" content="Trip-Hop, Downbeat, Lounge, Jazzy, Ambient & subtle electronics.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://www.elasticfieldmusic.com/">
-  <meta property="og:image" content="og-elastic-field.jpg">
+  <!-- Canonical & Social -->
+  <link rel="canonical" href="https://www.elasticfieldmusic.com/" />
+  <meta property="og:title" content="Elastic Field — Official Site" />
+  <meta property="og:description" content="Trip-Hop, Downbeat, Lounge, Jazzy, Ambient & subtle electronics." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.elasticfieldmusic.com/" />
+  <meta property="og:image" content="og-elastic-field.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
 
-  <link rel="icon" href="ef-favicon-32.png" sizes="32x32">
-  <link rel="icon" href="ef-favicon.svg" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <!-- Icons -->
+  <link rel="icon" href="ef-favicon-32.png" sizes="32x32" />
+  <link rel="icon" href="ef-favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+
+  <!-- JSON-LD (minimal) -->
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"MusicGroup","name":"Elastic Field","url":"https://www.elasticfieldmusic.com/","sameAs":["https://www.youtube.com/@elasticfieldmusic","https://open.spotify.com/artist/2wn4Zq8AOBsX50X7fyBEoL","https://music.amazon.de/artists/B008F6S0LM/elastic-field"]}
+  </script>
 
   <style>
     :root{
@@ -33,29 +42,26 @@
     /* Header */
     header{
       position:sticky;top:0;z-index:50;
-      background:linear-gradient( to bottom, rgba(11,12,16,.95), rgba(11,12,16,.65) );
+      background:linear-gradient(to bottom, rgba(11,12,16,.95), rgba(11,12,16,.65));
       backdrop-filter:saturate(140%) blur(8px);
       border-bottom:1px solid var(--line)
     }
     .bar{display:flex;align-items:center;justify-content:space-between;padding:12px 0;gap:12px}
-    .logo{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.4px}
-    .logo-badge{width:28px;height:28px;border-radius:9px;background:linear-gradient(135deg,#1f2a35,#141821);border:1px solid var(--line)}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.4px}
+    .brand img{width:28px;height:28px;border-radius:8px}
     nav{display:flex;gap:8px;flex-wrap:wrap}
     .chip{display:inline-flex;align-items:center;padding:8px 12px;border-radius:999px;border:1px solid var(--line);background:var(--panel);font-weight:600}
     .chip:hover{transform:translateY(-1px)}
 
-    /* ===== Hero (alter Look: Titel eingeblendet, Video zoomt leicht) ===== */
+    /* Hero */
     .hero{position:relative;min-height:58svh;border-bottom:1px solid var(--line);overflow:hidden}
     .hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.62) contrast(1.05);transform:scale(1.02);animation:slowZoom 22s ease-in-out infinite alternate}
     @keyframes slowZoom{from{transform:scale(1.02)}to{transform:scale(1.07)}}
     .hero::after{content:"";position:absolute;inset:0;background:radial-gradient(1100px 520px at 110% 0%, rgba(242,179,92,.12), transparent 60%)}
-    .hero-content{
-      position:relative;display:grid;place-items:center;height:100%;padding:56px 0
-    }
+    .hero-content{position:relative;display:grid;place-items:center;height:100%;padding:56px 0}
     .title{
       text-align:center;max-width:min(860px,92%);padding:18px 22px 16px;
-      background:rgba(18,19,24,.74);border:1px solid var(--line);border-radius:16px;
-      box-shadow:var(--shadow);
+      background:rgba(18,19,24,.74);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);
       opacity:0;transform:translateY(6px);animation:fadeInUp .9s ease forwards .2s
     }
     @keyframes fadeInUp{to{opacity:1;transform:translateY(0)}}
@@ -76,6 +82,17 @@
     .meta{color:var(--sub);font-size:14px}
     .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
 
+    /* Videos thumb & play button */
+    .video-thumb{position:relative;aspect-ratio:16/9;overflow:hidden;background:#0f1016;border-bottom:1px solid var(--line)}
+    .video-thumb img{width:100%;height:100%;object-fit:cover;filter:brightness(.82) contrast(1.05);transition:transform .4s ease}
+    .video-thumb:hover img{transform:scale(1.03)}
+    .play-btn{
+      position:absolute;inset:auto auto 16px 16px;
+      display:inline-flex;align-items:center;gap:10px;
+      padding:10px 14px;border-radius:12px;border:1px solid var(--line);
+      background:var(--panel);font-weight:700
+    }
+
     /* Footer */
     footer{padding:28px 0;border-top:1px solid var(--line);color:var(--sub)}
     .note{color:var(--sub);font-size:14px}
@@ -86,73 +103,75 @@
   <!-- Header -->
   <header>
     <div class="wrap bar">
-      <a class="logo" href="#top" aria-label="Elastic Field">
-        <span class="logo-badge"></span><span>Elastic Field Music</span>
+      <a class="brand" href="#top" aria-label="Elastic Field">
+        <img src="ef-favicon-32.png" alt="EF logo" />
+        <span>Elastic Field</span>
       </a>
       <nav>
-        <a class="chip" href="#listen">Hören</a>
+        <a class="chip" href="#listen">Listen</a>
         <a class="chip" href="#videos">Videos</a>
         <a class="chip" href="#discography">Discography</a>
         <a class="chip" href="#shop">Shop</a>
-        <a class="chip" href="#imprint">Impressum</a>
-        <a class="chip" href="#contact">Kontakt</a>
+        <a class="chip" href="#imprint">Imprint</a>
+        <a class="chip" href="#contact">Contact</a>
       </nav>
     </div>
   </header>
 
   <main id="top">
 
-    <!-- ===== Hero (Video + eingeblendeter Titel) ===== -->
+    <!-- Hero -->
     <section class="hero" aria-label="Intro">
       <video autoplay muted playsinline loop poster="cover.jpg">
-        <source src="hero_480p.mp4" type="video/mp4">
+        <source src="hero_480p.mp4" type="video/mp4" />
       </video>
       <div class="hero-content">
         <div class="title">
           <h1>Elastic Field</h1>
-          <p class="lead">Musik für späte Stunden: warm, hypnotisch — Trip-Hop, Downbeat, Lounge, Jazzy & Ambient.</p>
+          <p class="lead">Music for late hours — Trip-Hop, Downbeat, Lounge, Jazzy & Ambient.</p>
           <div class="cta">
-            <a class="btn primary" href="#listen">▶︎ Jetzt hören</a>
+            <a class="btn primary" href="#listen">▶︎ Listen now</a>
             <a class="btn" href="https://www.youtube.com/@elasticfieldmusic" target="_blank" rel="noopener">YouTube</a>
-            <a class="btn" href="https://open.spotify.com/intl-de/artist/2wn4Zq8AOBsX50X7fyBEoL" target="_blank" rel="noopener">Spotify</a>
+            <a class="btn" href="https://open.spotify.com/artist/2wn4Zq8AOBsX50X7fyBEoL" target="_blank" rel="noopener">Spotify</a>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ===== Listen: Spotify Player (breit) ===== -->
+    <!-- Listen (Spotify embed) -->
     <section id="listen">
       <div class="wrap">
-        <h2>Hören</h2>
-        <p class="note">Direkt hier auf der Seite hören – oder in der Spotify-App öffnen.</p>
-        <!-- Artist-Embed. Für ein Album tausche die URL aus. Höhe wird per CSS responsiv gehalten. -->
+        <h2>Listen</h2>
+        <p class="note">Listen here or open in the Spotify app.</p>
         <div style="border-radius:16px;overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow)">
           <iframe style="width:100%;height:420px;max-height:560px;background:#121318"
                   src="https://open.spotify.com/embed/artist/2wn4Zq8AOBsX50X7fyBEoL?utm_source=generator&theme=0"
-                  frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                  frameborder="0"
+                  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
                   loading="lazy"></iframe>
         </div>
       </div>
     </section>
 
-    <!-- ===== Videos (2-Klick für Datenschutz) ===== -->
+    <!-- Videos (thumbnail + 2-click) -->
     <section id="videos">
       <div class="wrap">
         <h2>Videos</h2>
         <div class="card">
-          <div class="media" style="aspect-ratio:16/9;place-items:stretch;">
-            <div id="yt-holder" style="display:grid;place-items:center;background:#0f1016">
-              <button class="btn" id="load-yt" style="margin:22px">YouTube Player laden</button>
-            </div>
+          <div class="media video-thumb" id="yt-thumb">
+            <img src="https://img.youtube.com/vi/6erDkiy3rFU/maxresdefault.jpg"
+                 alt="Elastic Field — Mix (YouTube)"
+                 onerror="this.src='https://img.youtube.com/vi/6erDkiy3rFU/hqdefault.jpg'">
+            <button class="play-btn" id="load-yt">▶︎ Play</button>
           </div>
           <div class="body">
-            <p class="meta">Mehr auf <a href="https://www.youtube.com/@elasticfieldmusic" target="_blank" rel="noopener">youtube.com/@elasticfieldmusic</a></p>
+            <p class="meta">More on <a href="https://www.youtube.com/@elasticfieldmusic" target="_blank" rel="noopener">youtube.com/@elasticfieldmusic</a></p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ===== Discography (deine drei Cover aus dem Repo) ===== -->
+    <!-- Discography -->
     <section id="discography">
       <div class="wrap">
         <h2>Discography</h2>
@@ -173,7 +192,7 @@
               <h3 style="margin:0 0 4px 0">Non Smokers Nightmare</h3>
               <p class="meta">Album</p>
               <div class="actions">
-                <a class="btn" href="https://open.spotify.com/intl-de/album/7AS9NnBeJiZmG3518MUA44" target="_blank" rel="noopener">Spotify</a>
+                <a class="btn" href="https://open.spotify.com/intl-de/album/6CVmcZb3bQAkxU39k0falc" target="_blank" rel="noopener">Spotify</a>
               </div>
             </div>
           </article>
@@ -183,7 +202,7 @@
               <h3 style="margin:0 0 4px 0">Another Non Smokers Nightmare</h3>
               <p class="meta">Album</p>
               <div class="actions">
-                <a class="btn" href="https://open.spotify.com/intl-de/album/6CVmcZb3bQAkxU39k0falc" target="_blank" rel="noopener">Spotify</a>
+                <a class="btn" href="https://open.spotify.com/intl-de/album/2YGPf9NdDWbEMWZKs4PtSi" target="_blank" rel="noopener">Spotify</a>
               </div>
             </div>
           </article>
@@ -191,10 +210,11 @@
       </div>
     </section>
 
-    <!-- ===== Shop (Gumroad Single) ===== -->
+    <!-- Shop -->
     <section id="shop">
       <div class="wrap">
         <h2>Shop</h2>
+        <p class="note">Secure checkout via Gumroad. After purchase you’ll receive a download link by e-mail.</p>
         <div class="grid cols-3">
           <article class="card">
             <div class="media"><img src="ef-single-fortunes-bent-smile.png" alt="Elastic Field — Fortune’s Bent Smile (Single)"></div>
@@ -206,29 +226,44 @@
               </div>
             </div>
           </article>
-          <article class="card"><div class="media" style="background:linear-gradient(180deg,#191c21,#0f1116)"><span class="note" style="opacity:.85">Coming soon</span></div><div class="body"><h3 style="margin:0 0 4px 0">Next Single</h3><p class="meta">Notify me</p></div></article>
-          <article class="card"><div class="media" style="background:linear-gradient(180deg,#191c21,#0f1116)"><span class="note" style="opacity:.85">Coming soon</span></div><div class="body"><h3 style="margin:0 0 4px 0">Gates of Stillness — EP</h3><p class="meta">Notify me</p></div></article>
+          <article class="card" aria-disabled="true">
+            <div class="media" style="background:linear-gradient(180deg,#191c21,#0f1116)"><span class="note" style="opacity:.85">Coming soon</span></div>
+            <div class="body"><h3 style="margin:0 0 4px 0">Next Single</h3><p class="meta">Notify me</p></div>
+          </article>
+          <article class="card" aria-disabled="true">
+            <div class="media" style="background:linear-gradient(180deg,#191c21,#0f1116)"><span class="note" style="opacity:.85">Coming soon</span></div>
+            <div class="body"><h3 style="margin:0 0 4px 0">Gates of Stillness — EP</h3><p class="meta">Notify me</p></div>
+          </article>
         </div>
-        <p class="note" style="margin-top:10px">Hinweis: Produktname/Preis änderst du direkt in Gumroad; der Button hier bleibt gleich.</p>
       </div>
     </section>
 
-    <!-- ===== Impressum ===== -->
+    <!-- About -->
+    <section id="about">
+      <div class="wrap">
+        <h2>About</h2>
+        <p><strong>Elastic Field</strong> was founded in 2011 – a free-form music project rooted in ambient, lounge, trip hop, downbeat, jazz, and subtle electronic textures. The sound is reflective, immersive, and emotional – often instrumental, sometimes featuring voice fragments or spoken word passages.</p>
+        <p>In 2012, the debut album “Non Smokers Nightmare” introduced a world of atmospheric contrasts and sonic minimalism. One year later, the follow-up “Another Non Smokers Nightmare” (2013) deepened that sound – darker, more focused, but equally open and textured.</p>
+        <p>Now, in 2025, Elastic Field returns – with a series of remixes, new compositions, and a refined sound. While remaining true to its roots, the project embraces modern sonic aesthetics and digital production. It’s a comeback without nostalgia – a new beginning in the same spirit.</p>
+      </div>
+    </section>
+
+    <!-- Imprint -->
     <section id="imprint">
       <div class="wrap">
-        <h2>Impressum</h2>
+        <h2>Imprint</h2>
         <div class="card"><div class="body">
-          <p><strong>Verantwortlich i.S.d. §5 TMG</strong><br>
-             <em>Bitte hier vollständigen Namen & Anschrift eintragen</em></p>
-          <p>E-Mail: <a href="mailto:fraendk@hotmail.com">fraendk@hotmail.com</a></p>
+          <p><strong>Responsible according to §5 TMG</strong><br>
+             <em>Please add full legal name & postal address here</em></p>
+          <p>E-mail: <a href="mailto:fraendk@hotmail.com">fraendk@hotmail.com</a></p>
         </div></div>
       </div>
     </section>
 
-    <!-- ===== Kontakt (Formspree) ===== -->
+    <!-- Contact -->
     <section id="contact">
       <div class="wrap">
-        <h2>Kontakt</h2>
+        <h2>Contact</h2>
         <form class="card" action="https://formspree.io/f/xldlvqbj" method="POST">
           <div class="body" style="display:grid;gap:12px">
             <label><span class="meta">Your e-mail</span><br>
@@ -239,8 +274,8 @@
               <textarea name="message" rows="5" required placeholder="Write your message…"
                         style="width:100%;padding:10px 12px;border-radius:10px;border:1px solid var(--line);background:#0f1116;color:var(--ink)"></textarea>
             </label>
-            <button class="btn primary" type="submit">Senden</button>
-            <p class="note">Versand via Formspree.</p>
+            <button class="btn primary" type="submit">Send</button>
+            <p class="note">Sent via Formspree.</p>
           </div>
         </form>
       </div>
@@ -256,17 +291,22 @@
   </footer>
 
   <script>
-    // Jahr
+    // Year
     document.getElementById('y').textContent = new Date().getFullYear();
 
-    // YouTube 2-Klick
-    document.getElementById('load-yt')?.addEventListener('click', () => {
-      const holder = document.getElementById('yt-holder');
-      holder.innerHTML =
-        '<iframe width="100%" height="100%" style="aspect-ratio:16/9;border:0" '+
-        'src="https://www.youtube-nocookie.com/embed/6erDkiy3rFU?rel=0" '+
-        'title="Elastic Field — Mix" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>';
-    });
+    // YouTube 2-click (thumbnail → real player on click)
+    const btn = document.getElementById('load-yt');
+    const thumb = document.getElementById('yt-thumb');
+    if (btn && thumb) {
+      btn.addEventListener('click', () => {
+        thumb.innerHTML =
+          '<iframe width="100%" height="100%" style="aspect-ratio:16/9;border:0" ' +
+          'src="https://www.youtube-nocookie.com/embed/6erDkiy3rFU?rel=0" ' +
+          'title="Elastic Field — Mix" ' +
+          'allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" ' +
+          'allowfullscreen></iframe>';
+      });
+    }
   </script>
 </body>
 </html>
