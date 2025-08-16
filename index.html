@@ -1,15 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <title>Elastic Field Music — Official Site</title>
+  <title>Elastic Field — Official Site</title>
   <meta name="description" content="Elastic Field — Trip-Hop, Downbeat, Lounge, Jazzy, Ambient & subtle electronics.">
   <meta name="theme-color" content="#0b0c10">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Elastic Field Music — Official Site">
+  <meta property="og:title" content="Elastic Field — Official Site">
   <meta property="og:description" content="Trip-Hop, Downbeat, Lounge, Jazzy, Ambient & subtle electronics.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.elasticfieldmusic.com/">
@@ -21,15 +20,9 @@
 
   <style>
     :root{
-      --bg:#0b0c10;
-      --panel:#121318;
-      --ink:#e8ecf1;
-      --sub:#a9b1bc;
-      --line:#1d2028;
-      --muted:#2a2e39;
-      --brand:#f2b35c;
-      --radius:16px;
-      --shadow:0 10px 25px rgba(0,0,0,.35);
+      --bg:#0b0c10;--panel:#121318;--ink:#e8ecf1;--sub:#a9b1bc;
+      --line:#1d2028;--muted:#2a2e39;--brand:#f2b35c;
+      --radius:16px;--shadow:0 10px 25px rgba(0,0,0,.35)
     }
     *{box-sizing:border-box}
     html,body{margin:0;height:100%;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Arial}
@@ -40,73 +33,44 @@
     /* Header */
     header{
       position:sticky;top:0;z-index:50;
+      background:linear-gradient( to bottom, rgba(11,12,16,.95), rgba(11,12,16,.65) );
       backdrop-filter:saturate(140%) blur(8px);
-      background:linear-gradient( to bottom, rgba(11,12,16,.9), rgba(11,12,16,.65) );
-      border-bottom:1px solid var(--line);
+      border-bottom:1px solid var(--line)
     }
-    .bar{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:12px 0}
-    .logo{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.5px}
-    .logo-badge{
-      width:28px;height:28px;border-radius:9px;
-      background:radial-gradient(22px 12px at 50% 30%, rgba(242,179,92,.35), transparent 60%),
-                  linear-gradient(135deg,#1f2a35,#141821);
-      border:1px solid var(--line);
-      box-shadow:var(--shadow)
-    }
+    .bar{display:flex;align-items:center;justify-content:space-between;padding:12px 0;gap:12px}
+    .logo{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.4px}
+    .logo-badge{width:28px;height:28px;border-radius:9px;background:linear-gradient(135deg,#1f2a35,#141821);border:1px solid var(--line)}
     nav{display:flex;gap:8px;flex-wrap:wrap}
-    .chip{
-      display:inline-flex;align-items:center;gap:8px;
-      padding:8px 12px;border-radius:999px;border:1px solid var(--line);
-      background:var(--panel);color:var(--ink);font-weight:600;font-size:14px;
-      transition:.18s transform ease;
-    }
+    .chip{display:inline-flex;align-items:center;padding:8px 12px;border-radius:999px;border:1px solid var(--line);background:var(--panel);font-weight:600}
     .chip:hover{transform:translateY(-1px)}
 
-    /* Hero */
-    .hero{
-      position:relative;overflow:hidden;border-bottom:1px solid var(--line);
+    /* ===== Hero (alter Look: Titel eingeblendet, Video zoomt leicht) ===== */
+    .hero{position:relative;min-height:58svh;border-bottom:1px solid var(--line);overflow:hidden}
+    .hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.62) contrast(1.05);transform:scale(1.02);animation:slowZoom 22s ease-in-out infinite alternate}
+    @keyframes slowZoom{from{transform:scale(1.02)}to{transform:scale(1.07)}}
+    .hero::after{content:"";position:absolute;inset:0;background:radial-gradient(1100px 520px at 110% 0%, rgba(242,179,92,.12), transparent 60%)}
+    .hero-content{
+      position:relative;display:grid;place-items:center;height:100%;padding:56px 0
     }
-    .hero video{
-      position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.6) contrast(1.05);
+    .title{
+      text-align:center;max-width:min(860px,92%);padding:18px 22px 16px;
+      background:rgba(18,19,24,.74);border:1px solid var(--line);border-radius:16px;
+      box-shadow:var(--shadow);
+      opacity:0;transform:translateY(6px);animation:fadeInUp .9s ease forwards .2s
     }
-    .hero::after{
-      content:"";position:absolute;inset:0;
-      background:radial-gradient(1000px 500px at 110% 0%, rgba(242,179,92,.12), transparent 60%);
-      pointer-events:none;
-    }
-    .hero-inner{position:relative;min-height:56svh;display:grid;place-items:end start}
-    .title-card{
-      margin:60px 0 80px 0;max-width:min(760px,90%);
-      background:rgba(18,19,24,.74);
-      border:1px solid var(--line);
-      border-radius:16px;padding:18px 20px 16px 20px;
-      box-shadow:var(--shadow)
-    }
-    h1{
-      margin:0 0 6px 0;
-      font-size:clamp(36px,7vw,68px);line-height:1.05;font-weight:800;letter-spacing:.2px;
-      text-wrap:balance;
-    }
+    @keyframes fadeInUp{to{opacity:1;transform:translateY(0)}}
+    h1{margin:0 0 6px 0;font-size:clamp(38px,7vw,72px);line-height:1.05;font-weight:800}
     .lead{margin:0;color:var(--sub)}
-    .cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
-    .btn{
-      display:inline-flex;align-items:center;gap:10px;
-      padding:10px 14px;border-radius:12px;border:1px solid var(--line);
-      background:var(--panel);font-weight:700
-    }
+    .cta{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:14px}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:12px;border:1px solid var(--line);background:var(--panel);font-weight:700}
     .btn.primary{background:linear-gradient(180deg,#f7c879,#e3a647);color:#1a1308;border-color:#cd8e2f}
-    .btn:hover{transform:translateY(-1px)}
 
     /* Sections */
     section{padding:42px 0;border-top:1px solid var(--line)}
     h2{margin:0 0 14px 0;font-size:clamp(22px,3.2vw,28px)}
     .grid{display:grid;gap:18px}
-    @media (min-width:720px){ .grid.cols-3{grid-template-columns:repeat(3,1fr)} }
-
-    .card{
-      background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;
-      box-shadow:var(--shadow)
-    }
+    .grid.cols-3{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+    .card{background:var(--panel);border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:var(--shadow)}
     .card .media{aspect-ratio:1/1;background:#0f1016;display:grid;place-items:center}
     .card .body{padding:14px 16px}
     .meta{color:var(--sub);font-size:14px}
@@ -114,12 +78,7 @@
 
     /* Footer */
     footer{padding:28px 0;border-top:1px solid var(--line);color:var(--sub)}
-
-    /* Small helpers */
     .note{color:var(--sub);font-size:14px}
-    .ok{color:#8ae99b}
-    .warn{color:#f0bf7b}
-    .mono{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace}
   </style>
 </head>
 <body>
@@ -127,34 +86,33 @@
   <!-- Header -->
   <header>
     <div class="wrap bar">
-      <a class="logo" href="#top" aria-label="Elastic Field Music">
-        <span class="logo-badge"></span>
-        <span>Elastic Field&nbsp;Music</span>
+      <a class="logo" href="#top" aria-label="Elastic Field">
+        <span class="logo-badge"></span><span>Elastic Field Music</span>
       </a>
       <nav>
-        <a class="chip" href="#listen">Listen</a>
+        <a class="chip" href="#listen">Hören</a>
         <a class="chip" href="#videos">Videos</a>
         <a class="chip" href="#discography">Discography</a>
         <a class="chip" href="#shop">Shop</a>
-        <a class="chip" href="#about">About</a>
-        <a class="chip" href="#imprint">Imprint</a>
-        <a class="chip" href="#contact">Contact</a>
+        <a class="chip" href="#imprint">Impressum</a>
+        <a class="chip" href="#contact">Kontakt</a>
       </nav>
     </div>
   </header>
 
-  <!-- Hero with video background -->
   <main id="top">
+
+    <!-- ===== Hero (Video + eingeblendeter Titel) ===== -->
     <section class="hero" aria-label="Intro">
       <video autoplay muted playsinline loop poster="cover.jpg">
         <source src="hero_480p.mp4" type="video/mp4">
       </video>
-      <div class="wrap hero-inner">
-        <div class="title-card">
+      <div class="hero-content">
+        <div class="title">
           <h1>Elastic Field</h1>
-          <p class="lead">Music for late hours: warm, hypnotic — Trip-Hop, Downbeat, Lounge, Jazzy & subtle electronics.</p>
+          <p class="lead">Musik für späte Stunden: warm, hypnotisch — Trip-Hop, Downbeat, Lounge, Jazzy & Ambient.</p>
           <div class="cta">
-            <a class="btn primary" href="#listen">▶︎ Hear now</a>
+            <a class="btn primary" href="#listen">▶︎ Jetzt hören</a>
             <a class="btn" href="https://www.youtube.com/@elasticfieldmusic" target="_blank" rel="noopener">YouTube</a>
             <a class="btn" href="https://open.spotify.com/intl-de/artist/2wn4Zq8AOBsX50X7fyBEoL" target="_blank" rel="noopener">Spotify</a>
           </div>
@@ -162,38 +120,43 @@
       </div>
     </section>
 
-    <!-- Listen -->
+    <!-- ===== Listen: Spotify Player (breit) ===== -->
     <section id="listen">
       <div class="wrap">
-        <h2>Listen</h2>
-        <p class="note">Prefer streaming? Find Elastic Field on <a href="https://open.spotify.com/intl-de/artist/2wn4Zq8AOBsX50X7fyBEoL" target="_blank" rel="noopener">Spotify</a> and <a href="https://www.youtube.com/@elasticfieldmusic" target="_blank" rel="noopener">YouTube</a>.</p>
+        <h2>Hören</h2>
+        <p class="note">Direkt hier auf der Seite hören – oder in der Spotify-App öffnen.</p>
+        <!-- Artist-Embed. Für ein Album tausche die URL aus. Höhe wird per CSS responsiv gehalten. -->
+        <div style="border-radius:16px;overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow)">
+          <iframe style="width:100%;height:420px;max-height:560px;background:#121318"
+                  src="https://open.spotify.com/embed/artist/2wn4Zq8AOBsX50X7fyBEoL?utm_source=generator&theme=0"
+                  frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                  loading="lazy"></iframe>
+        </div>
       </div>
     </section>
 
-    <!-- Videos -->
+    <!-- ===== Videos (2-Klick für Datenschutz) ===== -->
     <section id="videos">
       <div class="wrap">
         <h2>Videos</h2>
         <div class="card">
           <div class="media" style="aspect-ratio:16/9;place-items:stretch;">
-            <!-- 2-Klick Embed: erst Button, dann Iframe -->
-            <div id="yt-holder" style="display:grid;place-items:center;background:#0f1016;">
-              <button class="btn" id="load-yt" style="margin:24px">Load YouTube player</button>
+            <div id="yt-holder" style="display:grid;place-items:center;background:#0f1016">
+              <button class="btn" id="load-yt" style="margin:22px">YouTube Player laden</button>
             </div>
           </div>
           <div class="body">
-            <p class="meta">Channel: <a href="https://www.youtube.com/@elasticfieldmusic" target="_blank" rel="noopener">elasticfieldmusic</a></p>
+            <p class="meta">Mehr auf <a href="https://www.youtube.com/@elasticfieldmusic" target="_blank" rel="noopener">youtube.com/@elasticfieldmusic</a></p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Discography -->
+    <!-- ===== Discography (deine drei Cover aus dem Repo) ===== -->
     <section id="discography">
       <div class="wrap">
         <h2>Discography</h2>
         <div class="grid cols-3">
-          <!-- Lost and Found (EP) -->
           <article class="card">
             <div class="media"><img src="cover-lost-and-found.png" alt="Elastic Field — Lost and Found (EP)"></div>
             <div class="body">
@@ -204,8 +167,6 @@
               </div>
             </div>
           </article>
-
-          <!-- Non Smokers Nightmare (Album) -->
           <article class="card">
             <div class="media"><img src="cover-non-smokers-nightmare.png" alt="Elastic Field — Non Smokers Nightmare (Album)"></div>
             <div class="body">
@@ -216,8 +177,6 @@
               </div>
             </div>
           </article>
-
-          <!-- Another Non Smokers Nightmare (Album) -->
           <article class="card">
             <div class="media"><img src="cover-another-non-smokers-nightmare.png" alt="Elastic Field — Another Non Smokers Nightmare (Album)"></div>
             <div class="body">
@@ -232,125 +191,80 @@
       </div>
     </section>
 
-    <!-- Shop -->
+    <!-- ===== Shop (Gumroad Single) ===== -->
     <section id="shop">
       <div class="wrap">
         <h2>Shop</h2>
-        <p class="note">Secure checkout via Gumroad. After purchase you’ll receive a download link by e-mail.</p>
-
         <div class="grid cols-3">
-          <!-- Fortune’s Bent Smile (Single) -->
           <article class="card">
             <div class="media"><img src="ef-single-fortunes-bent-smile.png" alt="Elastic Field — Fortune’s Bent Smile (Single)"></div>
             <div class="body">
               <h3 style="margin:0 0 4px 0">Fortune’s Bent Smile</h3>
               <p class="meta">Single</p>
               <div class="actions">
-                <a class="btn primary" href="https://fraendk.gumroad.com/l/oqggse" target="_blank" rel="noopener">Buy on Gumroad</a>
+                <a class="btn" href="https://fraendk.gumroad.com/l/oqggse" target="_blank" rel="noopener">Buy on Gumroad</a>
               </div>
             </div>
           </article>
-
-          <!-- Coming soon placeholders -->
-          <article class="card">
-            <div class="media" style="background:linear-gradient(180deg,#191c21,#0f1116)">
-              <span class="note" style="opacity:.8">Coming soon</span>
-            </div>
-            <div class="body">
-              <h3 style="margin:0 0 4px 0">Next Single</h3>
-              <p class="meta">Notify me</p>
-              <div class="actions">
-                <a class="btn" href="#contact">Notify me</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="media" style="background:linear-gradient(180deg,#191c21,#0f1116)">
-              <span class="note" style="opacity:.8">Coming soon</span>
-            </div>
-            <div class="body">
-              <h3 style="margin:0 0 4px 0">Gates of Stillness — EP</h3>
-              <p class="meta">Notify me</p>
-              <div class="actions">
-                <a class="btn" href="#contact">Notify me</a>
-              </div>
-            </div>
-          </article>
+          <article class="card"><div class="media" style="background:linear-gradient(180deg,#191c21,#0f1116)"><span class="note" style="opacity:.85">Coming soon</span></div><div class="body"><h3 style="margin:0 0 4px 0">Next Single</h3><p class="meta">Notify me</p></div></article>
+          <article class="card"><div class="media" style="background:linear-gradient(180deg,#191c21,#0f1116)"><span class="note" style="opacity:.85">Coming soon</span></div><div class="body"><h3 style="margin:0 0 4px 0">Gates of Stillness — EP</h3><p class="meta">Notify me</p></div></article>
         </div>
+        <p class="note" style="margin-top:10px">Hinweis: Produktname/Preis änderst du direkt in Gumroad; der Button hier bleibt gleich.</p>
       </div>
     </section>
 
-    <!-- About -->
-    <section id="about">
-      <div class="wrap">
-        <h2>About</h2>
-        <p>Elastic Field was founded in 2011 — a free-form music project rooted in ambient, lounge, trip-hop, downbeat, jazz, and subtle electronic textures. The sound is reflective, immersive, and emotional — often instrumental, sometimes featuring voice fragments or spoken word passages.</p>
-        <p>In 2012, the debut album “Non Smokers Nightmare” introduced a world of atmospheric contrasts and sonic minimalism. One year later, the follow-up “Another Non Smokers Nightmare” (2013) deepened that sound — darker, more focused, but equally open and textured.</p>
-        <p>Now, in 2025, Elastic Field returns — with a series of remixes, new compositions, and a refined sound. While remaining true to its roots, the project embraces modern sonic aesthetics and digital production. It’s a comeback without nostalgia — a new beginning in the same spirit.</p>
-      </div>
-    </section>
-
-    <!-- Imprint -->
+    <!-- ===== Impressum ===== -->
     <section id="imprint">
       <div class="wrap">
-        <h2>Imprint</h2>
-        <div class="card">
-          <div class="body">
-            <p><strong>Responsible according to § 5 TMG</strong><br>
-              Elastic Field (Owner/Content): <em>please add full legal name & postal address here</em></p>
-            <p>E-mail: <a href="mailto:fraendk@hotmail.com">fraendk@hotmail.com</a></p>
-            <p class="note">Hint: If you need a full German “Impressum”, add your complete postal address and any required IDs here.</p>
-          </div>
-        </div>
+        <h2>Impressum</h2>
+        <div class="card"><div class="body">
+          <p><strong>Verantwortlich i.S.d. §5 TMG</strong><br>
+             <em>Bitte hier vollständigen Namen & Anschrift eintragen</em></p>
+          <p>E-Mail: <a href="mailto:fraendk@hotmail.com">fraendk@hotmail.com</a></p>
+        </div></div>
       </div>
     </section>
 
-    <!-- Contact -->
+    <!-- ===== Kontakt (Formspree) ===== -->
     <section id="contact">
       <div class="wrap">
-        <h2>Contact</h2>
-        <div class="grid">
-          <form class="card" action="https://formspree.io/f/xldlvqbj" method="POST">
-            <div class="body">
-              <div style="display:grid;gap:12px">
-                <label>
-                  <span class="meta">Your e-mail</span><br>
-                  <input name="email" type="email" required placeholder="you@example.com"
-                         style="width:100%;padding:10px 12px;border-radius:10px;border:1px solid var(--line);background:#0f1116;color:var(--ink)">
-                </label>
-                <label>
-                  <span class="meta">Message</span><br>
-                  <textarea name="message" required rows="5" placeholder="Write your message…"
-                            style="width:100%;padding:10px 12px;border-radius:10px;border:1px solid var(--line);background:#0f1116;color:var(--ink)"></textarea>
-                </label>
-                <button class="btn primary" type="submit">Send</button>
-                <p class="note">Protected via Formspree. By sending, you agree that your message will be forwarded to our e-mail.</p>
-              </div>
-            </div>
-          </form>
-        </div>
+        <h2>Kontakt</h2>
+        <form class="card" action="https://formspree.io/f/xldlvqbj" method="POST">
+          <div class="body" style="display:grid;gap:12px">
+            <label><span class="meta">Your e-mail</span><br>
+              <input name="email" type="email" required placeholder="you@example.com"
+                     style="width:100%;padding:10px 12px;border-radius:10px;border:1px solid var(--line);background:#0f1116;color:var(--ink)">
+            </label>
+            <label><span class="meta">Message</span><br>
+              <textarea name="message" rows="5" required placeholder="Write your message…"
+                        style="width:100%;padding:10px 12px;border-radius:10px;border:1px solid var(--line);background:#0f1116;color:var(--ink)"></textarea>
+            </label>
+            <button class="btn primary" type="submit">Senden</button>
+            <p class="note">Versand via Formspree.</p>
+          </div>
+        </form>
       </div>
     </section>
+
   </main>
 
   <footer>
     <div class="wrap" style="display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap">
       <small>© <span id="y"></span> Elastic Field</small>
-      <small class="note">Built for GitHub Pages · Cloudflare DNS</small>
+      <small class="note">GitHub Pages · Cloudflare DNS</small>
     </div>
   </footer>
 
   <script>
-    // Year
+    // Jahr
     document.getElementById('y').textContent = new Date().getFullYear();
 
-    // 2-click YouTube privacy embed
+    // YouTube 2-Klick
     document.getElementById('load-yt')?.addEventListener('click', () => {
       const holder = document.getElementById('yt-holder');
       holder.innerHTML =
-        '<iframe width="100%" height="100%" style="aspect-ratio:16/9;border:0;" ' +
-        'src="https://www.youtube-nocookie.com/embed/6erDkiy3rFU?rel=0" ' +
+        '<iframe width="100%" height="100%" style="aspect-ratio:16/9;border:0" '+
+        'src="https://www.youtube-nocookie.com/embed/6erDkiy3rFU?rel=0" '+
         'title="Elastic Field — Mix" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>';
     });
   </script>
