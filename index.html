@@ -81,6 +81,8 @@
     .card .body{padding:14px 16px}
     .meta{color:var(--sub);font-size:14px}
     .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+    .note{color:var(--sub);font-size:14px}
+    .ok{color:#8ae99b}
 
     /* Videos thumb & brighter play button */
     .video-thumb{position:relative;aspect-ratio:16/9;overflow:hidden;background:#0f1016;border-bottom:1px solid var(--line)}
@@ -99,9 +101,17 @@
     .play-btn:hover{transform:translate(-50%,-50%) scale(1.03)}
     .play-btn:focus-visible{outline:3px solid #fff;outline-offset:2px}
 
+    /* Inline notify form */
+    .notify-form{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+    .notify-form input[type="email"]{
+      width:190px;max-width:100%;
+      padding:8px 10px;border-radius:10px;border:1px solid var(--line);
+      background:#0f1116;color:var(--ink);font:inherit
+    }
+    .notify-form .btn{padding:8px 12px}
+
     /* Footer */
     footer{padding:28px 0;border-top:1px solid var(--line);color:var(--sub)}
-    .note{color:var(--sub);font-size:14px}
   </style>
 </head>
 <body>
@@ -232,13 +242,34 @@
               </div>
             </div>
           </article>
-          <article class="card" aria-disabled="true">
+
+          <!-- Coming soon — Notify me (inline Formspree) -->
+          <article class="card">
             <div class="media" style="background:linear-gradient(180deg,#191c21,#0f1116)"><span class="note" style="opacity:.85">Coming soon</span></div>
-            <div class="body"><h3 style="margin:0 0 4px 0">Next Single</h3><p class="meta">Notify me</p></div>
+            <div class="body">
+              <h3 style="margin:0 0 6px 0">Next Single</h3>
+              <form class="notify-form" action="https://formspree.io/f/xldlvqbj" method="POST">
+                <input type="email" name="email" placeholder="Your e-mail" required />
+                <input type="hidden" name="product" value="Next Single" />
+                <input type="hidden" name="_subject" value="Elastic Field — Notify me: Next Single" />
+                <input type="text" name="_honeypot" style="display:none" tabindex="-1" autocomplete="off" />
+                <button class="btn" type="submit">Notify me</button>
+              </form>
+            </div>
           </article>
-          <article class="card" aria-disabled="true">
+
+          <article class="card">
             <div class="media" style="background:linear-gradient(180deg,#191c21,#0f1116)"><span class="note" style="opacity:.85">Coming soon</span></div>
-            <div class="body"><h3 style="margin:0 0 4px 0">Gates of Stillness — EP</h3><p class="meta">Notify me</p></div>
+            <div class="body">
+              <h3 style="margin:0 0 6px 0">Gates of Stillness — EP</h3>
+              <form class="notify-form" action="https://formspree.io/f/xldlvqbj" method="POST">
+                <input type="email" name="email" placeholder="Your e-mail" required />
+                <input type="hidden" name="product" value="Gates of Stillness — EP" />
+                <input type="hidden" name="_subject" value="Elastic Field — Notify me: Gates of Stillness — EP" />
+                <input type="text" name="_honeypot" style="display:none" tabindex="-1" autocomplete="off" />
+                <button class="btn" type="submit">Notify me</button>
+              </form>
+            </div>
           </article>
         </div>
       </div>
@@ -270,7 +301,7 @@
     <section id="contact">
       <div class="wrap">
         <h2>Contact</h2>
-        <form class="card" action="https://formspree.io/f/xldlvqbj" method="POST">
+        <form class="card" action="https://formspree.io/f/xldlvqbj" method="POST" id="contactForm">
           <div class="body" style="display:grid;gap:12px">
             <label><span class="meta">Your e-mail</span><br>
               <input name="email" type="email" required placeholder="you@example.com"
@@ -313,6 +344,25 @@
           'allowfullscreen></iframe>';
       });
     }
+
+    // Inline "Notify me" forms → AJAX submit to Formspree with thank-you message
+    document.querySelectorAll('.notify-form').forEach(form => {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const data = new FormData(form);
+        if (data.get('_honeypot')) return; // simple anti-bot
+        try {
+          const res = await fetch(form.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' }});
+          if (res.ok) {
+            form.innerHTML = '<span class="note ok">Thanks — we will notify you.</span>';
+          } else {
+            form.insertAdjacentHTML('beforeend', '<span class="note">Sorry, please try the contact form below.</span>');
+          }
+        } catch {
+          form.insertAdjacentHTML('beforeend', '<span class="note">Network error — please try again later.</span>');
+        }
+      });
+    });
   </script>
 </body>
 </html>
