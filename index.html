@@ -27,6 +27,12 @@
   {"@context":"https://schema.org","@type":"MusicGroup","name":"Elastic Field","url":"https://www.elasticfieldmusic.com/","sameAs":["https://www.youtube.com/@elasticfieldmusic","https://open.spotify.com/artist/2wn4Zq8AOBsX50X7fyBEoL","https://music.amazon.de/artists/B008F6S0LM/elastic-field"]}
   </script>
 
+  <!-- PATCH: Preconnects (YouTube, Spotify, Formspree) -->
+  <link rel="preconnect" href="https://www.youtube-nocookie.com" />
+  <link rel="preconnect" href="https://i.ytimg.com" />
+  <link rel="preconnect" href="https://open.spotify.com" />
+  <link rel="preconnect" href="https://api.formspree.io" />
+
   <style>
     :root{
       --bg:#0b0c10;--panel:#121318;--ink:#e8ecf1;--sub:#a9b1bc;
@@ -41,6 +47,11 @@
     a{color:var(--ink);text-decoration:none}
     img{max-width:100%;display:block}
     .wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+
+    /* PATCH: Skip-Link & Focus */
+    .skip{position:absolute;left:-9999px;top:auto;z-index:999;background:#111;color:#fff;padding:8px 12px;border-radius:8px}
+    .skip:focus{left:12px;top:12px}
+    :focus-visible{outline:3px solid #f2b35c;outline-offset:2px}
 
     /* Header */
     header{
@@ -79,6 +90,8 @@
     .cta{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:14px}
     .btn{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:12px;border:1px solid var(--line);background:var(--panel);font-weight:700}
     .btn.primary{background:linear-gradient(180deg,#f7c879,#e3a647);color:#1a1308;border-color:#cd8e2f}
+    .btn:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(0,0,0,.35)}
+    .btn.primary:hover{filter:saturate(1.06)}
 
     /* Sections */
     section{padding:42px 0;border-top:1px solid var(--line)}
@@ -94,32 +107,27 @@
     .ok{color:#8ae99b}
 
     /* Discography headings */
-    .card .body h3{margin:0 0 4px 0;font-weight:800;letter-spacing:.2px;
-                   font-size:clamp(18px,1rem + .35vw,20px)}
+    .card .body h3{margin:0 0 4px 0;font-weight:800;letter-spacing:.2px;font-size:clamp(18px,1rem + .35vw,20px)}
     /* Nur für "Lost and Found" schlanker setzen */
     .title-tight{letter-spacing:0;font-size:clamp(17px,1rem + .2vw,18px);word-spacing:-1px}
 
-    /* Videos thumb & play (1-Klick) */
+    /* Videos thumbnail & play (1-Klick) */
     .video-thumb{position:relative;aspect-ratio:16/9;overflow:hidden;background:#0f1016;border-bottom:1px solid var(--line);cursor:pointer}
     .video-thumb img{width:100%;height:100%;object-fit:cover;filter:brightness(.82) contrast(1.05);transition:transform .4s ease}
     .video-thumb:hover img{transform:scale(1.03)}
     .play-btn{
       position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
-      display:inline-flex;align-items:center;gap:10px;
-      padding:12px 18px;border-radius:999px;
-      border:1px solid rgba(255,255,255,.9);
-      background:linear-gradient(180deg,#ffffff,#f2f2f2);
+      display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border-radius:999px;
+      border:1px solid rgba(255,255,255,.9);background:linear-gradient(180deg,#ffffff,#f2f2f2);
       color:#111;font-weight:800;letter-spacing:.2px;
-      box-shadow:0 12px 30px rgba(0,0,0,.45), 0 0 0 1px rgba(0,0,0,.05) inset;
-      pointer-events:none;
+      box-shadow:0 12px 30px rgba(0,0,0,.45), 0 0 0 1px rgba(0,0,0,.05) inset;pointer-events:none;
     }
     .video-thumb:focus-visible{outline:3px solid #fff;outline-offset:3px}
 
     /* Coming soon – dezente Farb-Backdrops (ohne Cover/Text im Bild) */
     .card .media.art-bg { background: none; }
     .art-bg{
-      position:relative;display:grid;place-items:center;aspect-ratio:1/1;overflow:hidden;
-      border-bottom:1px solid var(--line);
+      position:relative;display:grid;place-items:center;aspect-ratio:1/1;overflow:hidden;border-bottom:1px solid var(--line);
       background:
         radial-gradient(80% 70% at 85% 15%, var(--c1, rgba(242,179,92,.38)), transparent 60%),
         radial-gradient(70% 60% at 15% 85%, var(--c2, rgba(255,111,60,.22)), transparent 60%),
@@ -128,10 +136,7 @@
         linear-gradient(180deg, #1a1e27, #0f1116);
       filter:saturate(1.06) contrast(1.04);
     }
-    .art-bg[data-v="2"]{
-      --c1: rgba(138,167,242,.34); /* soft blue */
-      --c2: rgba(94,217,204,.22);  /* soft teal */
-    }
+    .art-bg[data-v="2"]{ --c1: rgba(138,167,242,.34); --c2: rgba(94,217,204,.22); }
     .art-bg .soon .note{opacity:.95}
 
     /* Shop-Karten: dezenter Karten-Hintergrund */
@@ -146,9 +151,18 @@
 
     /* Footer */
     footer{padding:28px 0;border-top:1px solid var(--line);color:var(--sub)}
+
+    /* PATCH: Reduced-Motion respektieren */
+    @media (prefers-reduced-motion: reduce){
+      .hero video{animation:none}
+      *{scroll-behavior:auto}
+    }
   </style>
 </head>
 <body>
+
+  <!-- PATCH: Skip-Link -->
+  <a class="skip" href="#top">Skip to content</a>
 
   <!-- Header -->
   <header>
@@ -204,7 +218,7 @@
       </div>
     </section>
 
-    <!-- Videos (thumbnail → 1-click autoplay) -->
+    <!-- Videos (thumbnail → 1-Klick autoplay) -->
     <section id="videos">
       <div class="wrap">
         <h2>Videos</h2>
@@ -261,7 +275,7 @@
       </div>
     </section>
 
-    <!-- Shop (Verkauf pausiert → Coming soon + dezenter Karten-Hintergrund) -->
+    <!-- Shop (Verkauf pausiert → Coming Soon, dezente Karten-Hintergründe) -->
     <section id="shop">
       <div class="wrap">
         <h2>Shop</h2>
@@ -394,12 +408,23 @@
   </footer>
 
   <script>
-    // Year
+    // Year & Privacy date
     document.getElementById('y').textContent = new Date().getFullYear();
-    // Privacy date
     document.getElementById('privacy-date').textContent = new Date().toISOString().split('T')[0];
 
-    // YouTube: 1-click anywhere on thumbnail → load with autoplay
+    // PATCH: Lazy-Images global
+    document.querySelectorAll('img:not([loading])').forEach(img=>{
+      img.loading='lazy'; img.decoding='async';
+    });
+
+    // PATCH: Reduced-Motion – Video pausieren, wenn vom System gewünscht
+    (function(){
+      const m = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)');
+      const v = document.querySelector('.hero video');
+      if (m && m.matches && v){ v.pause(); v.removeAttribute('autoplay'); }
+    })();
+
+    // YouTube: 1-Klick anywhere on thumbnail → load with autoplay
     (function initYouTubeOneClick(){
       const thumbs = document.querySelectorAll('.video-thumb.yt');
       thumbs.forEach(el => {
@@ -418,7 +443,7 @@
       });
     })();
 
-    // Spotify: 1-click load
+    // Spotify: 1-Klick load
     (function initSpotifyOneClick(){
       document.querySelectorAll('.video-thumb.spotify').forEach(el => {
         const src = el.dataset.src;
