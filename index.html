@@ -27,7 +27,7 @@
   {"@context":"https://schema.org","@type":"MusicGroup","name":"Elastic Field","url":"https://www.elasticfieldmusic.com/","sameAs":["https://www.youtube.com/@elasticfieldmusic","https://open.spotify.com/artist/2wn4Zq8AOBsX50X7fyBEoL","https://music.amazon.de/artists/B008F6S0LM/elastic-field"]}
   </script>
 
-  <!-- PATCH: Preconnects (YouTube, Spotify, Formspree) -->
+  <!-- Preconnects -->
   <link rel="preconnect" href="https://www.youtube-nocookie.com" />
   <link rel="preconnect" href="https://i.ytimg.com" />
   <link rel="preconnect" href="https://open.spotify.com" />
@@ -48,7 +48,7 @@
     img{max-width:100%;display:block}
     .wrap{max-width:1120px;margin:0 auto;padding:0 20px}
 
-    /* PATCH: Skip-Link & Focus */
+    /* Skip-Link & Focus */
     .skip{position:absolute;left:-9999px;top:auto;z-index:999;background:#111;color:#fff;padding:8px 12px;border-radius:8px}
     .skip:focus{left:12px;top:12px}
     :focus-visible{outline:3px solid #f2b35c;outline-offset:2px}
@@ -111,7 +111,7 @@
     /* Nur für "Lost and Found" schlanker setzen */
     .title-tight{letter-spacing:0;font-size:clamp(17px,1rem + .2vw,18px);word-spacing:-1px}
 
-    /* Videos thumbnail & play (1-Klick) */
+    /* Video-Thumb */
     .video-thumb{position:relative;aspect-ratio:16/9;overflow:hidden;background:#0f1016;border-bottom:1px solid var(--line);cursor:pointer}
     .video-thumb img{width:100%;height:100%;object-fit:cover;filter:brightness(.82) contrast(1.05);transition:transform .4s ease}
     .video-thumb:hover img{transform:scale(1.03)}
@@ -124,7 +124,7 @@
     }
     .video-thumb:focus-visible{outline:3px solid #fff;outline-offset:3px}
 
-    /* Coming soon – dezente Farb-Backdrops (ohne Cover/Text im Bild) */
+    /* Coming soon – dezente Farb-Backdrops */
     .card .media.art-bg { background: none; }
     .art-bg{
       position:relative;display:grid;place-items:center;aspect-ratio:1/1;overflow:hidden;border-bottom:1px solid var(--line);
@@ -152,7 +152,17 @@
     /* Footer */
     footer{padding:28px 0;border-top:1px solid var(--line);color:var(--sub)}
 
-    /* PATCH: Reduced-Motion respektieren */
+    /* Back-to-top Button */
+    #toTop{
+      position:fixed;right:14px;bottom:14px;opacity:0;pointer-events:none;
+      border:1px solid var(--line);background:var(--panel);border-radius:999px;padding:10px 12px;
+      box-shadow:var(--shadow);transition:opacity .2s ease, transform .2s ease;
+      font-weight:800
+    }
+    #toTop.show{opacity:1;pointer-events:auto}
+    #toTop:hover{transform:translateY(-2px)}
+
+    /* Reduced-Motion */
     @media (prefers-reduced-motion: reduce){
       .hero video{animation:none}
       *{scroll-behavior:auto}
@@ -161,7 +171,7 @@
 </head>
 <body>
 
-  <!-- PATCH: Skip-Link -->
+  <!-- Skip-Link -->
   <a class="skip" href="#top">Skip to content</a>
 
   <!-- Header -->
@@ -218,7 +228,7 @@
       </div>
     </section>
 
-    <!-- Videos (thumbnail → 1-Klick autoplay) -->
+    <!-- Videos -->
     <section id="videos">
       <div class="wrap">
         <h2>Videos</h2>
@@ -275,17 +285,14 @@
       </div>
     </section>
 
-    <!-- Shop (Verkauf pausiert → Coming Soon, dezente Karten-Hintergründe) -->
+    <!-- Shop (pausiert → Coming Soon) -->
     <section id="shop">
       <div class="wrap">
         <h2>Shop</h2>
         <p class="note">Store temporarily paused — sign up to get notified when downloads are available.</p>
         <div class="grid cols-3">
-
           <article class="card shop">
-            <div class="media art-bg" data-v="1">
-              <div class="soon"><span class="note">Coming soon</span></div>
-            </div>
+            <div class="media art-bg" data-v="1"><div class="soon"><span class="note">Coming soon</span></div></div>
             <div class="body">
               <h3>Fortune’s Bent Smile</h3>
               <p class="meta">Single</p>
@@ -298,11 +305,8 @@
               </form>
             </div>
           </article>
-
           <article class="card shop">
-            <div class="media art-bg" data-v="1">
-              <div class="soon"><span class="note">Coming soon</span></div>
-            </div>
+            <div class="media art-bg" data-v="1"><div class="soon"><span class="note">Coming soon</span></div></div>
             <div class="body">
               <h3>Next Single</h3>
               <form class="notify-form" action="https://formspree.io/f/xldlvqbj" method="POST">
@@ -314,11 +318,8 @@
               </form>
             </div>
           </article>
-
           <article class="card shop">
-            <div class="media art-bg" data-v="2">
-              <div class="soon"><span class="note">Coming soon</span></div>
-            </div>
+            <div class="media art-bg" data-v="2"><div class="soon"><span class="note">Coming soon</span></div></div>
             <div class="body">
               <h3>Gates of Stillness — EP</h3>
               <form class="notify-form" action="https://formspree.io/f/xldlvqbj" method="POST">
@@ -330,7 +331,6 @@
               </form>
             </div>
           </article>
-
         </div>
       </div>
     </section>
@@ -379,7 +379,7 @@
       </div>
     </section>
 
-    <!-- Privacy / DSGVO -->
+    <!-- Privacy -->
     <section id="privacy">
       <div class="wrap">
         <h2>Privacy Policy (Datenschutzerklärung)</h2>
@@ -407,54 +407,59 @@
     </div>
   </footer>
 
+  <!-- Back-to-top -->
+  <button id="toTop" aria-label="Back to top">↑</button>
+
   <script>
     // Year & Privacy date
     document.getElementById('y').textContent = new Date().getFullYear();
     document.getElementById('privacy-date').textContent = new Date().toISOString().split('T')[0];
 
-    // PATCH: Lazy-Images global
+    // Lazy-Images global
     document.querySelectorAll('img:not([loading])').forEach(img=>{
       img.loading='lazy'; img.decoding='async';
     });
 
-    // PATCH: Reduced-Motion – Video pausieren, wenn vom System gewünscht
+    // Reduced-Motion – Video pausieren, wenn vom System gewünscht
     (function(){
       const m = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)');
       const v = document.querySelector('.hero video');
       if (m && m.matches && v){ v.pause(); v.removeAttribute('autoplay'); }
     })();
 
-    // YouTube: 1-Klick anywhere on thumbnail → load with autoplay
-    (function initYouTubeOneClick(){
-      const thumbs = document.querySelectorAll('.video-thumb.yt');
-      thumbs.forEach(el => {
-        const id = el.dataset.yt;
-        if (!id) return;
+    // Back-to-top
+    (function(){
+      const b=document.getElementById('toTop');
+      const onScroll=()=>{ b.classList.toggle('show', window.scrollY>600); };
+      window.addEventListener('scroll', onScroll, {passive:true});
+      onScroll();
+      b.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+    })();
+
+    // YouTube: 1-Klick → Autoplay
+    (function(){
+      document.querySelectorAll('.video-thumb.yt').forEach(el=>{
+        const id = el.dataset.yt; if(!id) return;
         const play = () => {
           el.innerHTML =
             '<iframe width="100%" height="100%" style="aspect-ratio:16/9;border:0" ' +
-            'src="https://www.youtube-nocookie.com/embed/' + id + '?rel=0&modestbranding=1&autoplay=1&playsinline=1" ' +
-            'title="Elastic Field — Video" ' +
-            'allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" ' +
-            'allowfullscreen></iframe>';
+            'src="https://www.youtube-nocookie.com/embed/'+id+'?rel=0&modestbranding=1&autoplay=1&playsinline=1" ' +
+            'title="Elastic Field — Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>';
         };
         el.addEventListener('click', play);
-        el.addEventListener('keydown', e => { if (e.key==='Enter' || e.key===' ') { e.preventDefault(); play(); }});
+        el.addEventListener('keydown', e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); play(); } });
       });
     })();
 
-    // Spotify: 1-Klick load
-    (function initSpotifyOneClick(){
-      document.querySelectorAll('.video-thumb.spotify').forEach(el => {
-        const src = el.dataset.src;
-        if (!src) return;
+    // Spotify: 1-Klick laden
+    (function(){
+      document.querySelectorAll('.video-thumb.spotify').forEach(el=>{
+        const src = el.dataset.src; if(!src) return;
         const load = () => {
-          el.outerHTML =
-            '<iframe style="width:100%;height:420px;max-height:560px;background:#121318;border:0" ' +
-            'src="'+ src +'" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>';
+          el.outerHTML = '<iframe style="width:100%;height:420px;max-height:560px;background:#121318;border:0" src="'+src+'" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>';
         };
         el.addEventListener('click', load);
-        el.addEventListener('keydown', e => { if (e.key==='Enter' || e.key===' ') { e.preventDefault(); load(); } });
+        el.addEventListener('keydown', e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); load(); } });
       });
     })();
   </script>
