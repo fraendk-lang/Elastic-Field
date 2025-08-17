@@ -93,6 +93,13 @@
     .note{color:var(--sub);font-size:14px}
     .ok{color:#8ae99b}
 
+    /* Discography image fit */
+    .card .media img{width:100%;height:100%;object-fit:cover}
+    /* Only Lost & Found: show more of the artwork (less crop) */
+    .card .media img.fit-contain{
+      object-fit:contain;background:#0f1116;padding:6%;
+    }
+
     /* Videos thumb & play (1-Klick) */
     .video-thumb{position:relative;aspect-ratio:16/9;overflow:hidden;background:#0f1016;border-bottom:1px solid var(--line);cursor:pointer}
     .video-thumb img{width:100%;height:100%;object-fit:cover;filter:brightness(.82) contrast(1.05);transition:transform .4s ease}
@@ -109,7 +116,7 @@
     }
     .video-thumb:focus-visible{outline:3px solid #fff;outline-offset:3px}
 
-    /* Coming soon – dezente Farb-Backdrops (sichtbar, aber soft; keine Cover) */
+    /* Coming soon – dezente Farb-Backdrops (ohne Cover) */
     .card .media.art-bg { background: none; }
     .art-bg{
       position:relative;display:grid;place-items:center;aspect-ratio:1/1;overflow:hidden;
@@ -212,12 +219,13 @@
         <h2>Discography</h2>
         <div class="grid cols-3">
           <article class="card">
-            <div class="media"><img src="cover-lost-and-found.png" alt="Elastic Field — Lost and Found (EP)"></div>
+            <div class="media"><img class="fit-contain" src="cover-lost-and-found.png" alt="Elastic Field — Lost and Found (EP)"></div>
             <div class="body">
               <h3 style="margin:0 0 4px 0">Lost and Found</h3>
               <p class="meta">EP</p>
               <div class="actions">
-                <a class="btn" href="https://open.spotify.com/intl-de/album/4gNyV1XCfZY8enSJb3msCn" target="_blank" rel="noopener">Spotify</a>
+                <!-- FIXED: Link now points to the correct album -->
+                <a class="btn" href="https://open.spotify.com/intl-de/album/6CVmcZb3bQAkxU39k0falc" target="_blank" rel="noopener">Spotify</a>
               </div>
             </div>
           </article>
@@ -227,7 +235,8 @@
               <h3 style="margin:0 0 4px 0">Non Smokers Nightmare</h3>
               <p class="meta">Album</p>
               <div class="actions">
-                <a class="btn" href="https://open.spotify.com/intl-de/album/6CVmcZb3bQAkxU39k0falc" target="_blank" rel="noopener">Spotify</a>
+                <!-- FIXED: Link swapped -->
+                <a class="btn" href="https://open.spotify.com/intl-de/album/4gNyV1XCfZY8enSJb3msCn" target="_blank" rel="noopener">Spotify</a>
               </div>
             </div>
           </article>
