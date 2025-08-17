@@ -63,7 +63,7 @@
       position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
       filter:brightness(.62) contrast(1.05);
       transform:scale(1.02);animation:slowZoom 22s ease-in-out infinite alternate;
-      pointer-events:none; /* Links im Hero bleiben klickbar */
+      pointer-events:none;
     }
     @keyframes slowZoom{from{transform:scale(1.02)}to{transform:scale(1.07)}}
     .hero::after{content:"";position:absolute;inset:0;background:radial-gradient(1100px 520px at 110% 0%, rgba(242,179,92,.12), transparent 60%);pointer-events:none}
@@ -95,10 +95,8 @@
 
     /* Discography image fit */
     .card .media img{width:100%;height:100%;object-fit:cover}
-    /* Only Lost & Found: show more of the artwork (less crop) */
-    .card .media img.fit-contain{
-      object-fit:contain;background:#0f1116;padding:6%;
-    }
+    /* Lost & Found: noch schlanker anzeigen */
+    .card .media img.fit-contain{object-fit:contain;background:#0f1116;padding:14%;object-position:center}
 
     /* Videos thumb & play (1-Klick) */
     .video-thumb{position:relative;aspect-ratio:16/9;overflow:hidden;background:#0f1016;border-bottom:1px solid var(--line);cursor:pointer}
@@ -116,7 +114,7 @@
     }
     .video-thumb:focus-visible{outline:3px solid #fff;outline-offset:3px}
 
-    /* Coming soon – dezente Farb-Backdrops (ohne Cover) */
+    /* Coming soon – dezente Farb-Backdrops (ohne Cover/Text im Bild) */
     .card .media.art-bg { background: none; }
     .art-bg{
       position:relative;display:grid;place-items:center;aspect-ratio:1/1;overflow:hidden;
@@ -224,7 +222,6 @@
               <h3 style="margin:0 0 4px 0">Lost and Found</h3>
               <p class="meta">EP</p>
               <div class="actions">
-                <!-- FIXED: Link now points to the correct album -->
                 <a class="btn" href="https://open.spotify.com/intl-de/album/6CVmcZb3bQAkxU39k0falc" target="_blank" rel="noopener">Spotify</a>
               </div>
             </div>
@@ -235,7 +232,6 @@
               <h3 style="margin:0 0 4px 0">Non Smokers Nightmare</h3>
               <p class="meta">Album</p>
               <div class="actions">
-                <!-- FIXED: Link swapped -->
                 <a class="btn" href="https://open.spotify.com/intl-de/album/4gNyV1XCfZY8enSJb3msCn" target="_blank" rel="noopener">Spotify</a>
               </div>
             </div>
@@ -254,25 +250,32 @@
       </div>
     </section>
 
-    <!-- Shop -->
+    <!-- Shop (Verkauf pausiert → überall Coming soon) -->
     <section id="shop">
       <div class="wrap">
         <h2>Shop</h2>
-        <p class="note">Secure checkout via Gumroad. After purchase you’ll receive a download link by e-mail.</p>
+        <p class="note">Store temporarily paused — sign up to get notified when downloads are available.</p>
         <div class="grid cols-3">
-          <!-- Existing single -->
+
+          <!-- Fortune’s Bent Smile → Coming soon -->
           <article class="card">
-            <div class="media"><img src="ef-single-fortunes-bent-smile.png" alt="Elastic Field — Fortune’s Bent Smile (Single)"></div>
+            <div class="media art-bg" data-v="1">
+              <div class="soon"><span class="note">Coming soon</span></div>
+            </div>
             <div class="body">
-              <h3 style="margin:0 0 4px 0">Fortune’s Bent Smile</h3>
+              <h3 style="margin:0 0 6px 0">Fortune’s Bent Smile</h3>
               <p class="meta">Single</p>
-              <div class="actions">
-                <a class="btn" href="https://fraendk.gumroad.com/l/oqggse" target="_blank" rel="noopener">Buy on Gumroad</a>
-              </div>
+              <form class="notify-form" action="https://formspree.io/f/xldlvqbj" method="POST">
+                <input type="email" name="email" placeholder="Your e-mail" required />
+                <input type="hidden" name="product" value="Fortune’s Bent Smile — Single" />
+                <input type="hidden" name="_subject" value="Elastic Field — Notify me: Fortune’s Bent Smile" />
+                <input type="text" name="_honeypot" style="display:none" tabindex="-1" autocomplete="off" />
+                <button class="btn" type="submit">Notify me</button>
+              </form>
             </div>
           </article>
 
-          <!-- Coming soon — dezente farbige Backdrops (ohne Cover/Text) -->
+          <!-- Coming soon -->
           <article class="card">
             <div class="media art-bg" data-v="1">
               <div class="soon"><span class="note">Coming soon</span></div>
@@ -304,6 +307,7 @@
               </form>
             </div>
           </article>
+
         </div>
       </div>
     </section>
@@ -365,8 +369,6 @@
           <p><strong>Contact form (Formspree):</strong> When you send a message via the form, your details are processed to handle the request. Legal basis: Art. 6(1)(a) GDPR (consent) and Art. 6(1)(b) (pre-contractual communication). Recipient: Formspree (USA). We keep messages only as long as necessary. You may withdraw consent at any time with effect for the future.</p>
 
           <p><strong>External media:</strong> We load YouTube and Spotify only after your click (“click to load”). When loaded, these providers may set cookies and process personal data (e.g., IP address). Legal basis: Art. 6(1)(a) GDPR (consent).</p>
-
-          <p><strong>Your rights:</strong> Access, rectification, erasure, restriction, data portability, objection, and the right to lodge a complaint with a supervisory authority. Contact us at <a href="mailto:fraendk@hotmail.com">fraendk@hotmail.com</a>.</p>
 
           <p><strong>Last updated:</strong> <span id="privacy-date"></span></p>
         </div></div>
