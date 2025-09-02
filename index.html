@@ -111,7 +111,6 @@
 
     /* Discography headings */
     .card .body h3{margin:0 0 4px 0;font-weight:800;letter-spacing:.2px;font-size:clamp(18px,1rem + .35vw,20px)}
-    /* Nur für "Lost and Found" schlanker setzen */
     .title-tight{letter-spacing:0;font-size:clamp(17px,1rem + .2vw,18px);word-spacing:-1px}
 
     /* Video-Thumb */
@@ -198,7 +197,7 @@
       <nav>
         <a class="chip" href="#listen">Listen</a>
         <a class="chip" href="#videos">Videos</a>
-        <a class="chip" href="#color">Color</a><!-- NEU -->
+        <a class="chip" href="#color">Color</a>
         <a class="chip" href="#discography">Discography</a>
         <a class="chip" href="#shop">Shop</a>
         <a class="chip" href="#imprint">Imprint</a>
@@ -261,7 +260,7 @@
       </div>
     </section>
 
-    <!-- Color (INTEGRIERT) -->
+    <!-- Color (integrated tool) -->
     <section id="color">
       <div class="wrap">
         <h2>Color</h2>
@@ -521,18 +520,6 @@
       });
     })();
 
-    // Spotify: 1-Klick laden
-    (function(){
-      document.querySelectorAll('.video-thumb.spotify').forEach(el=>{
-        const src = el.dataset.src; if(!src) return;
-        const load = () => {
-          el.outerHTML = '<iframe style="width:100%;height:420px;max-height:560px;background:#121318;border:0" src="'+src+'" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>';
-        };
-        el.addEventListener('click', load);
-        el.addEventListener('keydown', e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); load(); } });
-      });
-    })();
-
     // ===== Elastic Field Color (scoped) =====
     (function EFColorTool(){
       const clamp=(n,min,max)=>Math.min(Math.max(n,min),max);
@@ -546,4 +533,141 @@
       };
       const rgbToHex=({r,g,b})=>'#'+pad2(r)+pad2(g)+pad2(b);
       const rgbToHsl=({r,g,b})=>{
-        r/=255;
+        r/=255; g/=255; b/=255;
+        const max=Math.max(r,g,b), min=Math.min(r,g,b);
+        let h,s,l=(max+min)/2;
+        if(max===min){h=s=0;}
+        else{
+          const d=max-min; s=l>0.5?d/(2-max-min):d/(max+min);
+          switch(max){case r:h=(g-b)/d+(g<b?6:0);break;case g:h=(b-r)/d+2;break;case b:h=(r-g)/d+4;}
+          h*=60;
+        }
+        return {h:Math.round(h),s:Math.round(s*100),l:Math.round(l*100)};
+      };
+      const hslToRgb=({h,s,l})=>{
+        s/=100; l/=100;
+        const k=n=>(n+h/30)%12;
+        const a=s*Math.min(l,1-l);
+        const f=n=>l-a*Math.max(-1, Math.min(k(n)-3, Math.min(9-k(n),1)));
+        return {r:Math.round(255*f(0)), g:Math.round(255*f(8)), b:Math.round(255*f(4))};
+      };
+      const luminance=({r,g,b})=>{
+        const s=[r,g,b].map(v=>{v/=255;return v<=0.03928?v/12.92:Math.pow((v+0.055)/1.055,2.4);});
+        return 0.2126*s[0]+0.7152*s[1]+0.0722*s[2];
+      };
+      const contrastRatio=(a,b)=>{
+        const L1=luminance(a), L2=luminance(b);
+        const [hi,lo]=L1>L2?[L1,L2]:[L2,L1];
+        return ((hi+0.05)/(lo+0.05)).toFixed(2);
+      };
+
+      const swatch = document.getElementById('efc-swatch');
+      const contrast = document.getElementById('efc-contrast');
+      const picker = document.getElementById('efc-picker');
+      const hexEl  = document.getElementById('efc-hex');
+      const rgbEl  = document.getElementById('efc-rgb');
+      const hslEl  = document.getElementById('efc-hsl');
+      const addBtn = document.getElementById('efc-add');
+      const clrBtn = document.getElementById('efc-clear');
+      const pal    = document.getElementById('efc-palette');
+
+      function setColor(hex){
+        const rgb = hexToRgb(hex); if(!rgb) return;
+        const hsl = rgbToHsl(rgb);
+        hexEl.value = hex.toLowerCase();
+        rgbEl.value = `${rgb.r},${rgb.g},${rgb.b}`;
+        hslEl.value = `${hsl.h},${hsl.s}%,${hsl.l}%`;
+        picker.value = hex;
+        swatch.style.background = hex;
+        const panel = hexToRgb('121318') || {r:18,g:19,b:24};
+        contrast.textContent = `Contrast vs panel: ${contrastRatio(rgb, panel)}:1`;
+      }
+
+      function copyText(txt){
+        if(navigator.clipboard && navigator.clipboard.writeText){
+          navigator.clipboard.writeText(txt).catch(()=>document.execCommand && document.execCommand('copy'));
+        } else {
+          const ta=document.createElement('textarea'); ta.value=txt; document.body.appendChild(ta);
+          ta.select(); try{ document.execCommand('copy'); }catch(e){}
+          document.body.removeChild(ta);
+        }
+      }
+
+      picker.addEventListener('input', e=> setColor(e.target.value));
+      hexEl.addEventListener('input', e=>{
+        const v=e.target.value.trim();
+        const n=v.startsWith('#')?v:'#'+v;
+        if(hexToRgb(n)) setColor(n);
+      });
+      rgbEl.addEventListener('input', e=>{
+        const p=e.target.value.split(',').map(x=>parseInt(x.trim(),10));
+        if(p.length===3 && p.every(n=>Number.isInteger(n))){
+          const rgb={r:Math.min(Math.max(p[0],0),255),g:Math.min(Math.max(p[1],0),255),b:Math.min(Math.max(p[2],0),255)};
+          setColor(rgbToHex(rgb));
+        }
+      });
+      hslEl.addEventListener('input', e=>{
+        const p=e.target.value.split(',').map(x=>x.trim().replace('%',''));
+        if(p.length===3){
+          const h=clamp(parseFloat(p[0]),0,360), s=clamp(parseFloat(p[1]),0,100), l=clamp(parseFloat(p[2]),0,100);
+          setColor(rgbToHex(hslToRgb({h,s,l})));
+        }
+      });
+
+      document.getElementById('efc-random').addEventListener('click', ()=>{
+        const r=()=>Math.floor(Math.random()*256);
+        setColor(rgbToHex({r:r(),g:r(),b:r()}));
+      });
+
+      document.querySelectorAll('[data-copy]').forEach(btn=>{
+        btn.addEventListener('click', ()=>{
+          const sel=document.querySelector(btn.getAttribute('data-copy'));
+          copyText(sel.value || sel.textContent || '');
+          const prev=btn.textContent; btn.textContent='Copied!'; setTimeout(()=>btn.textContent=prev,900);
+        });
+      });
+
+      addBtn.addEventListener('click', ()=>{
+        const d=document.createElement('div');
+        d.className='palette-item'; d.title=hexEl.value; d.style.background=hexEl.value;
+        d.addEventListener('click', ()=> setColor(d.title));
+        pal.appendChild(d);
+      });
+      clrBtn.addEventListener('click', ()=> pal.innerHTML='');
+
+      // init
+      setColor('#6aa1ff');
+    })();
+    // ===== /Elastic Field Color =====
+  </script>
+
+  <!-- SPOTIFY ONE-CLICK HOTFIX (bind + replaceWith iframe) -->
+  <script>
+    (function(){
+      const SEL = '.video-thumb.spotify';
+      function bind(el){
+        if (!el || el.dataset.bound) return;
+        el.dataset.bound = '1';
+        const src = el.dataset.src || 'https://open.spotify.com/embed/artist/2wn4Zq8AOBsX50X7fyBEoL?theme=0';
+        const load = ()=>{
+          const iframe = document.createElement('iframe');
+          iframe.style.width = '100%';
+          iframe.style.height = '420px';
+          iframe.style.maxHeight = '560px';
+          iframe.style.background = '#121318';
+          iframe.style.border = '0';
+          iframe.loading = 'lazy';
+          iframe.allow = 'autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture';
+          iframe.src = src;
+          el.replaceWith(iframe); // robust statt inner/outerHTML
+        };
+        el.addEventListener('click', load);
+        el.addEventListener('keydown', e => { if (e.key==='Enter' || e.key===' ') { e.preventDefault(); load(); } });
+      }
+      document.querySelectorAll(SEL).forEach(bind);
+      new MutationObserver(() => { document.querySelectorAll(SEL).forEach(bind); })
+        .observe(document.body, { childList: true, subtree: true });
+    })();
+  </script>
+</body>
+</html>
