@@ -106,6 +106,9 @@
     .note{color:var(--sub);font-size:14px}
     .ok{color:#8ae99b}
 
+    /* Helpers */
+    .row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+
     /* Discography headings */
     .card .body h3{margin:0 0 4px 0;font-weight:800;letter-spacing:.2px;font-size:clamp(18px,1rem + .35vw,20px)}
     /* Nur für "Lost and Found" schlanker setzen */
@@ -156,6 +159,10 @@
       background:#0f1116;color:var(--ink)
     }
 
+    /* Color Tool */
+    .swatch{width:100%;aspect-ratio:16/9;border:1px solid var(--line);border-radius:12px;background:#0f1116}
+    .palette-item{width:44px;height:32px;border-radius:8px;border:1px solid var(--line);cursor:pointer}
+
     /* Footer */
     footer{padding:28px 0;border-top:1px solid var(--line);color:var(--sub)}
 
@@ -191,6 +198,7 @@
       <nav>
         <a class="chip" href="#listen">Listen</a>
         <a class="chip" href="#videos">Videos</a>
+        <a class="chip" href="#color">Color</a><!-- NEU -->
         <a class="chip" href="#discography">Discography</a>
         <a class="chip" href="#shop">Shop</a>
         <a class="chip" href="#imprint">Imprint</a>
@@ -249,6 +257,61 @@
           <div class="body">
             <p class="meta">More on <a href="https://www.youtube.com/@elasticfieldmusic" target="_blank" rel="noopener">youtube.com/@elasticfieldmusic</a></p>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Color (INTEGRIERT) -->
+    <section id="color">
+      <div class="wrap">
+        <h2>Color</h2>
+        <p class="note">A lightweight in-browser color helper (HEX ↔ HSL ↔ RGB) with copy buttons and live preview.</p>
+        <div class="grid cols-3">
+
+          <!-- Live Preview -->
+          <article class="card">
+            <div class="body">
+              <div id="efc-swatch" class="swatch" aria-label="Color preview"></div>
+              <p class="meta" id="efc-contrast" style="margin-top:10px">Contrast: —</p>
+            </div>
+          </article>
+
+          <!-- Pick & Convert -->
+          <article class="card">
+            <div class="body" style="display:grid;gap:12px">
+              <div class="row">
+                <input id="efc-picker" type="color" value="#6aa1ff" aria-label="Pick color">
+                <button id="efc-random" class="btn">Random</button>
+              </div>
+              <div class="row">
+                <input id="efc-hex" type="text" value="#6aa1ff" aria-label="HEX"
+                       style="flex:1;min-width:160px;padding:10px 12px;border-radius:10px;border:1px solid var(--line);background:#0f1116;color:var(--ink)">
+                <button class="btn" data-copy="#efc-hex">Copy HEX</button>
+              </div>
+              <div class="row">
+                <input id="efc-rgb" type="text" value="106,161,255" aria-label="RGB"
+                       style="flex:1;min-width:160px;padding:10px 12px;border-radius:10px;border:1px solid var(--line);background:#0f1116;color:var(--ink)">
+                <button class="btn" data-copy="#efc-rgb">Copy RGB</button>
+              </div>
+              <div class="row">
+                <input id="efc-hsl" type="text" value="219,100%,71%" aria-label="HSL"
+                       style="flex:1;min-width:160px;padding:10px 12px;border-radius:10px;border:1px solid var(--line);background:#0f1116;color:var(--ink)">
+                <button class="btn" data-copy="#efc-hsl">Copy HSL</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Palette -->
+          <article class="card">
+            <div class="body" style="display:grid;gap:10px">
+              <div class="row">
+                <button id="efc-add" class="btn">Add to palette</button>
+                <button id="efc-clear" class="btn" title="Clear palette">Clear</button>
+              </div>
+              <div id="efc-palette" class="row" style="flex-wrap:wrap"></div>
+            </div>
+          </article>
+
         </div>
       </div>
     </section>
@@ -469,6 +532,18 @@
         el.addEventListener('keydown', e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); load(); } });
       });
     })();
-  </script>
-</body>
-</html>
+
+    // ===== Elastic Field Color (scoped) =====
+    (function EFColorTool(){
+      const clamp=(n,min,max)=>Math.min(Math.max(n,min),max);
+      const pad2=n=>n.toString(16).padStart(2,'0');
+      const hexToRgb=hex=>{
+        hex=hex.replace('#','').trim();
+        if(hex.length===3) hex=[...hex].map(x=>x+x).join('');
+        const int=parseInt(hex,16);
+        if(Number.isNaN(int)||hex.length!==6) return null;
+        return {r:(int>>16)&255,g:(int>>8)&255,b:int&255};
+      };
+      const rgbToHex=({r,g,b})=>'#'+pad2(r)+pad2(g)+pad2(b);
+      const rgbToHsl=({r,g,b})=>{
+        r/=255;
