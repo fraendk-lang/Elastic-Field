@@ -6,7 +6,7 @@
 
   <title>Elastic Field — Official Site</title>
   <meta name="description" content="Elastic Field — Trip-Hop, Downbeat, Lounge, Jazzy, Ambient & subtle electronics." />
-  <meta name="theme-color" content="#0b0c10" />
+  <meta name="theme-color" content="#0e1219" />
 
   <!-- Canonical & Social -->
   <link rel="canonical" href="https://www.elasticfieldmusic.com/" />
@@ -22,7 +22,7 @@
   <link rel="icon" href="ef-favicon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="apple-touch-icon.png" />
 
-  <!-- JSON-LD (minimal) -->
+  <!-- JSON-LD -->
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"MusicGroup","name":"Elastic Field","url":"https://www.elasticfieldmusic.com/","sameAs":["https://www.youtube.com/@elasticfieldmusic","https://open.spotify.com/artist/2wn4Zq8AOBsX50X7fyBEoL","https://music.amazon.de/artists/B008F6S0LM/elastic-field"]}
   </script>
@@ -156,7 +156,7 @@
       box-shadow:var(--shadow);
     }
 
-    /* Notify forms (eine Zeile) */
+    /* Notify forms */
     .notify-form{display:flex;gap:8px;align-items:center;flex-wrap:nowrap}
     .notify-form input[type="email"]{
       flex:1;min-width:160px;padding:10px 12px;border-radius:10px;border:1px solid var(--line);
@@ -166,11 +166,23 @@
     /* Color Title – multicolor letters */
     .color-title{display:flex;align-items:center;gap:10px;margin:0 0 14px}
     .color-title .letters{font-weight:900;letter-spacing:.5px;font-size:clamp(22px,3.2vw,28px)}
-    .color-title .letters .c{color:#f2b35c;text-shadow:0 0 .2em rgba(242,179,92,.18)}
-    .color-title .letters .o1{color:#5ed9cc;text-shadow:0 0 .2em rgba(94,217,204,.18)}
-    .color-title .letters .l{color:#8aa7f2;text-shadow:0 0 .2em rgba(138,167,242,.18)}
-    .color-title .letters .o2{color:#ff6f3c;text-shadow:0 0 .2em rgba(255,111,60,.18)}
-    .color-title .letters .r{color:#c18bff;text-shadow:0 0 .2em rgba(193,139,255,.18)}
+    /* Farben für alle .letters (unten & im Header) */
+    .letters .c{color:#f2b35c;text-shadow:0 0 .2em rgba(242,179,92,.18)}
+    .letters .o1{color:#5ed9cc;text-shadow:0 0 .2em rgba(94,217,204,.18)}
+    .letters .l{color:#8aa7f2;text-shadow:0 0 .2em rgba(138,167,242,.18)}
+    .letters .o2{color:#ff6f3c;text-shadow:0 0 .2em rgba(255,111,60,.18)}
+    .letters .r{color:#c18bff;text-shadow:0 0 .2em rgba(193,139,255,.18)}
+
+    /* Bunte Color-Schrift im Header (gleiche Farben wie unten) */
+    nav .letters.nav{
+      display:inline-flex;align-items:center;gap:0;
+      font-weight:900;letter-spacing:.4px;line-height:1;
+      font-size:16px;
+    }
+    @media (min-width: 700px){
+      nav .letters.nav{ font-size:17px; }
+    }
+    header .chip .pill{ margin-left:8px; }
 
     /* Color Tool styles */
     .swatch{width:100%;aspect-ratio:16/9;border:1px solid var(--line);border-radius:12px;background:#0f1116}
@@ -178,7 +190,7 @@
 
     /* Contrast panel */
     .contrast-card .toolbar{display:flex;gap:10px;align-items:center;justify-content:space-between;margin-bottom:10px;flex-wrap:wrap}
-    .contrast-preview{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#0f1116}
+    .contrast-preview{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#131a26}
     .sample{padding:16px}
     .sample .title{font-size:32px;font-weight:900;margin:0 0 6px}
     .sample .body{margin:0;color:var(--sub)}
@@ -207,6 +219,22 @@
       *{scroll-behavior:auto}
     }
   </style>
+
+  <!-- Brightness/Contrast Overlays (heller) -->
+  <style id="brighten-fix">
+    :root{
+      --bg:#0e1219;      /* vorher #0b0c10 */
+      --panel:#161b25;   /* vorher #121318 */
+      --ink:#f4f7fb;     /* vorher #e8ecf1 */
+      --sub:#c7cfda;     /* vorher #a9b1bc */
+      --line:#263041;    /* vorher #1d2028 */
+      --muted:#2a3342;   /* vorher #2a2e39 */
+    }
+    .hero video{ filter:brightness(.78) contrast(1.02); }
+    .title{ background:rgba(18,19,24,.60); }
+    .video-thumb img{ filter:brightness(.92) contrast(1.02); }
+    .contrast-preview{ background:#131a26; }
+  </style>
 </head>
 <body>
 
@@ -223,7 +251,13 @@
       <nav>
         <a class="chip" href="#listen">Listen</a>
         <a class="chip" href="#videos">Videos</a>
-        <a class="chip" href="#color">Color <span class="pill">Coming soon</span></a>
+        <!-- Bunter Color-Reiter -->
+        <a class="chip" href="#color" aria-label="Color tool">
+          <span class="letters nav" aria-hidden="true">
+            <span class="c">C</span><span class="o1">o</span><span class="l">l</span><span class="o2">o</span><span class="r">r</span>
+          </span>
+          <span class="pill">Coming soon</span>
+        </a>
         <a class="chip" href="#discography">Discography</a>
         <a class="chip" href="#shop">Shop</a>
         <a class="chip" href="#imprint">Imprint</a>
@@ -298,7 +332,7 @@
         <p class="note">Pick a color and learn contrast at a glance (WCAG badges included).</p>
 
         <div class="grid cols-3">
-          <!-- Contrast Panel (LEFT) -->
+          <!-- Contrast Panel -->
           <article class="card contrast-card">
             <div class="body">
               <div class="toolbar">
@@ -566,7 +600,7 @@
       });
     })();
 
-    // ===== Elastic Field Color (with Contrast Panel) =====
+    // Color Tool core + Contrast Panel
     (function EFColorTool(){
       const clamp=(n,min,max)=>Math.min(Math.max(n,min),max);
       const pad2=n=>n.toString(16).padStart(2,'0');
@@ -606,8 +640,10 @@
         const [hi,lo]=L1>L2?[L1,L2]:[L2,L1];
         return ((hi+0.05)/(lo+0.05)).toFixed(2);
       };
-      const PANEL={r:18,g:19,b:24}, WHITE={r:255,g:255,b:255}, BLACK={r:0,g:0,b:0};
-      const INK_HEX='#e8ecf1'; const INK=hexToRgb(INK_HEX);
+
+      const PANEL={r:22,g:27,b:37}; // heller
+      const WHITE={r:255,g:255,b:255}, BLACK={r:0,g:0,b:0};
+      const INK_HEX='#f4f7fb'; const INK={r:244,g:247,b:251};
 
       // Elements
       const picker=document.getElementById('efc-picker');
@@ -625,46 +661,40 @@
       const wcagWhite = document.getElementById('efc-wcag-white');
       const wcagBlack = document.getElementById('efc-wcag-black');
 
-      let mode='bg'; // 'bg' = color as background; 'fg' = color as text
+      let mode='bg';
 
-      // WCAG badges
       function wcagClassAndLabel(r){
         const n=parseFloat(r);
         if(n>=7) return {c:'ok', t:'AAA'};
         if(n>=4.5) return {c:'ok', t:'AA'};
         if(n>=3) return {c:'mid', t:'AA Large'};
         return {c:'fail', t:'Fail'};
-        // Note: Large ≈ ≥24px regular or ≥18.66px bold
       }
       function setBadge(el, r){
         const {c,t}=wcagClassAndLabel(r);
-        el.className='wcag '+c;
-        el.textContent=t;
+        el.className='wcag '+c; el.textContent=t;
       }
 
       function setColor(hex){
         const rgb = hexToRgb(hex); if(!rgb) return;
         const hsl = rgbToHsl(rgb);
-        // UI fields
         hexEl.value = hex.toLowerCase();
         rgbEl.value = `${rgb.r},${rgb.g},${rgb.b}`;
         hslEl.value = `${hsl.h},${hsl.s}%,${hsl.l}%`;
         picker.value = hex;
 
-        // Preview modes
         if(mode==='bg'){
           preview.style.background = hex;
           preview.style.color = INK_HEX;
           sample.querySelector('.title').style.color = 'inherit';
-          sample.querySelector('.body').style.color  = 'rgba(232,236,241,.85)';
-        }else{ // fg
-          preview.style.background = '#121318';
+          sample.querySelector('.body').style.color  = 'rgba(244,247,251,.85)';
+        }else{
+          preview.style.background = '#161b25';
           preview.style.color = hex;
           sample.querySelector('.title').style.color = 'inherit';
           sample.querySelector('.body').style.color  = 'inherit';
         }
 
-        // Metrics (always relative to THE COLOR)
         const cRP = contrastRatio(rgb,PANEL);
         const cRW = contrastRatio(rgb,WHITE);
         const cRB = contrastRatio(rgb,BLACK);
@@ -676,7 +706,6 @@
         setBadge(wcagBlack, cRB);
       }
 
-      // Bind mode radios + swap
       document.querySelectorAll('input[name="efc-mode"]').forEach(r=>{
         r.addEventListener('change', (e)=>{ mode=e.target.value; setColor(hexEl.value||picker.value); });
       });
@@ -686,7 +715,6 @@
         setColor(hexEl.value||picker.value);
       });
 
-      // Inputs
       picker.addEventListener('input', e=> setColor(e.target.value));
       hexEl.addEventListener('input', e=>{
         const v=e.target.value.trim();
@@ -696,29 +724,30 @@
       rgbEl.addEventListener('input', e=>{
         const p=e.target.value.split(',').map(x=>parseInt(x.trim(),10));
         if(p.length===3 && p.every(n=>Number.isInteger(n))){
-          const rgb={r:clamp(p[0],0,255),g:clamp(p[1],0,255),b:clamp(p[2],0,255)};
+          const rgb={r:Math.min(Math.max(p[0],0),255),g:Math.min(Math.max(p[1],0),255),b:Math.min(Math.max(p[2],0),255)};
           setColor(rgbToHex(rgb));
         }
       });
       hslEl.addEventListener('input', e=>{
         const p=e.target.value.split(',').map(x=>x.trim().replace('%',''));
         if(p.length===3){
-          const h=clamp(parseFloat(p[0]),0,360), s=clamp(parseFloat(p[1]),0,100), l=clamp(parseFloat(p[2]),0,100);
-          setColor(rgbToHex(hslToRgb({h,s,l})));
+          const h=Math.min(Math.max(parseFloat(p[0]),0),360);
+          const s=Math.min(Math.max(parseFloat(p[1]),0),100);
+          const l=Math.min(Math.max(parseFloat(p[2]),0),100);
+          const rgb=hslToRgb({h,s,l});
+          setColor(rgbToHex(rgb));
         }
       });
 
-      // Copy buttons
       document.querySelectorAll('[data-copy]').forEach(btn=>{
         btn.addEventListener('click', ()=>{
           const sel=document.querySelector(btn.getAttribute('data-copy'));
           const txt=sel.value || sel.textContent || '';
           if(navigator.clipboard){navigator.clipboard.writeText(txt);}
-          btn.textContent='Copied!'; setTimeout(()=>btn.textContent='Copy '+sel.id.toUpperCase(),900);
+          const prev=btn.textContent; btn.textContent='Copied!'; setTimeout(()=>btn.textContent=prev,900);
         });
       });
 
-      // Palette
       document.getElementById('efc-random').addEventListener('click', ()=>{
         const r=()=>Math.floor(Math.random()*256);
         setColor(rgbToHex({r:r(),g:r(),b:r()}));
@@ -734,7 +763,6 @@
       // init
       setColor('#6aa1ff');
     })();
-    // ===== /Elastic Field Color =====
   </script>
 
   <!-- SPOTIFY ONE-CLICK HOTFIX -->
@@ -750,7 +778,7 @@
           iframe.style.width = '100%';
           iframe.style.height = '420px';
           iframe.style.maxHeight = '560px';
-          iframe.style.background = '#121318';
+          iframe.style.background = '#161b25';
           iframe.style.border = '0';
           iframe.loading = 'lazy';
           iframe.allow = 'autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture';
