@@ -65,8 +65,14 @@
     .brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.4px}
     .brand img{width:28px;height:28px;border-radius:8px}
     nav{display:flex;gap:8px;flex-wrap:wrap}
-    .chip{display:inline-flex;align-items:center;padding:8px 12px;border-radius:999px;border:1px solid var(--line);background:var(--panel);font-weight:600}
+    .chip{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;border:1px solid var(--line);background:var(--panel);font-weight:600}
     .chip:hover{transform:translateY(-1px)}
+
+    /* Small pill/badge */
+    .pill{
+      font-size:12px;line-height:1;padding:3px 8px;border-radius:999px;
+      background:var(--muted);border:1px solid var(--line);color:var(--sub)
+    }
 
     /* Hero */
     .hero{position:relative;min-height:58svh;border-bottom:1px solid var(--line);overflow:hidden}
@@ -158,14 +164,19 @@
       background:#0f1116;color:var(--ink)
     }
 
-    /* Color Tool */
-    .swatch{width:100%;aspect-ratio:16/9;border:1px solid var(--line);border-radius:12px;background:#0f1116}
-    .palette-item{width:44px;height:32px;border-radius:8px;border:1px solid var(--line);cursor:pointer}
+    /* Color Title – multicolor letters */
+    .color-title{display:flex;align-items:center;gap:10px;margin:0 0 14px}
+    .color-title .letters{font-weight:900;letter-spacing:.5px;font-size:clamp(22px,3.2vw,28px)}
+    .color-title .letters .c{color:#f2b35c;text-shadow:0 0 .2em rgba(242,179,92,.18)}
+    .color-title .letters .o1{color:#5ed9cc;text-shadow:0 0 .2em rgba(94,217,204,.18)}
+    .color-title .letters .l{color:#8aa7f2;text-shadow:0 0 .2em rgba(138,167,242,.18)}
+    .color-title .letters .o2{color:#ff6f3c;text-shadow:0 0 .2em rgba(255,111,60,.18)}
+    .color-title .letters .r{color:#c18bff;text-shadow:0 0 .2em rgba(193,139,255,.18)}
 
     /* Footer */
     footer{padding:28px 0;border-top:1px solid var(--line);color:var(--sub)}
 
-    /* Back-to-top Button */
+    /* Back-to-top */
     #toTop{
       position:fixed;right:14px;bottom:14px;opacity:0;pointer-events:none;
       border:1px solid var(--line);background:var(--panel);border-radius:999px;padding:10px 12px;
@@ -197,7 +208,7 @@
       <nav>
         <a class="chip" href="#listen">Listen</a>
         <a class="chip" href="#videos">Videos</a>
-        <a class="chip" href="#color">Color</a>
+        <a class="chip" href="#color">Color <span class="pill">Coming soon</span></a><!-- NEU -->
         <a class="chip" href="#discography">Discography</a>
         <a class="chip" href="#shop">Shop</a>
         <a class="chip" href="#imprint">Imprint</a>
@@ -226,7 +237,7 @@
       </div>
     </section>
 
-    <!-- Listen (Spotify → 1-Klick laden) -->
+    <!-- Listen -->
     <section id="listen">
       <div class="wrap">
         <h2>Listen</h2>
@@ -260,10 +271,15 @@
       </div>
     </section>
 
-    <!-- Color (integrated tool) -->
+    <!-- Color -->
     <section id="color">
       <div class="wrap">
-        <h2>Color</h2>
+        <div class="color-title">
+          <div class="letters" aria-label="Color">
+            <span class="c">C</span><span class="o1">o</span><span class="l">l</span><span class="o2">o</span><span class="r">r</span>
+          </div>
+          <span class="pill">Coming soon</span>
+        </div>
         <p class="note">A lightweight in-browser color helper (HEX ↔ HSL ↔ RGB) with copy buttons and live preview.</p>
         <div class="grid cols-3">
 
@@ -354,7 +370,7 @@
       </div>
     </section>
 
-    <!-- Shop (pausiert → Coming Soon) -->
+    <!-- Shop -->
     <section id="shop">
       <div class="wrap">
         <h2>Shop</h2>
@@ -638,10 +654,9 @@
       // init
       setColor('#6aa1ff');
     })();
-    // ===== /Elastic Field Color =====
   </script>
 
-  <!-- SPOTIFY ONE-CLICK HOTFIX (bind + replaceWith iframe) -->
+  <!-- SPOTIFY ONE-CLICK HOTFIX -->
   <script>
     (function(){
       const SEL = '.video-thumb.spotify';
@@ -659,7 +674,7 @@
           iframe.loading = 'lazy';
           iframe.allow = 'autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture';
           iframe.src = src;
-          el.replaceWith(iframe); // robust statt inner/outerHTML
+          el.replaceWith(iframe);
         };
         el.addEventListener('click', load);
         el.addEventListener('keydown', e => { if (e.key==='Enter' || e.key===' ') { e.preventDefault(); load(); } });
