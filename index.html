@@ -145,7 +145,6 @@
       filter:saturate(1.06) contrast(1.04);
     }
     .art-bg[data-v="2"]{ --c1: rgba(138,167,242,.34); --c2: rgba(94,217,204,.22); }
-    .art-bg .soon .note{opacity:.95}
 
     /* Shop-Karten: dezenter Karten-Hintergrund */
     .card.shop{
@@ -172,6 +171,22 @@
     .color-title .letters .l{color:#8aa7f2;text-shadow:0 0 .2em rgba(138,167,242,.18)}
     .color-title .letters .o2{color:#ff6f3c;text-shadow:0 0 .2em rgba(255,111,60,.18)}
     .color-title .letters .r{color:#c18bff;text-shadow:0 0 .2em rgba(193,139,255,.18)}
+
+    /* Color Tool styles */
+    .swatch{width:100%;aspect-ratio:16/9;border:1px solid var(--line);border-radius:12px;background:#0f1116}
+    .palette-item{width:44px;height:32px;border-radius:8px;border:1px solid var(--line);cursor:pointer}
+
+    /* Contrast panel */
+    .contrast-card .toolbar{display:flex;gap:10px;align-items:center;justify-content:space-between;margin-bottom:10px;flex-wrap:wrap}
+    .contrast-preview{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#0f1116}
+    .sample{padding:16px}
+    .sample .title{font-size:32px;font-weight:900;margin:0 0 6px}
+    .sample .body{margin:0;color:var(--sub)}
+    .metrics{display:grid;gap:6px;margin-top:10px}
+    .wcag{display:inline-block;font-weight:800;padding:2px 8px;border-radius:999px;font-size:12px;border:1px solid var(--line)}
+    .wcag.ok{background:#173621;color:#b5f3c2;border-color:#1f4b2c}
+    .wcag.mid{background:#342c15;color:#f7da9b;border-color:#4b3a1a}
+    .wcag.fail{background:#3a1717;color:#f3b5b5;border-color:#4b1f1f}
 
     /* Footer */
     footer{padding:28px 0;border-top:1px solid var(--line);color:var(--sub)}
@@ -208,7 +223,7 @@
       <nav>
         <a class="chip" href="#listen">Listen</a>
         <a class="chip" href="#videos">Videos</a>
-        <a class="chip" href="#color">Color <span class="pill">Coming soon</span></a><!-- NEU -->
+        <a class="chip" href="#color">Color <span class="pill">Coming soon</span></a>
         <a class="chip" href="#discography">Discography</a>
         <a class="chip" href="#shop">Shop</a>
         <a class="chip" href="#imprint">Imprint</a>
@@ -280,14 +295,30 @@
           </div>
           <span class="pill">Coming soon</span>
         </div>
-        <p class="note">A lightweight in-browser color helper (HEX ↔ HSL ↔ RGB) with copy buttons and live preview.</p>
-        <div class="grid cols-3">
+        <p class="note">Pick a color and learn contrast at a glance (WCAG badges included).</p>
 
-          <!-- Live Preview -->
-          <article class="card">
+        <div class="grid cols-3">
+          <!-- Contrast Panel (LEFT) -->
+          <article class="card contrast-card">
             <div class="body">
-              <div id="efc-swatch" class="swatch" aria-label="Color preview"></div>
-              <p class="meta" id="efc-contrast" style="margin-top:10px">Contrast: —</p>
+              <div class="toolbar">
+                <div class="row" role="radiogroup" aria-label="Preview mode">
+                  <label><input type="radio" name="efc-mode" value="bg" checked> Color as background</label>
+                  <label><input type="radio" name="efc-mode" value="fg"> Color as text</label>
+                </div>
+                <button id="efc-swap" class="btn" title="Swap mode">Swap</button>
+              </div>
+              <div id="efc-preview" class="contrast-preview" aria-live="polite">
+                <div class="sample" id="efc-sample">
+                  <h3 class="title">Aa</h3>
+                  <p class="body">Sample text — downbeat, ambient & subtle electronics.</p>
+                </div>
+              </div>
+              <div class="metrics">
+                <div>Contrast vs <code>#121318</code> (panel): <strong id="efc-cr-panel">—</strong> <span id="efc-wcag-panel" class="wcag">—</span></div>
+                <div>Contrast vs <code>#ffffff</code>: <strong id="efc-cr-white">—</strong> <span id="efc-wcag-white" class="wcag">—</span></div>
+                <div>Contrast vs <code>#000000</code>: <strong id="efc-cr-black">—</strong> <span id="efc-wcag-black" class="wcag">—</span></div>
+              </div>
             </div>
           </article>
 
@@ -326,7 +357,6 @@
               <div id="efc-palette" class="row" style="flex-wrap:wrap"></div>
             </div>
           </article>
-
         </div>
       </div>
     </section>
@@ -500,12 +530,12 @@
     document.getElementById('y').textContent = new Date().getFullYear();
     document.getElementById('privacy-date').textContent = new Date().toISOString().split('T')[0];
 
-    // Lazy-Images global
+    // Lazy-Images
     document.querySelectorAll('img:not([loading])').forEach(img=>{
       img.loading='lazy'; img.decoding='async';
     });
 
-    // Reduced-Motion – Video pausieren, wenn vom System gewünscht
+    // Reduced-Motion
     (function(){
       const m = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)');
       const v = document.querySelector('.hero video');
@@ -521,7 +551,7 @@
       b.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
     })();
 
-    // YouTube: 1-Klick → Autoplay
+    // YouTube: 1-Klick
     (function(){
       document.querySelectorAll('.video-thumb.yt').forEach(el=>{
         const id = el.dataset.yt; if(!id) return;
@@ -536,7 +566,7 @@
       });
     })();
 
-    // ===== Elastic Field Color (scoped) =====
+    // ===== Elastic Field Color (with Contrast Panel) =====
     (function EFColorTool(){
       const clamp=(n,min,max)=>Math.min(Math.max(n,min),max);
       const pad2=n=>n.toString(16).padStart(2,'0');
@@ -576,39 +606,87 @@
         const [hi,lo]=L1>L2?[L1,L2]:[L2,L1];
         return ((hi+0.05)/(lo+0.05)).toFixed(2);
       };
+      const PANEL={r:18,g:19,b:24}, WHITE={r:255,g:255,b:255}, BLACK={r:0,g:0,b:0};
+      const INK_HEX='#e8ecf1'; const INK=hexToRgb(INK_HEX);
 
-      const swatch = document.getElementById('efc-swatch');
-      const contrast = document.getElementById('efc-contrast');
-      const picker = document.getElementById('efc-picker');
-      const hexEl  = document.getElementById('efc-hex');
-      const rgbEl  = document.getElementById('efc-rgb');
-      const hslEl  = document.getElementById('efc-hsl');
-      const addBtn = document.getElementById('efc-add');
-      const clrBtn = document.getElementById('efc-clear');
-      const pal    = document.getElementById('efc-palette');
+      // Elements
+      const picker=document.getElementById('efc-picker');
+      const hexEl =document.getElementById('efc-hex');
+      const rgbEl =document.getElementById('efc-rgb');
+      const hslEl =document.getElementById('efc-hsl');
+      const pal   =document.getElementById('efc-palette');
+
+      const preview = document.getElementById('efc-preview');
+      const sample  = document.getElementById('efc-sample');
+      const crPanel = document.getElementById('efc-cr-panel');
+      const crWhite = document.getElementById('efc-cr-white');
+      const crBlack = document.getElementById('efc-cr-black');
+      const wcagPanel = document.getElementById('efc-wcag-panel');
+      const wcagWhite = document.getElementById('efc-wcag-white');
+      const wcagBlack = document.getElementById('efc-wcag-black');
+
+      let mode='bg'; // 'bg' = color as background; 'fg' = color as text
+
+      // WCAG badges
+      function wcagClassAndLabel(r){
+        const n=parseFloat(r);
+        if(n>=7) return {c:'ok', t:'AAA'};
+        if(n>=4.5) return {c:'ok', t:'AA'};
+        if(n>=3) return {c:'mid', t:'AA Large'};
+        return {c:'fail', t:'Fail'};
+        // Note: Large ≈ ≥24px regular or ≥18.66px bold
+      }
+      function setBadge(el, r){
+        const {c,t}=wcagClassAndLabel(r);
+        el.className='wcag '+c;
+        el.textContent=t;
+      }
 
       function setColor(hex){
         const rgb = hexToRgb(hex); if(!rgb) return;
         const hsl = rgbToHsl(rgb);
+        // UI fields
         hexEl.value = hex.toLowerCase();
         rgbEl.value = `${rgb.r},${rgb.g},${rgb.b}`;
         hslEl.value = `${hsl.h},${hsl.s}%,${hsl.l}%`;
         picker.value = hex;
-        swatch.style.background = hex;
-        const panel = hexToRgb('121318') || {r:18,g:19,b:24};
-        contrast.textContent = `Contrast vs panel: ${contrastRatio(rgb, panel)}:1`;
-      }
 
-      function copyText(txt){
-        if(navigator.clipboard && navigator.clipboard.writeText){
-          navigator.clipboard.writeText(txt).catch(()=>document.execCommand && document.execCommand('copy'));
-        } else {
-          const ta=document.createElement('textarea'); ta.value=txt; document.body.appendChild(ta);
-          ta.select(); try{ document.execCommand('copy'); }catch(e){}
-          document.body.removeChild(ta);
+        // Preview modes
+        if(mode==='bg'){
+          preview.style.background = hex;
+          preview.style.color = INK_HEX;
+          sample.querySelector('.title').style.color = 'inherit';
+          sample.querySelector('.body').style.color  = 'rgba(232,236,241,.85)';
+        }else{ // fg
+          preview.style.background = '#121318';
+          preview.style.color = hex;
+          sample.querySelector('.title').style.color = 'inherit';
+          sample.querySelector('.body').style.color  = 'inherit';
         }
+
+        // Metrics (always relative to THE COLOR)
+        const cRP = contrastRatio(rgb,PANEL);
+        const cRW = contrastRatio(rgb,WHITE);
+        const cRB = contrastRatio(rgb,BLACK);
+        crPanel.textContent = cRP+':1';
+        crWhite.textContent = cRW+':1';
+        crBlack.textContent = cRB+':1';
+        setBadge(wcagPanel, cRP);
+        setBadge(wcagWhite, cRW);
+        setBadge(wcagBlack, cRB);
       }
 
+      // Bind mode radios + swap
+      document.querySelectorAll('input[name="efc-mode"]').forEach(r=>{
+        r.addEventListener('change', (e)=>{ mode=e.target.value; setColor(hexEl.value||picker.value); });
+      });
+      document.getElementById('efc-swap').addEventListener('click', ()=>{
+        mode = (mode==='bg'?'fg':'bg');
+        document.querySelector('input[name="efc-mode"][value="'+mode+'"]').checked=true;
+        setColor(hexEl.value||picker.value);
+      });
+
+      // Inputs
       picker.addEventListener('input', e=> setColor(e.target.value));
       hexEl.addEventListener('input', e=>{
         const v=e.target.value.trim();
@@ -618,7 +696,7 @@
       rgbEl.addEventListener('input', e=>{
         const p=e.target.value.split(',').map(x=>parseInt(x.trim(),10));
         if(p.length===3 && p.every(n=>Number.isInteger(n))){
-          const rgb={r:Math.min(Math.max(p[0],0),255),g:Math.min(Math.max(p[1],0),255),b:Math.min(Math.max(p[2],0),255)};
+          const rgb={r:clamp(p[0],0,255),g:clamp(p[1],0,255),b:clamp(p[2],0,255)};
           setColor(rgbToHex(rgb));
         }
       });
@@ -630,30 +708,33 @@
         }
       });
 
+      // Copy buttons
+      document.querySelectorAll('[data-copy]').forEach(btn=>{
+        btn.addEventListener('click', ()=>{
+          const sel=document.querySelector(btn.getAttribute('data-copy'));
+          const txt=sel.value || sel.textContent || '';
+          if(navigator.clipboard){navigator.clipboard.writeText(txt);}
+          btn.textContent='Copied!'; setTimeout(()=>btn.textContent='Copy '+sel.id.toUpperCase(),900);
+        });
+      });
+
+      // Palette
       document.getElementById('efc-random').addEventListener('click', ()=>{
         const r=()=>Math.floor(Math.random()*256);
         setColor(rgbToHex({r:r(),g:r(),b:r()}));
       });
-
-      document.querySelectorAll('[data-copy]').forEach(btn=>{
-        btn.addEventListener('click', ()=>{
-          const sel=document.querySelector(btn.getAttribute('data-copy'));
-          copyText(sel.value || sel.textContent || '');
-          const prev=btn.textContent; btn.textContent='Copied!'; setTimeout(()=>btn.textContent=prev,900);
-        });
-      });
-
-      addBtn.addEventListener('click', ()=>{
+      document.getElementById('efc-add').addEventListener('click', ()=>{
         const d=document.createElement('div');
         d.className='palette-item'; d.title=hexEl.value; d.style.background=hexEl.value;
         d.addEventListener('click', ()=> setColor(d.title));
         pal.appendChild(d);
       });
-      clrBtn.addEventListener('click', ()=> pal.innerHTML='');
+      document.getElementById('efc-clear').addEventListener('click', ()=> pal.innerHTML='');
 
       // init
       setColor('#6aa1ff');
     })();
+    // ===== /Elastic Field Color =====
   </script>
 
   <!-- SPOTIFY ONE-CLICK HOTFIX -->
