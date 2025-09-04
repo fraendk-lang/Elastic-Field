@@ -1,0 +1,40 @@
+#color .ct2-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:18px}
+#color .ct2-left{grid-column:span 12}
+#color .ct2-center{grid-column:span 7}
+#color .ct2-right{grid-column:span 5}
+@media (max-width:980px){#color .ct2-center,#color .ct2-right{grid-column:span 12}}
+
+#color .card{border:1px solid var(--line);border-radius:14px;background:var(--panel);padding:14px;box-shadow:var(--shadow)}
+#color .ct2-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+#color .ct2-radio{display:flex;align-items:center;gap:8px}
+#color .ct2-radio input{accent-color:#00d1ff}
+#color .ct2-hint{color:var(--sub)}
+
+#color .ct2-contrastline{margin-top:6px;padding:8px 10px;border:1px dashed var(--line);border-radius:10px;background:rgba(255,255,255,.02)}
+#color .ct2-badge{margin-left:8px;padding:2px 8px;border-radius:999px;border:1px solid var(--line);background:var(--muted);color:var(--sub);font-size:12px}
+
+#color .ct2-inputrow{display:flex;gap:10px;align-items:center;margin-bottom:8px}
+#color .ct2-swatch{width:34px;height:22px;border-radius:6px;border:1px solid var(--line)}
+#color .ct2-label{display:block;margin:10px 0 6px;color:var(--sub);font-size:13px}
+#color .ct2-inputwrap{display:flex;gap:10px}
+#color .ct2-input{width:100%;padding:10px 12px;border-radius:10px;border:1px solid var(--line);background:#0f1116;color:var(--ink)}
+#color .ct2-input:focus{border-color:#2c8dd8;box-shadow:0 0 0 3px rgba(44,141,216,.25)}
+
+/* sichtbare, helle Palette rechts */
+#color .ct2-palette{
+  min-height:220px;border-radius:12px;border:1px solid #2a3550;position:relative;overflow:auto;
+  background:
+    repeating-linear-gradient(0deg, rgba(255,255,255,.045) 0 1px, transparent 1px 24px),
+    repeating-linear-gradient(90deg, rgba(255,255,255,.045) 0 1px, transparent 1px 24px),
+    linear-gradient(180deg,#18202d,#202a3a);
+  padding:12px;display:flex;flex-wrap:wrap;gap:12px
+}
+#color .ct2-empty{color:var(--sub)}
+#color .ct2-chip{
+  width:68px;height:68px;border-radius:10px;border:1px solid rgba(0,0,0,.35);
+  box-shadow:0 8px 18px rgba(0,0,0,.35);position:relative;cursor:pointer
+}
+#color .ct2-chip b{
+  position:absolute;left:6px;bottom:6px;font:700 10px/1.1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  color:rgba(255,255,255,.92);text-shadow:0 1px 2px rgba(0,0,0,.55)
+}
