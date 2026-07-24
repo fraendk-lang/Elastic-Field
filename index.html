@@ -31,7 +31,7 @@
   "genre": ["Ambient", "Trip-Hop", "Lounge", "Downbeat", "Electronic"],
   "foundingDate": "2011",
   "description": "Downbeat, ambient, trip-hop, lounge, jazzy & subtle electronic textures.",
-  "image": "https://www.elasticfieldmusic.com/og-elastic-field.jpg",
+  "image": "https://www.elasticfieldmusic.com/album/smoke-and-static/00_smoke_and_static_album_16x9.png",
   "sameAs": [
     "https://open.spotify.com/artist/2wn4Zq8AOBsX50X7fyBEoL",
     "https://www.youtube.com/@elasticfieldmusic",
@@ -250,7 +250,7 @@ h2{margin:0 0 16px;font-size:13px;font-weight:600;text-transform:uppercase;lette
             <span class="badge" style="border-color:rgba(0,255,136,.35);color:var(--accent-green)">Third Album · 11 Tracks</span>
             <h3>Smoke & Static</h3>
             <p id="album-desc">Eleven tracks of trip hop and downbeat fusion — dusty breakbeats, deep dub bass, warm Rhodes and smoky voices. Kruder & Dorfmeister spirit with blues in its veins.</p>
-            <p class="kicker" style="margin-bottom:14px">Downbeat fusion for the small hours. AI-assisted production with Suno.</p>
+            <p class="kicker" style="margin-bottom:14px">Downbeat fusion for the small hours.</p>
             <div id="album-actions" style="display:flex;gap:10px;flex-wrap:wrap"></div>
           </div>
         </div>
@@ -396,7 +396,6 @@ h2{margin:0 0 16px;font-size:13px;font-weight:600;text-transform:uppercase;lette
           </div>
         </article>
       </div>
-      <p class="kicker" style="margin-top:10px">Set your Gumroad link in <code>shop-config.js</code> → <code>gumroadUrl</code>.</p>
     </div>
   </section>
 
@@ -437,7 +436,6 @@ h2{margin:0 0 16px;font-size:13px;font-weight:600;text-transform:uppercase;lette
         <textarea id="contact-message" name="message" rows="5" required placeholder="Your message..."
           style="width:100%;padding:10px 12px;border-radius:10px;border:1px solid var(--line);background:#0f1116;color:var(--ink);font-family:inherit;font-size:14px;resize:vertical"></textarea>
         <button class="btn primary" type="submit">Send</button>
-        <small class="kicker">Powered by Formspree</small>
       </form>
     </div>
   </section>
@@ -541,7 +539,7 @@ document.querySelectorAll('.poster.yt').forEach(p=>{
     if(product.gumroadUrl){
       return `<a class="btn buy gumroad-button" href="${product.gumroadUrl}" data-gumroad-overlay-checkout="true">${label} · ${product.price}</a>`;
     }
-    return `<a class="btn buy" href="#contact">${label} · ${product.price} — contact for purchase link</a>`;
+    return `<a class="btn buy" href="#contact">${label} · ${product.price}</a>`;
   }
 
   const actions = document.getElementById('album-actions');
