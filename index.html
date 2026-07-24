@@ -3,23 +3,23 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Elastic Field — Official Site</title>
-<meta name="description" content="Elastic Field — downbeat, ambient, trip-hop, lounge, jazzy & subtle electronic textures." />
+<title>Elastic Field — Smoke & Static | Official Site</title>
+<meta name="description" content="Smoke & Static — new trip hop album by Elastic Field. 11 tracks of downbeat fusion for the small hours. Buy or stream." />
 <meta name="theme-color" content="#000000" />
 
 <!-- Open Graph -->
-<meta property="og:title" content="Elastic Field — Official Site" />
-<meta property="og:description" content="Downbeat, ambient, trip-hop, lounge, jazzy & subtle electronic textures." />
+<meta property="og:title" content="Elastic Field — Smoke & Static" />
+<meta property="og:description" content="New album — 11 tracks of trip hop & downbeat fusion. Dusty breaks, dub bass, smoky voices." />
 <meta property="og:type" content="music.musician" />
 <meta property="og:url" content="https://www.elasticfieldmusic.com/" />
-<meta property="og:image" content="https://www.elasticfieldmusic.com/og-elastic-field.jpg" />
+<meta property="og:image" content="https://www.elasticfieldmusic.com/album/smoke-and-static/00_smoke_and_static_album_16x9.png" />
 <meta property="og:site_name" content="Elastic Field" />
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Elastic Field — Official Site" />
-<meta name="twitter:description" content="Downbeat, ambient, trip-hop, lounge, jazzy & subtle electronic textures." />
-<meta name="twitter:image" content="https://www.elasticfieldmusic.com/og-elastic-field.jpg" />
+<meta name="twitter:title" content="Elastic Field — Smoke & Static" />
+<meta name="twitter:description" content="New album — 11 tracks of trip hop & downbeat fusion." />
+<meta name="twitter:image" content="https://www.elasticfieldmusic.com/album/smoke-and-static/00_smoke_and_static_album_16x9.png" />
 
 <!-- Schema.org MusicGroup -->
 <script type="application/ld+json">
@@ -38,6 +38,14 @@
     "https://music.amazon.de/artists/B008F6S0LM/elastic-field"
   ],
   "album": [
+    {
+      "@type": "MusicAlbum",
+      "name": "Smoke & Static",
+      "datePublished": "2026",
+      "numTracks": 11,
+      "albumProductionType": "https://schema.org/StudioAlbum",
+      "url": "https://www.elasticfieldmusic.com/#album"
+    },
     {
       "@type": "MusicAlbum",
       "name": "Lost and Found",
@@ -156,6 +164,22 @@ h2{margin:0 0 16px;font-size:13px;font-weight:600;text-transform:uppercase;lette
 /* About/Imprint card text */
 .card p{color:var(--sub);line-height:1.7;font-size:14px;margin:0 0 10px}
 
+/* Album — Smoke & Static */
+.album-feature-grid{display:grid;grid-template-columns:minmax(0,420px) 1fr;gap:28px;align-items:center;padding:22px}
+@media(max-width:980px){.album-feature-grid{grid-template-columns:1fr}}
+.album-feature-grid img{border-radius:var(--radius);width:100%;box-shadow:var(--shadow)}
+.album-feature h3{font-size:clamp(28px,4vw,40px);margin:8px 0 12px}
+.track-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:16px}
+@media(max-width:980px){.track-grid{grid-template-columns:1fr}}
+.track-item{display:flex;gap:12px;padding:12px;border:1px solid var(--line);border-radius:14px;background:var(--panel);transition:border-color .3s}
+.track-item:hover{border-color:#333}
+.track-item img{width:64px;height:64px;border-radius:10px;object-fit:cover;flex-shrink:0}
+.track-item strong{display:block;font-size:14px;margin-bottom:4px}
+.track-item .meta{font-size:11px;color:var(--sub);margin-bottom:4px}
+.track-item .desc{font-size:12px;color:#888;line-height:1.45}
+.btn.buy{background:var(--accent-green);color:#000;border-color:var(--accent-green);font-weight:600}
+.btn.buy:hover{box-shadow:0 0 24px rgba(0,255,136,.25)}
+
 /* Hamburger Menu */
 .hamburger{display:none;background:none;border:none;cursor:pointer;padding:8px;color:var(--ink)}
 .hamburger svg{width:24px;height:24px;display:block}
@@ -183,6 +207,7 @@ h2{margin:0 0 16px;font-size:13px;font-weight:600;text-transform:uppercase;lette
       </svg>
     </button>
     <nav id="mainNav">
+      <a class="btn" href="#album" style="border-color:var(--accent-green);color:var(--accent-green)">Smoke & Static</a>
       <a class="btn" href="#listen">Listen</a>
       <a class="btn" href="#videos">Videos</a>
       <a class="btn" href="#discography">Discography</a>
@@ -202,14 +227,36 @@ h2{margin:0 0 16px;font-size:13px;font-weight:600;text-transform:uppercase;lette
     <div class="hero-overlay">
       <div class="hero-box">
         <h1>Elastic Field</h1>
-        <p class="lead">Downbeat, ambient, trip-hop, lounge, jazzy & subtle electronics.</p>
+        <p class="lead">New album <strong>Smoke & Static</strong> — trip hop & downbeat for the small hours.</p>
         <div class="hero-actions">
-          <a class="btn primary" href="#listen">▶︎ Listen</a>
+          <a class="btn primary" href="#album">▶︎ Smoke & Static</a>
+          <a class="btn buy" href="#shop" id="hero-buy">Buy Album</a>
           <a class="btn" href="#videos">▶︎ Play Mix</a>
           <a class="btn" href="https://www.youtube.com/@elasticfieldmusic" target="_blank" rel="noopener noreferrer">YouTube</a>
           <a class="btn" href="https://open.spotify.com/intl-de/artist/2wn4Zq8AOBsX50X7fyBEoL" target="_blank" rel="noopener noreferrer">Spotify</a>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- New Album: Smoke & Static -->
+  <section id="album">
+    <div class="wrap">
+      <h2>New Album · 2026</h2>
+      <article class="card album-feature">
+        <div class="album-feature-grid">
+          <img src="album/smoke-and-static/00_smoke_and_static_album_1x1.png" alt="Smoke & Static album cover">
+          <div>
+            <span class="badge" style="border-color:rgba(0,255,136,.35);color:var(--accent-green)">11 Tracks · Album</span>
+            <h3>Smoke & Static</h3>
+            <p id="album-desc">Eleven tracks of trip hop and downbeat fusion — dusty breakbeats, deep dub bass, warm Rhodes and smoky voices. Kruder & Dorfmeister spirit with blues in its veins.</p>
+            <p class="kicker" style="margin-bottom:14px">Downbeat fusion for the small hours. AI-assisted production with Suno.</p>
+            <div id="album-actions" style="display:flex;gap:10px;flex-wrap:wrap"></div>
+          </div>
+        </div>
+      </article>
+      <h2 style="margin-top:36px">Tracklist</h2>
+      <div id="tracklist" class="track-grid"></div>
     </div>
   </section>
 
@@ -221,7 +268,7 @@ h2{margin:0 0 16px;font-size:13px;font-weight:600;text-transform:uppercase;lette
         <div class="tile-cover poster spotify" role="button" tabindex="0"
              aria-label="Load Spotify player"
              data-src="https://open.spotify.com/embed/artist/2wn4Zq8AOBsX50X7fyBEoL?theme=0">
-          <img src="cover-lost-and-found.png" alt="Elastic Field on Spotify" onerror="this.src='https://i.ytimg.com/vi/6erDkiy3rFU/hqdefault.jpg'">
+          <img src="album/smoke-and-static/00_smoke_and_static_album_1x1.png" alt="Elastic Field on Spotify" onerror="this.src='cover-lost-and-found.png'">
           <div class="playbtn" aria-hidden="true">
             <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
           </div>
@@ -282,6 +329,17 @@ h2{margin:0 0 16px;font-size:13px;font-weight:600;text-transform:uppercase;lette
       <h2>Discography</h2>
       <div class="grid">
         <article class="card col-4">
+          <div class="tile-cover"><img src="album/smoke-and-static/00_smoke_and_static_album_1x1.png" alt="Smoke & Static cover"></div>
+          <div class="tile-body">
+            <strong>Smoke & Static</strong> · <span class="kicker">Album · 2026</span>
+            <div style="margin-top:10px;display:flex;gap:10px;flex-wrap:wrap">
+              <a class="btn primary" href="#shop" id="disc-buy-smoke">Buy Album</a>
+              <a class="btn" href="#album">Tracklist</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card col-4">
           <div class="tile-cover"><img src="cover-lost-and-found.png" alt="Lost and Found cover"></div>
           <div class="tile-body">
             <strong>Lost and Found</strong> · <span class="kicker">EP</span>
@@ -317,36 +375,28 @@ h2{margin:0 0 16px;font-size:13px;font-weight:600;text-transform:uppercase;lette
   <!-- Shop / Stream -->
   <section id="shop">
     <div class="wrap">
-      <h2>Shop &amp; Stream</h2>
+      <h2>Shop</h2>
       <div class="grid">
-        <article class="card col-4">
+        <article class="card col-6">
+          <div class="tile-cover"><img src="album/smoke-and-static/00_smoke_and_static_album_1x1.png" alt="Smoke & Static"></div>
+          <div class="tile-body">
+            <strong>Smoke & Static</strong> · <span class="kicker">Full Album · 11 tracks · WAV + MP3</span>
+            <p class="kicker" style="margin-top:8px">Instant download via Gumroad. Support the project directly.</p>
+            <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap" id="shop-buy-smoke"></div>
+          </div>
+        </article>
+        <article class="card col-6">
           <div class="tile-cover"><img src="cover-lost-and-found.png" alt="Lost and Found cover"></div>
           <div class="tile-body">
-            <strong>Lost and Found</strong> · <span class="kicker">EP · out now</span>
+            <strong>Lost and Found</strong> · <span class="kicker">EP · 2025</span>
             <div style="margin-top:10px;display:flex;gap:10px;flex-wrap:wrap">
               <a class="btn primary" href="https://open.spotify.com/intl-de/album/6CVmcZb3bQAkxU39k0falc" target="_blank" rel="noopener noreferrer">Spotify</a>
               <a class="btn" href="https://music.amazon.de/artists/B008F6S0LM/elastic-field" target="_blank" rel="noopener noreferrer">Amazon</a>
             </div>
           </div>
         </article>
-        <article class="card col-4">
-          <div class="tile-cover"><img src="cover-non-smokers-nightmare.png" alt="Non Smokers Nightmare cover"></div>
-          <div class="tile-body">
-            <strong>Non Smokers Nightmare</strong> · <span class="kicker">Album · 2012</span>
-            <div style="margin-top:10px;display:flex;gap:10px;flex-wrap:wrap">
-              <a class="btn" href="https://open.spotify.com/intl-de/album/4gNyV1XCfZY8enSJb3msCn" target="_blank" rel="noopener noreferrer">Spotify</a>
-            </div>
-          </div>
-        </article>
-        <article class="card col-4">
-          <div class="ph"><span class="badge soon">Coming soon</span></div>
-          <div class="tile-body">
-            <strong>Gates of Stillness</strong> · <span class="kicker">EP</span>
-            <p class="kicker" style="margin-top:8px">Next release — notify via contact form.</p>
-          </div>
-        </article>
       </div>
-      <p class="kicker" style="margin-top:10px">Digital sales via Gumroad will follow for upcoming releases.</p>
+      <p class="kicker" style="margin-top:10px">Set your Gumroad link in <code>shop-config.js</code> → <code>gumroadUrl</code>.</p>
     </div>
   </section>
 
@@ -357,7 +407,7 @@ h2{margin:0 0 16px;font-size:13px;font-weight:600;text-transform:uppercase;lette
       <div class="card" style="padding:16px">
         <p><strong>Elastic Field</strong> was founded in 2011 – a free-form music project rooted in ambient, lounge, trip hop, downbeat, jazz, and subtle electronic textures. The sound is reflective, immersive, and emotional – often instrumental, sometimes featuring voice fragments or spoken word passages.</p>
         <p>In 2012, the debut album “Non Smokers Nightmare” introduced a world of atmospheric contrasts and sonic minimalism. One year later, the follow-up “Another Non Smokers Nightmare” (2013) deepened that sound – darker, more focused, but equally open and textured.</p>
-        <p>Now, in 2025, Elastic Field returns – with a series of remixes, new compositions, and a refined sound. While remaining true to its roots, the project embraces modern sonic aesthetics and digital production. It’s a comeback without nostalgia – a new beginning in the same spirit.</p>
+        <p>Now, in 2026, Elastic Field returns with <strong>Smoke & Static</strong> — eleven tracks of trip hop and downbeat fusion, produced with modern tools while staying true to the project's smoky, nocturnal roots.</p>
       </div>
     </div>
   </section>
@@ -410,6 +460,10 @@ h2{margin:0 0 16px;font-size:13px;font-weight:600;text-transform:uppercase;lette
 </footer>
 
 <button id="totop" class="btn">↑ Top</button>
+
+<script src="album-data.js"></script>
+<script src="shop-config.js"></script>
+<script src="https://gumroad.com/js/gumroad-embed.js"></script>
 
 <script>
 // Year
@@ -473,6 +527,46 @@ document.querySelectorAll('.poster.yt').forEach(p=>{
       toggle.setAttribute('aria-expanded','false');
     }
   });
+})();
+
+// Smoke & Static — album UI + buy buttons
+(function(){
+  const album = window.ELASTIC_FIELD_ALBUM;
+  const shop = window.ELASTIC_FIELD_SHOP;
+  if(!album || !shop) return;
+  const product = shop.products.find(p => p.id === album.id) || shop.products.find(p => p.featured);
+  if(!product) return;
+
+  function buyButton(label){
+    if(product.gumroadUrl){
+      return `<a class="btn buy gumroad-button" href="${product.gumroadUrl}" data-gumroad-overlay-checkout="true">${label} · ${product.price}</a>`;
+    }
+    return `<a class="btn buy" href="#contact">${label} · ${product.price} — contact for purchase link</a>`;
+  }
+
+  const actions = document.getElementById('album-actions');
+  if(actions) actions.innerHTML = buyButton('Buy Album') + `<a class="btn" href="#shop">Shop</a>`;
+
+  ['hero-buy','disc-buy-smoke'].forEach(id => {
+    const el = document.getElementById(id);
+    if(el){ el.outerHTML = buyButton(el.textContent.trim()); }
+  });
+
+  const shopBuy = document.getElementById('shop-buy-smoke');
+  if(shopBuy) shopBuy.innerHTML = buyButton('Buy Album');
+
+  const list = document.getElementById('tracklist');
+  if(list){
+    list.innerHTML = album.tracks.map(t => `
+      <div class="track-item">
+        <img src="${t.cover}" alt="${t.title} cover" loading="lazy">
+        <div>
+          <div class="meta">${String(t.n).padStart(2,'0')} · ${t.style} · ${t.bpm} BPM</div>
+          <strong>${t.title}</strong>
+          <div class="desc">${t.desc}</div>
+        </div>
+      </div>`).join('');
+  }
 })();
 </script>
 
