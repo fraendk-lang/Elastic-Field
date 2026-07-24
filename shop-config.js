@@ -6,12 +6,12 @@ window.ELASTIC_FIELD_SHOP = {
     {
       id: "smoke-and-static",
       title: "Smoke & Static",
-      type: "Album",
+      type: "Third Album",
       year: "2026",
       price: "€12",
       cover: "album/smoke-and-static/00_smoke_and_static_album_1x1.png",
       description:
-        "Full album — 11 tracks. Instant download (WAV + MP3). Trip hop & downbeat fusion for the small hours.",
+        "Full album — 11 tracks. Instant download (WAV + MP3). Elastic Field's third studio album.",
       gumroadUrl: "",
       spotifyUrl: "",
       featured: true,

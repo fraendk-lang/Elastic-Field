@@ -5,7 +5,7 @@ window.ELASTIC_FIELD_ALBUM = {
   id: "smoke-and-static",
   title: "Smoke & Static",
   year: "2026",
-  type: "Album",
+  type: "Third Album",
   price: "€12",
   cover: "album/smoke-and-static/00_smoke_and_static_album_1x1.png",
   coverWide: "album/smoke-and-static/00_smoke_and_static_album_16x9.png",
