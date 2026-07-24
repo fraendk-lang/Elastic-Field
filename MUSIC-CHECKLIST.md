@@ -13,7 +13,7 @@
 - [x] Suno / dev hints removed from public UI
 - [x] Datenschutz page + footer link
 - [x] Imprint contact email aligned
-- [x] Listen section clarified (catalog vs new album)
+- [x] Transition notice on homepage (EN/DE)
 - [x] Schema.org OG image → Smoke & Static
 
 ## Nice to have
