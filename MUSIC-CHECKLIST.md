@@ -2,7 +2,7 @@
 
 ## Blockers (need you)
 
-- [ ] **Cover master** — clean 1:1 + 16:9 without “debut album” text
+- [x] **Cover master** — clean 1:1 + 16:9 (“the third album”)
 - [ ] **Gumroad** — product live, `gumroadUrl` in `shop-config.js`
 - [ ] **Streaming** — Smoke & Static on Spotify / Apple / Amazon (optional timeline)
 
