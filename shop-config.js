@@ -20,7 +20,7 @@ window.ELASTIC_FIELD_SHOP = {
       id: "lost-and-found",
       title: "Lost and Found",
       type: "EP",
-      year: "2025",
+      year: "2012",
       price: "€8",
       cover: "cover-lost-and-found.png",
       description: "EP including At Least & Strange Way — stream everywhere or own the high-quality download.",
