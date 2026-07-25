@@ -176,9 +176,17 @@ h2{margin:0 0 16px;font-size:13px;font-weight:600;text-transform:uppercase;lette
 .album-feature h3{font-size:clamp(28px,4vw,40px);margin:8px 0 12px}
 .track-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:16px}
 @media(max-width:980px){.track-grid{grid-template-columns:1fr}}
-.track-item{display:flex;gap:12px;padding:12px;border:1px solid var(--line);border-radius:14px;background:var(--panel);transition:border-color .3s}
+.track-item{display:flex;gap:12px;padding:12px;border:1px solid var(--line);border-radius:14px;background:var(--panel);transition:border-color .3s,box-shadow .3s}
 .track-item:hover{border-color:#333}
-.track-item img{width:64px;height:64px;border-radius:10px;object-fit:cover;flex-shrink:0}
+.track-item.is-playing{border-color:rgba(0,255,136,.45);box-shadow:0 0 16px rgba(0,255,136,.08)}
+.track-play{position:relative;flex-shrink:0;padding:0;border:none;background:none;cursor:pointer;border-radius:10px;line-height:0}
+.track-play img{width:64px;height:64px;border-radius:10px;object-fit:cover;display:block}
+.track-play-icon{position:absolute;inset:0;display:grid;place-items:center;border-radius:10px;background:rgba(0,0,0,.45);opacity:0;transition:opacity .2s}
+.track-play:hover .track-play-icon,.track-item.is-playing .track-play-icon{opacity:1}
+.track-play-icon svg{width:22px;height:22px;fill:var(--accent-green)}
+.track-item.is-playing .track-play-icon svg.icon-play{display:none}
+.track-play-icon svg.icon-pause{display:none}
+.track-item.is-playing .track-play-icon svg.icon-pause{display:block}
 .track-item strong{display:block;font-size:14px;margin-bottom:4px}
 .track-item .meta{font-size:11px;color:var(--sub);margin-bottom:4px}
 .track-item .desc{font-size:12px;color:#888;line-height:1.45}
@@ -266,6 +274,7 @@ h2{margin:0 0 16px;font-size:13px;font-weight:600;text-transform:uppercase;lette
         </div>
       </article>
       <h2 style="margin-top:36px">Tracklist</h2>
+      <p class="kicker" style="margin:-4px 0 12px">Tap a cover to preview (30 seconds from the start). Full album via shop.</p>
       <div id="tracklist" class="track-grid"></div>
     </div>
   </section>
@@ -274,7 +283,7 @@ h2{margin:0 0 16px;font-size:13px;font-weight:600;text-transform:uppercase;lette
   <section id="listen">
     <div class="wrap">
       <h2>Listen</h2>
-      <p class="kicker" style="margin:-4px 0 12px"><strong>Smoke & Static</strong> — digital download via shop. Streaming release coming soon.</p>
+      <p class="kicker" style="margin:-4px 0 12px"><strong>Smoke & Static</strong> — 30s previews in the <a href="#album" style="color:var(--accent-green)">tracklist</a>. Full album via shop. Streaming release coming soon.</p>
       <div class="card" style="overflow:hidden">
         <div class="tile-cover square poster spotify" role="button" tabindex="0"
              aria-label="Load Spotify player"
@@ -566,16 +575,55 @@ document.querySelectorAll('.poster.yt').forEach(p=>{
   if(shopBuy) shopBuy.innerHTML = buyButton('Buy Album');
 
   const list = document.getElementById('tracklist');
+  const audio = new Audio();
+  let activeItem = null;
+  let currentPreviewSrc = '';
+
+  function setPlaying(item, playing){
+    if(activeItem && activeItem !== item) activeItem.classList.remove('is-playing');
+    activeItem = playing ? item : null;
+    item.classList.toggle('is-playing', playing);
+  }
+
   if(list){
     list.innerHTML = album.tracks.map(t => `
-      <div class="track-item">
-        <img src="${t.cover}" alt="${t.title} cover" loading="lazy">
+      <div class="track-item" data-preview="${t.preview || ''}">
+        <button type="button" class="track-play" aria-label="Preview ${t.title}">
+          <img src="${t.cover}" alt="${t.title} cover" loading="lazy">
+          <span class="track-play-icon" aria-hidden="true">
+            <svg class="icon-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            <svg class="icon-pause" viewBox="0 0 24 24"><path d="M6 5h4v14H6V5zm8 0h4v14h-4V5z"/></svg>
+          </span>
+        </button>
         <div>
           <div class="meta">${String(t.n).padStart(2,'0')} · ${t.style} · ${t.bpm} BPM</div>
           <strong>${t.title}</strong>
           <div class="desc">${t.desc}</div>
         </div>
       </div>`).join('');
+
+    list.querySelectorAll('.track-item').forEach(item => {
+      const src = item.dataset.preview;
+      const btn = item.querySelector('.track-play');
+      if(!src || !btn) return;
+      btn.addEventListener('click', () => {
+        if(activeItem === item && !audio.paused){
+          audio.pause();
+          setPlaying(item, false);
+          return;
+        }
+        if(currentPreviewSrc !== src){
+          audio.src = src;
+          currentPreviewSrc = src;
+        }
+        audio.play().catch(() => {});
+        setPlaying(item, true);
+      });
+    });
+
+    audio.addEventListener('ended', () => {
+      if(activeItem) setPlaying(activeItem, false);
+    });
   }
 })();
 </script>

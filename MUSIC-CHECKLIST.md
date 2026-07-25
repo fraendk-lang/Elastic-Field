@@ -19,6 +19,6 @@
 ## Nice to have
 
 - [ ] WebP / compressed artwork
-- [ ] 30s preview clips per track
+- [x] 30s preview clips per track (from start, tracklist player)
 - [ ] YouTube uploads + embed on site
 - [ ] Remove `cover-gates-of-stillness.png` if unused
