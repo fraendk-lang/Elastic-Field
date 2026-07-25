@@ -3,7 +3,7 @@
 ## Blockers (need you)
 
 - [x] **Cover master** — clean 1:1 + 16:9 (“the third album”)
-- [ ] **Gumroad** — product live, `gumroadUrl` in `shop-config.js`
+- [x] **Gumroad** — product + ZIP, `gumroadUrl` in `shop-config.js` (Publish klicken)
 - [ ] **Streaming** — Smoke & Static on Spotify / Apple / Amazon (optional timeline)
 
 ## Done
