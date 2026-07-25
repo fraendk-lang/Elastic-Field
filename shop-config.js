@@ -12,7 +12,7 @@ window.ELASTIC_FIELD_SHOP = {
       cover: "album/smoke-and-static/00_smoke_and_static_album_1x1.png",
       description:
         "Full album — 11 tracks. Instant download (WAV + MP3). Elastic Field's third studio album.",
-      gumroadUrl: "",
+      gumroadUrl: "https://fraendk.gumroad.com/l/hciuau",
       spotifyUrl: "",
       featured: true,
     },
